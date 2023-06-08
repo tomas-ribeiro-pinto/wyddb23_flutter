@@ -68,6 +68,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/csslib-0.17.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5",
       "packageUri": "lib/",
@@ -98,10 +104,28 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/flutter_native_splash-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/tomaspinto/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/tomaspinto/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/html-0.15.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "image",
@@ -212,6 +236,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "universal_io",
+      "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -236,7 +266,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-08T10:04:26.938712Z",
+  "generated": "2023-06-08T11:06:32.276468Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }

@@ -1,0 +1,12 @@
+com.example.wyddb23_flutter.app-jetified-window-java-1.0.0-beta04-0 /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/res
+com.example.wyddb23_flutter.app-core-1.6.0-1 /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/res
+com.example.wyddb23_flutter.app-jetified-window-1.0.0-beta04-2 /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/res
+com.example.wyddb23_flutter.app-jetified-annotation-experimental-1.1.0-3 /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/res
+com.example.wyddb23_flutter.app-debug-4 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/res
+com.example.wyddb23_flutter.app-main-5 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/res
+com.example.wyddb23_flutter.app-pngs-6 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/generated/res/pngs/debug
+com.example.wyddb23_flutter.app-resValues-7 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/generated/res/resValues/debug
+com.example.wyddb23_flutter.app-rs-8 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/generated/res/rs/debug
+com.example.wyddb23_flutter.app-mergeDebugResources-9 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.wyddb23_flutter.app-mergeDebugResources-10 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.wyddb23_flutter.app-merged_res-11 /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/app/intermediates/merged_res/debug

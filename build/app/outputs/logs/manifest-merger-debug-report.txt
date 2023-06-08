@@ -1,0 +1,115 @@
+-- Merging decision tree log ---
+application
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:2:5-32:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:name
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+manifest
+ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+MERGED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/792141826d6c39dbe6e49cd1363d4295/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9dd449eab442342e8d0a4db53fae614c/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/4349ab0c9c72406c3eda33c98a056eff/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/159f7f75fb31c755630ecbfaf1aabbee/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/tomaspinto/.gradle/caches/transforms-3/e250807ddce1c924fe0aed342e3898ae/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/d17e2bcad17a741d9e13e68796c4fdae/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/05e073335c4421559338b36333c10f78/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/f569d4196636628ee28112b03870ace2/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/792141826d6c39dbe6e49cd1363d4295/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/792141826d6c39dbe6e49cd1363d4295/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9dd449eab442342e8d0a4db53fae614c/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9dd449eab442342e8d0a4db53fae614c/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/4349ab0c9c72406c3eda33c98a056eff/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/4349ab0c9c72406c3eda33c98a056eff/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/159f7f75fb31c755630ecbfaf1aabbee/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/159f7f75fb31c755630ecbfaf1aabbee/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/tomaspinto/.gradle/caches/transforms-3/e250807ddce1c924fe0aed342e3898ae/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/tomaspinto/.gradle/caches/transforms-3/e250807ddce1c924fe0aed342e3898ae/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/d17e2bcad17a741d9e13e68796c4fdae/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/d17e2bcad17a741d9e13e68796c4fdae/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/05e073335c4421559338b36333c10f78/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/05e073335c4421559338b36333c10f78/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/f569d4196636628ee28112b03870ace2/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/f569d4196636628ee28112b03870ace2/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:6:22-64
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51

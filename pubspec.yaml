@@ -63,6 +63,18 @@ flutter:
   assets:
     - assets/images/wyd-home-green.jpg
     - assets/images/wyd-logo-cor.png
+    - assets/images/home-pic.png
+
+  fonts:
+  - family: Rubik
+    fonts:
+      - asset: assets/fonts/Rubik-Regular.ttf
+      - asset: assets/fonts/Rubik-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Rubik-Regular.ttf
+        style: italic
+      - asset: assets/fonts/Rubik-Bold.ttf
+        weight: 700
 
 
 

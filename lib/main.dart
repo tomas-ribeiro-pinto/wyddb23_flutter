@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'WYD Don Bosco 23',
         theme: ThemeData(
+          fontFamily: 'Rubik',
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color(0xFF028744),
           ),

@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		hQXDg64H7T104FHC7wCV8es3QAA=
+		3emxjyi5e1u7FexpoyQHK9XZSj0=
 		</data>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<data>
-		0N8MKQ5N338pG64UMCBYajUQBIE=
+		tr/FR477CIdmx9j9Mi4cktmxUME=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -36,9 +36,25 @@
 		<data>
 		osQFFTWJXad+8TtS4YfnPvMlf48=
 		</data>
+		<key>flutter_assets/assets/images/highlight-cross.png</key>
+		<data>
+		XZJl3HF23w/e49zzH6HM9b/flEA=
+		</data>
+		<key>flutter_assets/assets/images/highlight-lisbon.png</key>
+		<data>
+		o9USJ5M5Jv4jkBImH24gQnovd8s=
+		</data>
+		<key>flutter_assets/assets/images/highlight-world.png</key>
+		<data>
+		YSuT4Z8100fCGKyKt8a/AsD3Jho=
+		</data>
 		<key>flutter_assets/assets/images/home-pic.png</key>
 		<data>
 		ytoNe+s7gRlXKiewwmj2ttjDz6Y=
+		</data>
+		<key>flutter_assets/assets/images/weather-sun.png</key>
+		<data>
+		pkFOqFoo+OQ0chkK/uVKqfBjIXc=
 		</data>
 		<key>flutter_assets/assets/images/wyd-home-green.jpg</key>
 		<data>
@@ -58,7 +74,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		zyux7JjvAONsS2BuGbEBaBBOiSk=
+		axCX26E46Aa6WjkpJDyTDgiW3IM=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -79,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/bQl/q/6NlE36b41BoRo87yAGzvxYlmIutfbqLxMvyc=
+			DsybVzkEGrw9J7ZCwAeixF7SG0Q1GccbPfyqZ0uPKIs=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/Js5rN6qNVNbsbsxM1iRTvD6Ouxj4qR3PJ3hYJ1oqp4=
+			iAXHmYirnpENKuy5lrOxGgvJr7nioz5nEL2hccFCc7Q=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -124,11 +140,39 @@
 			Id/6Xe0mPEbhgBFmZUHAvNqYi0zcSyzggE/s2ehpa+E=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/highlight-cross.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kXz8wksa4LBLXWI72QvucGbWEVAk4hd2W9jKc+HWo3Y=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/highlight-lisbon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hKgWGtrAg0S/Zdh2Vjmxl/PTOpkcwBuf7nuce1+FnZY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/highlight-world.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Vg0wFe3I3NZ2RbTvMgd9geFaB6kAo/r/U1ZyL3BfMYs=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/home-pic.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			tBIVehpcawL9zLnDUj8t1fSjItKWLckYX6I54rKTZDU=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/weather-sun.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hPCP89gp+BDkq/q86HLvpSroVWzucoVa+UQV5ZecRH0=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/wyd-home-green.jpg</key>
@@ -163,7 +207,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+CU8fgNMFMK7FUxHG6DXI3UFQKKVzuH3krDj/1sxTYE=
+			WmhCd86A1D18jjWTPqWIJ5SiErn7/opHaV0GWxd4Y+Q=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

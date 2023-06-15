@@ -64,6 +64,10 @@ flutter:
     - assets/images/wyd-home-green.jpg
     - assets/images/wyd-logo-cor.png
     - assets/images/home-pic.png
+    - assets/images/highlight-cross.png
+    - assets/images/highlight-world.png
+    - assets/images/highlight-lisbon.png
+    - assets/images/weather-sun.png
 
   fonts:
   - family: Rubik

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:wyddb23_flutter/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,13 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,37 +37,26 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topRight,
                 margin: const EdgeInsets.only(top: 45, right: 12),
                 child: Transform.scale(
-                  scale: 0.65,
+                  scale: 0.7,
                   child: Container(
+                    width: 80,
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 194, 194, 194),
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(15)),
-                    child: FloatingActionButton(
-                      backgroundColor: const Color.fromARGB(255, 35, 35, 35),
-                      foregroundColor: Colors.white,
-                      onPressed: () {},
-                      child: const Text(
-                        "EN",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
+                    child: getLanguageDropdown()
                   ),
                 ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 90),
-                child: const Row(
+                child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Hello, Lisboa",
+                        AppLocalizations.of(context)!.helloLisbon,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -138,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    "Agenda",
+                    AppLocalizations.of(context)!.agenda,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -157,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    "Map",
+                    AppLocalizations.of(context)!.map,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -176,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    "Hymn",
+                    AppLocalizations.of(context)!.hymn,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -213,11 +197,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          "SYM Day",
+                          AppLocalizations.of(context)!.symDay,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 18,
                           ),
                         ),
                       ],
@@ -245,11 +229,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          "Notes",
+                          AppLocalizations.of(context)!.notes,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 18,
                           ),
                         ),
                       ],
@@ -294,4 +278,41 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  List<DropdownMenuItem<String>> get dropdownItems{
+    List<DropdownMenuItem<String>> menuItems = [
+      DropdownMenuItem(child: Text("EN", style: TextStyle(fontWeight: FontWeight.bold,
+                          color: Colors.white,)),value: "en"),
+      DropdownMenuItem(child: Text("PT", style: TextStyle(fontWeight: FontWeight.bold,
+                          color: Colors.white,)),value: "pt"),
+    ];
+    return menuItems;
+  }
+
+  Widget getLanguageDropdown()
+  {
+     return DropdownButtonFormField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  filled: true,
+                  fillColor: const Color.fromARGB(255, 35, 35, 35),
+                ),
+                dropdownColor: Color.fromARGB(255, 35, 35, 35),
+                value: "en",
+                onChanged: (String? newValue) {
+                  setState(() {
+                    String locale = newValue.toString();
+                    MyApp.setLocale(context, Locale(locale));
+                  });
+                },
+                items: dropdownItems);
+  }
+
 }

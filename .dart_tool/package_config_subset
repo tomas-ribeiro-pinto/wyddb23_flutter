@@ -74,6 +74,10 @@ image
 2.15
 file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/image-4.0.17/
 file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/image-4.0.17/lib/
+intl
+2.12
+file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/intl-0.18.0/
+file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/intl-0.18.0/lib/
 js
 2.19
 file:///Users/tomaspinto/.pub-cache/hosted/pub.dev/js-0.6.7/
@@ -166,6 +170,10 @@ flutter
 3.0
 file:///Users/tomaspinto/flutter/packages/flutter/
 file:///Users/tomaspinto/flutter/packages/flutter/lib/
+flutter_localizations
+3.0
+file:///Users/tomaspinto/flutter/packages/flutter_localizations/
+file:///Users/tomaspinto/flutter/packages/flutter_localizations/lib/
 flutter_test
 3.0
 file:///Users/tomaspinto/flutter/packages/flutter_test/

@@ -1,8 +1,8 @@
 version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
 options: "a545b8adae455cfe6866793455309b80f973443c01c1c8c8037025af27b54468"
-build_start_time: [1686326025, 716691000]
-build_end_time: [1686326030, 352636000]
+build_start_time: [1686835823, 729563000]
+build_end_time: [1686835825, 131384000]
 inputs:
-  "/Users/tomaspinto/Documents/GitHub/wyddb23_flutter/macos/Flutter/GeneratedPluginRegistrant.swift": [1686326016, 624950470]
+  "/Users/tomaspinto/Documents/GitHub/wyddb23_flutter/macos/Flutter/GeneratedPluginRegistrant.swift": [1686835813, 173320058]
   "/Users/tomaspinto/Documents/GitHub/wyddb23_flutter/macos/Runner/AppDelegate.swift": [1685724492, 0]
   "/Users/tomaspinto/Documents/GitHub/wyddb23_flutter/macos/Runner/MainFlutterWindow.swift": [1685724492, 0]

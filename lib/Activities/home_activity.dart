@@ -4,6 +4,8 @@ import 'package:wyddb23_flutter/NavigationPages/page1.dart';
 import 'package:wyddb23_flutter/NavigationPages/page2.dart';
 import 'package:wyddb23_flutter/NavigationPages/page3.dart';
 import 'package:wyddb23_flutter/NavigationPages/page4.dart';
+import 'package:heroicons/heroicons.dart';
+
 
 class HomeActivity extends StatefulWidget {
   const HomeActivity({Key? key}) : super(key: key);
@@ -78,13 +80,14 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE1_index
-                        ? const Icon(
-                            Icons.home_filled,
-                            color: Colors.white,
+                        ? const HeroIcon(
+                            HeroIcons.heart,
+                            color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
+                            style: HeroIconStyle.solid
                           )
-                        : const Icon(
-                            Icons.home_outlined,
+                        : const HeroIcon(
+                            HeroIcons.heart,
                             color: Colors.white,
                             size: 35,
                           ),
@@ -97,13 +100,14 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE2_index
-                        ? const Icon(
-                            Icons.work_rounded,
-                            color: Colors.white,
+                        ? const HeroIcon(
+                            HeroIcons.plus,
+                            color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
+                            style: HeroIconStyle.solid
                           )
-                        : const Icon(
-                            Icons.work_outline_outlined,
+                        : const HeroIcon(
+                            HeroIcons.plus,
                             color: Colors.white,
                             size: 35,
                           ),
@@ -148,13 +152,14 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE3_index
-                        ? const Icon(
-                            Icons.access_alarm_outlined,
-                            color: Colors.white,
+                        ? const HeroIcon(
+                            HeroIcons.magnifyingGlass,
+                            color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
+                            style: HeroIconStyle.solid
                           )
-                        : const Icon(
-                            Icons.person_outline,
+                        : const HeroIcon(
+                            HeroIcons.magnifyingGlass,
                             color: Colors.white,
                             size: 35,
                           ),
@@ -167,13 +172,14 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE4_index
-                        ? const Icon(
-                            Icons.person,
-                            color: Colors.white,
+                        ? const HeroIcon(
+                            HeroIcons.bell,
+                            color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
+                            style: HeroIconStyle.solid
                           )
-                        : const Icon(
-                            Icons.person_outline,
+                        : const HeroIcon(
+                            HeroIcons.bell,
                             color: Colors.white,
                             size: 35,
                           ),

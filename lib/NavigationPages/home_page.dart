@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wyddb23_flutter/main.dart';
+import 'package:heroicons/heroicons.dart';
+import 'package:wyddb23_flutter/WeatherAPI/api_service.dart';
+import 'package:wyddb23_flutter/WeatherAPI/weather_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +14,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  late Weather? _weatherModel = null;
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
+  void _getData() async {
+    //Weather _weather = (await ApiService().getWeather())!;
+    _weatherModel = (await ApiService().getWeather())!;
+    //_weatherModel!.add(_weather);
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +55,16 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topRight,
                 margin: const EdgeInsets.only(top: 45, right: 12),
                 child: Transform.scale(
-                  scale: 0.7,
+                  scale: 0.8,
                   child: Container(
-                    width: 80,
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 194, 194, 194),
                           width: 1,
                         ),
+                        color: Color.fromARGB(255, 35, 35, 35),
                         borderRadius: BorderRadius.circular(15)),
-                    child: getLanguageDropdown()
+                    child: getLanguagePopUp()
                   ),
                 ),
               ),
@@ -86,14 +104,30 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(18),
                             color: Colors.white
                           ),
-                          child: Image(
+                          child: _weatherModel == null
+                          ? Image(
                             image: AssetImage("assets/images/weather-sun.png"),
+                          )
+                          :
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(left:5),
-                          child: Text(
-                            "25 ºC",
+                          child: _weatherModel == null
+                          ? Text(
+                              " -- ºC",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            )
+                          : 
+                          Text(
+                            _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Colors.white,
@@ -292,27 +326,55 @@ class _HomePageState extends State<HomePage> {
   Widget getLanguageDropdown()
   {
      return DropdownButtonFormField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 35, 35, 35),
-                ),
-                dropdownColor: Color.fromARGB(255, 35, 35, 35),
-                value: "en",
-                onChanged: (String? newValue) {
-                  setState(() {
-                    String locale = newValue.toString();
-                    MyApp.setLocale(context, Locale(locale));
-                  });
-                },
-                items: dropdownItems);
+        //icon: Icon(Icons.arrow_downward_outlined),
+        icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          filled: true,
+          fillColor: const Color.fromARGB(255, 35, 35, 35),
+        ),
+        dropdownColor: Color.fromARGB(255, 35, 35, 35),
+        value: "en",
+        onChanged: (String? newValue) {
+          setState(() {
+            String locale = newValue.toString();
+            MyApp.setLocale(context, Locale(locale));
+          });
+        },
+        items: dropdownItems);
   }
 
+  Widget getLanguagePopUp()
+  {
+    return PopupMenuButton(
+      elevation: 50,
+      color: Color.fromARGB(255, 35, 35, 35),
+      onSelected: (String? newValue) {
+          setState(() {
+            String locale = newValue.toString();
+            MyApp.setLocale(context, Locale(locale));
+          });
+      },
+      itemBuilder: (BuildContext bc) {
+        return const [
+          PopupMenuItem(
+            child: Text("EN 🇬🇧", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "en"
+          ),
+          PopupMenuItem(
+            child: Text("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "pt"
+          ),
+        ];
+      },
+      icon: Icon(Icons.language, color: Colors.white,),
+    );
+  }
 }

@@ -5,10 +5,74 @@ import 'Activities/splash.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  NotificationService().initNotification();
+
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final messaging = FirebaseMessaging.instance;
+
+  final settings = await messaging.requestPermission(
+  alert: true,
+  announcement: false,
+  badge: true,
+  carPlay: false,
+  criticalAlert: false,
+  provisional: false,
+  sound: true,
+  );
+
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print(fcmToken);
+  
+  FirebaseMessaging.instance.onTokenRefresh
+    .listen((fcmToken) {
+      // TODO: If necessary send token to application server.
+
+      // Note: This callback is fired at each app startup and whenever a new
+      // token is generated.
+    })
+    .onError((err) {
+      // Error getting token.
+    });
+
+/*   await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+
+  print('User granted permission: ${settings.authorizationStatus}');
+  print(fcmToken);
+
+  // Lisitnening to the background messages
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    await Firebase.initializeApp();
+    print("Handling a background message: ${message.messageId}");
+  }
+
+  // Lisitnening to the background messages
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler); */
+
+  //NotificationService().initNotification();
   runApp(const MyApp());
 }
 

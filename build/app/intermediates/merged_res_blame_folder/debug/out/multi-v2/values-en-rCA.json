@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.wyddb23_flutter.app-mergeDebugResources-10:/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "com.example.wyddb23_flutter.app-mergeDebugResources-16:/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "/Users/tomaspinto/.gradle/caches/transforms-3/32eb7721e2a5ff9f269124c50741c688/transformed/core-1.6.0/res/values-en-rCA/values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

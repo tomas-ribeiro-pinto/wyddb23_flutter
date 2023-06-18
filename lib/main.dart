@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:wyddb23_flutter/Notifications/notification_service.dart';
+import 'package:wyddb23_flutter/language_constants.dart';
 import 'Activities/splash.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
   runApp(const MyApp());
 }
 
@@ -28,6 +32,12 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _locale = locale;
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    getLocale().then((locale) => setLocale(locale));
+    super.didChangeDependencies();
   }
 
   // This widget is the root of your application.

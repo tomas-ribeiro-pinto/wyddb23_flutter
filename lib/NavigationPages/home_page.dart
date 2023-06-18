@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/WeatherAPI/api_service.dart';
 import 'package:wyddb23_flutter/WeatherAPI/weather_model.dart';
+import 'package:wyddb23_flutter/language_constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -156,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context)!.agenda,
+                    translation(context).agenda,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -166,7 +168,9 @@ class _HomePageState extends State<HomePage> {
               Column(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      NotificationService().showNotification(title: 'It works!');
+                    },
                     enableFeedback: false,
                     icon: Image.asset(
                       'assets/images/highlight-world.png',
@@ -175,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context)!.map,
+                    translation(context).map,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -194,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context)!.hymn,
+                    translation(context).hymn,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -231,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          AppLocalizations.of(context)!.symDay,
+                          translation(context).symDay,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -263,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          AppLocalizations.of(context)!.notes,
+                          translation(context).notes,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -356,10 +360,10 @@ class _HomePageState extends State<HomePage> {
     return PopupMenuButton(
       elevation: 50,
       color: Color.fromARGB(255, 35, 35, 35),
-      onSelected: (String? newValue) {
+      onSelected: (String? newValue) async{
+          Locale locale = await setLocale(newValue.toString());
           setState(() {
-            String locale = newValue.toString();
-            MyApp.setLocale(context, Locale(locale));
+            MyApp.setLocale(context, locale);
           });
       },
       itemBuilder: (BuildContext bc) {

@@ -1,6 +1,8 @@
 -- Merging decision tree log ---
 application
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:2:5-32:19
+MERGED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-32:19
+MERGED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-32:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/6be47b444a85e07a3d357c809ce146d4/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
@@ -17,9 +19,12 @@ INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
 MERGED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml:1:1-33:12
+MERGED from [:shared_preferences_android] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-34:12
 MERGED from [:flutter_native_splash] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.media:media:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/45dfbc766d140739ff3f77323c56ce6d/transformed/media-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/792141826d6c39dbe6e49cd1363d4295/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9dd449eab442342e8d0a4db53fae614c/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -31,8 +36,8 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/tomaspinto/.gradle/cac
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/05e073335c4421559338b36333c10f78/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/f569d4196636628ee28112b03870ace2/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -56,12 +61,18 @@ uses-sdk
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences_android] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_native_splash] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_native_splash] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/128f7549c3f81d242aa9f589ae0024c0/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/45dfbc766d140739ff3f77323c56ce6d/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/45dfbc766d140739ff3f77323c56ce6d/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/be84f2779f4f1b10705c7f0a63514191/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/792141826d6c39dbe6e49cd1363d4295/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
@@ -84,10 +95,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/f569d4196636628ee28112b03870ace2/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/9d801c3c2d9a6853f3fb3cb6750e2843/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tomaspinto/.gradle/caches/transforms-3/916495261315a2048c894f73c1b9976b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/tomaspinto/.gradle/caches/transforms-3/3ac23ed2fd9faadd4c7711cd0374fa46/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/347d9700e483e0a31c76c7db496dadbe/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/d4596ac79b815af659049f699c8e05bf/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -104,6 +115,62 @@ uses-permission#android.permission.INTERNET
 ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:6:5-66
 	android:name
 		ADDED from /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/android/app/src/debug/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-66
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-63
+uses-permission#android.permission.USE_FULL_SCREEN_INTENT
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:12:22-76
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-77
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:13:22-74
+receiver#com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-18:40
+	android:exported
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-91
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-97
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:9-31:20
+	android:exported
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-101
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-30:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:17-79
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:17-84
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:25-81
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:25-79
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/af57bbf1db2f2efb49b62e9468110ecb/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 	android:required

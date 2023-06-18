@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxxhdpi_icon.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xxxhdpi/icon.png"
-    },
-    {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xhdpi_icon.png.flat",
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xhdpi/icon.png"
     },
@@ -28,16 +24,8 @@
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-hdpi/launcher_icon.png"
     },
     {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_background.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/background.png"
-    },
-    {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_icon.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/icon.png"
-    },
-    {
-        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/drawable-v21_icon.png.flat",
-        "source": "com.example.wyddb23_flutter.app-main-11:/drawable-v21/icon.png"
+        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xhdpi_bw_icon.png.flat",
+        "source": "com.example.wyddb23_flutter.app-main-11:/mipmap-xhdpi/bw_icon.png"
     },
     {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxxhdpi_launcher_icon.png.flat",
@@ -52,28 +40,24 @@
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-mdpi_launcher_icon.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/launcher_icon.png"
-    },
-    {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-mdpi_icon.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/icon.png"
-    },
-    {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/mipmap-mdpi_bw_icon.png.flat",
+        "source": "com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/bw_icon.png"
     },
     {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_launch_background.xml.flat",
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxxhdpi_bw_icon.png.flat",
+        "source": "com.example.wyddb23_flutter.app-main-11:/mipmap-xxxhdpi/bw_icon.png"
     },
     {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable-v21_background.png.flat",
@@ -84,7 +68,47 @@
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xhdpi/launcher_icon.png"
     },
     {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_bw_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/bw_icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxxhdpi_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xxxhdpi/icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_background.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/background.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable/icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-mdpi_launcher_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/launcher_icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-mdpi_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-mdpi/icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/mipmap-hdpi_bw_icon.png.flat",
+        "source": "com.example.wyddb23_flutter.app-main-11:/mipmap-hdpi/bw_icon.png"
+    },
+    {
+        "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/drawable-v21_icon.png.flat",
+        "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/drawable-v21/icon.png"
+    },
+    {
         "merged": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-merged_res-18:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/tomaspinto/.gradle/daemon/7.4.2/com.example.wyddb23_flutter.app-main-11:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.wyddb23_flutter.app-merged_res-18:/mipmap-xxhdpi_bw_icon.png.flat",
+        "source": "com.example.wyddb23_flutter.app-main-11:/mipmap-xxhdpi/bw_icon.png"
     }
 ]

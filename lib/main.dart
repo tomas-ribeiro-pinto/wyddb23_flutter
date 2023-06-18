@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
@@ -8,13 +9,30 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:rxdart/rxdart.dart';
 
-void main() async{
+// used to pass messages from event handler to the UI
+final _messageStreamController = BehaviorSubject<RemoteMessage>();
+
+// Define the background message handler
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+ await Firebase.initializeApp();
+
+ if (kDebugMode) {
+   print("Handling a background message: ${message.messageId}");
+   print('Message data: ${message.data}');
+   print('Message notification: ${message.notification?.title}');
+   print('Message notification: ${message.notification?.body}');
+ }
+}
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
+ // Request permission
 
   final messaging = FirebaseMessaging.instance;
 
@@ -28,10 +46,32 @@ void main() async{
   sound: true,
   );
 
+  // Register with FCM
+
   final fcmToken = await FirebaseMessaging.instance.getToken();
-  print(fcmToken);
+   if (kDebugMode) {
+    print(fcmToken);
+   }
+
+  // Set up foreground message handler
+
+  // used to pass messages from event handler to the UI
+  final _messageStreamController = BehaviorSubject<RemoteMessage>(); 
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+   if (kDebugMode) {
+     print('Handling a foreground message: ${message.messageId}');
+     print('Message data: ${message.data}');
+     print('Message notification: ${message.notification?.title}');
+     print('Message notification: ${message.notification?.body}');
+   }
+
+   _messageStreamController.sink.add(message);
+ });
+
+  // TODO: Set up background message handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   
-  FirebaseMessaging.instance.onTokenRefresh
+/*   FirebaseMessaging.instance.onTokenRefresh
     .listen((fcmToken) {
       // TODO: If necessary send token to application server.
 
@@ -40,39 +80,8 @@ void main() async{
     })
     .onError((err) {
       // Error getting token.
-    });
+    }); */
 
-/*   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-  NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
-    sound: true,
-  );
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-
-  print('User granted permission: ${settings.authorizationStatus}');
-  print(fcmToken);
-
-  // Lisitnening to the background messages
-  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    await Firebase.initializeApp();
-    print("Handling a background message: ${message.messageId}");
-  }
-
-  // Lisitnening to the background messages
-  WidgetsFlutterBinding.ensureInitialized();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler); */
-
-  //NotificationService().initNotification();
   runApp(const MyApp());
 }
 
@@ -89,6 +98,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String _lastMessage = "";
+
+  _MyAppState() {
+    _messageStreamController.listen((message) {
+      setState(() {
+        if (message.notification != null) {
+          _lastMessage = 'Received a notification message:'
+              '\nTitle=${message.notification?.title},'
+              '\nBody=${message.notification?.body},'
+              '\nData=${message.data}';
+        } else {
+          _lastMessage = 'Received a data message: ${message.data}';
+        }
+      });
+    });
+  }
+
 
   Locale? _locale;
 

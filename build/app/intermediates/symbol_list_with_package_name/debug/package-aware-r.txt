@@ -37,6 +37,7 @@ attr splitRatio
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color colorPrimary
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -80,6 +81,7 @@ dimen subtitle_outline_width
 dimen subtitle_shadow_offset
 dimen subtitle_shadow_radius
 drawable background
+drawable bw_icon
 drawable colors
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -225,6 +227,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+mipmap bw_icon
 mipmap ic_launcher
 mipmap icon
 mipmap launcher_icon

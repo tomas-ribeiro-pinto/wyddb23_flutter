@@ -48,6 +48,8 @@ dependencies:
   firebase_messaging: ^14.6.3
   rxdart: ^0.27.7
   flutter_svg: ^2.0.7
+  flutter_sticky_widgets: ^0.0.3
+  sticky_headers: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +84,7 @@ flutter:
     - assets/images/weather-sun.png
     - assets/images/sym_day.png
     - assets/images/sym_day.svg
+    - assets/images/info.svg
 
   fonts:
   - family: Rubik

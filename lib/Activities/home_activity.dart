@@ -38,7 +38,7 @@ class _HomeActivityState extends State<HomeActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: SingleChildScrollView(physics: ClampingScrollPhysics(),child: pages[pageIndex]),
+      body: pages[pageIndex],
       backgroundColor: Colors.white,
     
       // set the bottom navigation bar

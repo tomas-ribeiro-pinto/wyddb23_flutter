@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		ePxcSRomee0hdBbHe4A0dNa+fbQ=
+		yw9ACkrOKDDs06uKJFCr/tq/ov8=
 		</data>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<data>
-		6dyjV+eTXf/PTwSrj7UabF6eMrc=
+		gvlEwsYQqDcKh+oSweEW7rR6kqU=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		gv7AKYKBBiNs6b6QIWNILh0wZfY=
+		tIGHRxB55MGFUYZN87czEt4uOHM=
 		</data>
 		<key>flutter_assets/assets/fonts/Rubik-Black.ttf</key>
 		<data>
@@ -96,6 +96,10 @@
 		<data>
 		ytoNe+s7gRlXKiewwmj2ttjDz6Y=
 		</data>
+		<key>flutter_assets/assets/images/info.svg</key>
+		<data>
+		3RDyqGR93krQV4r7lld5kBT3XDM=
+		</data>
 		<key>flutter_assets/assets/images/sym_day.png</key>
 		<data>
 		aR0xo63ZHMvYb2ScIFmy6GUK0No=
@@ -126,7 +130,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		fJwg6WXzZTheNPRsKT1bvYlFXGw=
+		6bxje0u3IMESrAkjyOn7RRFanJM=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -3651,14 +3655,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6A18k+NH2PvYu0sc2L8DcbDIUM1EGxEOjuOqNbMmjko=
+			MG68SCUTH0yAeIHTHYxQD+m08EBmLLPcr0mDyPCtFH4=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y+6rZD/X0oOLqnJfSw3rMiiK/QNhDBWPFntw1RtBXWs=
+			OHXDBOhEH02LRjB0/1a8y96nm+wTA/pQD+aHx0n0A5M=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -3672,7 +3676,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5vIpKjLRq5n+DJDBphI8tHKYoaKjuyLg4bWOLkAmGHY=
+			jczGNQPyLl/h9CkfnweLcwVUPGPlC9OKERQQb1vTKTQ=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Rubik-Black.ttf</key>
@@ -3801,6 +3805,13 @@
 			tBIVehpcawL9zLnDUj8t1fSjItKWLckYX6I54rKTZDU=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/info.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5sofsLHzRJ6Cxdt6rS7ElTfUYjt7wXoSBJ7vKT7Y0Zk=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/sym_day.png</key>
 		<dict>
 			<key>hash2</key>
@@ -3854,7 +3865,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			39gJ6GJoDbdXDLYV4nre337SsAKZ+4SQ74xMRwR1eJA=
+			KhshOCXrywKzFlr8G57LMBx9AXQrZD04rHE61MYVQ8Q=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

@@ -40,210 +40,213 @@ class _HomePageState extends State<HomePage> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       // Set Status Bar Text Color
       value: SystemUiOverlayStyle.light,
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: screenSize.width,
-                child: const Image(
-                  image: AssetImage("assets/images/wyd-home-green.jpg"),
+      child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  width: screenSize.width,
+                  child: const Image(
+                    image: AssetImage("assets/images/wyd-home-green.jpg"),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: screenSize.height * 0.05, left: screenSize.width * 0.02),
-                child: Row(
-                  children: [
-                    Transform.scale(
-                      scale: 0.8,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color.fromARGB(255, 194, 194, 194),
-                              width: 1,
-                            ),
-                            color: Color.fromARGB(255, 35, 35, 35),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: getLanguagePopUp()
-                      ),
-                    ),
-                    Container(
-                      width: screenSize.width * 0.8,
-                      child: SingleChildScrollView(
-                        physics: ClampingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                Padding(
+                  padding: EdgeInsets.only(top: screenSize.height * 0.05, left: screenSize.width * 0.02),
+                  child: Row(
+                    children: [
+                      Transform.scale(
+                        scale: 0.8,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 194, 194, 194),
+                                width: 1,
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                              height: screenSize.width * 0.15,
-                              width: screenSize.width * 0.15,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                              ),
-                            )
-                          ],
+                              color: Color.fromARGB(255, 35, 35, 35),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: getLanguagePopUp()
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        width: screenSize.width * 0.8,
+                        child: SingleChildScrollView(
+                          physics: ClampingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                                height: screenSize.width * 0.15,
+                                width: screenSize.width * 0.15,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: screenSize.height * 0.25),
-                  child: Container(
-                    width: screenSize.width * 0.73,
-                    child: const Image(
-                      image: AssetImage("assets/images/home-pic.png"),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: screenSize.height * 0.25),
+                    child: Container(
+                      width: screenSize.width * 0.73,
+                      child: const Image(
+                        image: AssetImage("assets/images/home-pic.png"),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: screenSize.height * 0.14),
-                child: Row(
+                Padding(
+                  padding: EdgeInsets.only(top: screenSize.height * 0.14),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.helloLisbon,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: screenSize.height * 0.04,
+                          ),
+                        )
+                      ]),
+                ),
+                Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!.helloLisbon,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: screenSize.height * 0.04,
+                      Padding(
+                        padding: EdgeInsets.only(top: screenSize.height * 0.205),
+                        child: Container(
+                        height: 30,
+                        width: 90,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          color: const Color.fromARGB(255, 216, 44, 32),
                         ),
-                      )
-                    ]),
-              ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: screenSize.height * 0.205),
-                      child: Container(
-                      height: 30,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        color: const Color.fromARGB(255, 216, 44, 32),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left:5),
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(18),
-                              color: Colors.white
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left:5),
+                              height: 20,
+                              width: 20,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                color: Colors.white
+                              ),
+                              child: _weatherModel == null
+                              ? Image(
+                                image: AssetImage("assets/images/weather-sun.png"),
+                              )
+                              :
+                              Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
+                              ),
                             ),
-                            child: _weatherModel == null
-                            ? Image(
-                              image: AssetImage("assets/images/weather-sun.png"),
-                            )
-                            :
-                            Padding(
-                              padding: const EdgeInsets.all(1.0),
-                              child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left:5),
-                            child: _weatherModel == null
-                            ? Text(
-                                " -- ºC",
+                            Container(
+                              margin: EdgeInsets.only(left:5),
+                              child: _weatherModel == null
+                              ? Text(
+                                  " -- ºC",
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                )
+                              : 
+                              Text(
+                                _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
                                 ),
-                              )
-                            : 
-                            Text(
-                              _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                                        ),
                       ),
-                                      ),
-                    ),
-                ]),
-            ],
-          ),
-          getHighlightButtons(context),
-          getFooterButtons(),
-          Container(
-            height: 100,
-            color: Colors.transparent,
-          ),
-        ],
+                  ]),
+              ],
+            ),
+            getHighlightButtons(context),
+            getFooterButtons(),
+            Container(
+              height: 100,
+              color: Colors.transparent,
+            ),
+          ],
+        ),
       ),
     );
   }

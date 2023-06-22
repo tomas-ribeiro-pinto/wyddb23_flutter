@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
-import 'package:wyddb23_flutter/NavigationPages/page1.dart';
+import 'package:wyddb23_flutter/NavigationPages/accommodation_page.dart';
 import 'package:wyddb23_flutter/NavigationPages/page2.dart';
-import 'package:wyddb23_flutter/NavigationPages/page3.dart';
+import 'package:wyddb23_flutter/NavigationPages/sym_day.dart';
 import 'package:wyddb23_flutter/NavigationPages/page4.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -27,9 +28,9 @@ class _HomeActivityState extends State<HomeActivity> {
 
   final pages = [
     const HomePage(),
-    const Page1(),
+    const AccommodationPage(),
     const Page2(),
-    const Page3(),
+    const SymDay(),
     const Page4(),
   ];
 
@@ -48,12 +49,20 @@ class _HomeActivityState extends State<HomeActivity> {
   /// Returns the navigation bar design widget
   Container getNavigationBar() {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Color(0xFF028744),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 10,
+            blurRadius: 80,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
       ),
       // Includes a SafeArea for IOS devices with notch
       child: SafeArea(
@@ -80,14 +89,13 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE1_index
-                        ? const HeroIcon(
-                            HeroIcons.heart,
+                        ? const Icon(
+                            Icons.hotel,
                             color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
-                            style: HeroIconStyle.solid
                           )
-                        : const HeroIcon(
-                            HeroIcons.heart,
+                        : const Icon(
+                            Icons.hotel,
                             color: Colors.white,
                             size: 35,
                           ),
@@ -101,15 +109,16 @@ class _HomeActivityState extends State<HomeActivity> {
                     },
                     icon: pageIndex == PAGE2_index
                         ? const HeroIcon(
-                            HeroIcons.plus,
+                            HeroIcons.map,
                             color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
                             style: HeroIconStyle.solid
                           )
                         : const HeroIcon(
-                            HeroIcons.plus,
+                            HeroIcons.map,
                             color: Colors.white,
                             size: 35,
+                            style: HeroIconStyle.solid
                           ),
                   ),
                   Container(
@@ -152,17 +161,16 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE3_index
-                        ? const HeroIcon(
-                            HeroIcons.magnifyingGlass,
-                            color: Color.fromARGB(255, 246, 190, 24),
-                            size: 35,
-                            style: HeroIconStyle.solid
-                          )
-                        : const HeroIcon(
-                            HeroIcons.magnifyingGlass,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                    ? SvgPicture.asset(
+                        "assets/images/sym_day.svg",
+                        color: Color.fromARGB(255, 246, 190, 24),
+                        width: 35,
+                      )
+                    : SvgPicture.asset(
+                        "assets/images/sym_day.svg",
+                        color: Colors.white,
+                        width: 35,
+                      )
                   ),
                   IconButton(
                     enableFeedback: false,
@@ -172,17 +180,16 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE4_index
-                        ? const HeroIcon(
-                            HeroIcons.bell,
+                        ? const Icon(
+                            Icons.assignment,
                             color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
-                            style: HeroIconStyle.solid
                           )
-                        : const HeroIcon(
-                            HeroIcons.bell,
+                        : const Icon(
+                            Icons.assignment,
                             color: Colors.white,
                             size: 35,
-                          ),
+                          )
                   ),
                 ],
               ),

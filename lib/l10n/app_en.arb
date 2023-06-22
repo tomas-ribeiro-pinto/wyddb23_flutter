@@ -1,8 +1,13 @@
 {
     "helloLisbon": "Hello, Lisboa",
-    "agenda": "Agenda",
-    "map": "Map",
-    "hymn": "Hymn",
+    "welcome": "Welcome",
+    "information": "Information",
+    "dailyPrayers": "Daily Prayers",
     "symDay": "SYM Day",
-    "notes": "Notes"
+    "notes": "Notes",
+    "contacts": "Contacts",
+    "fatima": "Fátima",
+    "faq": "FAQ",
+    "followUs": "Follow Us",
+    "accommodation": "Accommodation"
   }

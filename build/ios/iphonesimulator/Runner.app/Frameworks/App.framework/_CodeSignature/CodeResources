@@ -10,31 +10,75 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		uCAPbIet6y1qAgn6TtNbAqcwx6I=
+		ePxcSRomee0hdBbHe4A0dNa+fbQ=
 		</data>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<data>
-		MUVoun4XNu0yGaLNx0yVScTXEFw=
+		6dyjV+eTXf/PTwSrj7UabF6eMrc=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		5M7mqVQLhyiC/gpLtRkB2o89R2o=
+		MU1q8rcxy8KqAfwAwTOelXgUa9o=
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		TGfIexgJ39S+zthhRLiankQSKaw=
+		gv7AKYKBBiNs6b6QIWNILh0wZfY=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-Black.ttf</key>
+		<data>
+		1h5chKt38RO5691SdyCkndWY6p4=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-BlackItalic.ttf</key>
+		<data>
+		9bWOGwO/elR12GqjPKi93JhqFSc=
 		</data>
 		<key>flutter_assets/assets/fonts/Rubik-Bold.ttf</key>
 		<data>
 		CePDE6EDLbU+yFp84JrAROlohvg=
 		</data>
+		<key>flutter_assets/assets/fonts/Rubik-BoldItalic.ttf</key>
+		<data>
+		VbTCY/3PcwV823VO1b+WlJ5GC/8=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-ExtraBold.ttf</key>
+		<data>
+		F/rAChsXtUFBn8yvaMu1Erw5EJM=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-ExtraBoldItalic.ttf</key>
+		<data>
+		EWQLg+51/MD2NflcKmUxxPRQPlk=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-Italic.ttf</key>
+		<data>
+		yh3Vj/GdKjla7WcI5Xgrsl8oQ7c=
+		</data>
 		<key>flutter_assets/assets/fonts/Rubik-Light.ttf</key>
 		<data>
 		9Y5fIa9CWOHYl6rgdjA4k1Wq1nQ=
 		</data>
+		<key>flutter_assets/assets/fonts/Rubik-LightItalic.ttf</key>
+		<data>
+		iS7jeInmtZNkqPLqJCxPYzHNkTI=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-Medium.ttf</key>
+		<data>
+		yUOhIOM3O0QAQih4TP4J5uW3NNs=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-MediumItalic.ttf</key>
+		<data>
+		pnI5s5o2LpWSkwd7CMsk2BYr7nQ=
+		</data>
 		<key>flutter_assets/assets/fonts/Rubik-Regular.ttf</key>
 		<data>
 		osQFFTWJXad+8TtS4YfnPvMlf48=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-SemiBold.ttf</key>
+		<data>
+		oTAUqKABdYEDaDaiVGc8EuepjcI=
+		</data>
+		<key>flutter_assets/assets/fonts/Rubik-SemiBoldItalic.ttf</key>
+		<data>
+		groo/xak0DFeomoDWo05jkzQYv8=
 		</data>
 		<key>flutter_assets/assets/images/highlight-cross.png</key>
 		<data>
@@ -51,6 +95,14 @@
 		<key>flutter_assets/assets/images/home-pic.png</key>
 		<data>
 		ytoNe+s7gRlXKiewwmj2ttjDz6Y=
+		</data>
+		<key>flutter_assets/assets/images/sym_day.png</key>
+		<data>
+		aR0xo63ZHMvYb2ScIFmy6GUK0No=
+		</data>
+		<key>flutter_assets/assets/images/sym_day.svg</key>
+		<data>
+		P3ef8sw3pL2GESdRcsSRoqNLnik=
 		</data>
 		<key>flutter_assets/assets/images/weather-sun.png</key>
 		<data>
@@ -74,7 +126,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		lc0bmjN8PT8gQorwfYQUzQ+3yIg=
+		fJwg6WXzZTheNPRsKT1bvYlFXGw=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -3599,28 +3651,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vAQu6osbeNQU6sHImQ3DFgnem7dHleXmVB2WIvjEoAo=
+			6A18k+NH2PvYu0sc2L8DcbDIUM1EGxEOjuOqNbMmjko=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.smcbin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eDtyM6jsF//7XNlomP7lM/A7j8J6u8HHuaReAQ2zKVc=
+			Y+6rZD/X0oOLqnJfSw3rMiiK/QNhDBWPFntw1RtBXWs=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pxplzeMfzdQ+AHcysv4VZMXyDXpCcnsdEysVcGhgHZc=
+			SnU41/HeDMJ2cdp7X21vdcyXRa/NOyJGj/grJAyneOA=
 			</data>
 		</dict>
 		<key>flutter_assets/NOTICES.Z</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Lsbv4mNPtwd3/jnYTwWxld8uKqTmX2Wscw9EBtUT8C0=
+			5vIpKjLRq5n+DJDBphI8tHKYoaKjuyLg4bWOLkAmGHY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-Black.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WxLNhFetN/D1OmaCEe1zBuNQnJM8OeILLBks9RmjjYQ=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-BlackItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aMjq8/crHhpwHN1vZhF0DPLzH57UfELzBD90c88WfBM=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Rubik-Bold.ttf</key>
@@ -3630,6 +3696,34 @@
 			1hxO08tssiaJS6ErPjCLFTERTlbBYL7f0nMcBl4wfzI=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-BoldItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7QT5zKeqQWPd0U79sBCgJu7/T+GUQRsIuAdUB8TufNE=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3RRtEh8oBwGmeoVlweZxBhWY4/1dNGuJzJbT5t8/730=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-ExtraBoldItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lL+edJvHj9FLFhko5hX03/z3lTX6hifIQ4N0at/PSzU=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-Italic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			a0i/r6Z75Om/5gfUzQHwIexQxTkkvU6SPHHfo/QVoBU=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/fonts/Rubik-Light.ttf</key>
 		<dict>
 			<key>hash2</key>
@@ -3637,11 +3731,46 @@
 			Vj6ne0EilGpSOq6EbiVehvqblvnGdfgT9YrMvtlKDW0=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-LightItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CclMf0TjrYVSrVb0TEgmIaGmdQefuNvLrkWExKHRMrY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7oPJvLwF5qWRbihDeGk59DBbYobx2qqrh0sdBvs/c7Y=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-MediumItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PpentiEMb+u+bSGkFvO7nK41pww7wxDbauOrFtGHFiM=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/fonts/Rubik-Regular.ttf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			Id/6Xe0mPEbhgBFmZUHAvNqYi0zcSyzggE/s2ehpa+E=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-SemiBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NPEfVJqCX16/Y3o8nvIm/zPZey+UpQXciY2vtkN2rxM=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Rubik-SemiBoldItalic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nExV/3mIINMQD8jPnKNsey3u2rJSChzylqx1omSRSFg=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/highlight-cross.png</key>
@@ -3670,6 +3799,20 @@
 			<key>hash2</key>
 			<data>
 			tBIVehpcawL9zLnDUj8t1fSjItKWLckYX6I54rKTZDU=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/sym_day.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rvo5GlLmXEuhi2HVDu152hBzJrvOhHt8FKjVBeGNnNI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/sym_day.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yIM8majn/jFF/DeiktzalA/dlOfTPbZreN1/A7ifSyI=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/weather-sun.png</key>
@@ -3711,7 +3854,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9hLQBz3VOntISDu7RCPV+WscLp94Yi1mt9ezphJlI3k=
+			39gJ6GJoDbdXDLYV4nre337SsAKZ+4SQ74xMRwR1eJA=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

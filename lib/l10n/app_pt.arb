@@ -1,8 +1,13 @@
 {
   "helloLisbon": "Olá, Lisboa",
-  "agenda": "Agenda",
-  "map": "Mapa",
-  "hymn": "Hino",
-  "symDay": "Dia MJS",
-  "notes": "Notas"
+  "welcome": "Bem-vindo",
+  "information": "Informações",
+  "dailyPrayers": "Orações Diárias",
+  "symDay": "SYM Day",
+  "notes": "Notas",
+  "contacts": "Contactos",
+  "fatima": "Fátima",
+  "faq": "FAQ",
+  "followUs": "Segue-nos",
+  "accommodation": "Acolhimento"
 }

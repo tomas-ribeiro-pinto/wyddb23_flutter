@@ -34,6 +34,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    Size screenSize = MediaQuery.of(context).size;
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       // Set Status Bar Text Color
       value: SystemUiOverlayStyle.light,
@@ -41,37 +44,126 @@ class _HomePageState extends State<HomePage> {
         children: [
           Stack(
             children: [
-              const Image(
-                image: AssetImage("assets/images/wyd-home-green.jpg"),
+              Container(
+                width: screenSize.width,
+                child: const Image(
+                  image: AssetImage("assets/images/wyd-home-green.jpg"),
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Container(
-                  margin: const EdgeInsets.only(top: 160),
-                  child: const Image(
-                    image: AssetImage("assets/images/home-pic.png"),
-                  ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.topRight,
-                margin: const EdgeInsets.only(top: 45, right: 12),
-                child: Transform.scale(
-                  scale: 0.8,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color.fromARGB(255, 194, 194, 194),
-                          width: 1,
+                padding: EdgeInsets.only(top: screenSize.height * 0.05, left: screenSize.width * 0.02),
+                child: Row(
+                  children: [
+                    Transform.scale(
+                      scale: 0.8,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 194, 194, 194),
+                              width: 1,
+                            ),
+                            color: Color.fromARGB(255, 35, 35, 35),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: getLanguagePopUp()
+                      ),
+                    ),
+                    Container(
+                      width: screenSize.width * 0.8,
+                      child: SingleChildScrollView(
+                        physics: ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: screenSize.width * 0.05),
+                              height: screenSize.width * 0.15,
+                              width: screenSize.width * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+                              ),
+                            )
+                          ],
                         ),
-                        color: Color.fromARGB(255, 35, 35, 35),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: getLanguagePopUp()
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: screenSize.height * 0.25),
+                  child: Container(
+                    width: screenSize.width * 0.73,
+                    child: const Image(
+                      image: AssetImage("assets/images/home-pic.png"),
+                    ),
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 90),
+              Padding(
+                padding: EdgeInsets.only(top: screenSize.height * 0.14),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -80,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 33,
+                          fontSize: screenSize.height * 0.04,
                         ),
                       )
                     ]),
@@ -88,226 +180,65 @@ class _HomePageState extends State<HomePage> {
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                    margin: EdgeInsets.only(top:140),
-                    height: 30,
-                    width: 90,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: const Color.fromARGB(255, 216, 44, 32),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left:5),
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            color: Colors.white
+                    Padding(
+                      padding: EdgeInsets.only(top: screenSize.height * 0.205),
+                      child: Container(
+                      height: 30,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        color: const Color.fromARGB(255, 216, 44, 32),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left:5),
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              color: Colors.white
+                            ),
+                            child: _weatherModel == null
+                            ? Image(
+                              image: AssetImage("assets/images/weather-sun.png"),
+                            )
+                            :
+                            Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
+                            ),
                           ),
-                          child: _weatherModel == null
-                          ? Image(
-                            image: AssetImage("assets/images/weather-sun.png"),
-                          )
-                          :
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left:5),
-                          child: _weatherModel == null
-                          ? Text(
-                              " -- ºC",
+                          Container(
+                            margin: EdgeInsets.only(left:5),
+                            child: _weatherModel == null
+                            ? Text(
+                                " -- ºC",
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              )
+                            : 
+                            Text(
+                              _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                               ),
-                            )
-                          : 
-                          Text(
-                            _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                                      ),
                     ),
-                  ),
                 ]),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    enableFeedback: false,
-                    icon: Image.asset(
-                      'assets/images/highlight-lisbon.png',
-                      fit: BoxFit.fill,
-                      height: 80,
-                    ),
-                  ),
-                  Text(
-                    translation(context).agenda,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      NotificationService().showNotification(title: 'It works!');
-                    },
-                    enableFeedback: false,
-                    icon: Image.asset(
-                      'assets/images/highlight-world.png',
-                      fit: BoxFit.fill,
-                      height: 80,
-                    ),
-                  ),
-                  Text(
-                    translation(context).map,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    enableFeedback: false,
-                    icon: Image.asset(
-                      'assets/images/highlight-cross.png',
-                      fit: BoxFit.fill,
-                      height: 80,
-                    ),
-                  ),
-                  Text(
-                    translation(context).hymn,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              margin: EdgeInsets.only(top: 30),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 15, right: 8),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: const Color.fromARGB(255, 216, 44, 32),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "🙏",
-                            style: TextStyle(
-                              fontSize: 35,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          translation(context).symDay,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 8),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Color.fromARGB(255, 25, 20, 20),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "📝",
-                            style: TextStyle(
-                              fontSize: 35,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          translation(context).notes,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 8),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Color.fromARGB(115, 13, 13, 13),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 8),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Color.fromARGB(115, 13, 13, 13),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 8),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Color.fromARGB(115, 13, 13, 13),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          getHighlightButtons(context),
+          getFooterButtons(),
           Container(
             height: 100,
             color: Colors.transparent,
@@ -315,6 +246,75 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Row getHighlightButtons(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  enableFeedback: false,
+                  icon: Image.asset(
+                    'assets/images/highlight-lisbon.png',
+                    fit: BoxFit.fill,
+                    height: screenSize.height * 0.11,
+                  ),
+                ),
+                Text(
+                  translation(context).welcome,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    //NotificationService().showNotification(title: 'It works!');
+                  },
+                  enableFeedback: false,
+                  icon: Image.asset(
+                    'assets/images/highlight-world.png',
+                    fit: BoxFit.fill,
+                    height: screenSize.height * 0.11,
+                  ),
+                ),
+                Text(
+                  translation(context).information,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  enableFeedback: false,
+                  icon: Image.asset(
+                    'assets/images/highlight-cross.png',
+                    fit: BoxFit.fill,
+                    height: screenSize.height * 0.11,
+                  ),
+                ),
+                Text(
+                  translation(context).dailyPrayers,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
   }
 
   List<DropdownMenuItem<String>> get dropdownItems{
@@ -329,6 +329,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget getLanguageDropdown()
   {
+    Size screenSize = MediaQuery.of(context).size;
      return DropdownButtonFormField(
         //icon: Icon(Icons.arrow_downward_outlined),
         icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
@@ -357,6 +358,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget getLanguagePopUp()
   {
+    Size screenSize = MediaQuery.of(context).size;
     return PopupMenuButton(
       elevation: 50,
       color: Color.fromARGB(255, 35, 35, 35),
@@ -381,4 +383,116 @@ class _HomePageState extends State<HomePage> {
       icon: Icon(Icons.language, color: Colors.white,),
     );
   }
+
+  Widget getFooterButtons()
+  {
+    Size screenSize = MediaQuery.of(context).size;
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.only(top:screenSize.height * 0.04, right: screenSize.width * 0.08),
+              height: screenSize.height * 0.06,
+              width: screenSize.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Color(0xFF028744),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    translation(context).contacts,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: screenSize.width * 0.04,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top:screenSize.height * 0.04, right: 0),
+              height: screenSize.height * 0.06,
+              width: screenSize.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Color(0xFF028744),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    translation(context).fatima,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: screenSize.width * 0.04,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.only(top:screenSize.height * 0.02, right: screenSize.width * 0.08),
+              height: screenSize.height * 0.06,
+              width: screenSize.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Color(0xFF028744),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    translation(context).faq,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: screenSize.width * 0.04,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top:screenSize.height * 0.02, right: 0),
+              height: screenSize.height * 0.06,
+              width: screenSize.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Color(0xFF028744),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    translation(context).followUs,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: screenSize.width * 0.04,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
 }

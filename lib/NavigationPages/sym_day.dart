@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sticky_widgets/flutter_sticky_widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import '../language_constants.dart';
 
 
 class SymDay extends StatelessWidget {
@@ -33,7 +32,7 @@ class SymDay extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
                         child: Text(
-                          AppLocalizations.of(context)!.symDay.toUpperCase(),
+                          translation(context)!.symDay.toUpperCase(),
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -59,7 +58,7 @@ class SymDay extends StatelessWidget {
                             width: screenSize.width * 0.5,
                             alignment: Alignment.center,
                             child: Text(
-                            AppLocalizations.of(context)!.seeMap.toUpperCase(),
+                            translation(context)!.seeMap.toUpperCase(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
@@ -94,26 +93,26 @@ class SymDay extends StatelessWidget {
                     alignment: WrapAlignment.start,
                     spacing: 25.0,
                     children: [
-                      getGridButton(screenSize, AppLocalizations.of(context)!.map),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.timetable),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.guides),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.symForum),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.liveStreaming),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
-                      getGridButton(screenSize, AppLocalizations.of(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.map),
+                      getGridButton(screenSize, translation(context)!.timetable),
+                      getGridButton(screenSize, translation(context)!.guides),
+                      getGridButton(screenSize, translation(context)!.symForum),
+                      getGridButton(screenSize, translation(context)!.liveStreaming),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
+                      getGridButton(screenSize, translation(context)!.emergency),
                     ],
                   ),
                               ),
                               Container(
-                  height: 100,
+                  height: 150,
                   color: Colors.transparent,
                               ),
                   ],

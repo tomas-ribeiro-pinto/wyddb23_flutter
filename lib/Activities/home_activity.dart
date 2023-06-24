@@ -4,7 +4,7 @@ import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
 import 'package:wyddb23_flutter/NavigationPages/accommodation_page.dart';
 import 'package:wyddb23_flutter/NavigationPages/page2.dart';
 import 'package:wyddb23_flutter/NavigationPages/sym_day.dart';
-import 'package:wyddb23_flutter/NavigationPages/page4.dart';
+import 'package:wyddb23_flutter/NavigationPages/agenda.dart';
 import 'package:heroicons/heroicons.dart';
 
 
@@ -31,7 +31,7 @@ class _HomeActivityState extends State<HomeActivity> {
     const AccommodationPage(),
     const Page2(),
     const SymDay(),
-    const Page4(),
+    const Agenda(),
   ];
 
   @override

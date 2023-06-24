@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../language_constants.dart';
 
 class AccommodationPage extends StatelessWidget {
   const AccommodationPage({Key? key}) : super(key: key);
@@ -77,7 +77,7 @@ class AccommodationPage extends StatelessWidget {
         child: Container(
           margin: EdgeInsets.only(top: screenSize.height * 0.12, left: screenSize.width * 0.05),
           child: Text(
-            AppLocalizations.of(context)!.accommodation.toUpperCase(),
+            translation(context)!.accommodation.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.white,

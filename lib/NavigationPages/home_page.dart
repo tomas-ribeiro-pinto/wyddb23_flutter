@@ -4,8 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:wyddb23_flutter/WeatherAPI/api_service.dart';
-import 'package:wyddb23_flutter/WeatherAPI/weather_model.dart';
+import 'package:wyddb23_flutter/APIs/WeatherAPI/api_service.dart';
+import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   void _getData() async {
     //Weather _weather = (await ApiService().getWeather())!;
-    _weatherModel = (await ApiService().getWeather())!;
+    _weatherModel = (await WeatherApiService().getWeather())!;
     //_weatherModel!.add(_weather);
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
@@ -328,35 +328,6 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,)),value: "pt"),
     ];
     return menuItems;
-  }
-
-  Widget getLanguageDropdown()
-  {
-    Size screenSize = MediaQuery.of(context).size;
-     return DropdownButtonFormField(
-        //icon: Icon(Icons.arrow_downward_outlined),
-        icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(color:Color.fromARGB(255, 194, 194, 194), width: 1),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: const Color.fromARGB(255, 35, 35, 35),
-        ),
-        dropdownColor: Color.fromARGB(255, 35, 35, 35),
-        value: "en",
-        onChanged: (String? newValue) {
-          setState(() {
-            String locale = newValue.toString();
-            MyApp.setLocale(context, Locale(locale));
-          });
-        },
-        items: dropdownItems);
   }
 
   Widget getLanguagePopUp()

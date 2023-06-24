@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
+import '../APIs/WydAPI/api_service.dart';
+import '../APIs/WydAPI/day_model.dart';
 import '../language_constants.dart';
 import 'package:wyddb23_flutter/Components/timetable_list.dart';
 
@@ -15,10 +18,19 @@ class _AgendaState extends State<Agenda> {
   // Current Day selected initialised to first day
   int selectedIndex = 0;
 
+  late List<Day>? _timetableModel = null;
+  DateFormat formatter = DateFormat('dd/MM');
+
   @override
   void initState() {
     super.initState();
+    _getTimetable();
     _selectDay(selectedIndex);
+  }
+
+  void _getTimetable() async {
+    _timetableModel = (await WydApiService().getTimetable());
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
   void _selectDay(int selectedIndex) {
@@ -50,7 +62,7 @@ class _AgendaState extends State<Agenda> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
                             child: Text(
-                              translation(context)!.agenda.toUpperCase(),
+                              translation(context).agenda.toUpperCase(),
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -72,9 +84,13 @@ class _AgendaState extends State<Agenda> {
                             alignment: WrapAlignment.start,
                             spacing: 10,
                             children: [
-                              for(var i = 0 ; i < 4; i++)...[
-                                getHorizontalButton(screenSize, i)
-                              ]
+                              if(_timetableModel != null)...
+                              {
+                                for(var i = 0; i < _timetableModel!.length; i++)...
+                                [
+                                  getHorizontalButton(screenSize, i, _timetableModel![i])
+                                ]
+                              }
                             ],
                           ),
                         ),
@@ -88,7 +104,7 @@ class _AgendaState extends State<Agenda> {
                   children: [
                   SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  child: TimetableList(selectedIndex: selectedIndex)
+                  child: _timetableModel != null ? TimetableList(selectedIndex: selectedIndex, day: _timetableModel![selectedIndex]) : null
                   ),
                   Container(
                     height: 150,
@@ -105,7 +121,7 @@ class _AgendaState extends State<Agenda> {
     );
   }
 
-  Container getHorizontalButton(Size screenSize, int id) {
+  Container getHorizontalButton(Size screenSize, int id, Day day) {
     return Container(
       child: TextButton(
       style: ButtonStyle(
@@ -129,7 +145,7 @@ class _AgendaState extends State<Agenda> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           child: Text(
-          "01/08",
+          formatter.format(day.day),
           style: id == this.selectedIndex 
             ?
             TextStyle(
@@ -143,38 +159,6 @@ class _AgendaState extends State<Agenda> {
               height: 0.5,
               fontWeight: FontWeight.w600,
               color: Color(0xFF028744),
-              fontSize: screenSize.height * 0.025,
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Container getActiveHorizontalButton(Size screenSize) {
-    return Container(
-      child: TextButton(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF028744)),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(side: BorderSide(
-            color: Color(0xFF028744),
-            width: 3,
-            style: BorderStyle.solid
-          ), borderRadius: BorderRadius.circular(50)),
-        )
-      ),
-      onPressed: () {}, 
-      child: Container(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-          child: Text(
-          "01/08",
-          style: TextStyle(
-              height: 0.5,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
               fontSize: screenSize.height * 0.025,
             ),
           ),

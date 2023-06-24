@@ -77,7 +77,7 @@ class AccommodationPage extends StatelessWidget {
         child: Container(
           margin: EdgeInsets.only(top: screenSize.height * 0.12, left: screenSize.width * 0.05),
           child: Text(
-            translation(context)!.accommodation.toUpperCase(),
+            translation(context).accommodation.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.white,

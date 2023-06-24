@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
 
+import '../APIs/WydAPI/day_model.dart';
+
 class TimetableList extends StatefulWidget {
-  const TimetableList({Key? key, this.selectedIndex}) : super(key: key);
+  const TimetableList({Key? key, this.selectedIndex, this.day}) : super(key: key);
 
   final int? selectedIndex;
+  final Day? day;
 
   @override
   State<TimetableList> createState() => _TimetableListState();
@@ -21,19 +24,16 @@ class _TimetableListState extends State<TimetableList> {
         alignment: WrapAlignment.start,
         spacing: 10,
         children: [
-          getAgendaButton(screenSize),
-          getAgendaButton(screenSize),
-          getAgendaButton(screenSize),
-          getAgendaButton(screenSize),
-          getAgendaButton(screenSize),
-          getAgendaButton(screenSize),
-
+          for(Entry entry in widget.day!.entries)...
+          {
+            getAgendaButton(screenSize, entry),
+          }
         ],
     );
   }
 
 
-  Container getAgendaButton(Size screenSize) {
+  Container getAgendaButton(Size screenSize, Entry entry) {
     return Container(
       width: screenSize.width * 0.9,
       child: TextButton(
@@ -50,7 +50,7 @@ class _TimetableListState extends State<TimetableList> {
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0),
           child: Text(
-          "Musical Dom Bosco".toUpperCase(),
+          entry.titlePt.toUpperCase(),
           style: TextStyle(
               height: 0.8,
               fontWeight: FontWeight.w600,

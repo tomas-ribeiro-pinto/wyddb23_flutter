@@ -26,15 +26,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _getData() async {
-    //Weather _weather = (await ApiService().getWeather())!;
     _weatherModel = (await WeatherApiService().getWeather())!;
-    //_weatherModel!.add(_weather);
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
-
+    
     Size screenSize = MediaQuery.of(context).size;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(

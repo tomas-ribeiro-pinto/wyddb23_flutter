@@ -46,284 +46,285 @@
 27-->[androidx.core:core:1.6.0] /Users/tomaspinto/.gradle/caches/transforms-3/32eb7721e2a5ff9f269124c50741c688/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 28        android:debuggable="true"
 29        android:icon="@mipmap/launcher_icon"
-30        android:label="WYD Don Bosco 23" >
-31        <activity
-32            android:name="com.example.wyddb23_flutter.MainActivity"
-33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-34            android:exported="true"
-35            android:hardwareAccelerated="true"
-36            android:launchMode="singleTop"
-37            android:theme="@style/LaunchTheme"
-38            android:windowSoftInputMode="adjustResize" >
-39
-40            <!--
-41                 Specifies an Android theme to apply to this Activity as soon as
-42                 the Android process has started. This theme is visible to the user
-43                 while the Flutter UI initializes. After that, this theme continues
-44                 to determine the Window background behind the Flutter UI.
-45            -->
-46            <meta-data
-47                android:name="io.flutter.embedding.android.NormalTheme"
-48                android:resource="@style/NormalTheme" />
-49
-50            <intent-filter>
-51                <action android:name="android.intent.action.MAIN" />
-52
-53                <category android:name="android.intent.category.LAUNCHER" />
-54            </intent-filter>
-55        </activity>
-56
-57        <meta-data
-58            android:name="com.google.firebase.messaging.default_notification_icon"
-59            android:resource="@mipmap/bw_icon" />
-60        <meta-data
-61            android:name="com.google.firebase.messaging.default_notification_color"
-62            android:resource="@color/colorPrimary" />
-63
-64        <!--
-65             Don't delete the meta-data below.
-66             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-67        -->
-68        <meta-data
-69            android:name="flutterEmbedding"
-70            android:value="2" />
-71
-72        <service
-72-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-19:72
-73            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
-73-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-107
-74            android:exported="false"
-74-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
-75            android:permission="android.permission.BIND_JOB_SERVICE" />
-75-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-69
-76        <service
-76-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-26:19
-77            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
-77-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-97
-78            android:exported="false" >
-78-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
-79            <intent-filter>
-79-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
-80                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-80-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
-80-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
-81            </intent-filter>
-82        </service>
-83
-84        <receiver
-84-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-35:20
-85            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
-85-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-98
-86            android:exported="true"
-86-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-36
-87            android:permission="com.google.android.c2dm.permission.SEND" >
-87-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-73
-88            <intent-filter>
-88-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
-89                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-89-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
-89-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
-90            </intent-filter>
-91        </receiver>
-92
-93        <service
-93-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:9-41:19
-94            android:name="com.google.firebase.components.ComponentDiscoveryService"
-94-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:18-89
-95            android:directBootAware="true"
-95-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:34:13-43
-96            android:exported="false" >
-96-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:31:13-37
-97            <meta-data
-97-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-40:85
-98                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
-98-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:39:17-128
-99                android:value="com.google.firebase.components.ComponentRegistrar" />
-99-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:40:17-82
-100            <meta-data
-100-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
-101                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-101-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
-102                android:value="com.google.firebase.components.ComponentRegistrar" />
-102-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
-103            <meta-data
-103-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:32:13-34:85
-104                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-104-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:33:17-96
-105                android:value="com.google.firebase.components.ComponentRegistrar" />
-105-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:34:17-82
-106            <meta-data
-106-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:55:13-57:85
-107                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-107-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:56:17-119
-108                android:value="com.google.firebase.components.ComponentRegistrar" />
-108-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:57:17-82
-109            <meta-data
-109-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:17:13-19:85
-110                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-110-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:18:17-127
-111                android:value="com.google.firebase.components.ComponentRegistrar" />
-111-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:19:17-82
-112            <meta-data
-112-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
-113                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-113-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
-114                android:value="com.google.firebase.components.ComponentRegistrar" />
-114-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
-115        </service>
-116
-117        <provider
-117-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:43:9-47:38
-118            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
-118-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:44:13-102
-119            android:authorities="com.example.wyddb23_flutter.flutterfirebasemessaginginitprovider"
-119-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-88
-120            android:exported="false"
-120-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-37
-121            android:initOrder="99" />
-121-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:47:13-35
-122
-123        <receiver
-123-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-18:40
-124            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
-124-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-91
-125            android:exported="false" />
-125-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
-126        <receiver
-126-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-21:40
-127            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
-127-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-97
-128            android:exported="false" />
-128-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
-129        <receiver
-129-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:9-31:20
-130            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
-130-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-101
-131            android:exported="false" >
-131-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-37
-132            <intent-filter>
-132-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-30:29
-133                <action android:name="android.intent.action.BOOT_COMPLETED" />
-133-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:17-79
-133-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:25-76
-134                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-134-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:17-84
-134-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:25-81
-135                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-135-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:17-82
-135-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:25-79
-136                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-136-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-82
-136-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:25-79
-137            </intent-filter>
-138        </receiver>
-139
-140        <uses-library
-140-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-141            android:name="androidx.window.extensions"
-141-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-142            android:required="false" />
-142-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-143        <uses-library
-143-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-144            android:name="androidx.window.sidecar"
-144-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-145            android:required="false" />
-145-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-146
-147        <receiver
-147-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:31:9-38:20
-148            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-148-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:32:13-78
-149            android:exported="true"
-149-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:33:13-36
-150            android:permission="com.google.android.c2dm.permission.SEND" >
-150-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:34:13-73
-151            <intent-filter>
-151-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
-152                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-152-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
-152-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
-153            </intent-filter>
-154        </receiver>
-155        <!--
-156             FirebaseMessagingService performs security checks at runtime,
-157             but set to not exported to explicitly avoid allowing another app to call it.
-158        -->
-159        <service
-159-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:44:9-51:19
-160            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-160-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:45:13-82
-161            android:directBootAware="true"
-161-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:46:13-43
-162            android:exported="false" >
-162-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:47:13-37
-163            <intent-filter android:priority="-500" >
-163-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
-164                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-164-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
-164-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
-165            </intent-filter>
-166        </service>
-167
-168        <provider
-168-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:25:9-30:39
-169            android:name="com.google.firebase.provider.FirebaseInitProvider"
-169-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:26:13-77
-170            android:authorities="com.example.wyddb23_flutter.firebaseinitprovider"
-170-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:27:13-72
-171            android:directBootAware="true"
-171-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:28:13-43
-172            android:exported="false"
-172-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:29:13-37
-173            android:initOrder="100" />
-173-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:30:13-36
-174
-175        <activity
-175-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-176            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-176-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-177            android:exported="false"
-177-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-178            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-178-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-179
-180        <meta-data
-180-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
-181            android:name="com.google.android.gms.version"
-181-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
-182            android:value="@integer/google_play_services_version" />
-182-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
-183
-184        <service
-184-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
-185            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-185-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
-186            android:exported="false" >
-186-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
-187            <meta-data
-187-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
-188                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-188-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
-189                android:value="cct" />
-189-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
-190        </service>
-191        <service
-191-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
-192            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-192-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
-193            android:exported="false"
-193-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
-194            android:permission="android.permission.BIND_JOB_SERVICE" >
-194-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
-195        </service>
-196
-197        <receiver
-197-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
-198            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-198-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
-199            android:exported="false" />
-199-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
-200    </application>
-201
-202</manifest>
+30        android:label="WYD Don Bosco 23"
+31        android:networkSecurityConfig="@xml/network_security_config" >
+32        <activity
+33            android:name="com.example.wyddb23_flutter.MainActivity"
+34            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+35            android:exported="true"
+36            android:hardwareAccelerated="true"
+37            android:launchMode="singleTop"
+38            android:theme="@style/LaunchTheme"
+39            android:windowSoftInputMode="adjustResize" >
+40
+41            <!--
+42                 Specifies an Android theme to apply to this Activity as soon as
+43                 the Android process has started. This theme is visible to the user
+44                 while the Flutter UI initializes. After that, this theme continues
+45                 to determine the Window background behind the Flutter UI.
+46            -->
+47            <meta-data
+48                android:name="io.flutter.embedding.android.NormalTheme"
+49                android:resource="@style/NormalTheme" />
+50
+51            <intent-filter>
+52                <action android:name="android.intent.action.MAIN" />
+53
+54                <category android:name="android.intent.category.LAUNCHER" />
+55            </intent-filter>
+56        </activity>
+57
+58        <meta-data
+59            android:name="com.google.firebase.messaging.default_notification_icon"
+60            android:resource="@mipmap/bw_icon" />
+61        <meta-data
+62            android:name="com.google.firebase.messaging.default_notification_color"
+63            android:resource="@color/colorPrimary" />
+64
+65        <!--
+66             Don't delete the meta-data below.
+67             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+68        -->
+69        <meta-data
+70            android:name="flutterEmbedding"
+71            android:value="2" />
+72
+73        <service
+73-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-19:72
+74            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+74-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-107
+75            android:exported="false"
+75-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+76            android:permission="android.permission.BIND_JOB_SERVICE" />
+76-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-69
+77        <service
+77-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-26:19
+78            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+78-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-97
+79            android:exported="false" >
+79-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
+80            <intent-filter>
+80-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
+81                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+81-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
+81-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
+82            </intent-filter>
+83        </service>
+84
+85        <receiver
+85-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-35:20
+86            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+86-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-98
+87            android:exported="true"
+87-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-36
+88            android:permission="com.google.android.c2dm.permission.SEND" >
+88-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-73
+89            <intent-filter>
+89-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
+90                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+90-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
+90-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
+91            </intent-filter>
+92        </receiver>
+93
+94        <service
+94-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:9-41:19
+95            android:name="com.google.firebase.components.ComponentDiscoveryService"
+95-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:18-89
+96            android:directBootAware="true"
+96-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:34:13-43
+97            android:exported="false" >
+97-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:31:13-37
+98            <meta-data
+98-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-40:85
+99                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+99-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:39:17-128
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:40:17-82
+101            <meta-data
+101-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+102                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+102-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[:firebase_core] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+104            <meta-data
+104-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:32:13-34:85
+105                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+105-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:33:17-96
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[com.google.firebase:firebase-iid:21.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/318e14e1ad532649eed81bc4df88cecd/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:34:17-82
+107            <meta-data
+107-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:55:13-57:85
+108                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+108-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:56:17-119
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:57:17-82
+110            <meta-data
+110-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:17:13-19:85
+111                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+111-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:18:17-127
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[com.google.firebase:firebase-installations:17.1.3] /Users/tomaspinto/.gradle/caches/transforms-3/c101548093e44f10f94b17d3e7f218b5/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:19:17-82
+113            <meta-data
+113-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+114                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+114-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/tomaspinto/.gradle/caches/transforms-3/62efa78e6fcf0244e1b251832e7078c9/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+116        </service>
+117
+118        <provider
+118-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:43:9-47:38
+119            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+119-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:44:13-102
+120            android:authorities="com.example.wyddb23_flutter.flutterfirebasemessaginginitprovider"
+120-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-88
+121            android:exported="false"
+121-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-37
+122            android:initOrder="99" />
+122-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:47:13-35
+123
+124        <receiver
+124-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-18:40
+125            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
+125-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-91
+126            android:exported="false" />
+126-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+127        <receiver
+127-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-21:40
+128            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+128-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-97
+129            android:exported="false" />
+129-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
+130        <receiver
+130-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:9-31:20
+131            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+131-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-101
+132            android:exported="false" >
+132-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-37
+133            <intent-filter>
+133-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-30:29
+134                <action android:name="android.intent.action.BOOT_COMPLETED" />
+134-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:17-79
+134-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:25-76
+135                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+135-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:17-84
+135-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:25-81
+136                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+136-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:17-82
+136-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:25-79
+137                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+137-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-82
+137-->[:flutter_local_notifications] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:25-79
+138            </intent-filter>
+139        </receiver>
+140
+141        <uses-library
+141-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+142            android:name="androidx.window.extensions"
+142-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+143            android:required="false" />
+143-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+144        <uses-library
+144-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+145            android:name="androidx.window.sidecar"
+145-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+146            android:required="false" />
+146-->[androidx.window:window:1.0.0-beta04] /Users/tomaspinto/.gradle/caches/transforms-3/922459684477eea5bd870cfaa685342e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+147
+148        <receiver
+148-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:31:9-38:20
+149            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+149-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:32:13-78
+150            android:exported="true"
+150-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:33:13-36
+151            android:permission="com.google.android.c2dm.permission.SEND" >
+151-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:34:13-73
+152            <intent-filter>
+152-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
+153                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+153-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
+153-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
+154            </intent-filter>
+155        </receiver>
+156        <!--
+157             FirebaseMessagingService performs security checks at runtime,
+158             but set to not exported to explicitly avoid allowing another app to call it.
+159        -->
+160        <service
+160-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:44:9-51:19
+161            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+161-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:45:13-82
+162            android:directBootAware="true"
+162-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:46:13-43
+163            android:exported="false" >
+163-->[com.google.firebase:firebase-messaging:23.1.2] /Users/tomaspinto/.gradle/caches/transforms-3/c4dc8a908c2d4f46d7b8095de47169c8/transformed/jetified-firebase-messaging-23.1.2/AndroidManifest.xml:47:13-37
+164            <intent-filter android:priority="-500" >
+164-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
+165                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+165-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
+165-->[:firebase_messaging] /Users/tomaspinto/Documents/GitHub/wyddb23_flutter/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
+166            </intent-filter>
+167        </service>
+168
+169        <provider
+169-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:25:9-30:39
+170            android:name="com.google.firebase.provider.FirebaseInitProvider"
+170-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:26:13-77
+171            android:authorities="com.example.wyddb23_flutter.firebaseinitprovider"
+171-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:27:13-72
+172            android:directBootAware="true"
+172-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:28:13-43
+173            android:exported="false"
+173-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:29:13-37
+174            android:initOrder="100" />
+174-->[com.google.firebase:firebase-common:20.3.2] /Users/tomaspinto/.gradle/caches/transforms-3/c5775618a2c6657f728cd3b4c25b081b/transformed/jetified-firebase-common-20.3.2/AndroidManifest.xml:30:13-36
+175
+176        <activity
+176-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+177            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+177-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+178            android:exported="false"
+178-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+179            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+179-->[com.google.android.gms:play-services-base:18.0.1] /Users/tomaspinto/.gradle/caches/transforms-3/1998f7bc23d2dea5c33564c4b53682e1/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+180
+181        <meta-data
+181-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+182            android:name="com.google.android.gms.version"
+182-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+183            android:value="@integer/google_play_services_version" />
+183-->[com.google.android.gms:play-services-basement:18.1.0] /Users/tomaspinto/.gradle/caches/transforms-3/201932d47698309575b4e4aea3a2abf4/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+184
+185        <service
+185-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+186            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+186-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+187            android:exported="false" >
+187-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+188            <meta-data
+188-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+189                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+189-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+190                android:value="cct" />
+190-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/a9d9e1df378eb42adb829e0d5b60e5c9/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+191        </service>
+192        <service
+192-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+193            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+193-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+194            android:exported="false"
+194-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+195            android:permission="android.permission.BIND_JOB_SERVICE" >
+195-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+196        </service>
+197
+198        <receiver
+198-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+199            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+199-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+200            android:exported="false" />
+200-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/tomaspinto/.gradle/caches/transforms-3/dda3aca0c9f4d0513a8922401dd45862/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+201    </application>
+202
+203</manifest>

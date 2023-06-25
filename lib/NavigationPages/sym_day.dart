@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import '../language_constants.dart';
@@ -10,7 +11,7 @@ class SymDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-
+    
     return Container(
       color: Color(0xFF028744),
       child: SafeArea(

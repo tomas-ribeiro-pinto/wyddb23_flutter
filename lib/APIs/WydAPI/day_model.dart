@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 List<Day> dayFromJson(String str) => List<Day>.from(json.decode(str).map((x) => Day.fromJson(x)));
 
 String dayToJson(List<Day> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -46,7 +48,8 @@ class Entry {
     String titleEn;
     String titlePt;
     String location;
-    DateTime time;
+    DateTime startTime;
+    DateTime endTime;
     DateTime createdAt;
     DateTime updatedAt;
 
@@ -56,7 +59,8 @@ class Entry {
         required this.titleEn,
         required this.titlePt,
         required this.location,
-        required this.time,
+        required this.startTime,
+        required this.endTime,
         required this.createdAt,
         required this.updatedAt,
     });
@@ -67,7 +71,8 @@ class Entry {
         titleEn: json["title_en"],
         titlePt: json["title_pt"],
         location: json["location"],
-        time: DateTime.parse(json["time"]),
+        startTime: DateTime.parse(json["start_time"]),
+        endTime: DateTime.parse(json["end_time"]),
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
     );
@@ -78,8 +83,21 @@ class Entry {
         "title_en": titleEn,
         "title_pt": titlePt,
         "location": location,
-        "time": time.toIso8601String(),
+        "startTime": startTime.toIso8601String(),
+        "endTime": endTime.toIso8601String(),
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };
+
+    String getTranslatedTitleAttribute(String locale)
+    {
+      switch (locale) {
+        case 'en':
+          return this.titleEn;
+        case 'pt':
+          return this.titlePt;
+      }
+
+      return this.titleEn;
+    }
 }

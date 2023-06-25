@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../language_constants.dart';
+import 'package:flutter/services.dart';
 
 class AccommodationPage extends StatelessWidget {
   const AccommodationPage({Key? key}) : super(key: key);

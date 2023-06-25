@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../APIs/WydAPI/day_model.dart';
 
@@ -14,6 +15,10 @@ class TimetableList extends StatefulWidget {
 }
 
 class _TimetableListState extends State<TimetableList> {
+
+  DateFormat formatter = DateFormat('HH:mm');
+  
+  String get currentLanguageCode => Localizations.localeOf(context).languageCode;
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +54,32 @@ class _TimetableListState extends State<TimetableList> {
         alignment: Alignment.centerLeft,
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0),
-          child: Text(
-          entry.titlePt.toUpperCase(),
-          style: TextStyle(
-              height: 0.8,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              fontSize: screenSize.height * 0.025,
-            ),
+          child: Row(
+            children: [
+              Text(
+              formatter.format(entry.startTime),
+              style: TextStyle(
+                  height: 0.8,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFFf6be18),
+                  fontSize: screenSize.height * 0.02,
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal:5),
+                  child: Text(
+                  entry.getTranslatedTitleAttribute(currentLanguageCode).toUpperCase(),
+                  style: TextStyle(
+                      height: 0.8,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: screenSize.height * 0.023,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

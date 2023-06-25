@@ -135,7 +135,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {    
     // Set Android Status Bar color
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Color(0xFF028744),
+      statusBarColor: Colors.transparent,
     ));
     
     return MaterialApp(

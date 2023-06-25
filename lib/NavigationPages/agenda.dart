@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../APIs/WydAPI/api_service.dart';
@@ -76,7 +77,7 @@ class _AgendaState extends State<Agenda> {
                       alignment: Alignment.center,
                       height: screenSize.height * 0.1,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Wrap(

@@ -17,7 +17,7 @@ class Agenda extends StatefulWidget {
 class _AgendaState extends State<Agenda> {
 
   // Current Day selected initialised to first day
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   late List<Day>? _timetableModel = null;
   DateFormat formatter = DateFormat('dd/MM');

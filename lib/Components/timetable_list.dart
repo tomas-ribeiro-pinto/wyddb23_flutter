@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:wyddb23_flutter/Activities/agenda_entry.dart';
 
 import '../APIs/WydAPI/day_model.dart';
 
@@ -24,12 +25,15 @@ class _TimetableListState extends State<TimetableList> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
+    List<Entry> entries = widget.day!.entries;
+    entries.sort((a, b) => a.startTime.compareTo(b.startTime));
+
     return Wrap(
         direction: Axis.vertical,
         alignment: WrapAlignment.start,
         spacing: 10,
         children: [
-          for(Entry entry in widget.day!.entries)...
+          for(Entry entry in entries)...
           {
             getAgendaButton(screenSize, entry),
           }
@@ -49,7 +53,12 @@ class _TimetableListState extends State<TimetableList> {
           return Color(0xFFd53f28);
         }),
       ),
-      onPressed: () {}, 
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AgendaEntry(entry: entry)),
+        );
+      }, 
       child: Container(
         alignment: Alignment.centerLeft,
         child: Padding(

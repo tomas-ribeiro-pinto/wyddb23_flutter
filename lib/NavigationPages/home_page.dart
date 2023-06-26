@@ -359,112 +359,50 @@ class _HomePageState extends State<HomePage> {
   Widget getFooterButtons()
   {
     Size screenSize = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top:screenSize.height * 0.04, right: screenSize.width * 0.08),
-              height: screenSize.height * 0.06,
-              width: screenSize.width * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xFF028744),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    translation(context).contacts,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: screenSize.width * 0.04,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:screenSize.height * 0.04, right: 0),
-              height: screenSize.height * 0.06,
-              width: screenSize.width * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xFF028744),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    translation(context).fatima,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: screenSize.width * 0.04,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top:screenSize.height * 0.02, right: screenSize.width * 0.08),
-              height: screenSize.height * 0.06,
-              width: screenSize.width * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xFF028744),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    translation(context).faq,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: screenSize.width * 0.04,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:screenSize.height * 0.02, right: 0),
-              height: screenSize.height * 0.06,
-              width: screenSize.width * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xFF028744),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    translation(context).followUs,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: screenSize.width * 0.04,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: Wrap(
+        direction: Axis.horizontal,
+        spacing: 20,
+        children: [
+              getFooterButton(screenSize, translation(context).contacts,),
+              getFooterButton(screenSize, translation(context).fatima,),
+              getFooterButton(screenSize, translation(context).faq),
+              getFooterButton(screenSize, translation(context).followUs),
+            ],
+      ),
     );
+  }
+
+  Container getFooterButton(Size screenSize, String content) {
+    return Container(
+          margin: EdgeInsets.only(top:15),
+          child: TextButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed))
+                  return Colors.green;
+                return Color(0xFF028744);
+              }),
+            ),
+            onPressed: () {}, 
+            child: Container(
+              height: screenSize.height * 0.03,
+              width: screenSize.width * 0.3,
+              alignment: Alignment.center,
+              child: Text(
+              content,
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                  fontSize: screenSize.width * 0.04,
+                ),
+              ),
+            ),
+          ),
+        );
   }
 
 }

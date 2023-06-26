@@ -53,14 +53,14 @@ class AccommodationPage extends StatelessWidget {
               ),
               onPressed: () {}, 
               child: Container(
-                width: screenSize.width * 0.5,
+                width: screenSize.width * 0.7,
                 alignment: Alignment.center,
                 child: Text(
                 location.toUpperCase(),
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
-                    fontSize: screenSize.height * 0.02,
+                    fontSize: screenSize.height * 0.025,
                   ),
                 ),
               ),

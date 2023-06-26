@@ -109,16 +109,15 @@ class _HomeActivityState extends State<HomeActivity> {
                     },
                     icon: pageIndex == PAGE2_index
                         ? const HeroIcon(
-                            HeroIcons.map,
+                            HeroIcons.mapPin,
                             color: Color.fromARGB(255, 246, 190, 24),
                             size: 35,
                             style: HeroIconStyle.solid
                           )
                         : const HeroIcon(
-                            HeroIcons.map,
+                            HeroIcons.mapPin,
                             color: Colors.white,
                             size: 35,
-                            style: HeroIconStyle.solid
                           ),
                   ),
                   Container(

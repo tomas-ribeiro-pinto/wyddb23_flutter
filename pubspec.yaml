@@ -85,6 +85,7 @@ flutter:
     - assets/images/sym_day.png
     - assets/images/sym_day.svg
     - assets/images/info.svg
+    - assets/images/salesianos_lisboa.jpg
 
   fonts:
   - family: Rubik

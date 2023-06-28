@@ -6,10 +6,13 @@ import 'package:wyddb23_flutter/NavigationPages/page2.dart';
 import 'package:wyddb23_flutter/NavigationPages/sym_day.dart';
 import 'package:wyddb23_flutter/NavigationPages/agenda.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 
 
 class HomeActivity extends StatefulWidget {
-  const HomeActivity({Key? key}) : super(key: key);
+  const HomeActivity({Key? key, required this.pageIndex}) : super(key: key);
+
+  final int pageIndex;
 
   @override
   State<HomeActivity> createState() => _HomeActivityState();
@@ -23,8 +26,14 @@ class _HomeActivityState extends State<HomeActivity> {
   static const PAGE3_index = 3;
   static const PAGE4_index = 4;
 
-  //set HomePage to be current page
-  int pageIndex = HOMEPAGE_index;
+  int pageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    //set HomePage to be passed parameter
+    pageIndex = widget.pageIndex;
+  }
 
   final pages = [
     const HomePage(),
@@ -36,6 +45,7 @@ class _HomeActivityState extends State<HomeActivity> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBody: true,
       body: pages[pageIndex],

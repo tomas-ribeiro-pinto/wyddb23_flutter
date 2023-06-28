@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:wyddb23_flutter/Activities/home_activity.dart';
+import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'Activities/splash.dart';
@@ -10,7 +12,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:rxdart/rxdart.dart';
-
 // used to pass messages from event handler to the UI
 final _messageStreamController = BehaviorSubject<RemoteMessage>();
 
@@ -152,6 +153,15 @@ class _MyAppState extends State<MyApp> {
           Locale('pt'), // Portuguese
         ],
         locale: _locale,
+
+        // Routes
+        routes: {
+          '/home': (context) => const HomeActivity(pageIndex: 0,),
+          '/accommodation': (context) => const HomeActivity(pageIndex: 1,),
+          '/visit': (context) => const HomeActivity(pageIndex: 2,),
+          '/symDay': (context) => const HomeActivity(pageIndex: 3,),
+          '/agenda': (context) => const HomeActivity(pageIndex: 4,),
+        },
 
         // App Theme
         theme: ThemeData(

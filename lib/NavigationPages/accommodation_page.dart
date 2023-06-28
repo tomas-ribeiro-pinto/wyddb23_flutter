@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Activities/accommodation_location.dart';
 import '../language_constants.dart';
 import 'package:flutter/services.dart';
 
@@ -26,11 +27,11 @@ class AccommodationPage extends StatelessWidget {
         Center(
           child: Column(
             children: [
-              getAccommodationButton(screenSize, "Cascais"),
-              getAccommodationButton(screenSize, "Estoril"),
-              getAccommodationButton(screenSize, "Lisboa"),
-              getAccommodationButton(screenSize, "Manique"),
-              getAccommodationButton(screenSize, "Setúbal"),
+              getAccommodationButton(screenSize, "Cascais", context),
+              getAccommodationButton(screenSize, "Estoril", context),
+              getAccommodationButton(screenSize, "Lisboa", context),
+              getAccommodationButton(screenSize, "Manique", context),
+              getAccommodationButton(screenSize, "Setúbal", context),
             ],
           ),
         )
@@ -38,7 +39,7 @@ class AccommodationPage extends StatelessWidget {
     );
   }
 
-  Container getAccommodationButton(Size screenSize, String location) {
+  Container getAccommodationButton(Size screenSize, String location, BuildContext context) {
     return Container(
             margin: EdgeInsets.only(top:15),
             child: TextButton(
@@ -51,7 +52,12 @@ class AccommodationPage extends StatelessWidget {
                   return Color(0xFF028744);
                 }),
               ),
-              onPressed: () {}, 
+              onPressed: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccommodationLocation(location: location)),
+                );
+              }, 
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,

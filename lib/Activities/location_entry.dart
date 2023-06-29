@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../APIs/WydAPI/day_model.dart';
 
@@ -88,34 +90,68 @@ class _LocationEntryState extends State<LocationEntry> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top:15),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    child: Column(
                       children: [
-                        HeroIcon(
-                          HeroIcons.mapPin,
-                          style: HeroIconStyle.solid,
-                          color: Color(0xFFd53f28),
-                          size: 23,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            HeroIcon(
+                              HeroIcons.mapPin,
+                              style: HeroIconStyle.solid,
+                              color: Color(0xFFd53f28),
+                              size: 23,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 2.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                  "Praça São João Bosco, 34",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: screenSize.width * 0.05 
+                                  ),
+                                  ),
+                                  Text(
+                                  "1399-007, Lisboa",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: screenSize.width * 0.05 
+                                  ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 2.0),
-                          child: Column(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                              "Praça São João Bosco, 34",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: screenSize.width * 0.05 
+                              HeroIcon(
+                                HeroIcons.phone,
+                                style: HeroIconStyle.solid,
+                                color: Color(0xFFd53f28),
+                                size: 23,
                               ),
-                              ),
-                              Text(
-                              "1399-007, Lisboa",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: screenSize.width * 0.05 
-                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 3.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                    "(+351) 210 900 500",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: screenSize.width * 0.05 
+                                    ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -144,11 +180,71 @@ class _LocationEntryState extends State<LocationEntry> {
     return Container(
       child: Padding(
         padding: EdgeInsets.only(top: 20),
-        child: Text(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          style: TextStyle(
-          fontSize: screenSize.width * 0.04 
-          ),
+        child: Wrap(
+          runSpacing: 20,
+          children: [
+            Center(
+              child: Wrap(
+                direction: Axis.horizontal,
+                spacing: 20,
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        return Color(0xFFd53f28);
+                      }),
+                    ),
+                    onPressed: () => MapsLauncher.launchQuery(
+                              'Praça São João Bosco, 34 1399-007, Lisboa, Portugal'),
+                    child: Container(
+                      width: screenSize.width * 0.4,
+                      alignment: Alignment.center,
+                      child: Text(
+                      translation(context).seeMap.toUpperCase(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: screenSize.height * 0.02,
+                        ),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        return Color(0xFF028744);
+                      }),
+                    ),
+                    onPressed: () {
+                      launchUrl(Uri.parse('tel:(+351) 210 900 500'));
+                    },
+                    child: Container(
+                      width: screenSize.width * 0.4,
+                      alignment: Alignment.center,
+                      child: Text(
+                      translation(context).call.toUpperCase(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: screenSize.height * 0.02,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                style: TextStyle(
+                fontSize: screenSize.width * 0.04 
+                ),
+              ),
+          ],
         ),
       ),
     );

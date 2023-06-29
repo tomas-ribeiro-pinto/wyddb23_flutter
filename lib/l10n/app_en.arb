@@ -17,5 +17,6 @@
     "liveStreaming": "Live Streaming",
     "emergency": "Emergency",
     "seeMap" : "See Map",
-    "agenda" : "Agenda"
+    "agenda" : "Agenda",
+    "call" : "Call"
   }

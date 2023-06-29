@@ -23,6 +23,8 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
@@ -37,7 +39,7 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 color: Color(0xFFf6be18),
-                fontSize: 20
+                fontSize: screenSize.width * 0.05,
               ),
             ),
           ),

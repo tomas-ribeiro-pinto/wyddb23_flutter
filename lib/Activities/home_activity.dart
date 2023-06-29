@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
-import 'package:wyddb23_flutter/NavigationPages/accommodation_page.dart';
-import 'package:wyddb23_flutter/NavigationPages/page2.dart';
-import 'package:wyddb23_flutter/NavigationPages/sym_day.dart';
-import 'package:wyddb23_flutter/NavigationPages/agenda.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/accommodation_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/page2.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/sym_day.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/agenda.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 
@@ -58,6 +58,8 @@ class _HomeActivityState extends State<HomeActivity> {
 
   /// Returns the navigation bar design widget
   Container getNavigationBar() {
+    Size screenSize = MediaQuery.of(context).size;
+
     return Container(
       decoration: BoxDecoration(
         color: Color(0xFF028744),
@@ -77,7 +79,7 @@ class _HomeActivityState extends State<HomeActivity> {
       // Includes a SafeArea for IOS devices with notch
       child: SafeArea(
         child: SizedBox(
-          height: 65,
+          height: screenSize.width * 0.16,
           child: Container(
             decoration: const BoxDecoration(
               color: Color(0xFF028744),
@@ -99,15 +101,15 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE1_index
-                        ? const Icon(
+                        ? Icon(
                             Icons.hotel,
                             color: Color.fromARGB(255, 246, 190, 24),
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           )
-                        : const Icon(
+                        : Icon(
                             Icons.hotel,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           ),
                   ),
                   IconButton(
@@ -118,16 +120,16 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE2_index
-                        ? const HeroIcon(
+                        ? HeroIcon(
                             HeroIcons.mapPin,
                             color: Color.fromARGB(255, 246, 190, 24),
-                            size: 35,
+                            size: screenSize.width * 0.09,
                             style: HeroIconStyle.solid
                           )
-                        : const HeroIcon(
+                        : HeroIcon(
                             HeroIcons.mapPin,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           ),
                   ),
                   Container(
@@ -158,7 +160,7 @@ class _HomeActivityState extends State<HomeActivity> {
                       icon: Image.asset(
                         'assets/images/wyd-logo-cor.png',
                         fit: BoxFit.fill,
-                        height: 70,
+                        height: screenSize.width * 0.15,
                       ),
                     ),
                   ),
@@ -189,15 +191,15 @@ class _HomeActivityState extends State<HomeActivity> {
                       });
                     },
                     icon: pageIndex == PAGE4_index
-                        ? const Icon(
+                        ? Icon(
                             Icons.assignment,
                             color: Color.fromARGB(255, 246, 190, 24),
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           )
-                        : const Icon(
+                        : Icon(
                             Icons.assignment,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           )
                   ),
                 ],

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
-import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'Activities/splash.dart';
@@ -29,6 +29,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set up preferred orientation,
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -49,10 +53,10 @@ Future<void> main() async {
 
   // Register with FCM
 
-  final fcmToken = await FirebaseMessaging.instance.getToken();
+/*   final fcmToken = await FirebaseMessaging.instance.getToken();
    if (kDebugMode) {
     print(fcmToken);
-   }
+   } */
 
   // Set up foreground message handler
 

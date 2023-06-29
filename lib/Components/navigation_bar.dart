@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wyddb23_flutter/NavigationPages/home_page.dart';
-import 'package:wyddb23_flutter/NavigationPages/accommodation_page.dart';
-import 'package:wyddb23_flutter/NavigationPages/page2.dart';
-import 'package:wyddb23_flutter/NavigationPages/sym_day.dart';
-import 'package:wyddb23_flutter/NavigationPages/agenda.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/accommodation_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/page2.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/sym_day.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/agenda.dart';
 import 'package:heroicons/heroicons.dart';
 
 /**
@@ -41,7 +41,7 @@ class _NavigationBarState extends State<NavigationBar> {
       // Includes a SafeArea for IOS devices with notch
       child: SafeArea(
         child: SizedBox(
-          height: 65,
+          height: screenSize.width * 0.16, // 65
           child: Container(
             decoration: const BoxDecoration(
               color: Color(0xFF028744),
@@ -60,10 +60,10 @@ class _NavigationBarState extends State<NavigationBar> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/accommodation');
                     },
-                    icon: const Icon(
+                    icon: Icon(
                             Icons.hotel,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           ),
                   ),
                   IconButton(
@@ -73,10 +73,10 @@ class _NavigationBarState extends State<NavigationBar> {
                         Navigator.pushNamed(context, '/visit');
                       });
                     },
-                    icon: const HeroIcon(
+                    icon: HeroIcon(
                             HeroIcons.mapPin,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           ),
                   ),
                   Container(
@@ -107,7 +107,7 @@ class _NavigationBarState extends State<NavigationBar> {
                       icon: Image.asset(
                         'assets/images/wyd-logo-cor.png',
                         fit: BoxFit.fill,
-                        height: 70,
+                        height: screenSize.width * 0.15, // 70
                       ),
                     ),
                   ),
@@ -121,7 +121,7 @@ class _NavigationBarState extends State<NavigationBar> {
                     icon: SvgPicture.asset(
                         "assets/images/sym_day.svg",
                         color: Colors.white,
-                        width: 35,
+                        width: 35
                       )
                   ),
                   IconButton(
@@ -131,10 +131,10 @@ class _NavigationBarState extends State<NavigationBar> {
                         Navigator.pushNamed(context, '/agenda');
                       });
                     },
-                    icon: const Icon(
+                    icon: Icon(
                             Icons.assignment,
                             color: Colors.white,
-                            size: 35,
+                            size: screenSize.width * 0.09,
                           )
                   ),
                 ],

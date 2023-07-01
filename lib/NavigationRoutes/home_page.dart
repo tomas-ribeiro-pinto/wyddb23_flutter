@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late Weather? _weatherModel = null;
 
@@ -183,8 +183,8 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: EdgeInsets.only(top: screenSize.height * 0.205),
                         child: Container(
-                        height: 30,
-                        width: 90,
+                        height: screenSize.width * 0.08,
+                        width: screenSize.width * 0.23,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(18),
                           color: const Color.fromARGB(255, 216, 44, 32),
@@ -193,8 +193,8 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(left:5),
-                              height: 20,
-                              width: 20,
+                              height: screenSize.width * 0.06,
+                              width: screenSize.width * 0.06,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18),
                                 color: Colors.white
@@ -217,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: screenSize.width * 0.043,
                                   ),
                                 )
                               : 
@@ -226,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: screenSize.width * 0.043,
                                 ),
                               ),
                             ),

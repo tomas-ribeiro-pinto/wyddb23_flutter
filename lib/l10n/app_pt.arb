@@ -18,5 +18,8 @@
   "emergency": "Emergência",
   "seeMap" : "Ver Mapa",
   "agenda" : "Agenda",
-  "call" : "Ligar"
+  "call" : "Ligar",
+  "loading": "A Carregar",
+  "visit": "Visita",
+  "noRecords": "Sem Registos Encontrados"
 }

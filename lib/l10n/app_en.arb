@@ -18,5 +18,8 @@
     "emergency": "Emergency",
     "seeMap" : "See Map",
     "agenda" : "Agenda",
-    "call" : "Call"
+    "call" : "Call",
+    "loading": "Loading",
+    "visit": "Visit",
+    "noRecords": "No Records Found"
   }

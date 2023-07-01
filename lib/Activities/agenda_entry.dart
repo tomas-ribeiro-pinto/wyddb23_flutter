@@ -6,6 +6,7 @@ import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/day_model.dart';
+import '../Components/my_text.dart';
 
 class AgendaEntry extends StatefulWidget {
   const AgendaEntry({Key? key, required this.entry}) : super(key: key);
@@ -32,7 +33,7 @@ class _AgendaEntryState extends State<AgendaEntry> {
           transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
           child: GestureDetector(
             onTap: () => {Navigator.of(context).pop()},
-            child: Text(
+            child: MyText(
               translation(context).agenda.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -75,7 +76,7 @@ class _AgendaEntryState extends State<AgendaEntry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  MyText(
                   formatter.format(widget.entry.startTime) + ' - ' + formatter.format(widget.entry.endTime),
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -92,7 +93,7 @@ class _AgendaEntryState extends State<AgendaEntry> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 2.0),
-                        child: Text(
+                        child: MyText(
                         widget.entry.location,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -121,7 +122,7 @@ class _AgendaEntryState extends State<AgendaEntry> {
     return Container(
       child: Padding(
         padding: EdgeInsets.only(top: 20),
-        child: Text(
+        child: MyText(
           widget.entry!.getTranslatedDescriptionAttribute(currentLanguageCode),
           style: TextStyle(
             fontSize: 18

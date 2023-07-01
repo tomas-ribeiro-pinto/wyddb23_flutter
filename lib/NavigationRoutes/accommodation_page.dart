@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../Activities/accommodation_location.dart';
+import '../Components/my_text.dart';
 import '../language_constants.dart';
 import 'package:flutter/services.dart';
 
@@ -29,7 +30,7 @@ class AccommodationPage extends StatelessWidget {
                       width: screenSize.width,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
-                        child: Text(
+                        child: MyText(
                           translation(context).accommodation.toUpperCase(),
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -47,7 +48,7 @@ class AccommodationPage extends StatelessWidget {
                     children: [
                     Container(
                       margin: EdgeInsets.all(20),
-                      child: Text(
+                      child: MyText(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -104,7 +105,7 @@ class AccommodationPage extends StatelessWidget {
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,
-                child: Text(
+                child: MyText(
                 location.toUpperCase(),
                 style: TextStyle(
                     fontWeight: FontWeight.w600,

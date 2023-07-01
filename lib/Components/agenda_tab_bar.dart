@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
 
 import '../APIs/WydAPI/day_model.dart';
+import 'my_text.dart';
 
 class AgendaTabBar extends StatefulWidget {
   const AgendaTabBar({Key? key, required this.agendaModel}) : super(key: key);
@@ -110,7 +111,7 @@ class _AgendaTabBarState extends State<AgendaTabBar> with SingleTickerProviderSt
         alignment: Alignment.center,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.04, vertical: 5),
-          child: Text(
+          child: MyText(
           formatter.format(day.day),
           style: TextStyle(
               fontFamily: "Rubik",

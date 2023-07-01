@@ -6,6 +6,7 @@ import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/day_model.dart';
+import '../Components/my_text.dart';
 import 'location_entry.dart';
 
 class AccommodationLocation extends StatefulWidget {
@@ -34,7 +35,7 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
           transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
           child: GestureDetector(
             onTap: () => {Navigator.of(context).pop()},
-            child: Text(
+            child: MyText(
               translation(context).accommodation.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -71,7 +72,7 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
         children: [
           Container(
           margin: EdgeInsets.all(20),
-          child: Text(
+          child: MyText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             style: TextStyle(
               fontWeight: FontWeight.w400,
@@ -144,7 +145,7 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Text(
+              child: MyText(
                 "Salesianos Lisboa",
                 textAlign: TextAlign.left,
                 style: TextStyle(

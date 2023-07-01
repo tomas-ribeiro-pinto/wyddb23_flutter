@@ -3,6 +3,8 @@ import '../APIs/WydAPI/day_model.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:intl/intl.dart';
 
+import 'my_text.dart';
+
 class Header extends StatefulWidget {
   const Header({Key? key, required this.title, required this.color, 
               required this.content, required this.hasBanner}) : super(key: key);
@@ -45,7 +47,7 @@ class _HeaderState extends State<Header> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
-                        child: Text(
+                        child: MyText(
                           widget.title,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,

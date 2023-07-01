@@ -5,6 +5,7 @@ import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:wyddb23_flutter/Components/agenda_tab_bar.dart';
 import '../APIs/WydAPI/api_service.dart';
 import '../APIs/WydAPI/day_model.dart';
+import '../Components/my_text.dart';
 import '../language_constants.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
 
@@ -57,7 +58,7 @@ class _AgendaState extends State<Agenda> {
                               ),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
-                                child: Text(
+                                child: MyText(
                                   translation(context).agenda.toUpperCase(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
@@ -98,7 +99,7 @@ class _AgendaState extends State<Agenda> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  MyText(
                     translation(context).loading + '...',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,

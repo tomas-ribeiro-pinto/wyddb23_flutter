@@ -8,6 +8,8 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/api_service.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
+import '../Components/my_text.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -167,7 +169,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        MyText(
                           AppLocalizations.of(context)!.helloLisbon,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -212,16 +214,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                             Container(
                               margin: EdgeInsets.only(left:5),
                               child: _weatherModel == null
-                              ? Text(
+                              ? MyText(
                                   " -- ºC",
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: screenSize.width * 0.043,
+                                    fontSize: screenSize.width * 0.042,
                                   ),
                                 )
                               : 
-                              Text(
+                              MyText(
                                 _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
@@ -266,7 +268,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     height: screenSize.height * 0.11,
                   ),
                 ),
-                Text(
+                MyText(
                   translation(context).welcome,
                   style: TextStyle(
                     fontSize: screenSize.width * 0.04,
@@ -287,7 +289,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     height: screenSize.height * 0.11,
                   ),
                 ),
-                Text(
+                MyText(
                   translation(context).information,
                   style: TextStyle(
                     fontSize: screenSize.width * 0.04,
@@ -306,7 +308,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     height: screenSize.height * 0.11,
                   ),
                 ),
-                Text(
+                MyText(
                   translation(context).dailyPrayers,
                   style: TextStyle(
                     fontSize: screenSize.width * 0.04,
@@ -320,9 +322,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   List<DropdownMenuItem<String>> get dropdownItems{
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("EN", style: TextStyle(fontWeight: FontWeight.bold,
+      DropdownMenuItem(child: MyText("EN", style: TextStyle(fontWeight: FontWeight.bold,
                           color: Colors.white,)),value: "en"),
-      DropdownMenuItem(child: Text("PT", style: TextStyle(fontWeight: FontWeight.bold,
+      DropdownMenuItem(child: MyText("PT", style: TextStyle(fontWeight: FontWeight.bold,
                           color: Colors.white,)),value: "pt"),
     ];
     return menuItems;
@@ -343,11 +345,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       itemBuilder: (BuildContext bc) {
         return const [
           PopupMenuItem(
-            child: Text("EN 🇬🇧", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            child: MyText("EN 🇬🇧", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
             value: "en"
           ),
           PopupMenuItem(
-            child: Text("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            child: MyText("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
             value: "pt"
           ),
         ];
@@ -391,7 +393,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             child: Container(
               width: screenSize.width * 0.3,
               alignment: Alignment.center,
-              child: Text(
+              child: MyText(
               content,
               style: TextStyle(
                   fontWeight: FontWeight.w600,

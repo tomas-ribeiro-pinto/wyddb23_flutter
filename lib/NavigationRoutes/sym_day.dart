@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import '../Components/my_text.dart';
 import '../language_constants.dart';
 
 
@@ -30,7 +31,7 @@ class SymDay extends StatelessWidget {
                       width: screenSize.width,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
-                        child: Text(
+                        child: MyText(
                           translation(context).symDay.toUpperCase(),
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -56,7 +57,7 @@ class SymDay extends StatelessWidget {
                           child: Container(
                             width: screenSize.width * 0.5,
                             alignment: Alignment.center,
-                            child: Text(
+                            child: MyText(
                             translation(context).seeMap.toUpperCase(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -76,7 +77,7 @@ class SymDay extends StatelessWidget {
                   children: [
                   Container(
                   margin: EdgeInsets.all(20),
-                  child: Text(
+                  child: MyText(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
@@ -147,9 +148,9 @@ class SymDay extends StatelessWidget {
           children: [
             Container(
               width: screenSize.width * 0.5,
-              margin: EdgeInsets.only(left: 10),
+              margin: EdgeInsets.only(left: 10, right: 10),
               alignment: Alignment.bottomLeft,
-              child: Text(
+              child: MyText(
               string.toUpperCase(),
               style: TextStyle(
                   fontWeight: FontWeight.w700,

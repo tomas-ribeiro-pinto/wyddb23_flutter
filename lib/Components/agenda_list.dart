@@ -6,6 +6,7 @@ import 'package:wyddb23_flutter/Activities/agenda_entry.dart';
 
 import '../APIs/WydAPI/day_model.dart';
 import '../language_constants.dart';
+import 'my_text.dart';
 
 class AgendaList extends StatefulWidget {
   const AgendaList({Key? key, this.selectedIndex, this.day}) : super(key: key);
@@ -54,7 +55,7 @@ class _AgendaListState extends State<AgendaList> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 20),
-                    child: Text(
+                    child: MyText(
                       translation(context).noRecords,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -95,7 +96,7 @@ class _AgendaListState extends State<AgendaList> {
           padding: const EdgeInsets.only(left: 15.0),
           child: Row(
             children: [
-              Text(
+              MyText(
               formatter.format(entry.startTime),
               style: TextStyle(
                   height: 0.8,
@@ -107,7 +108,7 @@ class _AgendaListState extends State<AgendaList> {
               Flexible(
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal:5),
-                  child: Text(
+                  child: MyText(
                   entry.getTranslatedTitleAttribute(currentLanguageCode).toUpperCase(),
                   style: TextStyle(
                       height: 0.8,

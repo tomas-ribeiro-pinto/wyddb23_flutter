@@ -8,6 +8,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../APIs/WydAPI/day_model.dart';
+import '../Components/my_text.dart';
 
 class LocationEntry extends StatefulWidget {
   const LocationEntry({Key? key, required this.location, required this.site}) : super(key: key);
@@ -35,7 +36,7 @@ class _LocationEntryState extends State<LocationEntry> {
           transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
           child: GestureDetector(
             onTap: () => {Navigator.of(context).pop()},
-            child: Text(
+            child: MyText(
               translation(context).accommodation.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -80,7 +81,7 @@ class _LocationEntryState extends State<LocationEntry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  MyText(
                   widget.site,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -107,14 +108,14 @@ class _LocationEntryState extends State<LocationEntry> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  MyText(
                                   "Praça São João Bosco, 34",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
                                     fontSize: screenSize.width * 0.05 
                                   ),
                                   ),
-                                  Text(
+                                  MyText(
                                   "1399-007, Lisboa",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
@@ -143,7 +144,7 @@ class _LocationEntryState extends State<LocationEntry> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    MyText(
                                     "(+351) 210 900 500",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w300,
@@ -201,7 +202,7 @@ class _LocationEntryState extends State<LocationEntry> {
                     child: Container(
                       width: screenSize.width * 0.4,
                       alignment: Alignment.center,
-                      child: Text(
+                      child: MyText(
                       translation(context).seeMap.toUpperCase(),
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -225,7 +226,7 @@ class _LocationEntryState extends State<LocationEntry> {
                     child: Container(
                       width: screenSize.width * 0.4,
                       alignment: Alignment.center,
-                      child: Text(
+                      child: MyText(
                       translation(context).call.toUpperCase(),
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -238,7 +239,7 @@ class _LocationEntryState extends State<LocationEntry> {
                 ],
               ),
             ),
-            Text(
+            MyText(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 style: TextStyle(
                 fontSize: screenSize.width * 0.04 

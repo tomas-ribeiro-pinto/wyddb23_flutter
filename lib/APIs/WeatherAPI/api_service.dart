@@ -5,13 +5,12 @@ import 'api_constants.dart';
 import 'weather_model.dart';
 
 class WeatherApiService {
-  Future<Weather?> getWeather() async {
+  Future<String?> getWeather() async {
     try {
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.currentWeather);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        Weather _model = weatherFromJson(response.body);
-        return _model;
+        return response.body;
       }
     } catch (e) {
       log(e.toString());

@@ -10,7 +10,7 @@ List<Day> dayFromJson(String str) => List<Day>.from(json.decode(str).map((x) => 
 
 String dayToJson(List<Day> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Day {
+class Day{
     int id;
     DateTime day;
     DateTime createdAt;

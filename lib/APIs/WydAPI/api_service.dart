@@ -1,17 +1,17 @@
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'api_constants.dart';
 import 'day_model.dart';
 
 class WydApiService {
-  Future<List<Day>?> getTimetable() async {
+  Future<String?> getAgenda() async {
     try {
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.agenda);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        List<Day> _model = dayFromJson(response.body);
-        return _model;
+        return response.body;
       }
     } catch (e) {
       log(e.toString());

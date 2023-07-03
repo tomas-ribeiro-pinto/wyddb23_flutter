@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
 import 'package:wyddb23_flutter/Components/agenda_tab_bar.dart';
 import '../APIs/WydAPI/api_service.dart';
 import '../APIs/WydAPI/day_model.dart';
@@ -23,11 +24,11 @@ class _AgendaState extends State<Agenda> {
   @override
   void initState() {
     super.initState();
-    _getTimetable();
+    _getAgenda();
   }
 
-  void _getTimetable() async {
-    _agendaModel = (await WydApiService().getTimetable());
+  void _getAgenda() async {
+    _agendaModel = (await ApiCacheHelper.getAgenda("agenda"));
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 

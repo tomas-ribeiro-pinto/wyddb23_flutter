@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
+import 'APIs/WydAPI/api_response_box.dart';
 import 'Activities/splash.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,6 +33,11 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set up Hive NoSQL
+  final appDocumentDirectory = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  Hive.registerAdapter(ApiResponseBoxAdapter());
 
   // Set up preferred orientation,
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

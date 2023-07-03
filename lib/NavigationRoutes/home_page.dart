@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,6 +9,7 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/api_service.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
+import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Components/my_text.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   }
 
   void _getData() async {
-    _weatherModel = (await WeatherApiService().getWeather())!;
+    _weatherModel = await ApiCacheHelper.getWeather("weather");
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -208,7 +210,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                               :
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: Image.network("https:" + _weatherModel!.current.condition.icon.toString()),
+                                child: CachedNetworkImage(imageUrl: ("https:" + _weatherModel!.current.condition.icon.toString())),
                               ),
                             ),
                             Container(

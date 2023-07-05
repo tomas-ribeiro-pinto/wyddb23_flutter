@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:vector_math/vector_math.dart' as math;
+import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
@@ -22,6 +25,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late Weather? _weatherModel = null;
+  late String? image = null;
 
   @override
   void initState() {
@@ -30,7 +34,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   }
 
   void _getData() async {
-    _weatherModel = await ApiCacheHelper.getWeather("weather");
+    _weatherModel = await ApiCacheHelper.getWeather();
+    image = (await ApiCacheHelper.getHomePic());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -158,12 +163,89 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 Center(
                   child: Padding(
                     padding: EdgeInsets.only(top: screenSize.height * 0.25),
-                    child: Container(
+                    child: Transform.rotate(
+                        angle: math.radians(7),
+                        child: Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    spreadRadius: 10,
+                                    blurRadius: 30,
+                                    offset: const Offset(0, 0), // changes position of shadow
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.4),
+                                    spreadRadius: 1,
+                                    blurRadius: 2,
+                                    offset: const Offset(-2, 2), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              height: screenSize.width * 0.525,
+                              width: screenSize.width * 0.73,
+                              child: Padding(
+                                padding: EdgeInsets.all(screenSize.width * 0.035),
+                                child: image != null
+                                ? Image(
+                                  image: CachedNetworkImageProvider(ApiConstants.getDevUrl() + image!),
+                                  fit: BoxFit.cover,
+                                  frameBuilder: (BuildContext context, Widget child, int? frame,
+                                      bool wasSynchronouslyLoaded) {
+                                    if (wasSynchronouslyLoaded) {
+                                      return child;
+                                    }
+                                    return AnimatedOpacity(
+                                      opacity: frame == null ? 0 : 1,
+                                      duration: const Duration(seconds: 1),
+                                      curve: Curves.easeOut,
+                                      child: child,
+                                    );
+                                  },
+                                )
+                                : Container(),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: screenSize.width * 0.365, left: screenSize.height * 0.025,),
+                              child: MyText(
+                                "@leilacatarina",
+                                style: TextStyle(
+                                  fontFamily: "Rubik",
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                  fontSize: screenSize.height * 0.019,
+                                  backgroundColor: Colors.black.withOpacity(0.7),
+                                  letterSpacing: -1,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: screenSize.width * 0.42, left: screenSize.height * 0.025,),
+                              child: MyText(
+                                "#WYDDONBOSCO23",
+                                style: TextStyle(
+                                  fontFamily: "Rubik",
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: screenSize.height * 0.019,
+                                  backgroundColor: Colors.black.withOpacity(0.7),
+                                  letterSpacing: -1,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+/*                       Container(
                       width: screenSize.width * 0.73,
-                      child: const Image(
+                      child: Image(
                         image: AssetImage("assets/images/home-pic.png"),
-                      ),
-                    ),
+                      ) 
+                    ),*/
                   ),
                 ),
                 Padding(

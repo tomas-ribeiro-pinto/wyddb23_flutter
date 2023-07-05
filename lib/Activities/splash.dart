@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
+import '../APIs/WydAPI/api_cache_helper.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -13,9 +14,19 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    getApiResponse();
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const HomeActivity(pageIndex: 0,)));
     });
+  }
+
+  // Seed Hive with current API response if empty
+  // while loading the app
+  void getApiResponse() async
+  {
+    await ApiCacheHelper.getAgenda();
+    await ApiCacheHelper.getWeather();
+    await ApiCacheHelper.getHomePic();
   }
 
   @override

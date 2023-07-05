@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
 import 'package:wyddb23_flutter/Components/agenda_tab_bar.dart';
+import 'package:wyddb23_flutter/Components/check_connection.dart';
 import '../APIs/WydAPI/api_service.dart';
 import '../APIs/WydAPI/day_model.dart';
 import '../Components/my_text.dart';
@@ -28,7 +29,7 @@ class _AgendaState extends State<Agenda> {
   }
 
   void _getAgenda() async {
-    _agendaModel = (await ApiCacheHelper.getAgenda("agenda"));
+    _agendaModel = (await ApiCacheHelper.getAgenda());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -69,6 +70,7 @@ class _AgendaState extends State<Agenda> {
                                 ),
                               ),
                             ),
+                            CheckConnection()
                       ],
                     ),
                       content: Container(

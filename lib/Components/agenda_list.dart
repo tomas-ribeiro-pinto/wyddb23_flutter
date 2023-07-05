@@ -4,7 +4,7 @@ import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Activities/agenda_entry.dart';
 
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import '../language_constants.dart';
 import 'my_text.dart';
 
@@ -29,7 +29,6 @@ class _AgendaListState extends State<AgendaList> {
     Size screenSize = MediaQuery.of(context).size;
 
     List<Entry> entries = widget.day!.entries;
-    entries.sort((a, b) => a.startTime.compareTo(b.startTime));
 
     return Wrap(
         direction: Axis.vertical,
@@ -97,7 +96,7 @@ class _AgendaListState extends State<AgendaList> {
           child: Row(
             children: [
               MyText(
-              formatter.format(entry.startTime),
+              entry.startTime != null ? formatter.format(entry.startTime!) : '',
               style: TextStyle(
                   height: 0.8,
                   fontWeight: FontWeight.w600,

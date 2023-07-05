@@ -49,7 +49,7 @@ class AccommodationPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.all(20),
                       child: MyText(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        translation(context).accommodationParagraph,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.black,

@@ -5,7 +5,7 @@ import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import '../Components/my_text.dart';
 import 'location_entry.dart';
 
@@ -55,6 +55,7 @@ class _AccommodationLocationState extends State<AccommodationLocation> {
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.location.toUpperCase(),
+        titleColor: Colors.white,
         color: Color(0xFF028744),
         content: getEntryContent(),
         hasBanner: false,

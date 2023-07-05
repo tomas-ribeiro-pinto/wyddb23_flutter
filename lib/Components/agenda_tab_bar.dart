@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
 
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import 'my_text.dart';
 
 class AgendaTabBar extends StatefulWidget {
@@ -14,7 +14,7 @@ class AgendaTabBar extends StatefulWidget {
   State<AgendaTabBar> createState() => _AgendaTabBarState();
 }
 
-class _AgendaTabBarState extends State<AgendaTabBar> with SingleTickerProviderStateMixin
+class _AgendaTabBarState extends State<AgendaTabBar> with TickerProviderStateMixin
 {
   DateFormat formatter = DateFormat('dd/MM');
 

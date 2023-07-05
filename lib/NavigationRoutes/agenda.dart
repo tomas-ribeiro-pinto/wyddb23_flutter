@@ -6,7 +6,7 @@ import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
 import 'package:wyddb23_flutter/Components/agenda_tab_bar.dart';
 import 'package:wyddb23_flutter/Components/check_connection.dart';
 import '../APIs/WydAPI/api_service.dart';
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import '../Components/my_text.dart';
 import '../language_constants.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';

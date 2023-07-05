@@ -5,7 +5,7 @@ import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import '../Components/my_text.dart';
 
 class AgendaEntry extends StatefulWidget {
@@ -53,6 +53,7 @@ class _AgendaEntryState extends State<AgendaEntry> {
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.entry!.getTranslatedTitleAttribute(currentLanguageCode).toUpperCase(),
+        titleColor: Colors.white,
         color: Color(0xFFd53f28),
         content: getEntryContent(),
         hasBanner: false,
@@ -76,14 +77,19 @@ class _AgendaEntryState extends State<AgendaEntry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyText(
-                  formatter.format(widget.entry.startTime) + ' - ' + formatter.format(widget.entry.endTime),
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFFf6be18),
-                    fontSize: 20
-                  ),
-                  ),
+                  if(widget.entry.startTime != null)...
+                  {
+                    MyText(
+                    widget.entry.endTime != null
+                          ? formatter.format(widget.entry.startTime!) + ' - ' + formatter.format(widget.entry.endTime!) 
+                          : formatter.format(widget.entry.startTime!),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFFf6be18),
+                      fontSize: 20
+                    ),
+                    ),
+                  },
                   Row(
                     children: [
                       HeroIcon(

@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: screenSize.height * 0.25),
+                    padding: EdgeInsets.only(top: screenSize.height * 0.26),
                     child: Transform.rotate(
                         angle: math.radians(7),
                         child: Stack(
@@ -185,58 +185,111 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                   ),
                                 ],
                               ),
-                              height: screenSize.width * 0.525,
+                              height: screenSize.width * 0.515,
                               width: screenSize.width * 0.73,
                               child: Padding(
-                                padding: EdgeInsets.all(screenSize.width * 0.035),
+                                padding: EdgeInsets.all(screenSize.width * 0.03),
                                 child: image != null
-                                ? Image(
-                                  image: CachedNetworkImageProvider(ApiConstants.getDevUrl() + image!),
-                                  fit: BoxFit.cover,
-                                  frameBuilder: (BuildContext context, Widget child, int? frame,
-                                      bool wasSynchronouslyLoaded) {
-                                    if (wasSynchronouslyLoaded) {
-                                      return child;
-                                    }
-                                    return AnimatedOpacity(
-                                      opacity: frame == null ? 0 : 1,
-                                      duration: const Duration(seconds: 1),
-                                      curve: Curves.easeOut,
-                                      child: child,
-                                    );
-                                  },
+                                ? Stack(
+                                  children: [
+                                    Positioned(
+                                      child: Image(
+                                        height: screenSize.width * 0.515,
+                                        width: screenSize.width * 0.73,
+                                        image: CachedNetworkImageProvider(ApiConstants.baseUrl + image!),
+                                        fit: BoxFit.cover,
+                                        frameBuilder: (BuildContext context, Widget child, int? frame,
+                                            bool wasSynchronouslyLoaded) {
+                                          if (wasSynchronouslyLoaded) {
+                                            return child;
+                                          }
+                                          return AnimatedOpacity(
+                                            opacity: frame == null ? 0 : 1,
+                                            duration: const Duration(seconds: 1),
+                                            curve: Curves.easeOut,
+                                            child: child,
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Positioned(
+                                      //margin: EdgeInsets.only(top: screenSize.height * 0.15, left: screenSize.height * 0.02,),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            MyText(
+                                              "@leilacatarina",
+                                              style: TextStyle(
+                                                fontFamily: "Barlow",
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white,
+                                                fontSize: screenSize.height * 0.019,
+                                                backgroundColor: Colors.black.withOpacity(0.7),
+                                                letterSpacing: -1,
+                                              ),
+                                            ),
+                                            MyText(
+                                              "#WYDDONBOSCO23",
+                                              style: TextStyle(
+                                                fontFamily: "Barlow",
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                                fontSize: screenSize.height * 0.019,
+                                                backgroundColor: Colors.black.withOpacity(0.7),
+                                                letterSpacing: -1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 )
-                                : Container(),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: screenSize.width * 0.365, left: screenSize.height * 0.025,),
-                              child: MyText(
-                                "@leilacatarina",
-                                style: TextStyle(
-                                  fontFamily: "Rubik",
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                  fontSize: screenSize.height * 0.019,
-                                  backgroundColor: Colors.black.withOpacity(0.7),
-                                  letterSpacing: -1,
+                                : Container(
+                                  color: const Color(0xFF028744),
+                                  child: Center(
+                                    child: Container(
+                                      height: 40,
+                                      child: const CircularProgressIndicator( //Adds a Loading Indicator
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(top: screenSize.width * 0.42, left: screenSize.height * 0.025,),
-                              child: MyText(
-                                "#WYDDONBOSCO23",
-                                style: TextStyle(
-                                  fontFamily: "Rubik",
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: screenSize.height * 0.019,
-                                  backgroundColor: Colors.black.withOpacity(0.7),
-                                  letterSpacing: -1,
-                                ),
+                            /* Container(
+                              margin: EdgeInsets.only(top: screenSize.height * 0.15, left: screenSize.height * 0.02,),
+                              child: Column(
+                                children: [
+                                  MyText(
+                                    "@leilacatarina",
+                                    style: TextStyle(
+                                      fontFamily: "Barlow",
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      fontSize: screenSize.height * 0.019,
+                                      backgroundColor: Colors.black.withOpacity(0.7),
+                                      letterSpacing: -1,
+                                    ),
+                                  ),
+                                  MyText(
+                                    "#WYDDONBOSCO23",
+                                    style: TextStyle(
+                                      fontFamily: "Barlow",
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: screenSize.height * 0.019,
+                                      backgroundColor: Colors.black.withOpacity(0.7),
+                                      letterSpacing: -1,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
+                            ), */
                           ],
                         ),
                       )
@@ -246,6 +299,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                         image: AssetImage("assets/images/home-pic.png"),
                       ) 
                     ),*/
+                  ),
+                ),
+                Container(
+                  height: screenSize.width * 0.12,
+                  margin: EdgeInsets.only(top: screenSize.height * 0.23, left: screenSize.width * 0.45,),
+                  child: const Image(
+                    image: AssetImage("assets/images/tape.png"),
                   ),
                 ),
                 Padding(

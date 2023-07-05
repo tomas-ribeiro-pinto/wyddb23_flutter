@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:wyddb23_flutter/APIs/WydAPI/day_model.dart';
 
 part 'api_response_box.g.dart';
 

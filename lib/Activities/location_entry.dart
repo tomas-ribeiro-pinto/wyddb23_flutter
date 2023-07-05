@@ -7,7 +7,7 @@ import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../APIs/WydAPI/day_model.dart';
+import '../APIs/WydAPI/Models/day_model.dart';
 import '../Components/my_text.dart';
 
 class LocationEntry extends StatefulWidget {
@@ -56,6 +56,7 @@ class _LocationEntryState extends State<LocationEntry> {
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.location.toUpperCase(),
+        titleColor: Colors.white,
         color: Color(0xFF028744),
         content: getEntryContent(),
         hasBanner: false,

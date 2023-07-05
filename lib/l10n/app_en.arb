@@ -21,5 +21,7 @@
     "call" : "Call",
     "loading": "Loading",
     "visit": "Visit",
-    "noRecords": "No Records Found"
+    "noRecords": "No Records Found",
+    "accommodationParagraph": "Accommodation centres opening hours:\nOpening of Rooms: 8pm - 10am\nQuiet Time: 12pm - 7am\nBreakfast: 7:30am - 9am",
+    "visitParagraph": "Do you want to get to know the city of Lisbon? Read our suggestions and enjoy the beauty of Lisbon with its seven hills and its monuments. Discover its sights and let yourself be carried away by the friendliness of all Lisboners!\nWelcome!"
   }

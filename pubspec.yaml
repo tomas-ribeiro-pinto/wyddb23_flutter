@@ -96,6 +96,7 @@ flutter:
     - assets/images/sym_day.svg
     - assets/images/info.svg
     - assets/images/salesianos_lisboa.jpg
+    - assets/images/tape.png
 
   fonts:
   - family: Rubik
@@ -132,6 +133,12 @@ flutter:
       - asset: assets/fonts/Rubik-SemiBoldItalic.ttf
         weight: 600
         style: italic
+  - family: Barlow
+    fonts:
+      - asset: assets/fonts/Barlow-ExtraBold.ttf
+        weight: 800
+      - asset: assets/fonts/Barlow-Regular.ttf
+        weight: 400
 
 
 

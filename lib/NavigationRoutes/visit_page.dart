@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/visit_model';
 
+import '../APIs/WydAPI/Models/visit_model.dart';
+import '../APIs/WydAPI/api_cache_helper.dart';
+import '../Activities/visit_entry.dart';
 import '../Components/my_text.dart';
 import '../language_constants.dart';
 
-class VisitPage extends StatelessWidget {
+class VisitPage extends StatefulWidget {
   const VisitPage({Key? key}) : super(key: key);
+
+  @override
+  State<VisitPage> createState() => _VisitPageState();
+}
+
+class _VisitPageState extends State<VisitPage> {
+
+  late List<Visit>? _visitModel = null;
+
+  @override
+  void initState() {
+    super.initState();
+    _getVisit();
+  }
+
+  void _getVisit() async {
+    _visitModel = (await ApiCacheHelper.getVisit()).cast<Visit>();
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +101,7 @@ class VisitPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.all(20),
                       child: MyText(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        translation(context).visitParagraph,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.black,
@@ -91,12 +114,13 @@ class VisitPage extends StatelessWidget {
                       alignment: WrapAlignment.start,
                       spacing: 25.0,
                       children: [
-                        getVisitButton(screenSize, "Torre de Belém", "https://cdn-imgix.headout.com/microbrands-content-image/image/f94caf06c3d6d7779a089fea20611e99-AdobeStock_314194172.jpeg"),
-                        getVisitButton(screenSize, "Rua Augusta", "https://www.lisbonportugaltourism.com/images/lisbon-rua-augusta.jpg"),
-                        getVisitButton(screenSize, "Elevador S. Justa", "https://offloadmedia.feverup.com/lisboasecreta.co/wp-content/uploads/2020/05/16095345/curiosidades-sobre-o-Elevador-de-Santa-Justa-%40kit-suman.jpg"),
-                        getVisitButton(screenSize, "Terreiro do Paço", "https://www.lisbonguru.com/wp-content/uploads/2015/12/terreiro-paco-dia.jpg"),
-                        getVisitButton(screenSize, "Parque Eduardo VII", "https://offloadmedia.feverup.com/lisboasecreta.co/wp-content/uploads/2020/09/07044241/Parques-e-Jardins-de-Lisboa-Parque-Eduardo-VII-o-roteiro-obrigat%C3%B3rio-Foto-por-Kit-Suman-scaled.jpg"),
-                        getVisitButton(screenSize, "Castelo S. Jorge", "https://s7a5n8m2.stackpathcdn.com/wp-content/uploads/2015/03/castelo-sao-jorge-fortifica%C3%A7%C3%A3o-e1598288055243.jpg"),
+                        if(_visitModel != null)...
+                        {
+                          for(Visit visit in _visitModel!)...
+                          {
+                            getVisitButton(screenSize, visit),
+                          }
+                        }
                       ],
                     ),
                     Container(
@@ -114,7 +138,7 @@ class VisitPage extends StatelessWidget {
     );
   }
 
-  Container getVisitButton(Size screenSize, String string, String url)
+  Container getVisitButton(Size screenSize, Visit visit)
   {
     return Container(
       child: GestureDetector(
@@ -129,7 +153,7 @@ class VisitPage extends StatelessWidget {
          child: Stack(
            children: [
             CachedNetworkImage(
-              imageUrl: url,
+              imageUrl: visit.picture,
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
@@ -156,7 +180,7 @@ class VisitPage extends StatelessWidget {
               margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
               alignment: Alignment.bottomLeft,
               child: MyText(
-              string.toUpperCase(),
+              visit.name.toUpperCase(),
               style: TextStyle(
                   letterSpacing: -0.1,
                   height: 1.2,
@@ -169,13 +193,15 @@ class VisitPage extends StatelessWidget {
            ],
          ),
         ),
-        onTap:(){
-         print("you clicked me");
-        }
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => VisitEntry(visit: visit)),
+          );
+        }, 
       ),
     );
   }
-
 
   Container getBanner(Size screenSize, BuildContext context) {
     return Container(

@@ -21,5 +21,7 @@
   "call" : "Ligar",
   "loading": "A Carregar",
   "visit": "Visita",
-  "noRecords": "Sem Registos Encontrados"
+  "noRecords": "Sem Registos Encontrados",
+  "accommodationParagraph": "Horário de funcionamento dos centros de acolhimento:\nAbertura de Quartos 20:00 - 10:00\nTempo de Silêncio: 0:00 - 7:00\nPequeno almoço: 7:30 - 9:00",
+  "visitParagraph": "Queres conhecer a cidade de Lisboa? Aceita as nossas sugestões e desfruta da bela cidade de Lisboa, com as suas sete colinas e os seus monumentos. Descobre os seus miradouros e deixa-te levar pela simpatia de todos os lisboetas!\nBem-Vindo!"
 }

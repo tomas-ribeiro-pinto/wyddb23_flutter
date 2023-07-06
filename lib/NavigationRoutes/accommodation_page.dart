@@ -91,8 +91,6 @@ class AccommodationPage extends StatelessWidget {
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
                 backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed))
-                    return Colors.green;
                   return Color(0xFF028744);
                 }),
               ),

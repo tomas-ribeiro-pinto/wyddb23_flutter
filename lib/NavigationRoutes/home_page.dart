@@ -61,7 +61,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: screenSize.height * 0.05, left: screenSize.width * 0.02),
+                  padding: EdgeInsets.only(top: screenSize.height > 850 ? screenSize.height * 0.06 :  screenSize.height * 0.05,
+                                          left: screenSize.width * 0.02),
                   child: Row(
                     children: [
                       Transform.scale(
@@ -163,7 +164,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: screenSize.height * 0.26),
+                    padding: EdgeInsets.only(top: screenSize.height * 0.27),
                     child: Transform.rotate(
                         angle: math.radians(7),
                         child: Stack(
@@ -194,27 +195,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                 ? Stack(
                                   children: [
                                     Positioned(
-                                      child: Image(
+                                      child: Container(
                                         height: screenSize.width * 0.515,
                                         width: screenSize.width * 0.73,
-                                        image: CachedNetworkImageProvider(ApiConstants.baseUrl + image!),
-                                        fit: BoxFit.cover,
-                                        frameBuilder: (BuildContext context, Widget child, int? frame,
-                                            bool wasSynchronouslyLoaded) {
-                                          if (wasSynchronouslyLoaded) {
-                                            return child;
-                                          }
-                                          return AnimatedOpacity(
-                                            opacity: frame == null ? 0 : 1,
-                                            duration: const Duration(seconds: 1),
-                                            curve: Curves.easeOut,
-                                            child: child,
-                                          );
-                                        },
+                                        color: const Color(0xFFd53f28),
+                                        child: Image(
+                                          image: CachedNetworkImageProvider(ApiConstants.baseUrl + image!),
+                                          fit: BoxFit.cover,
+                                          frameBuilder: (BuildContext context, Widget child, int? frame,
+                                              bool wasSynchronouslyLoaded) {
+                                            if (wasSynchronouslyLoaded) {
+                                              return child;
+                                            }
+                                            return AnimatedOpacity(
+                                              opacity: frame == null ? 0 : 1,
+                                              duration: const Duration(seconds: 1),
+                                              curve: Curves.easeOut,
+                                              child: child,
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                     Positioned(
-                                      //margin: EdgeInsets.only(top: screenSize.height * 0.15, left: screenSize.height * 0.02,),
                                       child: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Column(
@@ -250,61 +253,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                   ],
                                 )
                                 : Container(
-                                  color: const Color(0xFF028744),
+                                  color: const Color(0xFFd53f28),
                                   child: Center(
                                     child: Container(
                                       height: 40,
                                       child: const CircularProgressIndicator( //Adds a Loading Indicator
-                                        color: Colors.red,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                            /* Container(
-                              margin: EdgeInsets.only(top: screenSize.height * 0.15, left: screenSize.height * 0.02,),
-                              child: Column(
-                                children: [
-                                  MyText(
-                                    "@leilacatarina",
-                                    style: TextStyle(
-                                      fontFamily: "Barlow",
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white,
-                                      fontSize: screenSize.height * 0.019,
-                                      backgroundColor: Colors.black.withOpacity(0.7),
-                                      letterSpacing: -1,
-                                    ),
-                                  ),
-                                  MyText(
-                                    "#WYDDONBOSCO23",
-                                    style: TextStyle(
-                                      fontFamily: "Barlow",
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: screenSize.height * 0.019,
-                                      backgroundColor: Colors.black.withOpacity(0.7),
-                                      letterSpacing: -1,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ), */
                           ],
                         ),
                       )
-/*                       Container(
-                      width: screenSize.width * 0.73,
-                      child: Image(
-                        image: AssetImage("assets/images/home-pic.png"),
-                      ) 
-                    ),*/
                   ),
                 ),
                 Container(
-                  height: screenSize.width * 0.12,
-                  margin: EdgeInsets.only(top: screenSize.height * 0.23, left: screenSize.width * 0.45,),
+                  height: screenSize.width * 0.11,
+                  margin: EdgeInsets.only(top: screenSize.height * 0.25, left: screenSize.width * 0.46,),
                   child: const Image(
                     image: AssetImage("assets/images/tape.png"),
                   ),
@@ -396,78 +364,95 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     );
   }
 
-  Row getHighlightButtons(BuildContext context) {
+  Container getHighlightButtons(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
+    double marginTop = 0;
+    
+    if(screenSize.height > 650 && screenSize.height < 670)
+    {
+      marginTop = screenSize.width * 0.025;
+    }
+    else if(screenSize.height > 670 && screenSize.height < 850)
+    {
+      marginTop = screenSize.width * 0.04;
+    }
+    else if(screenSize.height > 850)
+    {
+      marginTop = screenSize.width * 0.05;
+    }
 
-    return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => WelcomeActivity()),
-                    );
-                  },
-                  enableFeedback: false,
-                  icon: Image.asset(
-                    'assets/images/highlight-lisbon.png',
-                    fit: BoxFit.fill,
-                    height: screenSize.height * 0.11,
+    return Container(
+      margin: EdgeInsets.only(top: marginTop),
+      child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => WelcomeActivity()),
+                      );
+                    },
+                    enableFeedback: false,
+                    icon: Image.asset(
+                      'assets/images/highlight-lisbon.png',
+                      fit: BoxFit.fill,
+                      height: screenSize.height * 0.11,
+                    ),
                   ),
-                ),
-                MyText(
-                  translation(context).welcome,
-                  style: TextStyle(
-                    fontSize: screenSize.width * 0.04,
+                  MyText(
+                    translation(context).welcome,
+                    style: TextStyle(
+                      fontSize: screenSize.width * 0.04,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    //NotificationService().showNotification(title: 'It works!');
-                  },
-                  enableFeedback: false,
-                  icon: Image.asset(
-                    'assets/images/highlight-world.png',
-                    fit: BoxFit.fill,
-                    height: screenSize.height * 0.11,
+                ],
+              ),
+              Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      //NotificationService().showNotification(title: 'It works!');
+                    },
+                    enableFeedback: false,
+                    icon: Image.asset(
+                      'assets/images/highlight-world.png',
+                      fit: BoxFit.fill,
+                      height: screenSize.height * 0.11,
+                    ),
                   ),
-                ),
-                MyText(
-                  translation(context).information,
-                  style: TextStyle(
-                    fontSize: screenSize.width * 0.04,
+                  MyText(
+                    translation(context).information,
+                    style: TextStyle(
+                      fontSize: screenSize.width * 0.04,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  enableFeedback: false,
-                  icon: Image.asset(
-                    'assets/images/highlight-cross.png',
-                    fit: BoxFit.fill,
-                    height: screenSize.height * 0.11,
+                ],
+              ),
+              Column(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    enableFeedback: false,
+                    icon: Image.asset(
+                      'assets/images/highlight-cross.png',
+                      fit: BoxFit.fill,
+                      height: screenSize.height * 0.11,
+                    ),
                   ),
-                ),
-                MyText(
-                  translation(context).dailyPrayers,
-                  style: TextStyle(
-                    fontSize: screenSize.width * 0.04,
+                  MyText(
+                    translation(context).dailyPrayers,
+                    style: TextStyle(
+                      fontSize: screenSize.width * 0.04,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        );
+                ],
+              ),
+            ],
+          ),
+    );
   }
 
   List<DropdownMenuItem<String>> get dropdownItems{
@@ -511,19 +496,41 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   Widget getFooterButtons()
   {
     Size screenSize = MediaQuery.of(context).size;
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: Wrap(
-        direction: Axis.horizontal,
-        spacing: 20,
-        children: [
-              getFooterButton(screenSize, translation(context).contacts,),
-              getFooterButton(screenSize, translation(context).fatima,),
-              getFooterButton(screenSize, translation(context).faq),
-              getFooterButton(screenSize, translation(context).followUs),
-            ],
-      ),
-    );
+
+    if(screenSize.height > 680)
+    {
+      return Padding(
+        padding: EdgeInsets.all(10),
+        child: Wrap(
+          direction: Axis.horizontal,
+          spacing: 20,
+          children: [
+                getFooterButton(screenSize, translation(context).contacts,),
+                getFooterButton(screenSize, translation(context).fatima,),
+                getFooterButton(screenSize, translation(context).faq),
+                getFooterButton(screenSize, translation(context).followUs),
+              ],
+        ),
+      );
+    }
+    else
+    {
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Wrap(
+            spacing: 5,
+            children: [
+                  getFooterButton(screenSize, translation(context).contacts,),
+                  getFooterButton(screenSize, translation(context).fatima,),
+                  getFooterButton(screenSize, translation(context).faq),
+                  getFooterButton(screenSize, translation(context).followUs),
+                ],
+          ),
+        ),
+      );
+    }
   }
 
   Container getFooterButton(Size screenSize, String content) {

@@ -33,25 +33,23 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
       appBar: AppBar(
         centerTitle: false,
         title: Transform(
-          transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
-          child: GestureDetector(
-            onTap: () => {Navigator.of(context).pop()},
-            child: MyText(
-              translation(context).accommodation.toUpperCase(),
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Color(0xFFf6be18),
-                fontSize: screenSize.width * 0.05,
-              ),
+        transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
+          child: TextButton.icon(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          label: MyText(
+            translation(context).accommodation.toUpperCase(),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: const Color(0xFFf6be18),
+              fontSize: screenSize.width * 0.05,
             ),
           ),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
         ),
         backgroundColor: Color(0xFF028744),
         surfaceTintColor: Color(0xFF028744),
-        leading: BackButton(
-          color: Colors.white,
-          onPressed: () => {Navigator.of(context).pop()},
-        ),
+        automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(

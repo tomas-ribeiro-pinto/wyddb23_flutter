@@ -98,6 +98,10 @@ flutter:
     - assets/images/info.svg
     - assets/images/salesianos_lisboa.jpg
     - assets/images/tape.png
+    - assets/images/reitor-mor.jpg
+    - assets/images/madre-geral.jpg
+    - assets/images/wyd-welcome.png
+    - assets/images/welcome.jpg
     # Content Resources
     - assets/content/wyd_welcome.html
 

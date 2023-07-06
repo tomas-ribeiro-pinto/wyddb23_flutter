@@ -180,7 +180,8 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           fontFamily: 'Rubik',
           colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xFF028744),
+            //seedColor: const Color(0xFF028744),
+            seedColor: Colors.black.withOpacity(0.8),
           ),
           useMaterial3: true,
         ),

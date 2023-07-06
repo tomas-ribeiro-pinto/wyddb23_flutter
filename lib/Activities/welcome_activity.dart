@@ -2,12 +2,14 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../Components/my_text.dart';
+import '../Components/rounded_card.dart';
 
 class WelcomeActivity extends StatefulWidget {
   const WelcomeActivity({Key? key}) : super(key: key);
@@ -41,36 +43,67 @@ Future<String> loadAsset() async {
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: false,
-        title: Transform(
-          transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
-          child: GestureDetector(
-            onTap: () => {Navigator.of(context).pop()},
-            child: MyText(
-              translation(context).home.toUpperCase(),
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Color(0xFF028744),
-                fontSize: screenSize.width * 0.05,
+      bottomNavigationBar: Components.NavigationBar(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: screenSize.height * 0.4,
+                  width: screenSize.width,
+                  child: Image.asset(
+                    "assets/images/welcome.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: screenSize.height * 0.055, horizontal: screenSize.height * 0.01),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                      color: Colors.black.withOpacity(0.6),
+                      spreadRadius: 1,
+                      blurRadius: 2,
+                      offset: const Offset(-2, 2), // changes position of shadow
+                    ),
+                    ]
+                  ),
+                  child: TextButton.icon(
+                    icon: const Icon(Icons.arrow_back, color: Colors.black),
+                    label: MyText(
+                      translation(context).home.toUpperCase(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: screenSize.width * 0.05,
+                      ),
+                    ),
+                    onPressed: () => {Navigator.of(context).pop()},
+                    style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll<Color>(Color(0xFF028744)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
+              alignment: Alignment.topLeft,
+              child: MyText(
+                translation(context).welcomeParagraph,
+                style: TextStyle(
+                  fontSize: screenSize.width * 0.06,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
+            getEntryContent(),
+          ],
         ),
-        backgroundColor: Color(0xFFf6be18),
-        surfaceTintColor: Color(0xFFf6be18),
-        leading: BackButton(
-          color: Colors.black,
-          onPressed: () => {Navigator.of(context).pop()},
-        ),
-      ),
-      bottomNavigationBar: Components.NavigationBar(),
-      body: Header(
-        title: translation(context).welcome,
-        titleColor: Colors.black,
-        color: Color(0xFFf6be18),
-        content: getEntryContent(),
-        hasBanner: false,
       ),
     );
   }
@@ -81,22 +114,19 @@ Future<String> loadAsset() async {
 
     return Container(
       color: Colors.white,
-      child: Padding(
+      child: const Padding(
         padding: EdgeInsets.all(20), 
         child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Html(
-                  data: htmlData,
-                ),
-                Container(
-                  height: 150,
-                  color: Colors.transparent,
-                ),
-              ],
-            ),
-      ),
+          scrollDirection: Axis.horizontal,
+          child: Wrap(
+            spacing: 10,
+            children: [
+              roundedCard(imageUrl: "assets/images/reitor-mor.jpg"),
+              roundedCard(imageUrl: "assets/images/madre-geral.jpg"),
+              roundedCard(imageUrl: "assets/images/wyd-welcome.png"),
+            ],
+          ),
+        ),
       ),
     );
   }

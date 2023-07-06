@@ -31,25 +31,23 @@ class _VisitEntryState extends State<VisitEntry> {
       appBar: AppBar(
         centerTitle: false,
         title: Transform(
-          transform:  Matrix4.translationValues(-30.0, 0.0, 0.0),
-          child: GestureDetector(
-            onTap: () => {Navigator.of(context).pop()},
-            child: MyText(
-              translation(context).visit.toUpperCase(),
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Color(0xFFd53f28),
-                fontSize: screenSize.width * 0.05,
-              ),
+        transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
+          child: TextButton.icon(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          label: MyText(
+            translation(context).visit.toUpperCase(),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Color(0xFFd53f28),
+              fontSize: screenSize.width * 0.05,
             ),
           ),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
         ),
         backgroundColor: Color(0xFFf6be18),
         surfaceTintColor: Color(0xFFf6be18),
-        leading: BackButton(
-          color: Colors.black,
-          onPressed: () => {Navigator.of(context).pop()},
-        ),
+        automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(

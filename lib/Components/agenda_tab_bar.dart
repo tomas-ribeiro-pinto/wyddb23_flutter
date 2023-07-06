@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
 
-import '../APIs/WydAPI/Models/day_model.dart';
+import '../APIs/WydAPI/Models/agenda_model.dart';
 import 'my_text.dart';
 
 class AgendaTabBar extends StatefulWidget {

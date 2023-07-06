@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../APIs/WydAPI/Models/day_model.dart';
+import '../APIs/WydAPI/Models/agenda_model.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:intl/intl.dart';
 

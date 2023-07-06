@@ -4,7 +4,7 @@ import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Activities/agenda_entry.dart';
 
-import '../APIs/WydAPI/Models/day_model.dart';
+import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../language_constants.dart';
 import 'my_text.dart';
 

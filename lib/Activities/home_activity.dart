@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/accommodation_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/visit_page.dart';
-import 'package:wyddb23_flutter/NavigationRoutes/sym_day.dart';
-import 'package:wyddb23_flutter/NavigationRoutes/agenda.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/sym_day_page.dart';
+import 'package:wyddb23_flutter/NavigationRoutes/agenda_page.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 
@@ -39,8 +39,8 @@ class _HomeActivityState extends State<HomeActivity> {
     const HomePage(),
     const AccommodationPage(),
     const VisitPage(),
-    const SymDay(),
-    const Agenda(),
+    const SymDayPage(),
+    const AgendaPage(),
   ];
 
   @override

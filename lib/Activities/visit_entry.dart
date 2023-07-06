@@ -6,7 +6,7 @@ import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
-import '../APIs/WydAPI/Models/visit_model';
+import '../APIs/WydAPI/Models/visit_model.dart';
 import '../Components/my_text.dart';
 
 class VisitEntry extends StatefulWidget {
@@ -87,7 +87,7 @@ class _VisitEntryState extends State<VisitEntry> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 170,
+                      height: screenSize.height * 0.2,
                       width: screenSize.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -104,38 +104,35 @@ class _VisitEntryState extends State<VisitEntry> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              MyText(
-                                widget.visit.addressLine1,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontFamily: "Barlow",
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontSize: screenSize.height * 0.02,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  MyText(
+                                    widget.visit.addressLine1,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontFamily: "Barlow",
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black,
+                                      fontSize: screenSize.height * 0.02,
+                                    ),
+                                  ),
+                                  MyText(
+                                    widget.visit.addressLine2,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontFamily: "Barlow",
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black,
+                                      fontSize: screenSize.height * 0.02,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              MyText(
-                                widget.visit.addressLine2,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontFamily: "Barlow",
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontSize: screenSize.height * 0.02,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 10, right:10),
-                              alignment: Alignment.center,
+                              Container(
                               child: IconButton(
                                 icon: HeroIcon(HeroIcons.mapPin, color: Colors.white),
                                 style: ButtonStyle(
@@ -147,7 +144,8 @@ class _VisitEntryState extends State<VisitEntry> {
                                 onPressed: () => MapsLauncher.launchQuery(widget.visit.addressLine1 +  ' ' + widget.visit.addressLine2),
                               ),
                             ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),

@@ -5,7 +5,7 @@ import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
-import '../APIs/WydAPI/Models/day_model.dart';
+import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../Components/my_text.dart';
 
 class AgendaEntry extends StatefulWidget {

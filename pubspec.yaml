@@ -58,6 +58,7 @@ dependencies:
   path_provider: ^2.0.15
   connectivity_plus: ^4.0.1
   vector_math: any
+  flutter_html: ^3.0.0-alpha.6
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +98,8 @@ flutter:
     - assets/images/info.svg
     - assets/images/salesianos_lisboa.jpg
     - assets/images/tape.png
+    # Content Resources
+    - assets/content/wyd_welcome.html
 
   fonts:
   - family: Rubik

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:wyddb23_flutter/APIs/WydAPI/Models/visit_model';
 
 import '../APIs/WydAPI/Models/visit_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
@@ -27,7 +26,7 @@ class _VisitPageState extends State<VisitPage> {
   }
 
   void _getVisit() async {
-    _visitModel = (await ApiCacheHelper.getVisit()).cast<Visit>();
+    _visitModel = (await ApiCacheHelper.getVisit());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -59,35 +58,6 @@ class _VisitPageState extends State<VisitPage> {
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
                             fontSize: screenSize.height * 0.04,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.02, vertical: 18),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10),
-                        alignment: Alignment.topRight,
-                          child: TextButton(
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
-                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                              return Color(0xFFd53f28);
-                            }),
-                          ),
-                          onPressed: () {}, 
-                          child: Container(
-                            width: screenSize.width * 0.5,
-                            alignment: Alignment.center,
-                            child: MyText(
-                            translation(context).seeMap.toUpperCase(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: screenSize.height * 0.02,
-                              ),
-                            ),
                           ),
                         ),
                       ),

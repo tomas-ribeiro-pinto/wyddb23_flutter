@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
-import '../Activities/accommodation_location.dart';
+import '../Activities/accommodation_activity.dart';
 import '../Components/my_text.dart';
 import '../language_constants.dart';
 import 'package:flutter/services.dart';
@@ -99,7 +99,7 @@ class AccommodationPage extends StatelessWidget {
               onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AccommodationLocation(location: location)),
+                  MaterialPageRoute(builder: (context) => AccommodationActivity(location: location)),
                 );
               }, 
               child: Container(

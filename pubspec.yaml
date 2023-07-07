@@ -58,7 +58,8 @@ dependencies:
   path_provider: ^2.0.15
   connectivity_plus: ^4.0.1
   vector_math: any
-  flutter_html: ^3.0.0-alpha.6
+  flutter_html: ^3.0.0-beta.2
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -102,8 +103,14 @@ flutter:
     - assets/images/madre-geral.jpg
     - assets/images/wyd-welcome.png
     - assets/images/welcome.jpg
+    - assets/images/information.jpg
+    - assets/images/health.jpg
+    - assets/images/transport.jpg
+
     # Content Resources
     - assets/content/wyd_welcome.html
+    - assets/content/health_advice.html
+    - assets/content/transports.html
 
   fonts:
   - family: Rubik

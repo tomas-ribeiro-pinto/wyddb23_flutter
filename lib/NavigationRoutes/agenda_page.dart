@@ -8,6 +8,7 @@ import 'package:wyddb23_flutter/Components/check_connection.dart';
 import '../APIs/WydAPI/api_service.dart';
 import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
 
@@ -41,7 +42,7 @@ class _AgendaPageState extends State<AgendaPage> {
       children: [
         Container(
           height: 100,
-          color: Color(0xFFd53f28),
+          color: WydColors.red,
         ),
         SafeArea(
             child: SingleChildScrollView(
@@ -56,7 +57,7 @@ class _AgendaPageState extends State<AgendaPage> {
                         Container(
                               width: screenSize.width,
                               decoration: BoxDecoration(
-                                color: Color(0xFFd53f28),
+                                color: WydColors.red,
                               ),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
@@ -106,14 +107,14 @@ class _AgendaPageState extends State<AgendaPage> {
                     translation(context).loading + '...',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF028744),
+                      color: WydColors.green,
                       fontSize: 20
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     child: CircularProgressIndicator( //Adds a Loading Indicator
-                      color: Color(0xFFf6be18),
+                      color: WydColors.yellow,
                     ),
                   ),
                 ],
@@ -129,7 +130,7 @@ class _AgendaPageState extends State<AgendaPage> {
         height: screenSize.height * 0.05,
         width: screenSize.width,
         decoration: BoxDecoration(
-          color: Color(0xFFd53f28),
+          color: WydColors.red,
         ),
       );
   }

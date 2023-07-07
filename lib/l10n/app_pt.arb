@@ -23,7 +23,14 @@
   "loading": "A Carregar",
   "visit": "Visita",
   "noRecords": "Sem Registos Encontrados",
-  "welcomeParagraph": "Bem-Vindo ao WYD Don Bosco 23!",
+  "welcomeTitle": "Bem-Vindo ao WYD Don Bosco 23!",
+  "welcomeMessage": "Mensagens de boas-vindas",
   "accommodationParagraph": "Horário de funcionamento dos centros de acolhimento:\nAbertura de Quartos 20:00 - 10:00\nTempo de Silêncio: 0:00 - 7:00\nPequeno almoço: 7:30 - 9:00",
-  "visitParagraph": "Queres conhecer a cidade de Lisboa? Aceita as nossas sugestões e desfruta da bela cidade de Lisboa, com as suas sete colinas e os seus monumentos. Descobre os seus miradouros e deixa-te levar pela simpatia de todos os lisboetas!\nBem-Vindo!"
+  "visitParagraph": "Queres conhecer a cidade de Lisboa? Aceita as nossas sugestões e desfruta da bela cidade de Lisboa, com as suas sete colinas e os seus monumentos. Descobre os seus miradouros e deixa-te levar pela simpatia de todos os lisboetas!\nBem-Vindo!",
+  "rectorMessage": "Mensagem do Reitor-Mor",
+  "motherMessage": "Mensagem da Madre Geral",
+  "wydMessage": "Mensagem da coordenação WYD DB23",
+  "wydMessageTitle": "Mensagem WYD DB23",
+  "transport": "Transportes",
+  "health": "Dicas Saúde"
 }

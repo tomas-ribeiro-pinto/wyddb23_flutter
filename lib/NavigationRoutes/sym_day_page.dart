@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 
 
@@ -14,7 +15,7 @@ class SymDayPage extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
     
     return Container(
-      color:Color(0xFF028744),
+      color:WydColors.green,
       child: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
@@ -27,7 +28,7 @@ class SymDayPage extends StatelessWidget {
                 header: Stack(
                   children: [
                     Container(
-                      color: Color(0xFF028744),
+                      color: WydColors.green,
                       width: screenSize.width,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
@@ -50,7 +51,7 @@ class SymDayPage extends StatelessWidget {
                             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
                             backgroundColor: MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
-                              return Color(0xFFd53f28);
+                              return WydColors.red;
                             }),
                           ),
                           onPressed: () {}, 
@@ -108,10 +109,9 @@ class SymDayPage extends StatelessWidget {
                     getGridButton(screenSize, translation(context).emergency),
                   ],
                 ),
-                              Container(
-                  height: 150,
-                  color: Colors.transparent,
-                              ),
+                Container(
+                  height: screenSize.height * 0.17,
+                )
                   ],
                               ),
                 )

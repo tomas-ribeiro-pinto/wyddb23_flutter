@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../APIs/WydAPI/Models/accommodation_model.dart';
 import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 
 class AccommodationEntry extends StatefulWidget {
   const AccommodationEntry({Key? key, required this.accommodation}) : super(key: key);
@@ -40,22 +41,22 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
             translation(context).accommodation.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: const Color(0xFFf6be18),
+              color: WydColors.yellow,
               fontSize: screenSize.width * 0.05,
             ),
           ),
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: Color(0xFF028744),
-        surfaceTintColor: Color(0xFF028744),
+        backgroundColor: WydColors.green,
+        surfaceTintColor: WydColors.green,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.accommodation.location.toUpperCase(),
         titleColor: Colors.white,
-        color: Color(0xFF028744),
+        color: WydColors.green,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -84,7 +85,7 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                   widget.accommodation.name,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF028744),
+                    color: WydColors.green,
                     fontSize: screenSize.width * 0.08 
                   ),
                   ),
@@ -99,7 +100,7 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                             HeroIcon(
                               HeroIcons.mapPin,
                               style: HeroIconStyle.solid,
-                              color: Color(0xFFd53f28),
+                              color: WydColors.red,
                               size: 23,
                             ),
                             Padding(
@@ -135,7 +136,7 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                               HeroIcon(
                                 HeroIcons.phone,
                                 style: HeroIconStyle.solid,
-                                color: Color(0xFFd53f28),
+                                color: WydColors.red,
                                 size: 23,
                               ),
                               Padding(
@@ -162,10 +163,9 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                   getEntryDescription()
                 ],
               ),
-            Container(
-              height: 150,
-              color: Colors.transparent,
-            ),
+              Container(
+                height: screenSize.height * 0.17,
+              )
             ],
           ),
         ),
@@ -193,7 +193,7 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
-                        return Color(0xFFd53f28);
+                        return WydColors.red;
                       }),
                     ),
                     onPressed: () => MapsLauncher.launchQuery(widget.accommodation.addressLine1 + ' ' + widget.accommodation.addressLine2),
@@ -215,7 +215,7 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
-                        return Color(0xFF028744);
+                        return WydColors.green;
                       }),
                     ),
                     onPressed: () {

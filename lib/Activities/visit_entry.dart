@@ -8,6 +8,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 
 import '../APIs/WydAPI/Models/visit_model.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 
 class VisitEntry extends StatefulWidget {
   const VisitEntry({Key? key, required this.visit}) : super(key: key);
@@ -38,22 +39,22 @@ class _VisitEntryState extends State<VisitEntry> {
             translation(context).visit.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: Color(0xFFd53f28),
+              color: WydColors.red,
               fontSize: screenSize.width * 0.05,
             ),
           ),
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: Color(0xFFf6be18),
-        surfaceTintColor: Color(0xFFf6be18),
+        backgroundColor: WydColors.yellow,
+        surfaceTintColor: WydColors.yellow,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.visit.name,
         titleColor: Colors.black,
-        color: Color(0xFFf6be18),
+        color: WydColors.yellow,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -79,7 +80,7 @@ class _VisitEntryState extends State<VisitEntry> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.0),
-                    color: Color(0xFFf6be18),
+                    color: WydColors.yellow,
                   ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,7 +137,7 @@ class _VisitEntryState extends State<VisitEntry> {
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                                       (Set<MaterialState> states) {
-                                    return Color(0xFFd53f28);
+                                    return WydColors.red;
                                   }),
                                 ),
                                 onPressed: () => MapsLauncher.launchQuery(widget.visit.addressLine1 +  ' ' + widget.visit.addressLine2),
@@ -153,9 +154,8 @@ class _VisitEntryState extends State<VisitEntry> {
             ),        
             getEntryDescription(),
             Container(
-              height: 150,
-              color: Colors.transparent,
-            ),
+              height: screenSize.height * 0.17,
+            )
            ],
           ),
         ),

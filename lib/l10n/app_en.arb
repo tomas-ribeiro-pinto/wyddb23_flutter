@@ -23,7 +23,14 @@
     "loading": "Loading",
     "visit": "Visit",
     "noRecords": "No Records Found",
-    "welcomeParagraph": "Welcome to WYD Don Bosco 23!",
+    "welcomeTitle": "Welcome to WYD Don Bosco 23!",
+    "welcomeMessage": "Welcome Messages",
     "accommodationParagraph": "Accommodation centres opening hours:\nOpening of Rooms: 8pm - 10am\nQuiet Time: 12pm - 7am\nBreakfast: 7:30am - 9am",
-    "visitParagraph": "Do you want to get to know the city of Lisbon? Read our suggestions and enjoy the beauty of Lisbon with its seven hills and its monuments. Discover its sights and let yourself be carried away by the friendliness of all Lisboners!\nWelcome!"
+    "visitParagraph": "Do you want to get to know the city of Lisbon? Read our suggestions and enjoy the beauty of Lisbon with its seven hills and its monuments. Discover its sights and let yourself be carried away by the friendliness of all Lisboners!\nWelcome!",
+    "rectorMessage": "Rector Major's message",
+    "motherMessage": "Mother General's message",
+    "wydMessage": "WYD DB23 coordination team's message",
+    "wydMessageTitle": "WYD DB23 message",
+    "transport": "Transports",
+    "health": "Health Advice"
   }

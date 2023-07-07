@@ -10,6 +10,7 @@ import '../APIs/WydAPI/Models/accommodation_model.dart';
 import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 import 'accommodation_entry.dart';
 
 class AccommodationActivity extends StatefulWidget {
@@ -56,22 +57,22 @@ class _AccommodationActivityState extends State<AccommodationActivity> {
             translation(context).accommodation.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: const Color(0xFFf6be18),
+              color: WydColors.yellow,
               fontSize: screenSize.width * 0.05,
             ),
           ),
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: Color(0xFF028744),
-        surfaceTintColor: Color(0xFF028744),
+        backgroundColor: WydColors.green,
+        surfaceTintColor: WydColors.green,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.location.toUpperCase(),
         titleColor: Colors.white,
-        color: Color(0xFF028744),
+        color: WydColors.green,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -124,7 +125,7 @@ class _AccommodationActivityState extends State<AccommodationActivity> {
                             translation(context).noRecords,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF028744),
+                              color: WydColors.green,
                               fontSize: screenSize.width * 0.05
                             ),
                           ),
@@ -144,27 +145,26 @@ class _AccommodationActivityState extends State<AccommodationActivity> {
                         translation(context).loading + '...',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF028744),
+                          color: WydColors.green,
                           fontSize: 20
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         child: CircularProgressIndicator( //Adds a Loading Indicator
-                          color: Color(0xFFf6be18),
+                          color: WydColors.yellow,
                         ),
                       ),
                     ],
                   ),
                 ),
-              }
+              },
             ],
           ),
         ),
         Container(
-          height: 150,
-          color: Colors.transparent,
-        ),
+          height: screenSize.height * 0.17,
+        )
         ],
       ),
     );
@@ -183,7 +183,7 @@ class _AccommodationActivityState extends State<AccommodationActivity> {
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 0)),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
-              return Color(0xFF028744);
+              return WydColors.green;
             }),
           ),
           onPressed: () {

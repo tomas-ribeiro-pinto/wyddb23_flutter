@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../Activities/accommodation_activity.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 import 'package:flutter/services.dart';
 
@@ -13,7 +14,7 @@ class AccommodationPage extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-      color:Color(0xFF028744),
+      color:WydColors.green,
       child: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
@@ -26,7 +27,7 @@ class AccommodationPage extends StatelessWidget {
                 header: Stack(
                   children: [
                     Container(
-                      color: Color(0xFF028744),
+                      color: WydColors.green,
                       width: screenSize.width,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
@@ -69,9 +70,8 @@ class AccommodationPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 150,
-                      color: Colors.transparent,
-                    ),
+                      height: screenSize.height * 0.17,
+                    )
                   ],
                               ),
                 ),
@@ -91,7 +91,7 @@ class AccommodationPage extends StatelessWidget {
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
                 backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                  return Color(0xFF028744);
+                  return WydColors.green;
                 }),
               ),
               onPressed: () {

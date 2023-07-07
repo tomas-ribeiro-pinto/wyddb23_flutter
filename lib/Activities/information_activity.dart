@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:hive/hive.dart';
+import 'package:wyddb23_flutter/Activities/information_health.dart';
 import 'package:wyddb23_flutter/Components/carousel.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
@@ -13,15 +14,16 @@ import 'package:flutter_html/flutter_html.dart';
 
 import '../Components/my_text.dart';
 import '../Components/rounded_card.dart';
+import 'information_transport.dart';
 
-class WelcomeActivity extends StatefulWidget {
-  const WelcomeActivity({Key? key}) : super(key: key);
+class InformationActivity extends StatefulWidget {
+  const InformationActivity({Key? key}) : super(key: key);
 
   @override
-  State<WelcomeActivity> createState() => _WelcomeActivityState();
+  State<InformationActivity> createState() => _InformationActivityState();
 }
 
-class _WelcomeActivityState extends State<WelcomeActivity> {
+class _InformationActivityState extends State<InformationActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
 
   @override
@@ -40,10 +42,10 @@ class _WelcomeActivityState extends State<WelcomeActivity> {
             child: Column(
               children: [
                 Container(
-                  height: screenSize.height * 0.4,
+                  height: screenSize.height * 0.3,
                   width: screenSize.width,
                   child: Image.asset(
-                    "assets/images/welcome.jpg",
+                    "assets/images/information.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -79,7 +81,7 @@ class _WelcomeActivityState extends State<WelcomeActivity> {
               ),
               onPressed: () => {Navigator.of(context).pop()},
               style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(WydColors.green),
+                backgroundColor: MaterialStatePropertyAll<Color>(WydColors.red),
               ),
             ),
           ),
@@ -98,33 +100,48 @@ class _WelcomeActivityState extends State<WelcomeActivity> {
           padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
           alignment: Alignment.topLeft,
           child: MyText(
-            translation(context).welcomeTitle,
+            translation(context).information,
             style: TextStyle(
-              fontSize: screenSize.width * 0.06,
+              fontSize: screenSize.width * 0.08,
               fontWeight: FontWeight.w500,
               color: WydColors.green,
             ),
           ),
         ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07),
-          alignment: Alignment.topLeft,
-          child: MyText(
-            translation(context).welcomeMessage + " 👇🏻",
-            style: TextStyle(
-              fontSize: screenSize.width * 0.05,
-              fontWeight: FontWeight.w500,
-              color: WydColors.red,
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: [
+            GestureDetector(
+              child: roundedCard(
+                imageUrl: "assets/images/health.jpg",
+                title: translation(context).health,
+              ),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InformationHealth()),
+                )
+              },
             ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: screenSize.width * 0.04),
-          color: Colors.white,
-          height: screenSize.width * 0.55,
-          width: screenSize.width * 0.95,
-          child: WelcomeCarousel(),
-        ),
+            GestureDetector(
+              child: roundedCard(
+                imageUrl: "assets/images/transport.jpg",
+                title: translation(context).transport,
+              ),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InformationTransport()),
+                )
+              },
+            ),
+            roundedCard(
+              imageUrl: "assets/images/wyd-welcome.png",
+              title: "",
+            ),
+          ],
+        )
       ],
     );
   }

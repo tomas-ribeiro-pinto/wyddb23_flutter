@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:wyddb23_flutter/Components/my_text.dart';
 
 class roundedCard extends StatelessWidget {
   const roundedCard({
     super.key,
-    required this.imageUrl
+    required this.imageUrl,
+    required this.title
   });
 
   final String imageUrl;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +20,40 @@ class roundedCard extends StatelessWidget {
       width: screenSize.width * 0.45,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          imageUrl,
-          fit: BoxFit.cover
+        child: Stack(
+          children: [
+            Positioned(
+              height: screenSize.width * 0.45,
+              width: screenSize.width * 0.45,
+              child: Image.asset(
+                imageUrl,
+                fit: BoxFit.cover
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Colors.black.withOpacity(0.8), Colors.black.withOpacity(0.0)]
+                )
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: screenSize.width * 0.04),
+              alignment: Alignment.bottomCenter,
+              child: MyText(
+                title,
+                style: TextStyle(
+                  letterSpacing: -0.1,
+                  height: 1.2,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: screenSize.width * 0.045,
+                ),
+              ),
+            )
+          ],
         ),
       )
     );

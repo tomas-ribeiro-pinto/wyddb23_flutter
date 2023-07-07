@@ -2,6 +2,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
@@ -10,14 +11,14 @@ import 'package:flutter_html/flutter_html.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 
-class WelcomeEntry extends StatefulWidget {
-  const WelcomeEntry({Key? key}) : super(key: key);
+class InformationHealth extends StatefulWidget {
+  const InformationHealth({Key? key}) : super(key: key);
 
   @override
-  State<WelcomeEntry> createState() => _WelcomeEntryState();
+  State<InformationHealth> createState() => _InformationHealthState();
 }
 
-class _WelcomeEntryState extends State<WelcomeEntry> {
+class _InformationHealthState extends State<InformationHealth> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   String htmlData = "";
 
@@ -32,7 +33,7 @@ class _WelcomeEntryState extends State<WelcomeEntry> {
   }
 
 Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/wyd_welcome.html');
+  return await rootBundle.loadString('assets/content/health_advice.html');
 }
 
   @override
@@ -49,7 +50,7 @@ Future<String> loadAsset() async {
           child: TextButton.icon(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
-            translation(context).welcome.toUpperCase(),
+            translation(context).information.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: WydColors.yellow,
@@ -59,15 +60,15 @@ Future<String> loadAsset() async {
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: WydColors.green,
-        surfaceTintColor: WydColors.green,
+        backgroundColor: WydColors.red,
+        surfaceTintColor: WydColors.red,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
-        title: translation(context).wydMessageTitle,
+        title: translation(context).health,
         titleColor: Colors.white,
-        color: WydColors.green,
+        color: WydColors.red,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -99,5 +100,4 @@ Future<String> loadAsset() async {
       ),
     );
   }
-
 }

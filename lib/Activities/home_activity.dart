@@ -8,6 +8,8 @@ import 'package:wyddb23_flutter/NavigationRoutes/agenda_page.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 
+import '../Components/wyd_resources.dart';
+
 
 class HomeActivity extends StatefulWidget {
   const HomeActivity({Key? key, required this.pageIndex}) : super(key: key);
@@ -62,7 +64,7 @@ class _HomeActivityState extends State<HomeActivity> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFF028744),
+        color: WydColors.green,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -81,8 +83,8 @@ class _HomeActivityState extends State<HomeActivity> {
         child: SizedBox(
           height: screenSize.width * 0.16,
           child: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF028744),
+            decoration: BoxDecoration(
+              color: WydColors.green,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),

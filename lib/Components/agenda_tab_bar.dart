@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/agenda_list.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
 import '../APIs/WydAPI/Models/agenda_model.dart';
 import 'my_text.dart';
@@ -39,9 +40,9 @@ class _AgendaTabBarState extends State<AgendaTabBar> with TickerProviderStateMix
                     dividerColor: Colors.transparent,
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Color(0xFF028744),
+                      color: WydColors.green,
                     ),
-                    unselectedLabelColor: Color(0xFF028744),
+                    unselectedLabelColor: WydColors.green,
                     labelStyle: TextStyle(
                         fontFamily: "Rubik",
                         fontWeight: FontWeight.w600,
@@ -78,9 +79,8 @@ class _AgendaTabBarState extends State<AgendaTabBar> with TickerProviderStateMix
                               children: [
                                 AgendaList(selectedIndex: i, day: widget.agendaModel![i]),
                                 Container(
-                                  height: screenSize.width * 0.3,
-                                  color: Colors.transparent,
-                                ),
+                                  height: screenSize.height * 0.17,
+                                )
                               ],
                             ),
                           ),
@@ -101,7 +101,7 @@ class _AgendaTabBarState extends State<AgendaTabBar> with TickerProviderStateMix
       alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(
-              color: Color(0xFF028744),
+              color: WydColors.green,
               width: 3,
               style: BorderStyle.solid
           ), 

@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
+import 'package:wyddb23_flutter/Activities/information_activity.dart';
 import 'package:wyddb23_flutter/Activities/welcome_activity.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
@@ -15,6 +16,7 @@ import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -198,7 +200,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                       child: Container(
                                         height: screenSize.width * 0.515,
                                         width: screenSize.width * 0.73,
-                                        color: const Color(0xFFd53f28),
+                                        color: WydColors.red,
                                         child: Image(
                                           image: CachedNetworkImageProvider(ApiConstants.baseUrl + image!),
                                           fit: BoxFit.cover,
@@ -253,7 +255,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                   ],
                                 )
                                 : Container(
-                                  color: const Color(0xFFd53f28),
+                                  color: WydColors.red,
                                   child: Center(
                                     child: Container(
                                       height: 40,
@@ -355,9 +357,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             getHighlightButtons(context),
             getFooterButtons(),
             Container(
-              height: 100,
-              color: Colors.transparent,
-            ),
+              height: screenSize.height * 0.1,
+            )
           ],
         ),
       ),
@@ -415,6 +416,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   IconButton(
                     onPressed: () {
                       //NotificationService().showNotification(title: 'It works!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => InformationActivity()),
+                      );
                     },
                     enableFeedback: false,
                     icon: Image.asset(
@@ -499,11 +504,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
     if(screenSize.height > 680)
     {
-      return Padding(
-        padding: EdgeInsets.all(10),
+      return Container(
+        margin: EdgeInsets.only(top: 20),
         child: Wrap(
           direction: Axis.horizontal,
           spacing: 20,
+          runSpacing: 10,
           children: [
                 getFooterButton(screenSize, translation(context).contacts,),
                 getFooterButton(screenSize, translation(context).fatima,),
@@ -516,7 +522,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     else
     {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Wrap(
@@ -535,7 +541,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   Container getFooterButton(Size screenSize, String content) {
     return Container(
-          margin: EdgeInsets.only(top:15),
           child: TextButton(
             style: ButtonStyle(
               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
@@ -543,7 +548,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed))
                   return Colors.green;
-                return Color(0xFF028744);
+                return WydColors.green;
               }),
             ),
             onPressed: () {}, 

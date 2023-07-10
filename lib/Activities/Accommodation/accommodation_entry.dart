@@ -7,10 +7,10 @@ import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../APIs/WydAPI/Models/accommodation_model.dart';
-import '../APIs/WydAPI/Models/agenda_model.dart';
-import '../Components/my_text.dart';
-import '../Components/wyd_resources.dart';
+import '../../APIs/WydAPI/Models/accommodation_model.dart';
+import '../../APIs/WydAPI/Models/agenda_model.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 
 class AccommodationEntry extends StatefulWidget {
   const AccommodationEntry({Key? key, required this.accommodation}) : super(key: key);

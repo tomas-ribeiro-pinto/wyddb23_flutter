@@ -7,17 +7,17 @@ import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-import '../Components/my_text.dart';
-import '../Components/wyd_resources.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 
-class WelcomeEntry extends StatefulWidget {
-  const WelcomeEntry({Key? key}) : super(key: key);
+class WelcomeWyd extends StatefulWidget {
+  const WelcomeWyd({Key? key}) : super(key: key);
 
   @override
-  State<WelcomeEntry> createState() => _WelcomeEntryState();
+  State<WelcomeWyd> createState() => _WelcomeWydState();
 }
 
-class _WelcomeEntryState extends State<WelcomeEntry> {
+class _WelcomeWydState extends State<WelcomeWyd> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   String htmlData = "";
 

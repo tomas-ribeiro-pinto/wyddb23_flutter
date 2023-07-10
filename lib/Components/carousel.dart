@@ -1,8 +1,11 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:wyddb23_flutter/Activities/welcome_entry.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_rector.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_wyd.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
+
+import '../Activities/Welcome/welcome_mother.dart';
 
 class WelcomeCarousel extends StatefulWidget {
   @override
@@ -123,12 +126,23 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
                 )),
           ),
           onTap: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => WelcomeEntry()),
-            )
+            getMessage(item, imgList)
           },
         ),
       );
+  }
+
+  void getMessage(String item, List<String> imgList)
+  {
+    Map<int, dynamic> messages = {
+      0: WelcomeRector(),
+      1: WelcomeMother(),
+      2: WelcomeWyd(),
+    };
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => messages[imgList.indexOf(item)]),
+    );
   }
 }

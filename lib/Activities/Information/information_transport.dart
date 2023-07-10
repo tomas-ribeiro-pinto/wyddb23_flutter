@@ -8,17 +8,17 @@ import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-import '../Components/my_text.dart';
-import '../Components/wyd_resources.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 
-class InformationHealth extends StatefulWidget {
-  const InformationHealth({Key? key}) : super(key: key);
+class InformationTransport extends StatefulWidget {
+  const InformationTransport({Key? key}) : super(key: key);
 
   @override
-  State<InformationHealth> createState() => _InformationHealthState();
+  State<InformationTransport> createState() => _InformationTransportState();
 }
 
-class _InformationHealthState extends State<InformationHealth> {
+class _InformationTransportState extends State<InformationTransport> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   String htmlData = "";
 
@@ -33,7 +33,7 @@ class _InformationHealthState extends State<InformationHealth> {
   }
 
 Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/health_advice.html');
+  return await rootBundle.loadString('assets/content/transports.html');
 }
 
   @override
@@ -66,7 +66,7 @@ Future<String> loadAsset() async {
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
-        title: translation(context).health,
+        title: translation(context).transport,
         titleColor: Colors.white,
         color: WydColors.red,
         content: getEntryContent(),
@@ -90,6 +90,9 @@ Future<String> loadAsset() async {
                 Html(
                   data: htmlData,
                   style: WydResources.htmlStyle(context),
+                  onLinkTap:(url, attributes, element) {
+                    launchUrl(Uri.parse(url!), mode: LaunchMode.externalApplication);
+                  },
                 ),
               Container(
                 height: screenSize.height * 0.17,

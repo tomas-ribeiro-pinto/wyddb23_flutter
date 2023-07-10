@@ -22,6 +22,15 @@ class WydResources{
               '.red': Style(color: WydColors.red),
               '.green': Style(color: WydColors.green),
               '.yellow': Style(color: WydColors.yellow),
+              '.center': Style(textAlign: TextAlign.center),
+              '.bold': Style(fontWeight: FontWeight.bold),
+              '.red-label': Style(
+                                fontWeight: FontWeight.bold, 
+                                color: Colors.white, 
+                                fontSize: FontSize(screenSize.width * 0.045),
+                                backgroundColor: WydColors.red,
+                                padding: HtmlPaddings.all(15),
+                                border: Border(bottom: BorderSide(color: WydColors.green, width: 3)),),
             };
                     
   }

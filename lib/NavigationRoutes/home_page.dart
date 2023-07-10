@@ -5,8 +5,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
-import 'package:wyddb23_flutter/Activities/information_activity.dart';
-import 'package:wyddb23_flutter/Activities/welcome_activity.dart';
+import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
@@ -460,16 +460,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     );
   }
 
-  List<DropdownMenuItem<String>> get dropdownItems{
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: MyText("EN", style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Colors.white,)),value: "en"),
-      DropdownMenuItem(child: MyText("PT", style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Colors.white,)),value: "pt"),
-    ];
-    return menuItems;
-  }
-
   Widget getLanguagePopUp()
   {
     Size screenSize = MediaQuery.of(context).size;
@@ -492,6 +482,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             child: MyText("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
             value: "pt"
           ),
+          PopupMenuItem(
+            child: MyText("ES 🇪🇸", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "es"
+          ),
+          PopupMenuItem(
+            child: MyText("IT 🇮🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "it"
+          ),
         ];
       },
       icon: Icon(Icons.language, color: Colors.white,),
@@ -505,17 +503,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     if(screenSize.height > 680)
     {
       return Container(
+        width: screenSize.width * 0.7,
         margin: EdgeInsets.only(top: 20),
-        child: Wrap(
-          direction: Axis.horizontal,
-          spacing: 20,
-          runSpacing: 10,
-          children: [
-                getFooterButton(screenSize, translation(context).contacts,),
-                getFooterButton(screenSize, translation(context).fatima,),
-                getFooterButton(screenSize, translation(context).faq),
-                getFooterButton(screenSize, translation(context).followUs),
-              ],
+        child: Center(
+          child: Wrap(
+            direction: Axis.horizontal,
+            spacing: 20,
+            runSpacing: 10,
+            children: [
+                  getFooterButton(screenSize, translation(context).contacts,),
+                  getFooterButton(screenSize, translation(context).fatima,),
+                  getFooterButton(screenSize, translation(context).faq),
+                  getFooterButton(screenSize, translation(context).followUs),
+                ],
+          ),
         ),
       );
     }

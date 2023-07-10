@@ -6,11 +6,11 @@ import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 
-import '../APIs/WydAPI/Models/accommodation_model.dart';
-import '../APIs/WydAPI/Models/agenda_model.dart';
-import '../APIs/WydAPI/api_cache_helper.dart';
-import '../Components/my_text.dart';
-import '../Components/wyd_resources.dart';
+import '../../APIs/WydAPI/Models/accommodation_model.dart';
+import '../../APIs/WydAPI/Models/agenda_model.dart';
+import '../../APIs/WydAPI/api_cache_helper.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 import 'accommodation_entry.dart';
 
 class AccommodationActivity extends StatefulWidget {

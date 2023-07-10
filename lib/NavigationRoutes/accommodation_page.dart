@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
-import '../Activities/accommodation_activity.dart';
+import '../Activities/Accommodation/accommodation_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 import '../language_constants.dart';

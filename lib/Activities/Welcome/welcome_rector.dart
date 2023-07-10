@@ -2,23 +2,22 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-import '../Components/my_text.dart';
-import '../Components/wyd_resources.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 
-class InformationTransport extends StatefulWidget {
-  const InformationTransport({Key? key}) : super(key: key);
+class WelcomeRector extends StatefulWidget {
+  const WelcomeRector({Key? key}) : super(key: key);
 
   @override
-  State<InformationTransport> createState() => _InformationTransportState();
+  State<WelcomeRector> createState() => _WelcomeRectorState();
 }
 
-class _InformationTransportState extends State<InformationTransport> {
+class _WelcomeRectorState extends State<WelcomeRector> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   String htmlData = "";
 
@@ -33,7 +32,7 @@ class _InformationTransportState extends State<InformationTransport> {
   }
 
 Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/transports.html');
+  return await rootBundle.loadString('assets/content/rector_welcome.html');
 }
 
   @override
@@ -50,7 +49,7 @@ Future<String> loadAsset() async {
           child: TextButton.icon(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
-            translation(context).information.toUpperCase(),
+            translation(context).welcome.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: WydColors.yellow,
@@ -60,15 +59,15 @@ Future<String> loadAsset() async {
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: WydColors.red,
-        surfaceTintColor: WydColors.red,
+        backgroundColor: WydColors.green,
+        surfaceTintColor: WydColors.green,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
-        title: translation(context).transport,
+        title: translation(context).rectorMessageTitle,
         titleColor: Colors.white,
-        color: WydColors.red,
+        color: WydColors.green,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -90,9 +89,6 @@ Future<String> loadAsset() async {
                 Html(
                   data: htmlData,
                   style: WydResources.htmlStyle(context),
-                  onLinkTap:(url, attributes, element) {
-                    launchUrl(Uri.parse(url!), mode: LaunchMode.externalApplication);
-                  },
                 ),
               Container(
                 height: screenSize.height * 0.17,
@@ -103,4 +99,5 @@ Future<String> loadAsset() async {
       ),
     );
   }
+
 }

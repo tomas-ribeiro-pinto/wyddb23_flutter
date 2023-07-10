@@ -60,6 +60,7 @@ dependencies:
   vector_math: any
   flutter_html: ^3.0.0-beta.2
   carousel_slider: ^4.2.1
+  accordion: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -109,7 +110,20 @@ flutter:
 
     # Content Resources
     - assets/content/wyd_welcome.html
-    - assets/content/health_advice.html
+    - assets/content/rector_welcome.html
+    - assets/content/mother_welcome.html
+    - assets/content/health/health_advice.html
+    - assets/content/health/health_advice_section1.html
+    - assets/content/health/health_advice_section2.html
+    - assets/content/health/health_advice_section3.html
+    - assets/content/health/health_advice_section4.html
+    - assets/content/health/health_advice_section5.html
+    - assets/content/health/health_advice_section6.html
+    - assets/content/health/health_advice_section7.html
+    - assets/content/health/health_advice_section8.html
+    - assets/content/health/health_advice_section9.html
+    - assets/content/health/health_advice_section10.html
+    - assets/content/health/health_advice_inter_section.html
     - assets/content/transports.html
 
   fonts:

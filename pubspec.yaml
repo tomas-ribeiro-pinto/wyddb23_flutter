@@ -109,9 +109,12 @@ flutter:
     - assets/images/transport.jpg
 
     # Content Resources
-    - assets/content/wyd_welcome.html
-    - assets/content/rector_welcome.html
-    - assets/content/mother_welcome.html
+    - assets/content/welcome/wyd_welcome_pt.html
+    - assets/content/welcome/rector_welcome_pt.html
+    - assets/content/welcome/mother_welcome_pt.html
+    - assets/content/welcome/wyd_welcome_it.html
+    - assets/content/welcome/rector_welcome_it.html
+    - assets/content/welcome/mother_welcome_it.html
     - assets/content/health/health_advice.html
     - assets/content/health/health_advice_section1.html
     - assets/content/health/health_advice_section2.html

@@ -1,72 +1,60 @@
 // To parse this JSON data, do
 //
-//     final visit = visitFromJson(jsonString);
+//     final contact = contactFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Visit> visitFromJson(String str) => List<Visit>.from(json.decode(str).map((x) => Visit.fromJson(x)));
+List<Contact> contactFromJson(String str) => List<Contact>.from(json.decode(str).map((x) => Contact.fromJson(x)));
 
-String visitToJson(List<Visit> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String contactToJson(List<Contact> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Visit {
+class Contact {
     int id;
-    String name;
-    String addressLine1;
-    String addressLine2;
-    String? descriptionEn;
-    String? descriptionPt;
-    String? descriptionEs;
-    String? descriptionIt;
-    String picture;
+    String person;
+    dynamic descriptionEn;
+    String descriptionPt;
+    dynamic descriptionEs;
+    dynamic descriptionIt;
+    String contact;
     DateTime createdAt;
     DateTime updatedAt;
-    dynamic deletedAt;
 
-    Visit({
+    Contact({
         required this.id,
-        required this.name,
-        required this.addressLine1,
-        required this.addressLine2,
-        required this.descriptionEn,
+        required this.person,
+        this.descriptionEn,
         required this.descriptionPt,
-        required this.descriptionEs,
-        required this.descriptionIt,
-        required this.picture,
+        this.descriptionEs,
+        this.descriptionIt,
+        required this.contact,
         required this.createdAt,
         required this.updatedAt,
-        this.deletedAt,
     });
 
-    factory Visit.fromJson(Map<String, dynamic> json) => Visit(
+    factory Contact.fromJson(Map<String, dynamic> json) => Contact(
         id: json["id"],
-        name: json["name"],
-        addressLine1: json["address_line1"],
-        addressLine2: json["address_line2"],
+        person: json["person"],
         descriptionEn: json["description_en"],
         descriptionPt: json["description_pt"],
         descriptionEs: json["description_es"],
         descriptionIt: json["description_it"],
-        picture: json["picture"],
+        contact: json["contact"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        deletedAt: json["deleted_at"],
     );
 
     Map<String, dynamic> toJson() => {
         "id": id,
-        "name": name,
-        "address_line1": addressLine1,
-        "address_line2": addressLine2,
+        "person": person,
         "description_en": descriptionEn,
         "description_pt": descriptionPt,
         "description_es": descriptionEs,
         "description_it": descriptionIt,
-        "picture": picture,
+        "contact": contact,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "deleted_at": deletedAt,
     };
-
+    
     String getTranslatedDescriptionAttribute(String locale)
     {
       switch (locale) {

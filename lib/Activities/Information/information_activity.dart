@@ -12,8 +12,11 @@ import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
+import '../../APIs/WydAPI/Models/information_model.dart';
+import '../../APIs/WydAPI/api_cache_helper.dart';
 import '../../Components/my_text.dart';
 import '../../Components/rounded_card.dart';
+import 'information_entry.dart';
 import 'information_transport.dart';
 
 class InformationActivity extends StatefulWidget {
@@ -25,6 +28,18 @@ class InformationActivity extends StatefulWidget {
 
 class _InformationActivityState extends State<InformationActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
+  List<Information>? _informationModel = null;
+
+  @override
+  void initState() {
+    super.initState();
+    _getInformation();
+  }
+
+  void _getInformation() async {
+    _informationModel = (await ApiCacheHelper.getInformation());
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +129,7 @@ class _InformationActivityState extends State<InformationActivity> {
           children: [
             GestureDetector(
               child: roundedCard(
-                imageUrl: "assets/images/health.jpg",
+                imageAsset: "assets/images/health.jpg",
                 title: translation(context).health,
               ),
               onTap: () => {
@@ -126,7 +141,7 @@ class _InformationActivityState extends State<InformationActivity> {
             ),
             GestureDetector(
               child: roundedCard(
-                imageUrl: "assets/images/transport.jpg",
+                imageAsset: "assets/images/transport.jpg",
                 title: translation(context).transport,
               ),
               onTap: () => {
@@ -136,14 +151,32 @@ class _InformationActivityState extends State<InformationActivity> {
                 )
               },
             ),
-            roundedCard(
-              imageUrl: "assets/images/wyd-welcome.png",
-              title: "",
-            ),
+            if(_informationModel != null)...
+            {
+              for(Information information in _informationModel!)...
+              {
+                getInformationButton(information),
+              }
+            }
           ],
         )
       ],
     );
+  }
+
+  GestureDetector getInformationButton(Information information) {
+    return GestureDetector(
+            child: roundedCard(
+              imageUrl: information.imageUrl,
+              title: translation(context).transport,
+            ),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InformationEntry(title: information.getTranslatedTitleAttribute(currentLanguageCode), body: information.getTranslatedBodyAttribute(currentLanguageCode))),
+              )
+            },
+          );
   }
 
 }

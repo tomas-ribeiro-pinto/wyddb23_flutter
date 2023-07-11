@@ -17,8 +17,14 @@ class WydResources{
 
       return 
             {
-              'h2': Style(fontSize: FontSize(screenSize.width * 0.045)),
-              'p': Style(fontSize: FontSize(screenSize.width * 0.04)),
+              'h2': Style(fontSize: FontSize(screenSize.width * 0.05)),
+              'h1': Style(fontSize: FontSize(screenSize.width * 0.05)),
+              'div': Style(fontSize: FontSize(screenSize.width * 0.04),
+                          //padding: HtmlPaddings.only(bottom: screenSize.width * 0.05)
+                          ),
+              'img': Style(width: Width(screenSize.width * 0.7),
+                          height: Height(screenSize.width * 0.7),
+                          alignment: Alignment.centerLeft),
               '.red': Style(color: WydColors.red),
               '.green': Style(color: WydColors.green),
               '.yellow': Style(color: WydColors.yellow),

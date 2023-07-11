@@ -28,6 +28,8 @@ class _SplashState extends State<Splash> {
     await ApiCacheHelper.getAgenda();
     await ApiCacheHelper.getWeather();
     await ApiCacheHelper.getHomePic();
+    await ApiCacheHelper.getFaq();
+    await ApiCacheHelper.getInformation();
   }
 
   @override

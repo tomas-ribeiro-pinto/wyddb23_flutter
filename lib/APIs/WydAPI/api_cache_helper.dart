@@ -6,9 +6,12 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/accommodation_model.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/contact_model.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/faq_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/image_model.dart';
 
 import '../WeatherAPI/api_service.dart';
+import 'Models/information_model.dart';
 import 'Models/visit_model.dart';
 import 'api_response_box.dart';
 import 'Models/agenda_model.dart';
@@ -23,7 +26,7 @@ class ApiCacheHelper {
     var box = await Hive.openBox<ApiResponseBox>('apiResponses');
     final cachedResponse = box.get('agenda');
 
-/*     if (cachedResponse != null) {
+    if (cachedResponse != null) {
       if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout || connectivityResult == ConnectivityResult.none)
         // Return cached response if it's not expired yet
         return dayFromJson(json.decode(cachedResponse.response));
@@ -31,7 +34,7 @@ class ApiCacheHelper {
       {
         box.delete(cachedResponse.key);
       }
-    } */
+    }
  
     // Fetch new response if cache is expired or not available
     final response = await WydApiService().getAgenda();
@@ -81,8 +84,8 @@ class ApiCacheHelper {
     final cachedResponse = box.get(location + '.accommodation');
 
     if (cachedResponse != null) {
-      // Expires after 1 day
-      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 24 || connectivityResult == ConnectivityResult.none)
+      // Expires after 12 hours
+      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 6 || connectivityResult == ConnectivityResult.none)
         // Return cached response if it's not expired yet
         return accommodationFromJson(json.decode(cachedResponse.response));
       else
@@ -102,6 +105,93 @@ class ApiCacheHelper {
     await box.put(location + '.accommodation', newResponse);
  
     return accommodationFromJson(response as String);
+  }
+
+  static Future<List<Faq>> getFaq() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('faq');
+
+    if (cachedResponse != null) {
+      // Expires after 2 days
+      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 24 || connectivityResult == ConnectivityResult.none)
+        // Return cached response if it's not expired yet
+        return faqFromJson(json.decode(cachedResponse.response));
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getFaq();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'faq'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('faq', newResponse);
+ 
+    return faqFromJson(response as String);
+  }
+
+  static Future<List<Contact>> getContacts() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('contact');
+
+    if (cachedResponse != null) {
+      // Expires after 2s day
+      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 24 || connectivityResult == ConnectivityResult.none)
+        // Return cached response if it's not expired yet
+        return contactFromJson(json.decode(cachedResponse.response));
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getContacts();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'contact'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('contact', newResponse);
+ 
+    return contactFromJson(response as String);
+  }
+
+  static Future<List<Information>> getInformation() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('information');
+
+    if (cachedResponse != null) {
+      // Expires after 6 hours
+      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 3 || connectivityResult == ConnectivityResult.none)
+        // Return cached response if it's not expired yet
+        return informationFromJson(json.decode(cachedResponse.response))[0];
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getInformation();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'information'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('information', newResponse);
+ 
+    return informationFromJson(response as String)[0];
   }
 
   static Future<Weather> getWeather() async {

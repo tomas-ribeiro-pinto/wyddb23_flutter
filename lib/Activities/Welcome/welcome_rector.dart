@@ -11,14 +11,15 @@ import '../../Components/my_text.dart';
 import '../../Components/wyd_resources.dart';
 
 class WelcomeRector extends StatefulWidget {
-  const WelcomeRector({Key? key}) : super(key: key);
+  const WelcomeRector({Key? key, required this.locale}) : super(key: key);
+
+  final String locale;
 
   @override
   State<WelcomeRector> createState() => _WelcomeRectorState();
 }
 
 class _WelcomeRectorState extends State<WelcomeRector> {
-  String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   String htmlData = "";
 
   @override
@@ -32,7 +33,7 @@ class _WelcomeRectorState extends State<WelcomeRector> {
   }
 
 Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/rector_welcome.html');
+  return await rootBundle.loadString('assets/content/welcome/rector_welcome' + '_' + widget.locale +'.html');
 }
 
   @override

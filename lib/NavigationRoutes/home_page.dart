@@ -7,6 +7,7 @@ import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
 import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
+import 'package:wyddb23_flutter/Activities/contacts_activity.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
@@ -15,6 +16,7 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../Activities/faq_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 
@@ -385,7 +387,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     return Container(
       margin: EdgeInsets.only(top: marginTop),
       child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
@@ -511,10 +513,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             spacing: 20,
             runSpacing: 10,
             children: [
-                  getFooterButton(screenSize, translation(context).contacts,),
-                  getFooterButton(screenSize, translation(context).fatima,),
-                  getFooterButton(screenSize, translation(context).faq),
-                  getFooterButton(screenSize, translation(context).followUs),
+                  getFooterButton(
+                    screenSize, 
+                    translation(context).contacts,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).fatima,
+                    () => {}),
+                  getFooterButton(screenSize,
+                    translation(context).faq,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).followUs,
+                    () => {}),
                 ],
           ),
         ),
@@ -529,10 +550,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
           child: Wrap(
             spacing: 5,
             children: [
-                  getFooterButton(screenSize, translation(context).contacts,),
-                  getFooterButton(screenSize, translation(context).fatima,),
-                  getFooterButton(screenSize, translation(context).faq),
-                  getFooterButton(screenSize, translation(context).followUs),
+                  getFooterButton(
+                    screenSize, 
+                    translation(context).contacts,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).fatima,
+                    () => {}),
+                  getFooterButton(screenSize,
+                    translation(context).faq,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).followUs,
+                    () => {}),
                 ],
           ),
         ),
@@ -540,7 +580,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     }
   }
 
-  Container getFooterButton(Size screenSize, String content) {
+  Container getFooterButton(Size screenSize, String content, Function()? onPressed) {
     return Container(
           child: TextButton(
             style: ButtonStyle(
@@ -552,7 +592,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 return WydColors.green;
               }),
             ),
-            onPressed: () {}, 
+            onPressed: onPressed, 
             child: Container(
               width: screenSize.width * 0.3,
               alignment: Alignment.center,

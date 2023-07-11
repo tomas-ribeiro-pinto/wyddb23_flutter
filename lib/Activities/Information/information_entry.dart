@@ -2,6 +2,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
@@ -10,31 +11,18 @@ import 'package:flutter_html/flutter_html.dart';
 import '../../Components/my_text.dart';
 import '../../Components/wyd_resources.dart';
 
-class WelcomeMother extends StatefulWidget {
-  const WelcomeMother({Key? key, required this.locale}) : super(key: key);
+class InformationEntry extends StatefulWidget {
+  const InformationEntry({Key? key, required this.title, required this.body}) : super(key: key);
 
-  final String locale;
-
-  @override
-  State<WelcomeMother> createState() => _WelcomeMotherState();
-}
-
-class _WelcomeMotherState extends State<WelcomeMother> {
-  String htmlData = "";
+  final String title;
+  final String body;
 
   @override
-  void initState() {
-    super.initState();
-    loadAsset().then((value) {
-      setState(() {
-        htmlData = value;
-      });
-    });
-  }
-
-Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/welcome/mother_welcome' + '_' + widget.locale +'.html');
+  State<InformationEntry> createState() => _InformationEntryState();
 }
+
+class _InformationEntryState extends State<InformationEntry> {
+  String get currentLanguageCode => Localizations.localeOf(context).languageCode;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +38,7 @@ Future<String> loadAsset() async {
           child: TextButton.icon(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
-            translation(context).welcome.toUpperCase(),
+            translation(context).information.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: WydColors.yellow,
@@ -60,15 +48,15 @@ Future<String> loadAsset() async {
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: WydColors.green,
-        surfaceTintColor: WydColors.green,
+        backgroundColor: WydColors.red,
+        surfaceTintColor: WydColors.red,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
-        title: translation(context).motherMessageTitle,
+        title: widget.title,
         titleColor: Colors.white,
-        color: WydColors.green,
+        color: WydColors.red,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -88,8 +76,11 @@ Future<String> loadAsset() async {
             child: Column(
               children: [
                 Html(
-                  data: htmlData,
+                  data: addBreaks(widget.body),
                   style: WydResources.htmlStyle(context),
+                  onLinkTap:(url, attributes, element) {
+                    launchUrl(Uri.parse(url!), mode: LaunchMode.externalApplication);
+                  },
                 ),
               Container(
                 height: screenSize.height * 0.17,
@@ -101,4 +92,8 @@ Future<String> loadAsset() async {
     );
   }
 
+  String addBreaks(String html)
+  {
+    return html.replaceAll("</div>", "<div><br>");
+  }
 }

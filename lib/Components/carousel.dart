@@ -134,10 +134,12 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
 
   void getMessage(String item, List<String> imgList)
   {
+    String currentLanguageCode = Localizations.localeOf(context).languageCode;
+
     Map<int, dynamic> messages = {
-      0: WelcomeRector(),
-      1: WelcomeMother(),
-      2: WelcomeWyd(),
+      0: WelcomeRector(locale: currentLanguageCode),
+      1: WelcomeMother(locale: currentLanguageCode),
+      2: WelcomeWyd(locale: currentLanguageCode),
     };
 
     Navigator.push(

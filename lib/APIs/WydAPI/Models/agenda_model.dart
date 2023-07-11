@@ -45,13 +45,13 @@ class Day{
 class Entry {
     int id;
     int dayId;
-    String titleEn;
+    String? titleEn;
     String? descriptionEn;
-    String titlePt;
+    String? titlePt;
     String? descriptionPt;
-    String titleEs;
+    String? titleEs;
     String? descriptionEs;
-    String titleIt;
+    String? titleIt;
     String? descriptionIt;
     String location;
     DateTime? startTime;
@@ -117,16 +117,16 @@ class Entry {
     {
       switch (locale) {
         case 'en':
-          return titleEn;
+          return titleEn ?? "";
         case 'pt':
-          return titlePt;
+          return titlePt ?? "";
         case 'pt':
-          return titleEs;
+          return titleEs ?? "";
         case 'pt':
-          return titleIt;
+          return titleIt ?? "";
       }
 
-      return titleEn;
+      return  titleEn ?? "";
     }
 
     String getTranslatedDescriptionAttribute(String locale)

@@ -1,14 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wyddb23_flutter/Components/my_text.dart';
 
 class roundedCard extends StatelessWidget {
   const roundedCard({
     super.key,
-    required this.imageUrl,
+    this.imageAsset,
+    this.imageUrl,
     required this.title
   });
 
-  final String imageUrl;
+  final String? imageAsset;
+  final String? imageUrl;
   final String title;
 
   @override
@@ -25,10 +28,16 @@ class roundedCard extends StatelessWidget {
             Positioned(
               height: screenSize.width * 0.45,
               width: screenSize.width * 0.45,
-              child: Image.asset(
-                imageUrl,
+              child: 
+              imageUrl == null 
+              ? Image.asset(
+                imageAsset ?? "assets/images/wyd-welcome.png",
                 fit: BoxFit.cover
-              ),
+              )
+              : CachedNetworkImage(
+                imageUrl: imageUrl ?? "",
+                fit: BoxFit.cover
+              )
             ),
             Container(
               decoration: BoxDecoration(

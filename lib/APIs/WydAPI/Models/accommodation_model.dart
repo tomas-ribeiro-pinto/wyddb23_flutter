@@ -17,6 +17,8 @@ class Accommodation {
     String contact;
     dynamic descriptionEn;
     dynamic descriptionPt;
+    dynamic descriptionEs;
+    dynamic descriptionIt;
     String picture;
     DateTime createdAt;
     DateTime updatedAt;
@@ -30,6 +32,8 @@ class Accommodation {
         required this.contact,
         this.descriptionEn,
         this.descriptionPt,
+        this.descriptionEs,
+        this.descriptionIt,
         required this.picture,
         required this.createdAt,
         required this.updatedAt,
@@ -44,6 +48,8 @@ class Accommodation {
         contact: json["contact"],
         descriptionEn: json["description_en"],
         descriptionPt: json["description_pt"],
+        descriptionEs: json["description_es"],
+        descriptionIt: json["description_it"],
         picture: json["picture"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -58,6 +64,8 @@ class Accommodation {
         "contact": contact,
         "description_en": descriptionEn,
         "description_pt": descriptionPt,
+        "description_es": descriptionEs,
+        "description_it": descriptionIt,
         "picture": picture,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
@@ -72,6 +80,12 @@ class Accommodation {
         case 'pt':
           descriptionPt ?? (descriptionPt = "");
           return descriptionPt.toString();
+        case 'es':
+          descriptionEs ?? (descriptionEs = "");
+          return descriptionEs.toString();
+        case 'it':
+          descriptionIt ?? (descriptionIt = "");
+          return descriptionIt.toString();
       }
 
       descriptionEn ?? (descriptionEn = "");

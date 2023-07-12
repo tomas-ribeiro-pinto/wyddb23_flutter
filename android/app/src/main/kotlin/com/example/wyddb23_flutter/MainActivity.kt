@@ -1,4 +1,4 @@
-package com.example.wyddb23_flutter
+package pt.salesianos.wyddb23
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -54,7 +54,7 @@ class AccommodationPage extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.black,
-                          fontSize: screenSize.height * 0.02,
+                          fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
                         ),
                       ),
                     ),

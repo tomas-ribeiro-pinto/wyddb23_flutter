@@ -17,11 +17,10 @@ class WydResources{
 
       return 
             {
-              'h2': Style(fontSize: FontSize(screenSize.width * 0.05)),
-              'h1': Style(fontSize: FontSize(screenSize.width * 0.05)),
-              'div': Style(fontSize: FontSize(screenSize.width * 0.04),
-                          //padding: HtmlPaddings.only(bottom: screenSize.width * 0.05)
-                          ),
+              'h2': Style(fontSize: FontSize(screenSize.width * 0.052)),
+              'h1': Style(fontSize: FontSize(screenSize.width * 0.052)),
+              'p': Style(fontSize: FontSize(getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02))),
+              'div': Style(fontSize: FontSize(getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02))),
               'img': Style(width: Width(screenSize.width * 0.7),
                           height: Height(screenSize.width * 0.7),
                           alignment: Alignment.centerLeft),
@@ -39,5 +38,41 @@ class WydResources{
                                 border: Border(bottom: BorderSide(color: WydColors.green, width: 3)),),
             };
                     
+  }
+
+  static double getResponsiveValue(Size screenSize, double sm, double md, double lg)
+  {
+    if(screenSize.height > 650 && screenSize.height < 670)
+    {
+      return sm;
+    }
+    else if(screenSize.height > 670 && screenSize.height < 850)
+    {
+      return md;
+    }
+    else if(screenSize.height > 850)
+    {
+      return lg;
+    }
+
+    return sm;
+  }
+
+  static double getResponsiveSmValue(Size screenSize, double xs, double sm, double md, double lg)
+  {
+    if(screenSize.height > 650 && screenSize.height < 670)
+    {
+      return sm;
+    }
+    else if(screenSize.height > 670 && screenSize.height < 850)
+    {
+      return md;
+    }
+    else if(screenSize.height > 850)
+    {
+      return lg;
+    }
+
+    return xs;
   }
 }

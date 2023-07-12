@@ -76,7 +76,7 @@ class _VisitEntryState extends State<VisitEntry> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.0),
@@ -92,7 +92,7 @@ class _VisitEntryState extends State<VisitEntry> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(15),
                         child: CachedNetworkImage(
                           imageUrl: widget.visit.picture,
                           fit: BoxFit.cover,
@@ -169,14 +169,14 @@ class _VisitEntryState extends State<VisitEntry> {
 
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(top: 30),
+        padding: EdgeInsets.only(top: 30, left:5, right:5),
         child: Wrap(
           runSpacing: 20,
           children: [
             MyText(
               widget.visit.getTranslatedDescriptionAttribute(currentLanguageCode),
               style: TextStyle(
-              fontSize: screenSize.width * 0.04 
+              fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
               ),
             ),
           ],

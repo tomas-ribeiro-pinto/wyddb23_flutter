@@ -288,7 +288,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MyText(
-                          AppLocalizations.of(context)!.helloLisbon,
+                          translation(context).helloLisbon,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -360,7 +360,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             getHighlightButtons(context),
             getFooterButtons(),
             Container(
-              height: screenSize.height * 0.1,
+              height: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.12, screenSize.height * 0.1, screenSize.height * 0.1),
             )
           ],
         ),
@@ -371,19 +371,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   Container getHighlightButtons(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     double marginTop = 0;
+    double heightIcon = screenSize.height * 0.11;
     
-    if(screenSize.height > 650 && screenSize.height < 670)
-    {
-      marginTop = screenSize.width * 0.025;
-    }
-    else if(screenSize.height > 670 && screenSize.height < 850)
-    {
-      marginTop = screenSize.width * 0.04;
-    }
-    else if(screenSize.height > 850)
-    {
-      marginTop = screenSize.width * 0.05;
-    }
+    marginTop = WydResources.getResponsiveValue(screenSize, screenSize.width * 0.025, screenSize.width * 0.04, screenSize.width * 0.05);
+    heightIcon = WydResources.getResponsiveValue(screenSize, screenSize.height * 0.11, screenSize.height * 0.12, screenSize.height * 0.13);
 
     return Container(
       margin: EdgeInsets.only(top: marginTop),
@@ -403,7 +394,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     icon: Image.asset(
                       'assets/images/highlight-lisbon.png',
                       fit: BoxFit.fill,
-                      height: screenSize.height * 0.11,
+                      height: heightIcon
                     ),
                   ),
                   MyText(
@@ -428,7 +419,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     icon: Image.asset(
                       'assets/images/highlight-world.png',
                       fit: BoxFit.fill,
-                      height: screenSize.height * 0.11,
+                      //height: screenSize.height * 0.11,
+                      height: heightIcon
                     ),
                   ),
                   MyText(
@@ -447,7 +439,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     icon: Image.asset(
                       'assets/images/highlight-cross.png',
                       fit: BoxFit.fill,
-                      height: screenSize.height * 0.11,
+                      height: heightIcon
                     ),
                   ),
                   MyText(

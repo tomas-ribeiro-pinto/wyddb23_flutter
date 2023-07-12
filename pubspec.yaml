@@ -125,18 +125,54 @@ flutter:
     - assets/content/welcome/wyd_welcome_en.html
     - assets/content/welcome/rector_welcome_en.html
     - assets/content/welcome/mother_welcome_en.html
-    - assets/content/health/health_advice.html
-    - assets/content/health/health_advice_section1.html
-    - assets/content/health/health_advice_section2.html
-    - assets/content/health/health_advice_section3.html
-    - assets/content/health/health_advice_section4.html
-    - assets/content/health/health_advice_section5.html
-    - assets/content/health/health_advice_section6.html
-    - assets/content/health/health_advice_section7.html
-    - assets/content/health/health_advice_section8.html
-    - assets/content/health/health_advice_section9.html
-    - assets/content/health/health_advice_section10.html
-    - assets/content/health/health_advice_inter_section.html
+    - assets/content/health_pt/health_advice.html
+    - assets/content/health_pt/health_advice_section1.html
+    - assets/content/health_pt/health_advice_section2.html
+    - assets/content/health_pt/health_advice_section3.html
+    - assets/content/health_pt/health_advice_section4.html
+    - assets/content/health_pt/health_advice_section5.html
+    - assets/content/health_pt/health_advice_section6.html
+    - assets/content/health_pt/health_advice_section7.html
+    - assets/content/health_pt/health_advice_section8.html
+    - assets/content/health_pt/health_advice_section9.html
+    - assets/content/health_pt/health_advice_section10.html
+    - assets/content/health_pt/health_advice_inter_section.html
+    - assets/content/health_en/health_advice.html
+    - assets/content/health_en/health_advice_section1.html
+    - assets/content/health_en/health_advice_section2.html
+    - assets/content/health_en/health_advice_section3.html
+    - assets/content/health_en/health_advice_section4.html
+    - assets/content/health_en/health_advice_section5.html
+    - assets/content/health_en/health_advice_section6.html
+    - assets/content/health_en/health_advice_section7.html
+    - assets/content/health_en/health_advice_section8.html
+    - assets/content/health_en/health_advice_section9.html
+    - assets/content/health_en/health_advice_section10.html
+    - assets/content/health_en/health_advice_inter_section.html
+    - assets/content/health_es/health_advice.html
+    - assets/content/health_es/health_advice_section1.html
+    - assets/content/health_es/health_advice_section2.html
+    - assets/content/health_es/health_advice_section3.html
+    - assets/content/health_es/health_advice_section4.html
+    - assets/content/health_es/health_advice_section5.html
+    - assets/content/health_es/health_advice_section6.html
+    - assets/content/health_es/health_advice_section7.html
+    - assets/content/health_es/health_advice_section8.html
+    - assets/content/health_es/health_advice_section9.html
+    - assets/content/health_es/health_advice_section10.html
+    - assets/content/health_es/health_advice_inter_section.html
+    - assets/content/health_it/health_advice.html
+    - assets/content/health_it/health_advice_section1.html
+    - assets/content/health_it/health_advice_section2.html
+    - assets/content/health_it/health_advice_section3.html
+    - assets/content/health_it/health_advice_section4.html
+    - assets/content/health_it/health_advice_section5.html
+    - assets/content/health_it/health_advice_section6.html
+    - assets/content/health_it/health_advice_section7.html
+    - assets/content/health_it/health_advice_section8.html
+    - assets/content/health_it/health_advice_section9.html
+    - assets/content/health_it/health_advice_section10.html
+    - assets/content/health_it/health_advice_inter_section.html
     - assets/content/transports.html
 
   fonts:

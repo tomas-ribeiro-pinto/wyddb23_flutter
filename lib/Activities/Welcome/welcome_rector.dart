@@ -48,27 +48,27 @@ Future<String> loadAsset() async {
         title: Transform(
         transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
           child: TextButton.icon(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           label: MyText(
             translation(context).welcome.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: WydColors.yellow,
+              color: WydColors.red,
               fontSize: screenSize.width * 0.05,
             ),
           ),
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: WydColors.green,
-        surfaceTintColor: WydColors.green,
+        backgroundColor: WydColors.yellow,
+        surfaceTintColor: WydColors.yellow,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: translation(context).rectorMessageTitle,
-        titleColor: Colors.white,
-        color: WydColors.green,
+        titleColor: Colors.black,
+        color: WydColors.yellow,
         content: getEntryContent(),
         hasBanner: false,
       ),

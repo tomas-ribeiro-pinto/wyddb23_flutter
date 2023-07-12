@@ -2,37 +2,27 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-import '../Components/my_text.dart';
+import '../../Components/my_text.dart';
+import '../../Components/wyd_resources.dart';
 
-class WelcomeEntry extends StatefulWidget {
-  const WelcomeEntry({Key? key}) : super(key: key);
+class InformationEntry extends StatefulWidget {
+  const InformationEntry({Key? key, required this.title, required this.body}) : super(key: key);
+
+  final String title;
+  final String body;
 
   @override
-  State<WelcomeEntry> createState() => _WelcomeEntryState();
+  State<InformationEntry> createState() => _InformationEntryState();
 }
 
-class _WelcomeEntryState extends State<WelcomeEntry> {
+class _InformationEntryState extends State<InformationEntry> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
-  String htmlData = "";
-
-  @override
-  void initState() {
-    super.initState();
-    loadAsset().then((value) {
-      setState(() {
-        htmlData = value;
-      });
-    });
-  }
-
-Future<String> loadAsset() async {
-  return await rootBundle.loadString('assets/content/wyd_welcome.html');
-}
 
   @override
   Widget build(BuildContext context) {
@@ -46,27 +36,27 @@ Future<String> loadAsset() async {
         title: Transform(
         transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
           child: TextButton.icon(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
-            translation(context).home.toUpperCase(),
+            translation(context).information.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF028744),
+              color: WydColors.yellow,
               fontSize: screenSize.width * 0.05,
             ),
           ),
           onPressed: () => {Navigator.of(context).pop()},
         ),
         ),
-        backgroundColor: Color(0xFFf6be18),
-        surfaceTintColor: Color(0xFFf6be18),
+        backgroundColor: WydColors.red,
+        surfaceTintColor: WydColors.red,
         automaticallyImplyLeading: false
       ),
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
-        title: translation(context).welcome,
-        titleColor: Colors.black,
-        color: Color(0xFFf6be18),
+        title: widget.title,
+        titleColor: Colors.white,
+        color: WydColors.red,
         content: getEntryContent(),
         hasBanner: false,
       ),
@@ -86,16 +76,15 @@ Future<String> loadAsset() async {
             child: Column(
               children: [
                 Html(
-                  data: htmlData,
-                  style: {
-                    'h2': Style(fontSize: FontSize(screenSize.width * 0.045)),
-                    'p': Style(fontSize: FontSize(screenSize.width * 0.04)),
+                  data: addBreaks(widget.body),
+                  style: WydResources.htmlStyle(context),
+                  onLinkTap:(url, attributes, element) {
+                    launchUrl(Uri.parse(url!), mode: LaunchMode.externalApplication);
                   },
                 ),
-                Container(
-                  height: 150,
-                  color: Colors.transparent,
-                ),
+              Container(
+                height: screenSize.height * 0.17,
+              )
               ],
             ),
       ),
@@ -103,4 +92,8 @@ Future<String> loadAsset() async {
     );
   }
 
+  String addBreaks(String html)
+  {
+    return html.replaceAll("</div>", "<div><br>");
+  }
 }

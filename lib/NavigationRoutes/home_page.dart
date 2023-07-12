@@ -5,7 +5,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
-import 'package:wyddb23_flutter/Activities/welcome_activity.dart';
+import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
+import 'package:wyddb23_flutter/Activities/contacts_activity.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
@@ -14,7 +16,10 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../Activities/faq_activity.dart';
+import '../Activities/follow_us_activity.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -198,7 +203,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                       child: Container(
                                         height: screenSize.width * 0.515,
                                         width: screenSize.width * 0.73,
-                                        color: const Color(0xFFd53f28),
+                                        color: WydColors.red,
                                         child: Image(
                                           image: CachedNetworkImageProvider(ApiConstants.baseUrl + image!),
                                           fit: BoxFit.cover,
@@ -253,7 +258,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                   ],
                                 )
                                 : Container(
-                                  color: const Color(0xFFd53f28),
+                                  color: WydColors.red,
                                   child: Center(
                                     child: Container(
                                       height: 40,
@@ -355,9 +360,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             getHighlightButtons(context),
             getFooterButtons(),
             Container(
-              height: 100,
-              color: Colors.transparent,
-            ),
+              height: screenSize.height * 0.1,
+            )
           ],
         ),
       ),
@@ -384,7 +388,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     return Container(
       margin: EdgeInsets.only(top: marginTop),
       child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
@@ -415,6 +419,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   IconButton(
                     onPressed: () {
                       //NotificationService().showNotification(title: 'It works!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => InformationActivity()),
+                      );
                     },
                     enableFeedback: false,
                     icon: Image.asset(
@@ -455,16 +463,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     );
   }
 
-  List<DropdownMenuItem<String>> get dropdownItems{
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: MyText("EN", style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Colors.white,)),value: "en"),
-      DropdownMenuItem(child: MyText("PT", style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Colors.white,)),value: "pt"),
-    ];
-    return menuItems;
-  }
-
   Widget getLanguagePopUp()
   {
     Size screenSize = MediaQuery.of(context).size;
@@ -487,6 +485,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
             child: MyText("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
             value: "pt"
           ),
+          PopupMenuItem(
+            child: MyText("ES 🇪🇸", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "es"
+          ),
+          PopupMenuItem(
+            child: MyText("IT 🇮🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
+            value: "it"
+          ),
         ];
       },
       icon: Icon(Icons.language, color: Colors.white,),
@@ -499,33 +505,85 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
     if(screenSize.height > 680)
     {
-      return Padding(
-        padding: EdgeInsets.all(10),
-        child: Wrap(
-          direction: Axis.horizontal,
-          spacing: 20,
-          children: [
-                getFooterButton(screenSize, translation(context).contacts,),
-                getFooterButton(screenSize, translation(context).fatima,),
-                getFooterButton(screenSize, translation(context).faq),
-                getFooterButton(screenSize, translation(context).followUs),
-              ],
+      return Container(
+        width: screenSize.width * 0.7,
+        margin: EdgeInsets.only(top: 20),
+        child: Center(
+          child: Wrap(
+            direction: Axis.horizontal,
+            spacing: 20,
+            runSpacing: 10,
+            children: [
+                  getFooterButton(
+                    screenSize, 
+                    translation(context).contacts,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).fatima,
+                    () => {}),
+                  getFooterButton(screenSize,
+                    translation(context).faq,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).followUs,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
+                      )
+                    }),
+                ],
+          ),
         ),
       );
     }
     else
     {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Wrap(
             spacing: 5,
             children: [
-                  getFooterButton(screenSize, translation(context).contacts,),
-                  getFooterButton(screenSize, translation(context).fatima,),
-                  getFooterButton(screenSize, translation(context).faq),
-                  getFooterButton(screenSize, translation(context).followUs),
+                  getFooterButton(
+                    screenSize, 
+                    translation(context).contacts,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).fatima,
+                    () => {}),
+                  getFooterButton(screenSize,
+                    translation(context).faq,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                      )
+                    }),
+                  getFooterButton(screenSize,
+                    translation(context).followUs,
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
+                      )
+                    }),
                 ],
           ),
         ),
@@ -533,9 +591,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     }
   }
 
-  Container getFooterButton(Size screenSize, String content) {
+  Container getFooterButton(Size screenSize, String content, Function()? onPressed) {
     return Container(
-          margin: EdgeInsets.only(top:15),
           child: TextButton(
             style: ButtonStyle(
               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
@@ -543,10 +600,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed))
                   return Colors.green;
-                return Color(0xFF028744);
+                return WydColors.green;
               }),
             ),
-            onPressed: () {}, 
+            onPressed: onPressed, 
             child: Container(
               width: screenSize.width * 0.3,
               alignment: Alignment.center,

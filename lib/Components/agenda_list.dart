@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Activities/agenda_entry.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
 import '../APIs/WydAPI/Models/agenda_model.dart';
 import '../language_constants.dart';
@@ -58,7 +59,7 @@ class _AgendaListState extends State<AgendaList> {
                       translation(context).noRecords,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF028744),
+                        color: WydColors.green,
                         fontSize: screenSize.width * 0.05
                       ),
                     ),
@@ -80,7 +81,7 @@ class _AgendaListState extends State<AgendaList> {
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-          return Color(0xFFd53f28);
+          return WydColors.red;
         }),
       ),
       onPressed: () {
@@ -100,7 +101,7 @@ class _AgendaListState extends State<AgendaList> {
               style: TextStyle(
                   height: 0.8,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFFf6be18),
+                  color: WydColors.yellow,
                   fontSize: screenSize.height * 0.02,
                 ),
               ),

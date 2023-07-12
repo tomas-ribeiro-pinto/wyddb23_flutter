@@ -45,10 +45,14 @@ class Day{
 class Entry {
     int id;
     int dayId;
-    String titleEn;
+    String? titleEn;
     String? descriptionEn;
-    String titlePt;
+    String? titlePt;
     String? descriptionPt;
+    String? titleEs;
+    String? descriptionEs;
+    String? titleIt;
+    String? descriptionIt;
     String location;
     DateTime? startTime;
     DateTime? endTime;
@@ -62,6 +66,10 @@ class Entry {
         required this.descriptionEn,
         required this.titlePt,
         required this.descriptionPt,
+        required this.titleEs,
+        required this.descriptionEs,
+        required this.titleIt,
+        required this.descriptionIt,
         required this.location,
         required this.startTime,
         required this.endTime,
@@ -76,6 +84,10 @@ class Entry {
         descriptionEn: json["description_en"],
         titlePt: json["title_pt"],
         descriptionPt: json["description_pt"],
+        titleEs: json["title_Es"],
+        descriptionEs: json["description_es"],
+        titleIt: json["title_it"],
+        descriptionIt: json["description_it"],
         location: json["location"],
         startTime: json["start_time"] != null ? DateTime.parse(json["start_time"]) : null,
         endTime: json["end_time"] != null ? DateTime.parse(json["end_time"]) : null,
@@ -90,6 +102,10 @@ class Entry {
         "description_en": descriptionEn,
         "title_pt": titlePt,
         "description_pt": descriptionPt,
+        "title_es": titleEs,
+        "description_es": descriptionEs,
+        "title_it": titleIt,
+        "description_it": descriptionIt,
         "location": location,
         "startTime": startTime?.toIso8601String(),
         "endTime": endTime?.toIso8601String(),
@@ -101,12 +117,16 @@ class Entry {
     {
       switch (locale) {
         case 'en':
-          return titleEn;
+          return titleEn ?? "";
         case 'pt':
-          return titlePt;
+          return titlePt ?? "";
+        case 'pt':
+          return titleEs ?? "";
+        case 'pt':
+          return titleIt ?? "";
       }
 
-      return titleEn;
+      return  titleEn ?? "";
     }
 
     String getTranslatedDescriptionAttribute(String locale)
@@ -118,6 +138,12 @@ class Entry {
         case 'pt':
           descriptionPt ?? (descriptionPt = "");
           return descriptionPt.toString();
+        case 'es':
+          descriptionEs ?? (descriptionEs = "");
+          return descriptionEs.toString();
+        case 'it':
+          descriptionIt ?? (descriptionIt = "");
+          return descriptionIt.toString();
       }
 
       descriptionEn ?? (descriptionEn = "");

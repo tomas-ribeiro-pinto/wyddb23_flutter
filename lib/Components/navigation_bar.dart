@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/accommodation_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/visit_page.dart';
@@ -24,7 +25,7 @@ class _NavigationBarState extends State<NavigationBar> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFF028744),
+        color: WydColors.green,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -43,9 +44,9 @@ class _NavigationBarState extends State<NavigationBar> {
         child: SizedBox(
           height: screenSize.width * 0.16, // 65
           child: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF028744),
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              color: WydColors.green,
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),

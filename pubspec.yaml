@@ -58,7 +58,9 @@ dependencies:
   path_provider: ^2.0.15
   connectivity_plus: ^4.0.1
   vector_math: any
-  flutter_html: ^3.0.0-alpha.6
+  flutter_html: ^3.0.0-beta.2
+  carousel_slider: ^4.2.1
+  accordion: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -102,8 +104,40 @@ flutter:
     - assets/images/madre-geral.jpg
     - assets/images/wyd-welcome.png
     - assets/images/welcome.jpg
+    - assets/images/information.jpg
+    - assets/images/health.jpg
+    - assets/images/transport.jpg
+    - assets/images/instagram.png
+    - assets/images/facebook.png
+    - assets/images/youtube.png
+    - assets/images/linkedin.png
+
     # Content Resources
-    - assets/content/wyd_welcome.html
+    - assets/content/welcome/wyd_welcome_pt.html
+    - assets/content/welcome/rector_welcome_pt.html
+    - assets/content/welcome/mother_welcome_pt.html
+    - assets/content/welcome/wyd_welcome_it.html
+    - assets/content/welcome/rector_welcome_it.html
+    - assets/content/welcome/mother_welcome_it.html
+    - assets/content/welcome/wyd_welcome_es.html
+    - assets/content/welcome/rector_welcome_es.html
+    - assets/content/welcome/mother_welcome_es.html
+    - assets/content/welcome/wyd_welcome_en.html
+    - assets/content/welcome/rector_welcome_en.html
+    - assets/content/welcome/mother_welcome_en.html
+    - assets/content/health/health_advice.html
+    - assets/content/health/health_advice_section1.html
+    - assets/content/health/health_advice_section2.html
+    - assets/content/health/health_advice_section3.html
+    - assets/content/health/health_advice_section4.html
+    - assets/content/health/health_advice_section5.html
+    - assets/content/health/health_advice_section6.html
+    - assets/content/health/health_advice_section7.html
+    - assets/content/health/health_advice_section8.html
+    - assets/content/health/health_advice_section9.html
+    - assets/content/health/health_advice_section10.html
+    - assets/content/health/health_advice_inter_section.html
+    - assets/content/transports.html
 
   fonts:
   - family: Rubik

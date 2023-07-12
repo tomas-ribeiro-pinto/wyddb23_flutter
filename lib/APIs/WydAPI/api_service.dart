@@ -54,4 +54,40 @@ class WydApiService {
       log(e.toString());
     }
   }
+
+  Future<String?> getFaq() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.faq);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getContacts() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.contact);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getInformation() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.information);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }

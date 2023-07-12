@@ -10,6 +10,9 @@ class ApiConstants {
   static String accommodation = 'accommodation';
   static String visit = 'visit';
   static String image = 'image';
+  static String contact = 'contact';
+  static String information = 'information';
+  static String faq = 'faq';
 
   static String getDevUrl()
   {

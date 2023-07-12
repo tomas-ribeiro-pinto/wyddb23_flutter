@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../Components/wyd_resources.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -27,12 +28,14 @@ class _SplashState extends State<Splash> {
     await ApiCacheHelper.getAgenda();
     await ApiCacheHelper.getWeather();
     await ApiCacheHelper.getHomePic();
+    await ApiCacheHelper.getFaq();
+    await ApiCacheHelper.getInformation();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF028744),
+      backgroundColor: WydColors.green,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

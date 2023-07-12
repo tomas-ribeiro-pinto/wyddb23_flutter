@@ -13,8 +13,10 @@ class Visit {
     String name;
     String addressLine1;
     String addressLine2;
-    String descriptionEn;
-    String descriptionPt;
+    String? descriptionEn;
+    String? descriptionPt;
+    String? descriptionEs;
+    String? descriptionIt;
     String picture;
     DateTime createdAt;
     DateTime updatedAt;
@@ -27,6 +29,8 @@ class Visit {
         required this.addressLine2,
         required this.descriptionEn,
         required this.descriptionPt,
+        required this.descriptionEs,
+        required this.descriptionIt,
         required this.picture,
         required this.createdAt,
         required this.updatedAt,
@@ -40,6 +44,8 @@ class Visit {
         addressLine2: json["address_line2"],
         descriptionEn: json["description_en"],
         descriptionPt: json["description_pt"],
+        descriptionEs: json["description_es"],
+        descriptionIt: json["description_it"],
         picture: json["picture"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -53,6 +59,8 @@ class Visit {
         "address_line2": addressLine2,
         "description_en": descriptionEn,
         "description_pt": descriptionPt,
+        "description_es": descriptionEs,
+        "description_it": descriptionIt,
         "picture": picture,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
@@ -68,6 +76,12 @@ class Visit {
         case 'pt':
           descriptionPt ?? (descriptionPt = "");
           return descriptionPt.toString();
+        case 'es':
+          descriptionEs ?? (descriptionEs = "");
+          return descriptionEs.toString();
+        case 'it':
+          descriptionIt ?? (descriptionIt = "");
+          return descriptionIt.toString();
       }
 
       descriptionEn ?? (descriptionEn = "");

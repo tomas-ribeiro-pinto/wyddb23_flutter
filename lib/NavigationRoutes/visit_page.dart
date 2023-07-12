@@ -6,6 +6,7 @@ import '../APIs/WydAPI/Models/visit_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Activities/visit_entry.dart';
 import '../Components/my_text.dart';
+import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 
 class VisitPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _VisitPageState extends State<VisitPage> {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-      color:Color(0xFFf6be18),
+      color: WydColors.yellow,
       child: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
@@ -48,7 +49,7 @@ class _VisitPageState extends State<VisitPage> {
                 header: Stack(
                   children: [
                     Container(
-                      color: Color(0xFFf6be18),
+                      color: WydColors.yellow,
                       width: screenSize.width,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
@@ -94,9 +95,8 @@ class _VisitPageState extends State<VisitPage> {
                       ],
                     ),
                     Container(
-                      height: 150,
-                      color: Colors.transparent,
-                    ),
+                      height: screenSize.height * 0.17,
+                    )
                   ],
                               ),
                 ),

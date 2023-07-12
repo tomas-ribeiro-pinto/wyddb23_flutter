@@ -139,18 +139,6 @@ class _InformationActivityState extends State<InformationActivity> {
                 )
               },
             ),
-            GestureDetector(
-              child: roundedCard(
-                imageAsset: "assets/images/transport.jpg",
-                title: translation(context).transport,
-              ),
-              onTap: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InformationTransport()),
-                )
-              },
-            ),
             if(_informationModel != null)...
             {
               for(Information information in _informationModel!)...

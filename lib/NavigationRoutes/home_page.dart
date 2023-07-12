@@ -17,6 +17,7 @@ import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Activities/faq_activity.dart';
+import '../Activities/follow_us_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 
@@ -535,7 +536,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     }),
                   getFooterButton(screenSize,
                     translation(context).followUs,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
+                      )
+                    }),
                 ],
           ),
         ),
@@ -572,7 +578,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     }),
                   getFooterButton(screenSize,
                     translation(context).followUs,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
+                      )
+                    }),
                 ],
           ),
         ),

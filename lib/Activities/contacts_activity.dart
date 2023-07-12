@@ -107,7 +107,8 @@ class _ContactsActivityState extends State<ContactsActivity> {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           physics: const ClampingScrollPhysics(),
-          child: Column(
+          child: Wrap(
+            runSpacing: screenSize.width * 0.02,
             children: [
               if(_contactModel != null)...
               {
@@ -128,7 +129,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
               constraints: BoxConstraints(
                 minHeight: screenSize.width * 0.2,
               ),
-              width: screenSize.width * 0.8,
+              width: screenSize.width * 0.9,
               decoration: BoxDecoration(
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(10)
@@ -139,7 +140,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
                 children: [
                   Flexible(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(screenSize.width * 0.03),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -152,7 +153,10 @@ class _ContactsActivityState extends State<ContactsActivity> {
                               fontSize: screenSize.height * 0.02,
                             ),
                           ),
-                          MyText(contact.getTranslatedDescriptionAttribute(currentLanguageCode)),
+                          if(contact.getTranslatedDescriptionAttribute(currentLanguageCode) != "")...
+                          {
+                            MyText(contact.getTranslatedDescriptionAttribute(currentLanguageCode)),
+                          }
                         ],
                       ),
                     ),

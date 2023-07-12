@@ -42,34 +42,6 @@ class SymDayPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.02, vertical: 18),
-                      child: Container(
-                        alignment: Alignment.topRight,
-                          child: TextButton(
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
-                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                              return WydColors.red;
-                            }),
-                          ),
-                          onPressed: () {}, 
-                          child: Container(
-                            width: screenSize.width * 0.5,
-                            alignment: Alignment.center,
-                            child: MyText(
-                            translation(context).seeMap.toUpperCase(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: screenSize.height * 0.02,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 content: Container(
@@ -77,17 +49,17 @@ class SymDayPage extends StatelessWidget {
                   child: Column(
                   children: [
                   Container(
-                  margin: EdgeInsets.all(20),
+                  margin: EdgeInsets.symmetric(horizontal: 30, vertical:20),
                   child: MyText(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    translation(context).symDayParagraph,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
-                      fontSize: screenSize.height * 0.02,
+                      fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)
                     ),
                   ),
                 ),
-                Wrap(
+                /* Wrap(
                   direction: Axis.horizontal,
                   alignment: WrapAlignment.start,
                   spacing: 25.0,
@@ -98,17 +70,21 @@ class SymDayPage extends StatelessWidget {
                     getGridButton(screenSize, translation(context).symForum),
                     getGridButton(screenSize, translation(context).liveStreaming),
                     getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
-                    getGridButton(screenSize, translation(context).emergency),
                   ],
-                ),
+                ), */
+              Wrap(
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.start,
+                  spacing: 25.0,
+                      children: [
+                        getAccommodationButton(screenSize, translation(context).map, context),
+                        getAccommodationButton(screenSize, translation(context).timetable, context),
+                        getAccommodationButton(screenSize, translation(context).guides, context),
+                        getAccommodationButton(screenSize, translation(context).symForum, context),
+                        getAccommodationButton(screenSize, translation(context).liveStreaming, context),
+                        getAccommodationButton(screenSize, translation(context).emergency, context),
+                      ],
+                    ),
                 Container(
                   height: screenSize.height * 0.17,
                 )
@@ -140,7 +116,7 @@ class SymDayPage extends StatelessWidget {
               (Set<MaterialState> states) {
 /*             if (states.contains(MaterialState.pressed))
               return Color.fromARGB(255, 18, 18, 18); */
-            return Color.fromARGB(255, 237, 191, 70);
+            return WydColors.yellow;
           }),
         ),
         onPressed: () {}, 
@@ -182,5 +158,38 @@ class SymDayPage extends StatelessWidget {
           color: Colors.transparent,
         ),
       );
+  }
+
+  Container getAccommodationButton(Size screenSize, String location, BuildContext context) {
+    return Container(
+            margin: EdgeInsets.only(top:15),
+            child: TextButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
+                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  return WydColors.green;
+                }),
+              ),
+              onPressed: () {
+/*                   Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccommodationActivity(location: location)),
+                ); */
+              }, 
+              child: Container(
+                width: screenSize.width * 0.7,
+                alignment: Alignment.center,
+                child: MyText(
+                location.toUpperCase(),
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    fontSize: screenSize.height * 0.025,
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }

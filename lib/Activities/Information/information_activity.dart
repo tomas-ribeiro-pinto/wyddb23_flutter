@@ -48,107 +48,85 @@ class _InformationActivityState extends State<InformationActivity> {
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: false,
+        title: Transform(
+        transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
+          child: TextButton.icon(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          label: MyText(
+            translation(context).home.toUpperCase(),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+              fontSize: screenSize.width * 0.05,
+            ),
+          ),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
+        ),
+        backgroundColor: WydColors.red,
+        surfaceTintColor: WydColors.red,
+        automaticallyImplyLeading: false
+      ),
       bottomNavigationBar: Components.NavigationBar(),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            physics: ClampingScrollPhysics(),
-            child: Column(
-              children: [
-                Container(
-                  height: screenSize.height * 0.3,
-                  width: screenSize.width,
-                  child: Image.asset(
-                    "assets/images/information.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                getEntryContent(),
-                Container(
-                  height: screenSize.height * 0.17,
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: screenSize.height * 0.055, horizontal: screenSize.height * 0.01),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              boxShadow: [
-                BoxShadow(
-                color: Colors.black.withOpacity(0.4),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(-2, 2), // changes position of shadow
-              ),
-              ]
-            ),
-            child: TextButton.icon(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              label: MyText(
-                translation(context).home.toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontSize: screenSize.width * 0.05,
-                ),
-              ),
-              onPressed: () => {Navigator.of(context).pop()},
-              style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(WydColors.red),
-              ),
-            ),
-          ),
-        ],
+      body: Header(
+        title: translation(context).information,
+        titleColor: Colors.white,
+        color: WydColors.red,
+        content: getEntryContent(),
+        hasBanner: false,
       ),
     );
   }
 
-  Column getEntryContent()
+  Container getEntryContent()
   {
     Size screenSize = MediaQuery.of(context).size;
 
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
-          alignment: Alignment.topLeft,
-          child: MyText(
-            translation(context).information,
-            style: TextStyle(
-              fontSize: screenSize.width * 0.08,
-              fontWeight: FontWeight.w500,
-              color: WydColors.green,
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
+            alignment: Alignment.topLeft,
+            child: MyText(
+              translation(context).informationParagraph,
+              style: TextStyle(
+                fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02,  screenSize.height * 0.02),
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-        Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            GestureDetector(
-              child: roundedCard(
-                imageAsset: "assets/images/health.jpg",
-                title: translation(context).health,
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              GestureDetector(
+                child: roundedCard(
+                  imageAsset: "assets/images/health.jpg",
+                  title: translation(context).health,
+                ),
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InformationHealth(locale: currentLanguageCode,)),
+                  )
+                },
               ),
-              onTap: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InformationHealth()),
-                )
-              },
-            ),
-            if(_informationModel != null)...
-            {
-              for(Information information in _informationModel!)...
+              if(_informationModel != null)...
               {
-                getInformationButton(information),
+                for(Information information in _informationModel!)...
+                {
+                  getInformationButton(information),
+                }
               }
-            }
-          ],
-        )
-      ],
+            ],
+          )
+        ],
+      ),
     );
   }
 

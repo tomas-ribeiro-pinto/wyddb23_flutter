@@ -12,8 +12,10 @@ import '../../Components/my_text.dart';
 import '../../Components/wyd_resources.dart';
 
 class InformationHealth extends StatefulWidget {
-  const InformationHealth({Key? key}) : super(key: key);
+  const InformationHealth({Key? key, required this.locale}) : super(key: key);
 
+  final String locale; 
+  
   @override
   State<InformationHealth> createState() => _InformationHealthState();
 }
@@ -35,18 +37,18 @@ class _InformationHealthState extends State<InformationHealth> {
 Future<Map<String, String>> loadAsset() async {
   Map<String, String> assets = {};
 
-  assets['header'] = await rootBundle.loadString('assets/content/health/health_advice.html');
-  assets['section1'] = await rootBundle.loadString('assets/content/health/health_advice_section1.html');
-  assets['section2'] = await rootBundle.loadString('assets/content/health/health_advice_section2.html');
-  assets['section3'] = await rootBundle.loadString('assets/content/health/health_advice_section3.html');
-  assets['inter_section'] = await rootBundle.loadString('assets/content/health/health_advice_inter_section.html');
-  assets['section4'] = await rootBundle.loadString('assets/content/health/health_advice_section4.html');
-  assets['section5'] = await rootBundle.loadString('assets/content/health/health_advice_section5.html');
-  assets['section6'] = await rootBundle.loadString('assets/content/health/health_advice_section6.html');
-  assets['section7'] = await rootBundle.loadString('assets/content/health/health_advice_section7.html');
-  assets['section8'] = await rootBundle.loadString('assets/content/health/health_advice_section8.html');
-  assets['section9'] = await rootBundle.loadString('assets/content/health/health_advice_section9.html');
-  assets['section10'] = await rootBundle.loadString('assets/content/health/health_advice_section10.html');
+  assets['header'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice.html');
+  assets['section1'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section1.html');
+  assets['section2'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section2.html');
+  assets['section3'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section3.html');
+  assets['inter_section'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_inter_section.html');
+  assets['section4'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section4.html');
+  assets['section5'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section5.html');
+  assets['section6'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section6.html');
+  assets['section7'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section7.html');
+  assets['section8'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section8.html');
+  assets['section9'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section9.html');
+  assets['section10'] = await rootBundle.loadString('assets/content/health' + '_' + widget.locale + '/health_advice_section10.html');
 
   return assets;
 }

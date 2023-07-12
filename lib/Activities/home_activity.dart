@@ -63,152 +63,174 @@ class _HomeActivityState extends State<HomeActivity> {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-      decoration: BoxDecoration(
-        color: WydColors.green,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 10,
-            blurRadius: 80,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      // Includes a SafeArea for IOS devices with notch
-      child: SafeArea(
-        child: SizedBox(
-          height: screenSize.width * 0.16,
-          child: Container(
-            decoration: BoxDecoration(
-              color: WydColors.green,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+      alignment: Alignment.bottomCenter,
+      height: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.2, 110, 110, 110),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(                
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [Colors.white.withOpacity(0.8), Colors.white.withOpacity(0.0)]
               ),
             ),
-            child: OverflowBox(
-              maxHeight: 110,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {
-                      setState(() {
-                        pageIndex = PAGE1_index;
-                      });
-                    },
-                    icon: pageIndex == PAGE1_index
-                        ? Icon(
-                            Icons.hotel,
-                            color: Color.fromARGB(255, 246, 190, 24),
-                            size: screenSize.width * 0.09,
-                          )
-                        : Icon(
-                            Icons.hotel,
-                            color: Colors.white,
-                            size: screenSize.width * 0.09,
-                          ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {
-                      setState(() {
-                        pageIndex = PAGE2_index;
-                      });
-                    },
-                    icon: pageIndex == PAGE2_index
-                        ? HeroIcon(
-                            HeroIcons.mapPin,
-                            color: Color.fromARGB(255, 246, 190, 24),
-                            size: screenSize.width * 0.09,
-                            style: HeroIconStyle.solid
-                          )
-                        : HeroIcon(
-                            HeroIcons.mapPin,
-                            color: Colors.white,
-                            size: screenSize.width * 0.09,
-                          ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 35),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 194, 194, 194),
-                        width: 0.3,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 2,
-                          blurRadius: 40,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: IconButton(
-                      enableFeedback: false,
-                      onPressed: () {
-                        setState(() {
-                          pageIndex = HOMEPAGE_index;
-                        });
-                      },
-                      icon: Image.asset(
-                        'assets/images/wyd-logo-cor.png',
-                        fit: BoxFit.fill,
-                        height: screenSize.width * 0.15,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {
-                      setState(() {
-                        pageIndex = PAGE3_index;
-                      });
-                    },
-                    icon: pageIndex == PAGE3_index
-                    ? SvgPicture.asset(
-                        "assets/images/sym_day.svg",
-                        color: Color.fromARGB(255, 246, 190, 24),
-                        width: 35,
-                      )
-                    : SvgPicture.asset(
-                        "assets/images/sym_day.svg",
-                        color: Colors.white,
-                        width: 35,
-                      )
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {
-                      setState(() {
-                        pageIndex = PAGE4_index;
-                      });
-                    },
-                    icon: pageIndex == PAGE4_index
-                        ? Icon(
-                            Icons.assignment,
-                            color: Color.fromARGB(255, 246, 190, 24),
-                            size: screenSize.width * 0.09,
-                          )
-                        : Icon(
-                            Icons.assignment,
-                            color: Colors.white,
-                            size: screenSize.width * 0.09,
-                          )
+          ),
+          Positioned(
+            bottom: 0,
+            left:0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: WydColors.green,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 10,
+                    blurRadius: 80,
+                    offset: const Offset(0, 3), // changes position of shadow
                   ),
                 ],
               ),
+              // Includes a SafeArea for IOS devices with notch
+              child: SafeArea(
+                child: SizedBox(
+                  height: screenSize.width * 0.16,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: WydColors.green,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: OverflowBox(
+                      maxHeight: 110,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(
+                            enableFeedback: false,
+                            onPressed: () {
+                              setState(() {
+                                pageIndex = PAGE1_index;
+                              });
+                            },
+                            icon: pageIndex == PAGE1_index
+                                ? Icon(
+                                    Icons.hotel,
+                                    color: Color.fromARGB(255, 246, 190, 24),
+                                    size: screenSize.width * 0.09,
+                                  )
+                                : Icon(
+                                    Icons.hotel,
+                                    color: Colors.white,
+                                    size: screenSize.width * 0.09,
+                                  ),
+                          ),
+                          IconButton(
+                            enableFeedback: false,
+                            onPressed: () {
+                              setState(() {
+                                pageIndex = PAGE2_index;
+                              });
+                            },
+                            icon: pageIndex == PAGE2_index
+                                ? HeroIcon(
+                                    HeroIcons.map,
+                                    color: Color.fromARGB(255, 246, 190, 24),
+                                    size: screenSize.width * 0.09,
+                                    style: HeroIconStyle.solid
+                                  )
+                                : HeroIcon(
+                                    HeroIcons.map,
+                                    color: Colors.white,
+                                    size: screenSize.width * 0.09,
+                                  ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 35),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 194, 194, 194),
+                                width: 0.3,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 40,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: IconButton(
+                              enableFeedback: false,
+                              onPressed: () {
+                                setState(() {
+                                  pageIndex = HOMEPAGE_index;
+                                });
+                              },
+                              icon: Image.asset(
+                                'assets/images/wyd-logo-cor.png',
+                                fit: BoxFit.fill,
+                                height: screenSize.width * 0.15,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            enableFeedback: false,
+                            onPressed: () {
+                              setState(() {
+                                pageIndex = PAGE3_index;
+                              });
+                            },
+                            icon: pageIndex == PAGE3_index
+                            ? SvgPicture.asset(
+                                "assets/images/sym_day.svg",
+                                color: Color.fromARGB(255, 246, 190, 24),
+                                width: 35,
+                              )
+                            : SvgPicture.asset(
+                                "assets/images/sym_day.svg",
+                                color: Colors.white,
+                                width: 35,
+                              )
+                          ),
+                          IconButton(
+                            enableFeedback: false,
+                            onPressed: () {
+                              setState(() {
+                                pageIndex = PAGE4_index;
+                              });
+                            },
+                            icon: pageIndex == PAGE4_index
+                                ? HeroIcon(
+                                    HeroIcons.calendarDays,
+                                    color: Color.fromARGB(255, 246, 190, 24),
+                                    size: screenSize.width * 0.09,
+                                  )
+                                : HeroIcon(
+                                    HeroIcons.calendarDays,
+                                    color: Colors.white,
+                                    size: screenSize.width * 0.09,
+                                  )
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

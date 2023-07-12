@@ -87,79 +87,71 @@ class _AccommodationActivityState extends State<AccommodationActivity> {
       color: Colors.white,
       child: Column(
         children: [
-          Container(
-          margin: EdgeInsets.all(20),
-          child: MyText(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-              fontSize: screenSize.height * 0.02,
-            ),
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Wrap(
-            runSpacing: 15,
-            children: [
-              if(_accommodationModel != null)...
-              {
-                for(Accommodation accommodation in _accommodationModel!)...
+        Container(
+          margin: EdgeInsets.only(top: 20),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Wrap(
+              runSpacing: 15,
+              children: [
+                if(_accommodationModel != null)...
                 {
-                  getLocationButton(screenSize, accommodation),
-                },
-                if(_accommodationModel!.isEmpty)...
+                  for(Accommodation accommodation in _accommodationModel!)...
+                  {
+                    getLocationButton(screenSize, accommodation),
+                  },
+                  if(_accommodationModel!.isEmpty)...
+                  {
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: HeroIcon(HeroIcons.noSymbol)
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: MyText(
+                              translation(context).noRecords,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: WydColors.green,
+                                fontSize: screenSize.width * 0.05
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  }
+                }
+                else...
                 {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 20),
-                          child: HeroIcon(HeroIcons.noSymbol)
+                        MyText(
+                          translation(context).loading + '...',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: WydColors.green,
+                            fontSize: 20
+                          ),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 20),
-                          child: MyText(
-                            translation(context).noRecords,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: WydColors.green,
-                              fontSize: screenSize.width * 0.05
-                            ),
+                          child: CircularProgressIndicator( //Adds a Loading Indicator
+                            color: WydColors.yellow,
                           ),
                         ),
                       ],
                     ),
                   ),
-                }
-              }
-              else...
-              {
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MyText(
-                        translation(context).loading + '...',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: WydColors.green,
-                          fontSize: 20
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: CircularProgressIndicator( //Adds a Loading Indicator
-                          color: WydColors.yellow,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              },
-            ],
+                },
+              ],
+            ),
           ),
         ),
         Container(

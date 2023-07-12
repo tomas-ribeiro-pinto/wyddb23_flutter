@@ -70,13 +70,13 @@ class _VisitPageState extends State<VisitPage> {
                   child: Column(
                     children: [
                     Container(
-                      margin: EdgeInsets.all(20),
+                      margin: EdgeInsets.symmetric(horizontal: 30, vertical:20),
                       child: MyText(
                         translation(context).visitParagraph,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.black,
-                          fontSize: screenSize.height * 0.02,
+                          fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
                         ),
                       ),
                     ),
@@ -114,7 +114,7 @@ class _VisitPageState extends State<VisitPage> {
       child: GestureDetector(
         child: Container(
          decoration: BoxDecoration(
-          color: Colors.amber,
+          color: WydColors.yellow,
           borderRadius: BorderRadius.circular(10)
          ),
          margin: EdgeInsets.only(top:20),
@@ -138,10 +138,11 @@ class _VisitPageState extends State<VisitPage> {
               margin: EdgeInsets.only(top: screenSize.width * 0.06,),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  colors: [Colors.white.withOpacity(0.8), Colors.white.withOpacity(0.0)]
+                  colors: [Colors.black.withOpacity(0.8), Colors.black.withOpacity(0.0)]
                 )
               ),
             ),
@@ -155,8 +156,8 @@ class _VisitPageState extends State<VisitPage> {
                   letterSpacing: -0.1,
                   height: 1.2,
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
-                  fontSize: screenSize.width * 0.045,
+                  color: Colors.white,
+                  fontSize: screenSize.width * 0.04,
                 ),
               ),
             ),

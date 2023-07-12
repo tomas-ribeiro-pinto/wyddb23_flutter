@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:hive/hive.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_mother.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_rector.dart';
+import 'package:wyddb23_flutter/Activities/Welcome/welcome_wyd.dart';
 import 'package:wyddb23_flutter/Components/carousel.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
@@ -31,102 +34,138 @@ class _WelcomeActivityState extends State<WelcomeActivity> {
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: false,
+        title: Transform(
+        transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
+          child: TextButton.icon(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          label: MyText(
+            translation(context).home.toUpperCase(),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: WydColors.red,
+              fontSize: screenSize.width * 0.05,
+            ),
+          ),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
+        ),
+        backgroundColor: WydColors.yellow,
+        surfaceTintColor: WydColors.yellow,
+        automaticallyImplyLeading: false
+      ),
       bottomNavigationBar: Components.NavigationBar(),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            physics: ClampingScrollPhysics(),
-            child: Column(
-              children: [
-                Container(
-                  height: screenSize.height * 0.4,
-                  width: screenSize.width,
-                  child: Image.asset(
-                    "assets/images/welcome.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                getEntryContent(),
-                Container(
-                  height: screenSize.height * 0.17,
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: screenSize.height * 0.055, horizontal: screenSize.height * 0.01),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              boxShadow: [
-                BoxShadow(
-                color: Colors.black.withOpacity(0.4),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(-2, 2), // changes position of shadow
-              ),
-              ]
-            ),
-            child: TextButton.icon(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              label: MyText(
-                translation(context).home.toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontSize: screenSize.width * 0.05,
-                ),
-              ),
-              onPressed: () => {Navigator.of(context).pop()},
-              style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(WydColors.green),
-              ),
-            ),
-          ),
-        ],
+      body: Header(
+        title: translation(context).welcome,
+        titleColor: Colors.black,
+        color: WydColors.yellow,
+        content: getEntryContent(),
+        hasBanner: false,
       ),
     );
   }
 
-  Column getEntryContent()
+  Container getEntryContent()
   {
+
     Size screenSize = MediaQuery.of(context).size;
 
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
-          alignment: Alignment.topLeft,
-          child: MyText(
-            translation(context).welcomeTitle,
-            style: TextStyle(
-              fontSize: screenSize.width * 0.06,
-              fontWeight: FontWeight.w500,
-              color: WydColors.green,
-            ),
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.all(20), 
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.start,
+                runSpacing: 15,
+                children: [
+                  getWelcomeButton(screenSize,
+                    'assets/images/reitor-mor.jpg', 
+                    translation(context).rectorMessage,
+                    WelcomeRector(locale: currentLanguageCode)),
+                  getWelcomeButton(screenSize,
+                    'assets/images/madre-geral.jpg', 
+                    translation(context).motherMessage,
+                    WelcomeMother(locale: currentLanguageCode)),
+                  getWelcomeButton(screenSize,
+                    'assets/images/wyd-welcome.png', 
+                    translation(context).wydMessage,
+                    WelcomeWyd(locale: currentLanguageCode))
+                ],
+              ),
+              Container(
+                height: screenSize.height * 0.17,
+              )
+           ],
           ),
         ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07),
-          alignment: Alignment.topLeft,
-          child: MyText(
-            translation(context).welcomeMessage + " 👇🏻",
-            style: TextStyle(
-              fontSize: screenSize.width * 0.05,
-              fontWeight: FontWeight.w500,
-              color: WydColors.red,
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: screenSize.width * 0.04),
-          color: Colors.white,
-          height: screenSize.width * 0.55,
-          width: screenSize.width * 0.95,
-          child: WelcomeCarousel(),
-        ),
-      ],
+      ),
     );
+  }
+
+  Container getWelcomeButton(Size screenSize, String image, String title, dynamic activity)
+  {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+        child: TextButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+            ),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 0)),
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              return WydColors.yellow;
+            }),
+          ),
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => activity),
+            )
+          }, 
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: screenSize.width * 0.4,
+              width: screenSize.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+              )
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: MyText(
+                title,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
+                ),
+              ),
+            ),
+          ],
+        ),
+        ),
+      );
   }
 
 }

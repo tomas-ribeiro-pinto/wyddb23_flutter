@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
 class NotificationService {
   final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -6,7 +7,7 @@ class NotificationService {
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
-        const AndroidInitializationSettings('icon');
+        const AndroidInitializationSettings('bw_icon');
 
     var initializationSettingsIOS = DarwinInitializationSettings(
         requestAlertPermission: true,
@@ -23,10 +24,12 @@ class NotificationService {
   }
 
   notificationDetails() {
-    return const NotificationDetails(
-        android: AndroidNotificationDetails('channelId', 'channelName',
+    return NotificationDetails(
+        android: AndroidNotificationDetails(
+            color: WydColors.red,
+            'channelId', 'channelName',
             importance: Importance.max),
-        iOS: DarwinNotificationDetails());
+        iOS: const DarwinNotificationDetails());
   }
 
   Future showNotification(

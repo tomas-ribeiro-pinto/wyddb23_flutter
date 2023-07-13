@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
-import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'APIs/WydAPI/api_response_box.dart';
@@ -34,6 +34,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize Local Notifications
+  NotificationService().initNotification();
+
   // Set up Hive NoSQL
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
@@ -62,22 +65,30 @@ Future<void> main() async {
 
   // Register with FCM
 
-/*   final fcmToken = await FirebaseMessaging.instance.getToken();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
    if (kDebugMode) {
     print(fcmToken);
-   } */
+   }
 
   // Set up foreground message handler
 
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
   // used to pass messages from event handler to the UI
   final _messageStreamController = BehaviorSubject<RemoteMessage>(); 
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-   if (kDebugMode) {
-     print('Handling a foreground message: ${message.messageId}');
-     print('Message data: ${message.data}');
-     print('Message notification: ${message.notification?.title}');
-     print('Message notification: ${message.notification?.body}');
-   }
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+
+    NotificationService().showNotification(title: message.notification?.title, body: message.notification?.body);
+    if (kDebugMode) {
+      print('Handling a foreground message: ${message.messageId}');
+      print('Message data: ${message.data}');
+      print('Message notification: ${message.notification?.title}');
+      print('Message notification: ${message.notification?.body}');
+    }
 
    _messageStreamController.sink.add(message);
  });
@@ -85,7 +96,7 @@ Future<void> main() async {
   // TODO: Set up background message handler
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   
-/*   FirebaseMessaging.instance.onTokenRefresh
+  FirebaseMessaging.instance.onTokenRefresh
     .listen((fcmToken) {
       // TODO: If necessary send token to application server.
 
@@ -94,7 +105,7 @@ Future<void> main() async {
     })
     .onError((err) {
       // Error getting token.
-    }); */
+    });
 
   runApp(const MyApp());
 }

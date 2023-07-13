@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
@@ -409,7 +410,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 children: [
                   IconButton(
                     onPressed: () {
-                      //NotificationService().showNotification(title: 'It works!');
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => InformationActivity()),
@@ -434,7 +434,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
               Column(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      NotificationService().showNotification(title: 'It works!');
+                    },
                     enableFeedback: false,
                     icon: Image.asset(
                       'assets/images/highlight-cross.png',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import '../Activities/guide_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
@@ -77,12 +78,12 @@ class SymDayPage extends StatelessWidget {
                   alignment: WrapAlignment.start,
                   spacing: 25.0,
                       children: [
-                        getAccommodationButton(screenSize, translation(context).map, context),
-                        getAccommodationButton(screenSize, translation(context).timetable, context),
-                        getAccommodationButton(screenSize, translation(context).guides, context),
-                        getAccommodationButton(screenSize, translation(context).symForum, context),
-                        getAccommodationButton(screenSize, translation(context).liveStreaming, context),
-                        getAccommodationButton(screenSize, translation(context).emergency, context),
+                        getButton(screenSize, translation(context).map, context),
+                        getButton(screenSize, translation(context).timetable, context),
+                        getButton(screenSize, translation(context).guides, context),
+                        getButton(screenSize, translation(context).symForum, context),
+                        getButton(screenSize, translation(context).liveStreaming, context),
+                        getButton(screenSize, translation(context).emergency, context),
                       ],
                     ),
                 Container(
@@ -160,7 +161,7 @@ class SymDayPage extends StatelessWidget {
       );
   }
 
-  Container getAccommodationButton(Size screenSize, String location, BuildContext context) {
+  Container getButton(Size screenSize, String location, BuildContext context) {
     return Container(
             margin: EdgeInsets.only(top:15),
             child: TextButton(
@@ -172,10 +173,10 @@ class SymDayPage extends StatelessWidget {
                 }),
               ),
               onPressed: () {
-/*                   Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AccommodationActivity(location: location)),
-                ); */
+                  MaterialPageRoute(builder: (context) => GuideActivity()),
+                );
               }, 
               child: Container(
                 width: screenSize.width * 0.7,

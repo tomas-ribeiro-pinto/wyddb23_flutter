@@ -69,6 +69,7 @@ Future<void> main() async {
    if (kDebugMode) {
     print(fcmToken);
    }
+   
 
   // Set up foreground message handler
 
@@ -117,8 +118,22 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static void setLocale(BuildContext context, Locale newLocale) {
+    Locale currentLocale = Localizations.localeOf(context);
+    unsubscribeFromTopic(currentLocale.languageCode);
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
+  }
+
+  // subscribe to language topic
+  static void subscribeToTopic(String locale) async
+  {
+    await FirebaseMessaging.instance.subscribeToTopic(locale);
+  }
+
+  // unsubscribe from language topic
+  static void unsubscribeFromTopic(String locale) async
+  {
+    await FirebaseMessaging.instance.unsubscribeFromTopic(locale);
   }
 }
 
@@ -144,9 +159,17 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
   setLocale(Locale locale) {
-    setState(() {
+    setState((){
       _locale = locale;
+      // subscribe to language topic
+      subscribeToTopic(locale.languageCode);
     });
+  }
+
+// subscribe to language topic
+  void subscribeToTopic(String locale) async
+  {
+    await FirebaseMessaging.instance.subscribeToTopic(locale);
   }
 
   @override

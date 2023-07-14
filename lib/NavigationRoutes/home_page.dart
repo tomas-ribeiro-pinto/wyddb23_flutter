@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
 import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
 import 'package:wyddb23_flutter/Activities/contacts_activity.dart';
+import 'package:wyddb23_flutter/Activities/pdf_viewer.dart';
 import 'package:wyddb23_flutter/Notifications/notification_service.dart';
+import 'package:wyddb23_flutter/Pdf/permission_request.dart';
+import 'package:wyddb23_flutter/Stories/story.dart';
+import 'package:wyddb23_flutter/Stories/video.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/api_service.dart';
@@ -18,7 +24,7 @@ import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Activities/faq_activity.dart';
-import '../Activities/follow_us_activity.dart';
+import '../Components/follow_us_pop_up.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 
@@ -39,7 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     super.initState();
     _getData();
   }
-
+  
   void _getData() async {
     _weatherModel = await ApiCacheHelper.getWeather();
     image = (await ApiCacheHelper.getHomePic());
@@ -419,7 +425,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     icon: Image.asset(
                       'assets/images/highlight-world.png',
                       fit: BoxFit.fill,
-                      //height: screenSize.height * 0.11,
                       height: heightIcon
                     ),
                   ),
@@ -435,7 +440,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 children: [
                   IconButton(
                     onPressed: () {
-                      NotificationService().showNotification(title: 'It works!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VideoPage(title: "Test")),
+                      );
                     },
                     enableFeedback: false,
                     icon: Image.asset(
@@ -531,10 +539,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   getFooterButton(screenSize,
                     translation(context).followUs,
                     () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
-                      )
+                      FollowUsPopUp().showSocialDialog(context)
                     }),
                 ],
           ),
@@ -573,10 +578,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   getFooterButton(screenSize,
                     translation(context).followUs,
                     () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
-                      )
+                      FollowUsPopUp().showSocialDialog(context)
                     }),
                 ],
           ),

@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Activities/Information/information_health.dart';
-import 'package:wyddb23_flutter/Components/carousel.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';

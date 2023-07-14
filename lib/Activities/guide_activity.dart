@@ -14,28 +14,30 @@ import '../../Components/my_text.dart';
 import '../../Components/wyd_resources.dart';
 import '../APIs/WydAPI/Models/contact_model.dart';
 import '../APIs/WydAPI/Models/faq_model.dart';
+import '../APIs/WydAPI/Models/guide_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Components/accordion_page.dart';
+import '../Pdf/permission_request.dart';
 
-class ContactsActivity extends StatefulWidget {
-  const ContactsActivity({Key? key}) : super(key: key);
+class GuideActivity extends StatefulWidget {
+  const GuideActivity({Key? key}) : super(key: key);
 
   @override
-  State<ContactsActivity> createState() => _ContactsActivityState();
+  State<GuideActivity> createState() => _GuideActivityState();
 }
 
-class _ContactsActivityState extends State<ContactsActivity> {
+class _GuideActivityState extends State<GuideActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
-  List<Contact>? _contactModel = null;
+  Map<String, Guide>? _guideModel = null;
 
   @override
   void initState() {
     super.initState();
-    _getContacts();
+    _getGuides();
   }
 
-  void _getContacts() async {
-    _contactModel = (await ApiCacheHelper.getContacts());
+  void _getGuides() async {
+    _guideModel = (await ApiCacheHelper.getGuides());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -53,7 +55,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
           child: TextButton.icon(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
-            translation(context).home.toUpperCase(),
+            translation(context).symDay.toUpperCase(),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: WydColors.yellow,
@@ -81,7 +83,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05, vertical: 20),
                 child: MyText(
-                  translation(context).contacts,
+                  translation(context).guides,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
@@ -111,13 +113,14 @@ class _ContactsActivityState extends State<ContactsActivity> {
           child: Wrap(
             runSpacing: screenSize.width * 0.02,
             children: [
-              if(_contactModel != null)...
+              if(_guideModel != null)...
               {
-                for(Contact contact in _contactModel!)...
+   
+                for(var entry in _guideModel!.keys)...
                 {
-                  getContactCard(screenSize, contact),
+                  getGuideCard(screenSize, entry, _guideModel?[entry])
                 },
-                if(_contactModel!.isEmpty)...
+                if(_guideModel!.isEmpty)...
                   {
                     Center(
                       child: Column(
@@ -148,6 +151,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
                 Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       MyText(
                         translation(context).loading + '...',
@@ -158,7 +162,7 @@ class _ContactsActivityState extends State<ContactsActivity> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: EdgeInsets.only(top: 40),
                         child: CircularProgressIndicator( //Adds a Loading Indicator
                           color: WydColors.yellow,
                         ),
@@ -174,73 +178,58 @@ class _ContactsActivityState extends State<ContactsActivity> {
     );
   }
 
-  Container getContactCard(Size screenSize, Contact contact) {
+  Container getGuideCard(Size screenSize, String filepath, Guide? guide) {
     return Container(
-              constraints: BoxConstraints(
-                minHeight: screenSize.width * 0.2,
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: screenSize.width * 0.2,
+        ),
+        width: screenSize.width * 0.9,
+        decoration: BoxDecoration(
+          color: Colors.grey[100],
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 0.1,
+              blurRadius: 20
+            )
+          ]
+        ),
+        child: TextButton(
+          onPressed: () => {
+          PermissionRequest.requestPermission(context, filepath, guide.getTranslatedTitleAttribute(currentLanguageCode))
+          },
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.grey,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: screenSize.width * 0.12,
+                margin: EdgeInsets.only(left: 20),
+                child: HeroIcon(
+                  HeroIcons.document,
+                  style: HeroIconStyle.solid,
+                  color: Colors.grey[800],
+                )
               ),
-              width: screenSize.width * 0.9,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(10)
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.all(screenSize.width * 0.03),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          MyText(
-                            contact.person,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                              fontSize: screenSize.height * 0.02,
-                            ),
-                          ),
-                          if(contact.getTranslatedDescriptionAttribute(currentLanguageCode) != "")...
-                          {
-                            MyText(contact.getTranslatedDescriptionAttribute(currentLanguageCode)),
-                          }
-                        ],
-                      ),
-                    ),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: MyText(
+                  guide!.getTranslatedTitleAttribute(currentLanguageCode),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.03, screenSize.height * 0.025, screenSize.height * 0.025),
                   ),
-                  Container(
-                    height: screenSize.width * 0.12,
-                    margin: EdgeInsets.only(right: 20),
-                    child: TextButton(
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        return WydColors.red;
-                      }),
-                    ),
-                    onPressed: () {
-                      launchUrl(Uri.parse('tel:' + contact.contact));
-                    },
-                    child: Container(
-                      width: screenSize.width * 0.25,
-                      alignment: Alignment.center,
-                      child: MyText(
-                      translation(context).call.toUpperCase(),
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: screenSize.height * 0.014,
-                        ),
-                      ),
-                    ),
-                                    ),
-                  ),
-                ],
+                ),
               ),
-            );
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

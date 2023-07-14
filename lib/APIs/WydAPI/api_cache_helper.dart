@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
  
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/accommodation_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/contact_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/faq_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/image_model.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
 import '../WeatherAPI/api_service.dart';
+import 'Models/guide_model.dart';
 import 'Models/information_model.dart';
 import 'Models/visit_model.dart';
 import 'api_response_box.dart';
@@ -142,7 +146,7 @@ class ApiCacheHelper {
     final cachedResponse = box.get('contact');
 
     if (cachedResponse != null) {
-      // Expires after 2s day
+      // Expires after 2 days
       if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 24 || connectivityResult == ConnectivityResult.none)
         // Return cached response if it's not expired yet
         return contactFromJson(json.decode(cachedResponse.response));
@@ -162,7 +166,37 @@ class ApiCacheHelper {
       ..timestamp = DateTime.now().millisecondsSinceEpoch;
     await box.put('contact', newResponse);
  
-    return contactFromJson(response as String);
+  return contactFromJson(response as String);
+  }
+
+  static Future<Map<String, Guide>?> getGuides() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiGuides');
+
+    List<Guide> guides = await saveGuides();
+
+    Map<String, Guide> guidePaths = new Map();
+
+    for(Guide guide in guides)
+    {
+      var asset = box.get(guide.assetUrl);
+
+      if(asset != null)
+      {
+        if(asset.timestamp != guide.createdAt.millisecondsSinceEpoch)
+        {
+          guidePaths.addAll(await fetchPdf(guide, box));
+        }
+
+        guidePaths[asset.endpoint] = Guide.fromJson(json.decode(asset.response));
+      }
+      else
+      {
+          guidePaths.addAll(await fetchPdf(guide, box));
+      }
+    }
+
+    return guidePaths;
   }
 
   static Future<List<Information>> getInformation() async {
@@ -248,5 +282,50 @@ class ApiCacheHelper {
     await box.put('image', newResponse);
  
     return imageFromJson(response as String)[0].imageUrl;
+  }
+
+  static Future<Map<String, Guide>> fetchPdf(Guide guide, var box) async
+  {
+    Map<String, Guide> map = new Map();
+    File file = await WydResources.loadPdfUrl(ApiConstants.storage + guide.assetUrl);
+
+    final newResponse = ApiResponseBox()
+      ..endpoint = file.path
+      ..response = json.encode(guide)
+      ..timestamp = guide.createdAt.millisecondsSinceEpoch;
+    await box.put(guide.assetUrl, newResponse);
+
+    map[newResponse.endpoint] = Guide.fromJson(json.decode(newResponse.response));
+
+    return map;
+  }
+
+  static Future<List<Guide>> saveGuides() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('guides');
+
+    if (cachedResponse != null) {
+      // Expires after 2 days
+      if(connectivityResult == ConnectivityResult.none)
+        // Return cached response if it's not expired yet
+        return guideFromJson(json.decode(cachedResponse.response));
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getGuides();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'guides'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('guides', newResponse);
+ 
+  return guideFromJson(response as String);
   }
 }

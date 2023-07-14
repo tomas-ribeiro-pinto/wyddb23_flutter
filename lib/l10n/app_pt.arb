@@ -36,5 +36,8 @@
   "wydMessage": "Mensagem da coordenação WYD DB23",
   "wydMessageTitle": "Mensagem WYD DB23",
   "transport": "Transportes",
-  "health": "Saúde"
+  "health": "Saúde",
+  "noPermission": "Não foi possível abrir o ficheiro",
+  "noPermissionParagraph": "Verifique as suas permissões de armazenamento para abrir o ficheiro.",
+  "givePermission": "Dar permissão"
 }

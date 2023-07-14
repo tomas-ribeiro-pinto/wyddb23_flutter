@@ -36,5 +36,8 @@
     "wydMessage": "Messaggio del coordinamento della WYD DB23",
     "wydMessageTitle": "WYD DB23 messaggio",
     "transport": "Transporti",
-    "health": "Salute"
+    "health": "Salute",
+    "noPermission": "Non è stato possibile aprire il file",
+    "noPermissionParagraph": "Controllare i permessi di archiviazione per aprire il file.",
+    "givePermission": "Dare il permesso"
   }

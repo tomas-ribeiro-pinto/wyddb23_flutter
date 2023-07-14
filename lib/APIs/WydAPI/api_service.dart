@@ -90,4 +90,16 @@ class WydApiService {
       log(e.toString());
     }
   }
+
+  Future<String?> getGuides() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.guide);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }

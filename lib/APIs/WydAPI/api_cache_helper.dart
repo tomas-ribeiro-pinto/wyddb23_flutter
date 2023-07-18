@@ -447,7 +447,7 @@ class ApiCacheHelper {
 
   static Future<String> fetchMapPdf(SymMap symMap, var box) async
   {
-    File file = await WydResources.loadPdfUrl(ApiConstants.devStorage + symMap.url);
+    File file = await WydResources.loadPdfUrl(ApiConstants.storage + symMap.url);
 
     return file.path;
   }

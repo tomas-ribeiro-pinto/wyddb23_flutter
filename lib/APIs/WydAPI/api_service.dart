@@ -94,7 +94,7 @@ class WydApiService {
 
   Future<String?> getGuides() async {
     try {
-      var url = Uri.parse(ApiConstants.dev + ApiConstants.guide);
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.guide);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;
@@ -106,7 +106,7 @@ class WydApiService {
 
   Future<String?> getFatimaGuides() async {
     try {
-      var url = Uri.parse(ApiConstants.dev + ApiConstants.fatimaGuide);
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.fatimaGuide);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;
@@ -118,7 +118,7 @@ class WydApiService {
 
   Future<String?> getFatimaVisits() async {
     try {
-      var url = Uri.parse(ApiConstants.dev + ApiConstants.fatimaVisit);
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.fatimaVisit);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;
@@ -130,7 +130,7 @@ class WydApiService {
 
   Future<String?> getTimetable() async {
     try {
-      var url = Uri.parse(ApiConstants.dev + ApiConstants.timetable);
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.timetable);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;
@@ -142,7 +142,7 @@ class WydApiService {
 
   Future<String?> getMap() async {
     try {
-      var url = Uri.parse(ApiConstants.dev + ApiConstants.map);
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.map);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;

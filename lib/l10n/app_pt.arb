@@ -39,5 +39,10 @@
   "health": "Saúde",
   "noPermission": "Não foi possível abrir o ficheiro",
   "noPermissionParagraph": "Verifique as suas permissões de armazenamento para abrir o ficheiro.",
-  "givePermission": "Dar permissão"
+  "givePermission": "Dar permissão",
+  "close": "Fechar",
+  "createAlert": "Criar Alerta",
+  "alertTitle": "🔴 A acontecer agora...",
+  "alertParagraph": "começa dentro de 5 minutos",
+  "alertCreated": "Alerta Agendado!"
 }

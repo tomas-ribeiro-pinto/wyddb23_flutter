@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
+import 'package:timezone/timezone.dart';
+
+import '../APIs/WydAPI/api_response_box.dart';
 
 class NotificationService {
   final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -36,5 +42,59 @@ class NotificationService {
       {int id = 0, String? title, String? body, String? payLoad}) async {
     return notificationsPlugin.show(
         id, title, body, await notificationDetails());
+  }
+
+  Future scheduleNotification(
+    {int id = 0,
+    String? title,
+    String? body,
+    String? payload,
+    required DateTime scheduleNotificationDateTime}) async
+    {
+      return notificationsPlugin.zonedSchedule(
+        id, 
+        title, 
+        body, 
+        TZDateTime.from(
+          scheduleNotificationDateTime,
+          getLocation('Europe/Lisbon')
+        ), 
+        await notificationDetails(),
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+      );
+    }
+
+  static void saveAlarm(int id) async { 
+    var box = await Hive.openBox<ApiResponseBox>('notifications');
+    final cachedResponse = box.get('scheduled');
+
+    List<dynamic> timetableEntrys = [];
+
+    if(cachedResponse != null)
+    {
+      timetableEntrys = jsonDecode(cachedResponse.response);
+    }
+
+    timetableEntrys.add(id);
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'map'
+      ..response = json.encode(timetableEntrys)
+      ..timestamp = DateTime.now().microsecondsSinceEpoch;
+    await box.put('scheduled', newResponse);
+  }
+
+  static Future<List<dynamic>?> getAlarms() async { 
+    var box = await Hive.openBox<ApiResponseBox>('notifications');
+    final cachedResponse = box.get('scheduled');
+
+    List<dynamic> alarms = [];
+
+    if(cachedResponse != null)
+      return alarms = jsonDecode(cachedResponse!.response);
+
+    return alarms;
   }
 }

@@ -39,5 +39,10 @@
     "health": "Health Advice",
     "noPermission": "The file could not be opened",
     "noPermissionParagraph": "Please check your storage permissions to open the file.",
-    "givePermission": "Give Permission"
+    "givePermission": "Give Permission",
+    "close": "Close",
+    "createAlert": "Create Alert",
+    "alertTitle": "🔴 Happening now...",
+    "alertParagraph": "is starting in 5 minutes",
+    "alertCreated": "Alert Scheduled!"
   }

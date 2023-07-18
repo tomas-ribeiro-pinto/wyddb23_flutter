@@ -27,7 +27,7 @@ class InformationActivity extends StatefulWidget {
 
 class _InformationActivityState extends State<InformationActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
-  List<Information>? _informationModel = null;
+  List<List<Information>>? _informationModel = null;
 
   @override
   void initState() {
@@ -117,9 +117,9 @@ class _InformationActivityState extends State<InformationActivity> {
               ),
               if(_informationModel != null)...
               {
-                for(Information information in _informationModel!)...
+                for(List<Information> information in _informationModel!)...
                 {
-                  getInformationButton(information),
+                  getInformationButton(information[0]),
                 }
               }
             ],

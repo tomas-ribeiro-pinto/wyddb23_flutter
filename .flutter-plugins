@@ -33,4 +33,7 @@ url_launcher_linux=/Users/tomaspinto/.pub-cache/hosted/pub.dev/url_launcher_linu
 url_launcher_macos=/Users/tomaspinto/.pub-cache/hosted/pub.dev/url_launcher_macos-3.0.5/
 url_launcher_web=/Users/tomaspinto/.pub-cache/hosted/pub.dev/url_launcher_web-2.0.17/
 url_launcher_windows=/Users/tomaspinto/.pub-cache/hosted/pub.dev/url_launcher_windows-3.0.6/
+video_player=/Users/tomaspinto/.pub-cache/hosted/pub.dev/video_player-2.6.0/
+video_player_android=/Users/tomaspinto/.pub-cache/hosted/pub.dev/video_player_android-2.4.3/
+video_player_avfoundation=/Users/tomaspinto/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.4.2/
 video_player_web=/Users/tomaspinto/.pub-cache/hosted/pub.dev/video_player_web-2.0.15/

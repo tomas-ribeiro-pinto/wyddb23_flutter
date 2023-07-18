@@ -2,14 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-import '../Activities/guide_activity.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
+import 'package:wyddb23_flutter/Activities/pdf_viewer.dart';
+import 'package:wyddb23_flutter/Pdf/permission_request.dart';
+import '../APIs/WydAPI/Models/sym_map_model.dart';
+import '../Activities/Guide/guide_activity.dart';
+import '../Activities/Timetable/timetable_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 
 
-class SymDayPage extends StatelessWidget {
+class SymDayPage extends StatefulWidget {
   const SymDayPage({Key? key}) : super(key: key);
+
+  @override
+  State<SymDayPage> createState() => _SymDayPageState();
+}
+
+class _SymDayPageState extends State<SymDayPage> {
+
+  String? symMap;
+
+  @override
+  void initState() {
+    super.initState();
+    getMap();
+  }
+
+  void getMap() async
+  {
+    symMap = await ApiCacheHelper.getMap();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,12 +102,51 @@ class SymDayPage extends StatelessWidget {
                   alignment: WrapAlignment.start,
                   spacing: 25.0,
                       children: [
-                        getButton(screenSize, translation(context).map, context),
-                        getButton(screenSize, translation(context).timetable, context),
-                        getButton(screenSize, translation(context).guides, context),
-                        getButton(screenSize, translation(context).symForum, context),
-                        getButton(screenSize, translation(context).liveStreaming, context),
-                        getButton(screenSize, translation(context).emergency, context),
+                        getButton(
+                          screenSize, translation(context).map, context,
+                          () => {
+                            if(symMap != null)
+                            {
+                              PermissionRequest.requestPermission(context, symMap!, translation(context).map)
+                            }
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).timetable, context,
+                          () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TimetableActivity()),
+                            )
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).guides, context,
+                          () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => GuideActivity()),
+                            )
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).symForum, context,
+                          () => {
+                            
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).liveStreaming, context,
+                          () => {
+                            
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).liveStreaming, context,
+                          () => {
+                            
+                          }
+                        ),
                       ],
                     ),
                 Container(
@@ -161,7 +224,7 @@ class SymDayPage extends StatelessWidget {
       );
   }
 
-  Container getButton(Size screenSize, String location, BuildContext context) {
+  Container getButton(Size screenSize, String location, BuildContext context, Function() onPressed) {
     return Container(
             margin: EdgeInsets.only(top:15),
             child: TextButton(
@@ -172,12 +235,7 @@ class SymDayPage extends StatelessWidget {
                   return WydColors.green;
                 }),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GuideActivity()),
-                );
-              }, 
+              onPressed: onPressed,
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,

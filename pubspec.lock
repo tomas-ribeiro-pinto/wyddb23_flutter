@@ -289,6 +289,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  dismissible_page:
+    dependency: "direct main"
+    description:
+      name: dismissible_page
+      sha256: "5b2316f770fe83583f770df1f6505cb19102081c5971979806e77f2e507a9958"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -1034,14 +1042,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0+2"
-  story:
+  story_time:
     dependency: "direct main"
     description:
-      name: story
-      sha256: "0cff3c02d5ad1d9c1cf79481b8fe4a4f2f859e56b351644e96b8b209e6a110a5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: a9f5c8c6f98b7ea376cdd2265032ec3f1b8a3d89
+      url: "https://github.com/tomas-ribeiro-pinto/story_time.git"
+    source: git
+    version: "1.0.6"
   stream_channel:
     dependency: transitive
     description:
@@ -1091,7 +1100,7 @@ packages:
     source: hosted
     version: "0.5.1"
   timezone:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: timezone
       sha256: "1cfd8ddc2d1cfd836bc93e67b9be88c3adaeca6f40a00ca999104c30693cdca0"
@@ -1226,6 +1235,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      sha256: "868a139229acb5018d22aded3eb9cb4767ff43a8216573c086b6c535a4957481"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.0"
+  video_player_android:
+    dependency: transitive
+    description:
+      name: video_player_android
+      sha256: e7de6fabe5d96048cd8f4d710f25c3df84bb3cab8b22da6c082bd8f39e316984
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.3"
+  video_player_avfoundation:
+    dependency: transitive
+    description:
+      name: video_player_avfoundation
+      sha256: "90468226c8687adf7b567d9bb42c25588783c4d30509af1fbd663b2dd049f700"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.2"
   video_player_platform_interface:
     dependency: transitive
     description:

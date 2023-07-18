@@ -20,10 +20,15 @@ class PermissionRequest{
   static void requestPermission(BuildContext context, String asset, String title) async {
     if(await Permission.storage.request().isGranted)
     {
-      Navigator.push(
+/*       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PdfViewer(path: asset, title: title)),
+      ); */
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PdfViewer(path: asset ,title: title)),
       );
+      //await OpenFilex.open(asset);
     }
     else
     {
@@ -47,7 +52,7 @@ class PermissionRequest{
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel', style: TextStyle(color: Colors.black),),
+              child: Text(translation(context).close, style: TextStyle(color: Colors.black),),
               onPressed: () {
                 Navigator.of(context).pop();
               },

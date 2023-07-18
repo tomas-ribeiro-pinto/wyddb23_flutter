@@ -49,7 +49,7 @@ class _PdfViewerState extends State<PdfViewer> with WidgetsBindingObserver {
             pageFling: true,
             pageSnap: true,
             defaultPage: currentPage!,
-            fitPolicy: FitPolicy.BOTH,
+            fitPolicy: FitPolicy.WIDTH,
             preventLinkNavigation:
                 false, // if set to true the link is handled in flutter
             onLinkHandler: (uri) => launchUrl(Uri.parse(uri!), mode: LaunchMode.externalApplication),

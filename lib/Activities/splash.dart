@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart';
 import 'package:wyddb23_flutter/Activities/home_activity.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Components/wyd_resources.dart';
@@ -28,8 +29,18 @@ class _SplashState extends State<Splash> {
     await ApiCacheHelper.getAgenda();
     await ApiCacheHelper.getWeather();
     await ApiCacheHelper.getHomePic();
+    await ApiCacheHelper.getVisits();
     await ApiCacheHelper.getFaq();
     await ApiCacheHelper.getInformation();
+
+    // SYM Day
+    await ApiCacheHelper.getGuides();
+    await ApiCacheHelper.getTimetable();
+    await ApiCacheHelper.getMap();
+
+    // Fatima
+    await ApiCacheHelper.getFatimaGuides();
+    await ApiCacheHelper.getFatimaVisits();
   }
 
   @override

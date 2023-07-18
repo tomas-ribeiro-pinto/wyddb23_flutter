@@ -15,6 +15,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 // used to pass messages from event handler to the UI
 final _messageStreamController = BehaviorSubject<RemoteMessage>();
@@ -36,6 +37,7 @@ Future<void> main() async {
 
   // Initialize Local Notifications
   NotificationService().initNotification();
+  tz.initializeTimeZones();
 
   // Set up Hive NoSQL
   final appDocumentDirectory = await getApplicationDocumentsDirectory();

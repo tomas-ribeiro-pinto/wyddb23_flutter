@@ -39,5 +39,10 @@
     "health": "Salute",
     "noPermission": "Non è stato possibile aprire il file",
     "noPermissionParagraph": "Controllare i permessi di archiviazione per aprire il file.",
-    "givePermission": "Dare il permesso"
+    "givePermission": "Dare il permesso",
+    "close": "Chiudere",
+    "createAlert": "Creare un avviso",
+    "alertTitle": "🔴 Ora è in corso...",
+    "alertParagraph": "inizierà tra 5 minuti",
+    "alertCreated": "Avviso programmato!"
   }

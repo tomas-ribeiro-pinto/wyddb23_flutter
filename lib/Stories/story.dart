@@ -1,7 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:story/story_image.dart';
-import 'package:story/story_page_view.dart';
+import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_video_player/cached_video_player.dart';
+import 'package:dismissible_page/dismissible_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:heroicons/heroicons.dart';
+import 'package:story_time/story_page_view/story_page_view.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart';
+import 'package:wyddb23_flutter/Components/wyd_resources.dart';
+
+import '../APIs/WydAPI/Models/story_model.dart';
+import 'video.dart';
+
+
+void main() {}
 
 class UserModel {
   UserModel(this.stories, this.userName, this.imageUrl);
@@ -12,71 +26,130 @@ class UserModel {
 }
 
 class StoryModel {
-  StoryModel(this.imageUrl);
+  StoryModel(this.imageUrl, this.isVideo);
 
   final String imageUrl;
+  final int isVideo;
 }
 
-class StroyPage extends StatelessWidget {
-  const StroyPage({Key? key}) : super(key: key);
+class StoryBar extends StatefulWidget {
+  const StoryBar({Key? key}) : super(key: key);
+
+  @override
+  State<StoryBar> createState() => _StoryBarState();
+}
+
+class _StoryBarState extends State<StoryBar> {
+  late List<Story>? _storyModel = null;
+  late List<UserModel>? stories = null;
+
+  @override
+  void initState() {
+    super.initState();
+    _getStories();
+  }
+
+  void _getStories() async {
+    _storyModel = (await WydApiService().getStories());
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
+      getStoriesModel();
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      width: screenSize.width * 0.8,
+      child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        child: Row(
           children: [
-            ElevatedButton(
-              child: const Text('show stories'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const StoryPage();
-                    },
-                  ),
-                );
-              },
-            ),
+            if(stories != null)...
+            {
+              for(var user in stories!)...
+              {
+                getUserCircle(context, user),
+              }
+            }
           ],
         ),
       ),
     );
   }
+
+  Container getUserCircle(BuildContext context, UserModel user) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      margin: EdgeInsets.only(left: screenSize.width * 0.05),
+      child: IconButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+          ),
+        ),
+        onPressed: () {
+          HapticFeedback.heavyImpact();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => StoryPage(startPage: stories!.indexOf(user), stories: stories)),
+          );
+        },
+        icon: Container(
+          height: screenSize.width * 0.16,
+          width: screenSize.width * 0.16,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: user.userName == "SYM Day" ? Border.all(color: WydColors.yellow, width: 1.5) : null,
+            borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(screenSize.width * 0.2),
+              child: CachedNetworkImage(
+                imageUrl: user.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  
+  void getStoriesModel() {
+    List<UserModel> users = [];
+    for(Story topic in _storyModel!)
+    {
+      List<StoryModel> entries = [];
+      var topicName = topic.title;
+      var topicImage = ApiConstants.storage + topic.imageUrl;
+
+      for(StoryElement story in topic.stories)
+      {
+        entries += [
+          StoryModel(ApiConstants.storage + story.contentUrl, story.isVideo)
+        ];
+      }
+
+      users.add(UserModel(entries, topicName,topicImage));
+    }
+    stories = users;
+  }
 }
 
-final sampleUsers = [
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609418426663-8b5c127691f9?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609444074870-2860a9a613e3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1Nnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609504373567-acda19c93dc4?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1MHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User1",
-      "https://images.unsplash.com/photo-1609262772830-0decc49ec18c?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMDF8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1609439547168-c973842210e1?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4Nnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User2",
-      "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwzMjN8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1609421139394-8def18a165df?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMDl8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609377375732-7abb74e435d9?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxODJ8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1560925978-3169a42619b2?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMjF8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User3",
-      "https://images.unsplash.com/photo-1609127102567-8a9a21dc27d8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOTh8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-];
-
 class StoryPage extends StatefulWidget {
-  const StoryPage({Key? key}) : super(key: key);
+  const StoryPage({Key? key, required this.startPage, required this.stories}) : super(key: key);
+
+  final int startPage;
+  final stories;
 
   @override
   _StoryPageState createState() => _StoryPageState();
@@ -84,12 +157,16 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   late ValueNotifier<IndicatorAnimationCommand> indicatorAnimationController;
+  // Controller for the Video Story
+  CachedVideoPlayerController? controller = CachedVideoPlayerController.network("");
+  
+  double currentVolume = 1;
 
   @override
   void initState() {
     super.initState();
     indicatorAnimationController = ValueNotifier<IndicatorAnimationCommand>(
-        IndicatorAnimationCommand.resume);
+        IndicatorAnimationCommand(resume: true));
   }
 
   @override
@@ -98,128 +175,207 @@ class _StoryPageState extends State<StoryPage> {
     super.dispose();
   }
 
+  setStoryDuration(int seconds)
+  {
+    indicatorAnimationController.value = IndicatorAnimationCommand(
+      duration: Duration(seconds: seconds)
+    );
+  }
+
+  late int currentPage = widget.startPage;
+
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: StoryPageView(
-        indicatorDuration: Duration(seconds: 10),
-        itemBuilder: (context, pageIndex, storyIndex) {
-          final user = sampleUsers[pageIndex];
-          final story = user.stories[storyIndex];
-          return Stack(
-            children: [
-              Positioned.fill(
-                child: Container(color: Colors.black),
-              ),
-              Positioned.fill(
-                child: 
-                user.stories.indexOf(story) != 2
-                ?
-                StoryImage(
-                  key: ValueKey(story.imageUrl),
-                  imageProvider: NetworkImage(
-                    story.imageUrl,
-                  ),
-                  fit: BoxFit.fitWidth,
-                )
-                :
-                Image.asset(
-                      'assets/images/highlight-cross.png',
-                      fit: BoxFit.fitWidth,
-                    ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 44, left: 8),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 32,
-                      width: 32,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(user.imageUrl),
-                          fit: BoxFit.cover,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      user.userName,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
+      backgroundColor: WydColors.green,
+      body: DismissiblePage(
+        onDismissed: () {
+          controller!.pause();
+          controller!.dispose();
+          Navigator.of(context).pop();
         },
-        gestureItemBuilder: (context, pageIndex, storyIndex) {
-          return Stack(children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  color: Colors.white,
-                  icon: const Icon(Icons.close),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
-            ),
-            if (pageIndex == 0)
-              Center(
-                child: ElevatedButton(
-                  child: const Text('show modal bottom sheet'),
-                  onPressed: () async {
-                    indicatorAnimationController.value =
-                        IndicatorAnimationCommand.pause;
-                    await showModalBottomSheet(
-                      context: context,
-                      builder: (context) => SizedBox(
-                        height: MediaQuery.of(context).size.height / 2,
-                        child: Padding(
-                          padding: const EdgeInsets.all(24),
-                          child: Text(
-                            'Look! The indicator is now paused\n\n'
-                            'It will be coutinued after closing the modal bottom sheet.',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                            textAlign: TextAlign.center,
+        direction: DismissiblePageDismissDirection.down,
+        child: Container(
+          margin: EdgeInsets.only(top: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.02, screenSize.width * 0.03, screenSize.width * 0.05, screenSize.width * 0.05)),
+          child: StoryPageView(
+            initialPage: widget.startPage,
+            onPageForward: (newPageIndex) => {
+
+            },
+            onStoryIndexChanged: (int newStoryIndex, int newPage) async {
+              if(controller!.value.isInitialized) 
+              {
+                controller!.dispose();
+                controller = CachedVideoPlayerController.network("");
+              }
+              if(newPage != -1)
+                currentPage = newPage;
+                
+              if (widget.stories[currentPage].stories[newStoryIndex].isVideo == 1) {
+                controller = CachedVideoPlayerController.network("");
+                await initialiseVideo(widget.stories[currentPage].stories[newStoryIndex].imageUrl);
+              }
+              else
+              {
+                setStoryDuration(10);
+                controller = CachedVideoPlayerController.network("");
+              }
+            },
+            onStoryPaused: () => {
+              if(controller!.value.isInitialized)
+              {
+                controller!.pause()
+              }
+            },
+            onStoryUnpaused: () => {
+              if(controller!.value.isInitialized)
+              {
+                controller!.play()
+              }
+            },
+            itemBuilder: (context, pageIndex, storyIndex) {
+              final user = widget.stories[pageIndex];
+              final story = user.stories[storyIndex];
+              return Stack(
+                children: [
+                  Positioned.fill(
+                    child: Container(
+                      color: Colors.black
+                    ),
+                  ),
+                  story.isVideo == 0
+                  ?
+                  Positioned.fill(
+                    child: Center(
+                      child: CachedNetworkImage(
+                        imageUrl: story.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
+                  :
+                  VideoPage(controller: controller!),
+                  Positioned(
+                    child: Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.black
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 44, left: 8),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 32,
+                          width: 32,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(user.imageUrl),
+                              fit: BoxFit.cover,
+                            ),
+                            shape: BoxShape.circle,
                           ),
                         ),
-                      ),
-                    );
-                    indicatorAnimationController.value =
-                        IndicatorAnimationCommand.resume;
-                  },
-                ),
-              ),
-          ]);
-        },
-        indicatorAnimationController: indicatorAnimationController,
-        initialStoryIndex: (pageIndex) {
-          if (pageIndex == 0) {
-            return 1;
-          }
-          return 0;
-        },
-        pageLength: sampleUsers.length,
-        storyLength: (int pageIndex) {
-          return sampleUsers[pageIndex].stories.length;
-        },
-        onPageLimitReached: () {
-          Navigator.pop(context);
-        },
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          user.userName,
+                          style: const TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            },
+            gestureItemBuilder: (context, pageIndex, storyIndex) {
+              return Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 32),
+                      child: Padding(
+                            padding: EdgeInsets.zero,
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              color: Colors.white,
+                              icon: const Icon(Icons.close),
+                              onPressed: () {
+                                controller!.dispose();
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 32),
+                      child: Container(
+                            margin: EdgeInsets.only(right:40),
+                            child: IconButton(
+                              padding: EdgeInsets.only(right: 0),
+                              color: Colors.white,
+                              icon: currentVolume == 0
+                                ? const HeroIcon(HeroIcons.speakerXMark)
+                                : const HeroIcon(HeroIcons.speakerWave),
+                              onPressed: () {
+                                setState(() {
+                                  currentVolume == 1
+                                    ? controller!.setVolume(0)
+                                    : controller!.setVolume(1);
+                                  currentVolume == 1 
+                                    ? currentVolume = 0 
+                                    : currentVolume = 1;
+                                });
+                              },
+                            ),
+                          ),
+                    ),
+                  ),
+              ]);
+            },
+            indicatorAnimationController: indicatorAnimationController,
+            indicatorDuration: Duration(seconds: 10),
+            pageLength: widget.stories.length,
+            storyLength: (int pageIndex) {
+              return widget.stories[pageIndex].stories.length;
+            },
+            onPageLimitReached: () => {
+              controller!.dispose(),
+              Navigator.pop(context)
+            },
+          ),
+        ),
       ),
     );
+  }
+
+  Future<int> initialiseVideo(String url) async
+  {
+    if(!controller!.value.isInitialized)
+    {
+      controller = CachedVideoPlayerController.network(url);
+      await controller!.initialize().then((value) {
+        setState(() {
+          controller!.setVolume(currentVolume);
+          controller!.play();
+        });
+        setStoryDuration(controller!.value.duration.inSeconds);
+      });
+    }
+
+      return controller!.value.duration.inSeconds;
   }
 }

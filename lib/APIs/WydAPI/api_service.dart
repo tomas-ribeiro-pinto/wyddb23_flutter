@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/story_model.dart';
 import 'api_constants.dart';
 import 'Models/agenda_model.dart';
 
@@ -93,10 +94,70 @@ class WydApiService {
 
   Future<String?> getGuides() async {
     try {
-      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.guide);
+      var url = Uri.parse(ApiConstants.dev + ApiConstants.guide);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getFatimaGuides() async {
+    try {
+      var url = Uri.parse(ApiConstants.dev + ApiConstants.fatimaGuide);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getFatimaVisits() async {
+    try {
+      var url = Uri.parse(ApiConstants.dev + ApiConstants.fatimaVisit);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getTimetable() async {
+    try {
+      var url = Uri.parse(ApiConstants.dev + ApiConstants.timetable);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getMap() async {
+    try {
+      var url = Uri.parse(ApiConstants.dev + ApiConstants.map);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<List<Story>?> getStories() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.story);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return storyFromJson(response.body);
       }
     } catch (e) {
       log(e.toString());

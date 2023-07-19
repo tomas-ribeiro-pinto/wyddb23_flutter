@@ -26,6 +26,11 @@ class _VisitPageState extends State<VisitPage> {
     _getVisit();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _getVisit() async {
     _visitModel = (await ApiCacheHelper.getVisits());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));

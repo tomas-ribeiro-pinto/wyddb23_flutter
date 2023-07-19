@@ -29,6 +29,11 @@ class _AgendaPageState extends State<AgendaPage> {
     _getAgenda();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _getAgenda() async {
     _agendaModel = (await ApiCacheHelper.getAgenda());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));

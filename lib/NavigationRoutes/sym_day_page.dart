@@ -30,9 +30,17 @@ class _SymDayPageState extends State<SymDayPage> {
     getMap();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void getMap() async
   {
     symMap = await ApiCacheHelper.getMap();
+    setState(() {
+      
+    });
   }
 
   @override
@@ -84,19 +92,6 @@ class _SymDayPageState extends State<SymDayPage> {
                     ),
                   ),
                 ),
-                /* Wrap(
-                  direction: Axis.horizontal,
-                  alignment: WrapAlignment.start,
-                  spacing: 25.0,
-                  children: [
-                    getGridButton(screenSize, translation(context).map),
-                    getGridButton(screenSize, translation(context).timetable),
-                    getGridButton(screenSize, translation(context).guides),
-                    getGridButton(screenSize, translation(context).symForum),
-                    getGridButton(screenSize, translation(context).liveStreaming),
-                    getGridButton(screenSize, translation(context).emergency),
-                  ],
-                ), */
               Wrap(
                   direction: Axis.horizontal,
                   alignment: WrapAlignment.start,
@@ -224,7 +219,7 @@ class _SymDayPageState extends State<SymDayPage> {
       );
   }
 
-  Container getButton(Size screenSize, String location, BuildContext context, Function() onPressed) {
+  Container getButton(Size screenSize, String action, BuildContext context, Function() onPressed) {
     return Container(
             margin: EdgeInsets.only(top:15),
             child: TextButton(
@@ -239,12 +234,22 @@ class _SymDayPageState extends State<SymDayPage> {
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,
-                child: MyText(
-                location.toUpperCase(),
+                child: (symMap != null || action != translation(context).map)
+                ?
+                MyText(
+                action.toUpperCase(),
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                     fontSize: screenSize.height * 0.025,
+                  ),
+                )
+                :
+                Container(
+                  height: screenSize.height * 0.035,
+                  width: screenSize.height * 0.035,
+                  child: CircularProgressIndicator( //Adds a Loading Indicator
+                    color: WydColors.yellow,
                   ),
                 ),
               ),

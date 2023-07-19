@@ -264,20 +264,23 @@ class ApiCacheHelper {
     final connectivityResult = await (Connectivity().checkConnectivity());
     var box = await Hive.openBox<ApiResponseBox>('apiResponses');
 
-    int oldTimestamp = box.get('map')?.timestamp ?? 0;
+    var asset = box.get('map');
+    int oldTimestamp = asset?.timestamp ?? 0;
     
     SymMap map = await saveMap();
 
     String url;
 
-      if(oldTimestamp != null)
+      if(asset != null)
       {
         if(oldTimestamp != map.updatedAt.millisecondsSinceEpoch)
         {
           url = await fetchMapPdf(map, box);
         }
-
-        url = map.url;
+        else
+        {
+          url = asset!.response;
+        }
       }
       else
       {
@@ -303,7 +306,7 @@ class ApiCacheHelper {
     }
  
     // Fetch new response if cache is expired or not available
-    final response = await WydApiService().getFatimaVisits();
+    final response = await WydApiService().getFatimaGuides();
 
     // Save new response to cache
     final newResponse = ApiResponseBox()
@@ -448,6 +451,12 @@ class ApiCacheHelper {
   static Future<String> fetchMapPdf(SymMap symMap, var box) async
   {
     File file = await WydResources.loadPdfUrl(ApiConstants.storage + symMap.url);
+
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'map'
+      ..response = file.path
+      ..timestamp = symMap.updatedAt.millisecondsSinceEpoch;
+    await box.put('map', newResponse);
 
     return file.path;
   }

@@ -14,6 +14,7 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../Activities/Fatima/fatima_activity.dart';
 import '../Activities/faq_activity.dart';
 import '../Components/follow_us_pop_up.dart';
 import '../Components/my_text.dart';
@@ -37,6 +38,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     _getData();
   }
   
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _getData() async {
     _weatherModel = await ApiCacheHelper.getWeather();
     image = (await ApiCacheHelper.getHomePic());
@@ -433,7 +439,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     }),
                   getFooterButton(screenSize,
                     translation(context).fatima,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FatimaActivity()),
+                      )
+                    }),
                   getFooterButton(screenSize,
                     translation(context).faq,
                     () => {
@@ -472,7 +483,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     }),
                   getFooterButton(screenSize,
                     translation(context).fatima,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FatimaActivity()),
+                      )
+                    }),
                   getFooterButton(screenSize,
                     translation(context).faq,
                     () => {

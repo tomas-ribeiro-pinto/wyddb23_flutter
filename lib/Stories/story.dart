@@ -49,11 +49,16 @@ class _StoryBarState extends State<StoryBar> {
     _getStories();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _getStories() async {
     _storyModel = (await WydApiService().getStories());
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
-      getStoriesModel();
-    }));
+        getStoriesModel();
+      }));
   }
 
   @override

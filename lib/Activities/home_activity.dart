@@ -37,6 +37,11 @@ class _HomeActivityState extends State<HomeActivity> {
     pageIndex = widget.pageIndex;
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   final pages = [
     const HomePage(),
     const AccommodationPage(),

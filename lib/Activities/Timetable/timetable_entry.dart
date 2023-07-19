@@ -36,8 +36,11 @@ class TimetableEntry{
               children: [
                 Row(
                   children: [
-                    Text(entry.getTranslatedTitleAttribute(currentLanguageCode), style: TextStyle(fontWeight: FontWeight.bold),),
-                    const Spacer(),
+                    Expanded(
+                      flex: 5,
+                      child: Text(entry.getTranslatedTitleAttribute(currentLanguageCode), 
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.03, screenSize.height * 0.025, screenSize.height * 0.025)),),
+                    ),
                     Container(
                       child: IconButton(
                         onPressed: () {
@@ -47,7 +50,7 @@ class TimetableEntry{
                           HeroIcons.xCircle,
                           color: Colors.green,
                           style: HeroIconStyle.solid,
-                          size: 30,
+                          size: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.05, screenSize.height * 0.04, screenSize.height * 0.04)
                         ),
                       )
                     ),
@@ -142,7 +145,8 @@ class TimetableEntry{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(translation(context).createAlert, style: TextStyle(color: WydColors.red),),
+                        Text(translation(context).createAlert, 
+                          style: TextStyle(color: WydColors.red, fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)),),
                         Container(
                           margin: EdgeInsets.only(left: 5),
                           child: HeroIcon(

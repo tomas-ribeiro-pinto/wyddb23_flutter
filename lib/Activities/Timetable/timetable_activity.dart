@@ -34,7 +34,7 @@ class TimetableActivity extends StatefulWidget {
 class _TimetableActivityState extends State<TimetableActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
   List<Timetable>? _timetableModel = null;
-  List<int>? alarms = null;
+  List<int>? alarms = [];
 
   @override
   void initState() {
@@ -147,19 +147,18 @@ class _TimetableActivityState extends State<TimetableActivity> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: HeroIcon(HeroIcons.noSymbol)
+                MyText(
+                  translation(context).loading + '...',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: WydColors.green,
+                    fontSize: 20
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 20),
-                  child: MyText(
-                    translation(context).noRecords,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: WydColors.green,
-                      fontSize: screenSize.width * 0.05
-                    ),
+                  child: CircularProgressIndicator( //Adds a Loading Indicator
+                    color: WydColors.yellow,
                   ),
                 ),
               ],
@@ -200,7 +199,7 @@ class _TimetableActivityState extends State<TimetableActivity> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: EdgeInsets.only(left: screenSize.width * 0.02),
                     child: MyText(
                       entry!.startTime != null ? formatter.format(entry.startTime!) : '',
                       style: TextStyle(
@@ -210,60 +209,70 @@ class _TimetableActivityState extends State<TimetableActivity> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        child: MyText(
-                          entry!.getTranslatedTitleAttribute(currentLanguageCode),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                            fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: screenSize.width * 0.03),
+                          child: MyText(
+                            entry!.getTranslatedTitleAttribute(currentLanguageCode),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 2),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: HeroIcon(
-                                HeroIcons.mapPin,
-                                style: HeroIconStyle.solid,
-                                color: Colors.grey[400],
-                                size: 18,
-                              )
-                            ),
-                            Container(
-                              child: MyText(
-                                entry!.getTranslatedTitleAttribute(currentLanguageCode),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey[800],
-                                  fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.02, screenSize.height * 0.017, screenSize.height * 0.01),
+                        Container(
+                          margin: EdgeInsets.only(top: 2),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: screenSize.width * 0.02),
+                                child: HeroIcon(
+                                  HeroIcons.mapPin,
+                                  style: HeroIconStyle.solid,
+                                  color: Colors.grey[400],
+                                  size: 18,
+                                )
+                              ),
+                              Container(
+                                child: MyText(
+                                  entry.location,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.grey[800],
+                                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.02, screenSize.height * 0.017, screenSize.height * 0.017),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  new Spacer(),
-                  if(alert)...
-                  {
+                  alert == true 
+                  ?
                     Container(
                       height: screenSize.width * 0.12,
-                      margin: EdgeInsets.only(right: 20),
+                      margin: EdgeInsets.only(right: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.02, screenSize.height * 0.02, screenSize.height * 0.02)),
                       child: HeroIcon(
                         HeroIcons.bell,
                         style: HeroIconStyle.solid,
                         color: WydColors.red,
                       )
+                    )
+                  :
+                    Container(
+                      height: screenSize.width * 0.12,
+                      width: screenSize.width * 0.12,
+                      margin: EdgeInsets.only(right: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.02, screenSize.height * 0.02, screenSize.height * 0.02)),
                     ),
-                  }
                 ],
               ),
             ),

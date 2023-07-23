@@ -41,9 +41,10 @@ class _BootState extends State<Boot> {
 
   Future<bool> checkFirstBoot() async
   {
-    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    var apiBox = await Hive.openBox<ApiResponseBox>('apiResponses');
+    var box = await Hive.openBox<ApiResponseBox>('cacheEraser');
 
-    return box.length == 0 ? true : false;
+    return (box.length == 0 && apiBox.length == 0) ? true : false;
   }
 
   void getApp()

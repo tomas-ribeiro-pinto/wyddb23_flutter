@@ -42,7 +42,9 @@ class StoryModel {
 }
 
 class StoryBar extends StatefulWidget {
-  const StoryBar({Key? key}) : super(key: key);
+  const StoryBar({Key? key, required this.storyModel}) : super(key: key);
+
+  final List<Story>? storyModel;
 
   @override
   State<StoryBar> createState() => _StoryBarState();
@@ -64,10 +66,10 @@ class _StoryBarState extends State<StoryBar> {
   }
 
   void _getStories() async {
-    _storyModel = (await WydApiService().getStories());
+    _storyModel = widget.storyModel;
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
-        getStoriesModel();
-      }));
+      getStoriesModel();
+    }));
   }
 
   @override

@@ -53,7 +53,7 @@ class NotificationModal{
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.03, vertical: screenSize.width * 0.05),
-                height: screenSize.height * 0.45,
+                height: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.4, screenSize.height * 0.45, screenSize.height * 0.45),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Wrap(

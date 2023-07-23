@@ -120,10 +120,14 @@ class _InformationActivityState extends State<InformationActivity> {
                 for(List<Information> information in _informationModel!)...
                 {
                   getInformationButton(information[0]),
-                }
+                },
               }
             ],
-          )
+          ),
+          Container(
+            height: 150,
+            color: Colors.transparent,
+          ),
         ],
       ),
     );

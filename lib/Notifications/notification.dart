@@ -34,7 +34,7 @@ class Notification{
   
   static Future<void> saveNotification(noti.Notification notification)
   async {
-    var box = await Hive.openBox<NotificationResponseBox>('Notifications');
+    var box = await Hive.openBox<NotificationResponseBox>('NotificationCenter');
     final cachedResponse = box.get('notifications');
 
     List<noti.Notification> notifications = [];
@@ -56,7 +56,7 @@ class Notification{
 
   static Future<List<Notification>> getNotifications()
   async {
-    var box = await Hive.openBox<NotificationResponseBox>('Notifications');
+    var box = await Hive.openBox<NotificationResponseBox>('NotificationCenter');
     final cachedResponse = box.get('notifications');
 
     List<noti.Notification> notifications = [];

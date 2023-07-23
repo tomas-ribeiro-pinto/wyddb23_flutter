@@ -19,7 +19,9 @@ import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
 import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
 
+import '../APIs/WydAPI/Models/story_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../APIs/WydAPI/api_service.dart';
 import '../Activities/Fatima/fatima_activity.dart';
 import '../Activities/faq_activity.dart';
 import '../Components/follow_us_pop_up.dart';
@@ -36,6 +38,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late Weather? _weatherModel = null;
+  late List<Story>? _storyModel = null;
   late String? image = null;
   late List<notification.Notification> notifications;
 
@@ -52,9 +55,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   void _getData() async {
     _weatherModel = await ApiCacheHelper.getWeather();
+    _storyModel = (await WydApiService().getStories());
     image = (await ApiCacheHelper.getHomePic());
     notifications = List.from((await notification.Notification.getNotifications()).reversed);
-    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
+      if(_storyModel != null)
+      {
+        if(_storyModel!.isEmpty)
+        {
+          _storyModel = null;
+        }
+      }
+    }));
   }
 
   @override
@@ -83,7 +95,41 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
+                      _storyModel != null
+                      ? Column(
+                        children: [
+                          Transform.scale(
+                            scale: 0.8,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(255, 194, 194, 194),
+                                    width: 1,
+                                  ),
+                                  color: Color.fromARGB(255, 35, 35, 35),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: getLanguagePopUp()
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () async => {
+                                NotificationModal().showModal(context, notifications)
+                            }, 
+                            icon: Container(
+                              padding: EdgeInsets.all(screenSize.width * 0.018),
+                              decoration: BoxDecoration(
+                                  color: WydColors.yellow,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: HeroIcon(
+                                HeroIcons.bellAlert,
+                                color: Colors.black,
+                              ),
+                            )
+                          )
+                        ],
+                      )
+                    : 
+                      Row(
                         children: [
                           Transform.scale(
                             scale: 0.8,
@@ -115,7 +161,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                           )
                         ],
                       ),
-                      const StoryBar()
+                      if(_storyModel != null)...
+                      {
+                        StoryBar(storyModel: _storyModel,)
+                      }
                     ],
                   ),
                 ),
@@ -235,7 +284,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: screenSize.height * 0.14),
+                  padding: _storyModel != null
+                            ? EdgeInsets.only(top: screenSize.height * 0.14)
+                            : EdgeInsets.only(top: screenSize.height * 0.13),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -253,7 +304,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: screenSize.height * 0.205),
+                        padding: _storyModel != null
+                                ? EdgeInsets.only(top: screenSize.height * 0.205)
+                                : EdgeInsets.only(top: screenSize.height * 0.195),
                         child: Container(
                         height: screenSize.width * 0.08,
                         width: screenSize.width * 0.23,

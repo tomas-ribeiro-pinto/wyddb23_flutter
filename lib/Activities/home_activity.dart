@@ -124,7 +124,7 @@ class _HomeActivityState extends State<HomeActivity> {
 
     return Container(
       alignment: Alignment.bottomCenter,
-      height: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.2, 100, 100, 90),
+      height: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.2, 100, 100, 110),
       child: Stack(
         children: [
           Container(

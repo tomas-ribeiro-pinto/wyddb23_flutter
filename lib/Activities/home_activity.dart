@@ -1,5 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/home_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/accommodation_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/visit_page.dart';
@@ -33,8 +35,66 @@ class _HomeActivityState extends State<HomeActivity> {
   @override
   void initState() {
     super.initState();
+
+    // Receive background notifications 
+    // to redirect to desired page
+    setupInteractedMessage();
+
     //set HomePage to be passed parameter
     pageIndex = widget.pageIndex;
+  }
+
+  // It is assumed that all messages contain a data field
+  Future<void> setupInteractedMessage() async {
+    // Get any messages which caused the application to open from
+    // a terminated state.
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      _handleMessage(initialMessage);
+    }
+
+    // Also handle any interaction when the app is in the background via a
+    // Stream listener
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  }
+
+  void _handleMessage(RemoteMessage message) {
+    if (message.data['screen'] == 'welcome') {
+      Navigator.pushNamed(context, '/welcome',
+      );
+    }
+    else if (message.data['screen'] == 'prayers') {
+      Navigator.pushNamed(context, '/prayers');
+    }
+    else if (message.data['screen'] == 'agenda') {
+      Navigator.pushNamed(context, '/agenda');
+    }
+    else if (message.data['screen'] == 'symDay') {
+      Navigator.pushNamed(context, '/symDay');
+    }    
+    else if (message.data['screen'] == 'guides') {
+      Navigator.pushNamed(context, '/guides');
+    }
+    else if (message.data['screen'] == 'accommodation') {
+      Navigator.pushNamed(context, '/accommodation');
+    }
+    else if (message.data['screen'] == 'visit') {
+      Navigator.pushNamed(context, '/visit');
+    }
+    else if (message.data['screen'] == 'home') {
+      Navigator.pushNamed(context, '/home');
+    }
+    else if(message.data.containsKey('url'))
+    {
+      launchUrl(Uri.parse(message.data['url']), mode: LaunchMode.externalApplication);
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   final pages = [
@@ -64,7 +124,7 @@ class _HomeActivityState extends State<HomeActivity> {
 
     return Container(
       alignment: Alignment.bottomCenter,
-      height: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.2, 110, 110, 110),
+      height: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.2, 100, 100, 110),
       child: Stack(
         children: [
           Container(

@@ -1,24 +1,30 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
-import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart' as wyd;
 import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
+import 'package:wyddb23_flutter/Activities/Prayers/prayers_activity.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
 import 'package:wyddb23_flutter/Activities/contacts_activity.dart';
-import 'package:wyddb23_flutter/Notifications/notification_service.dart';
+import 'package:wyddb23_flutter/Components/notification_modal.dart';
+import 'package:wyddb23_flutter/Stories/story.dart';
+import 'package:wyddb23_flutter/Stories/video.dart';
 import 'package:wyddb23_flutter/main.dart';
-import 'package:heroicons/heroicons.dart';
-import 'package:wyddb23_flutter/APIs/WeatherAPI/api_service.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
+import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
 
+import '../APIs/WydAPI/Models/story_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../APIs/WydAPI/api_service.dart';
+import '../Activities/Fatima/fatima_activity.dart';
 import '../Activities/faq_activity.dart';
-import '../Activities/follow_us_activity.dart';
+import '../Components/follow_us_pop_up.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 
@@ -32,18 +38,35 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late Weather? _weatherModel = null;
+  late List<Story>? _storyModel = null;
   late String? image = null;
+  late List<notification.Notification> notifications;
 
   @override
   void initState() {
     super.initState();
     _getData();
   }
+  
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   void _getData() async {
     _weatherModel = await ApiCacheHelper.getWeather();
+    _storyModel = (await WydApiService().getStories());
     image = (await ApiCacheHelper.getHomePic());
-    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+    notifications = List.from((await notification.Notification.getNotifications()).reversed);
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
+      if(_storyModel != null)
+      {
+        if(_storyModel!.isEmpty)
+        {
+          _storyModel = null;
+        }
+      }
+    }));
   }
 
   @override
@@ -55,12 +78,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       // Set Status Bar Text Color
       value: SystemUiOverlayStyle.light,
       child: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   width: screenSize.width,
                   child: const Image(
                     image: AssetImage("assets/images/wyd-home-green.jpg"),
@@ -70,101 +93,78 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   padding: EdgeInsets.only(top: screenSize.height > 850 ? screenSize.height * 0.06 :  screenSize.height * 0.05,
                                           left: screenSize.width * 0.02),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Transform.scale(
-                        scale: 0.8,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 194, 194, 194),
-                                width: 1,
-                              ),
-                              color: Color.fromARGB(255, 35, 35, 35),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: getLanguagePopUp()
-                        ),
-                      ),
-                      Container(
-                        width: screenSize.width * 0.8,
-                        child: SingleChildScrollView(
-                          physics: ClampingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: screenSize.width * 0.05),
-                                height: screenSize.width * 0.15,
-                                width: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(screenSize.width * 0.2),
-                                ),
-                              )
-                            ],
+                      _storyModel != null
+                      ? Column(
+                        children: [
+                          Transform.scale(
+                            scale: 0.8,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(255, 194, 194, 194),
+                                    width: 1,
+                                  ),
+                                  color: Color.fromARGB(255, 35, 35, 35),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: getLanguagePopUp()
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () async => {
+                                NotificationModal().showModal(context, notifications)
+                            }, 
+                            icon: Container(
+                              padding: EdgeInsets.all(screenSize.width * 0.018),
+                              decoration: BoxDecoration(
+                                  color: WydColors.yellow,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: HeroIcon(
+                                HeroIcons.bellAlert,
+                                color: Colors.black,
+                              ),
+                            )
+                          )
+                        ],
+                      )
+                    : 
+                      Row(
+                        children: [
+                          Transform.scale(
+                            scale: 0.8,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(255, 194, 194, 194),
+                                    width: 1,
+                                  ),
+                                  color: Color.fromARGB(255, 35, 35, 35),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: getLanguagePopUp()
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () async => {
+                                NotificationModal().showModal(context, notifications)
+                            }, 
+                            icon: Container(
+                              padding: EdgeInsets.all(screenSize.width * 0.018),
+                              decoration: BoxDecoration(
+                                  color: WydColors.yellow,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: HeroIcon(
+                                HeroIcons.bellAlert,
+                                color: Colors.black,
+                              ),
+                            )
+                          )
+                        ],
                       ),
+                      if(_storyModel != null)...
+                      {
+                        StoryBar(storyModel: _storyModel,)
+                      }
                     ],
                   ),
                 ),
@@ -231,7 +231,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             MyText(
-                                              "@leilacatarina",
+                                              "@wyddonbosco23",
                                               style: TextStyle(
                                                 fontFamily: "Barlow",
                                                 fontWeight: FontWeight.w400,
@@ -260,10 +260,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                 )
                                 : Container(
                                   color: WydColors.red,
-                                  child: Center(
-                                    child: Container(
+                                  child: const Center(
+                                    child: SizedBox(
                                       height: 40,
-                                      child: const CircularProgressIndicator( //Adds a Loading Indicator
+                                      child: CircularProgressIndicator( //Adds a Loading Indicator
                                         color: Colors.white,
                                       ),
                                     ),
@@ -284,7 +284,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: screenSize.height * 0.14),
+                  padding: _storyModel != null
+                            ? EdgeInsets.only(top: screenSize.height * 0.14)
+                            : EdgeInsets.only(top: screenSize.height * 0.13),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -302,7 +304,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: screenSize.height * 0.205),
+                        padding: _storyModel != null
+                                ? EdgeInsets.only(top: screenSize.height * 0.205)
+                                : EdgeInsets.only(top: screenSize.height * 0.195),
                         child: Container(
                         height: screenSize.width * 0.08,
                         width: screenSize.width * 0.23,
@@ -313,7 +317,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left:5),
+                              margin: const EdgeInsets.only(left:5),
                               height: screenSize.width * 0.06,
                               width: screenSize.width * 0.06,
                               decoration: BoxDecoration(
@@ -321,17 +325,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                 color: Colors.white
                               ),
                               child: _weatherModel == null
-                              ? Image(
+                              ? const Image(
                                 image: AssetImage("assets/images/weather-sun.png"),
                               )
                               :
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: CachedNetworkImage(imageUrl: ("https:" + _weatherModel!.current.condition.icon.toString())),
+                                child: CachedNetworkImage(imageUrl: ("https:${_weatherModel!.current.condition.icon}")),
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left:5),
+                              margin: const EdgeInsets.only(left:5),
                               child: _weatherModel == null
                               ? MyText(
                                   " -- ºC",
@@ -343,7 +347,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                 )
                               : 
                               MyText(
-                                _weatherModel!.current.tempC.toStringAsFixed(0) + "ºC",
+                                "${_weatherModel!.current.tempC.toStringAsFixed(0)}ºC",
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: Colors.white,
@@ -388,7 +392,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => WelcomeActivity()),
+                        MaterialPageRoute(builder: (context) => const WelcomeActivity()),
                       );
                     },
                     enableFeedback: false,
@@ -412,14 +416,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => InformationActivity()),
+                        MaterialPageRoute(builder: (context) => const InformationActivity()),
                       );
                     },
                     enableFeedback: false,
                     icon: Image.asset(
                       'assets/images/highlight-world.png',
                       fit: BoxFit.fill,
-                      //height: screenSize.height * 0.11,
                       height: heightIcon
                     ),
                   ),
@@ -435,7 +438,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 children: [
                   IconButton(
                     onPressed: () {
-                      NotificationService().showNotification(title: 'It works!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PrayersActivity()),
+                      );
                     },
                     enableFeedback: false,
                     icon: Image.asset(
@@ -459,10 +465,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   Widget getLanguagePopUp()
   {
-    Size screenSize = MediaQuery.of(context).size;
     return PopupMenuButton(
       elevation: 50,
-      color: Color.fromARGB(255, 35, 35, 35),
+      color: const Color.fromARGB(255, 35, 35, 35),
       onSelected: (String? newValue) async{
           Locale locale = await setLocale(newValue.toString());
           setState(() {
@@ -472,24 +477,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       itemBuilder: (BuildContext bc) {
         return const [
           PopupMenuItem(
-            child: MyText("EN 🇬🇧", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
-            value: "en"
+            value: "en",
+            child: MyText("EN 🇬🇧", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,))
           ),
           PopupMenuItem(
-            child: MyText("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
-            value: "pt"
+            value: "pt",
+            child: MyText("PT 🇵🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,))
           ),
           PopupMenuItem(
-            child: MyText("ES 🇪🇸", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
-            value: "es"
+            value: "es",
+            child: MyText("ES 🇪🇸", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,))
           ),
           PopupMenuItem(
-            child: MyText("IT 🇮🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,)),
-            value: "it"
+            value: "it",
+            child: MyText("IT 🇮🇹", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,))
           ),
         ];
       },
-      icon: Icon(Icons.language, color: Colors.white,),
+      icon: const Icon(Icons.language, color: Colors.white,),
     );
   }
 
@@ -501,7 +506,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     {
       return Container(
         width: screenSize.width * 0.7,
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Center(
           child: Wrap(
             direction: Axis.horizontal,
@@ -514,27 +519,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                        MaterialPageRoute(builder: (context) => const ContactsActivity()),
                       )
                     }),
                   getFooterButton(screenSize,
                     translation(context).fatima,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FatimaActivity()),
+                      )
+                    }),
                   getFooterButton(screenSize,
                     translation(context).faq,
                     () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                        MaterialPageRoute(builder: (context) => const FaqActivity()),
                       )
                     }),
                   getFooterButton(screenSize,
                     translation(context).followUs,
                     () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
-                      )
+                      FollowUsPopUp().showSocialDialog(context)
                     }),
                 ],
           ),
@@ -544,7 +551,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     else
     {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Wrap(
@@ -556,27 +563,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                     () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ContactsActivity()),
+                        MaterialPageRoute(builder: (context) => const ContactsActivity()),
                       )
                     }),
                   getFooterButton(screenSize,
                     translation(context).fatima,
-                    () => {}),
+                    () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FatimaActivity()),
+                      )
+                    }),
                   getFooterButton(screenSize,
                     translation(context).faq,
                     () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FaqActivity()),
+                        MaterialPageRoute(builder: (context) => const FaqActivity()),
                       )
                     }),
                   getFooterButton(screenSize,
                     translation(context).followUs,
                     () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FollowUsActivity()),
-                      )
+                      FollowUsPopUp().showSocialDialog(context)
                     }),
                 ],
           ),
@@ -585,33 +594,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     }
   }
 
-  Container getFooterButton(Size screenSize, String content, Function()? onPressed) {
-    return Container(
-          child: TextButton(
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 15)),
-              backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return Colors.green;
-                return WydColors.green;
-              }),
-            ),
-            onPressed: onPressed, 
-            child: Container(
-              width: screenSize.width * 0.3,
-              alignment: Alignment.center,
-              child: MyText(
-              content,
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  fontSize: screenSize.width * 0.04,
-                ),
-              ),
-            ),
+  TextButton getFooterButton(Size screenSize, String content, Function()? onPressed) {
+    return TextButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.symmetric(vertical: 15)),
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.pressed)) {
+            return Colors.green;
+          }
+          return WydColors.green;
+        }),
+      ),
+      onPressed: onPressed, 
+      child: Container(
+        width: screenSize.width * 0.3,
+        alignment: Alignment.center,
+        child: MyText(
+        content,
+        style: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+            fontSize: screenSize.width * 0.04,
           ),
-        );
+        ),
+      ),
+    );
   }
 
 }

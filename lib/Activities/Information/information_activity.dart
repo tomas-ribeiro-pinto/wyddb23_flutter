@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Activities/Information/information_health.dart';
-import 'package:wyddb23_flutter/Components/carousel.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
@@ -28,7 +27,7 @@ class InformationActivity extends StatefulWidget {
 
 class _InformationActivityState extends State<InformationActivity> {
   String get currentLanguageCode => Localizations.localeOf(context).languageCode;
-  List<Information>? _informationModel = null;
+  List<List<Information>>? _informationModel = null;
 
   @override
   void initState() {
@@ -118,13 +117,17 @@ class _InformationActivityState extends State<InformationActivity> {
               ),
               if(_informationModel != null)...
               {
-                for(Information information in _informationModel!)...
+                for(List<Information> information in _informationModel!)...
                 {
-                  getInformationButton(information),
-                }
+                  getInformationButton(information[0]),
+                },
               }
             ],
-          )
+          ),
+          Container(
+            height: 150,
+            color: Colors.transparent,
+          ),
         ],
       ),
     );
@@ -134,7 +137,7 @@ class _InformationActivityState extends State<InformationActivity> {
     return GestureDetector(
             child: roundedCard(
               imageUrl: information.imageUrl,
-              title: translation(context).transport,
+              title: information.getTranslatedTitleAttribute(currentLanguageCode),
             ),
             onTap: () => {
               Navigator.push(

@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/story_model.dart';
 import 'api_constants.dart';
 import 'Models/agenda_model.dart';
 
@@ -82,6 +83,138 @@ class WydApiService {
   Future<String?> getInformation() async {
     try {
       var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.information);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getGuides() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.guide);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getFatimaGuides() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.fatimaGuide);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getFatimaVisits() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.fatimaVisit);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getTimetable() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.timetable);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getMap() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.map);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<List<Story>?> getStories() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.story);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return storyFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getEmergency() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.emergency);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getSymForum() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.symForum);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getLiveStreaming() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.liveStreaming);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getPrayer() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.prayer);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getCache() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.cache);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return response.body;

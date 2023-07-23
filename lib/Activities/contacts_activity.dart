@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:hive/hive.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
@@ -115,8 +116,57 @@ class _ContactsActivityState extends State<ContactsActivity> {
                 for(Contact contact in _contactModel!)...
                 {
                   getContactCard(screenSize, contact),
-                }
+                },
+                if(_contactModel!.isEmpty)...
+                  {
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: HeroIcon(HeroIcons.noSymbol)
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: MyText(
+                              translation(context).noRecords,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: WydColors.green,
+                                fontSize: screenSize.width * 0.05
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  }
               }
+              else...
+              {
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MyText(
+                        translation(context).loading + '...',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: WydColors.green,
+                          fontSize: 20
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        child: CircularProgressIndicator( //Adds a Loading Indicator
+                          color: WydColors.yellow,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              },
             ],
           ),
         )

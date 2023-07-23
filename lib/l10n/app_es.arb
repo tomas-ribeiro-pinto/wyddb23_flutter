@@ -36,5 +36,20 @@
     "wydMessage": "Mensaje de la coordinación WYD DB23",
     "wydMessageTitle": "Mensaje WYD DB23",
     "transport": "Transportes",
-    "health": "Salud"
+    "health": "Salud",
+    "noPermission": "No se ha podido abrir el archivo",
+    "noPermissionParagraph": "Por favor, compruebe sus permisos de almacenamiento para abrir el archivo.",
+    "givePermission": "Conceder permiso",
+    "close": "Cerrar",
+    "createAlert": "Crear Alerta",
+    "alertTitle": "🔴 Sucediendo ahora...",
+    "alertParagraph": "empezará en 5 minutos",
+    "alertCreated": "Alerta programada!",
+    "nothingHere": "Nada aquí todavía... Vuelva más tarde.",
+    "notificationCentre": "Centro de notificaciones",
+    "openLink": "Abrir enlace",
+    "fatimaVisitParagraph": "Sugerencia de lugares que puede visitar en Fátima",
+    "fatimaParagraph": "¿Vas a visitar Fátima con WYD Don Bosco 23? Aquí encontrarás todo el material relacionado con tu visita.",
+    "wNotificationTitle": "¡Bienvenido a la APP WYD Don Bosco 23!",
+    "wNotificationBody": "Explore la aplicación y no olvides leer nuestros mensajes de bienvenida!"
   }

@@ -7,7 +7,6 @@ import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_mother.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_rector.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_wyd.dart';
-import 'package:wyddb23_flutter/Components/carousel.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';

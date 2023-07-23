@@ -2,16 +2,69 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
+import 'package:wyddb23_flutter/Activities/emergency_activity.dart';
+import 'package:wyddb23_flutter/Activities/pdf_viewer.dart';
+import 'package:wyddb23_flutter/Components/streaming_pop_up.dart';
+import 'package:wyddb23_flutter/Pdf/permission_request.dart';
+import '../APIs/WydAPI/Models/emergency_model.dart';
+import '../APIs/WydAPI/Models/sym_map_model.dart';
+import '../Activities/Guide/guide_activity.dart';
+import '../Activities/Timetable/timetable_activity.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
 
 
-class SymDayPage extends StatelessWidget {
+class SymDayPage extends StatefulWidget {
   const SymDayPage({Key? key}) : super(key: key);
 
   @override
+  State<SymDayPage> createState() => _SymDayPageState();
+}
+
+class _SymDayPageState extends State<SymDayPage> {
+  
+  String? symMap;
+  Emergency? emergency;
+  String? liveStreaming;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      _getMap();
+      _getEmergency();
+      _getLiveStreaming();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _getMap() async
+  {
+    symMap = await ApiCacheHelper.getMap(Localizations.localeOf(context).languageCode);
+    setState(() {});
+  }
+
+  void _getEmergency() async
+  {
+    emergency = await ApiCacheHelper.getEmergency();
+
+    setState(() {});
+  }
+
+  void _getLiveStreaming() async
+  {
+    liveStreaming = await ApiCacheHelper.getLiveStreaming();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    String currentLanguageCode = Localizations.localeOf(context).languageCode;
     Size screenSize = MediaQuery.of(context).size;
     
     return Container(
@@ -59,30 +112,62 @@ class SymDayPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                /* Wrap(
-                  direction: Axis.horizontal,
-                  alignment: WrapAlignment.start,
-                  spacing: 25.0,
-                  children: [
-                    getGridButton(screenSize, translation(context).map),
-                    getGridButton(screenSize, translation(context).timetable),
-                    getGridButton(screenSize, translation(context).guides),
-                    getGridButton(screenSize, translation(context).symForum),
-                    getGridButton(screenSize, translation(context).liveStreaming),
-                    getGridButton(screenSize, translation(context).emergency),
-                  ],
-                ), */
               Wrap(
                   direction: Axis.horizontal,
                   alignment: WrapAlignment.start,
                   spacing: 25.0,
                       children: [
-                        getAccommodationButton(screenSize, translation(context).map, context),
-                        getAccommodationButton(screenSize, translation(context).timetable, context),
-                        getAccommodationButton(screenSize, translation(context).guides, context),
-                        getAccommodationButton(screenSize, translation(context).symForum, context),
-                        getAccommodationButton(screenSize, translation(context).liveStreaming, context),
-                        getAccommodationButton(screenSize, translation(context).emergency, context),
+                        getButton(
+                          screenSize, translation(context).map, context,
+                          () => {
+                            if(symMap != null)
+                            {
+                              PermissionRequest.requestPermission(context, symMap!, translation(context).map)
+                            }
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).timetable, context,
+                          () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TimetableActivity()),
+                            )
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).guides, context,
+                          () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => GuideActivity()),
+                            )
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).symForum, context,
+                          () => {
+                            StreamingPopUp().showStreamingDialog(context, liveStreaming)
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).liveStreaming, context,
+                          () => {
+                            StreamingPopUp().showStreamingDialog(context, liveStreaming)
+                          }
+                        ),
+                        getButton(
+                          screenSize, translation(context).emergency, context,
+                          () => {
+                            if(emergency != null)
+                            {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EmergencyActivity(title: emergency!.getTranslatedTitleAttribute(currentLanguageCode), body: emergency!.getTranslatedBodyAttribute(currentLanguageCode))),
+                              )
+                            }
+                          }
+                        ),
                       ],
                     ),
                 Container(
@@ -160,7 +245,7 @@ class SymDayPage extends StatelessWidget {
       );
   }
 
-  Container getAccommodationButton(Size screenSize, String location, BuildContext context) {
+  Container getButton(Size screenSize, String action, BuildContext context, Function() onPressed) {
     return Container(
             margin: EdgeInsets.only(top:15),
             child: TextButton(
@@ -171,21 +256,27 @@ class SymDayPage extends StatelessWidget {
                   return WydColors.green;
                 }),
               ),
-              onPressed: () {
-/*                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AccommodationActivity(location: location)),
-                ); */
-              }, 
+              onPressed: onPressed,
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,
-                child: MyText(
-                location.toUpperCase(),
+                child: (symMap != null || emergency != null
+                || action != translation(context).map)
+                ?
+                MyText(
+                action.toUpperCase(),
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                     fontSize: screenSize.height * 0.025,
+                  ),
+                )
+                :
+                Container(
+                  height: screenSize.height * 0.035,
+                  width: screenSize.height * 0.035,
+                  child: CircularProgressIndicator( //Adds a Loading Indicator
+                    color: WydColors.yellow,
                   ),
                 ),
               ),

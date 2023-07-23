@@ -43,7 +43,7 @@ class _TimetableActivityState extends State<TimetableActivity> {
   }
 
   void _getTimetable() async {
-    _timetableModel = (await ApiCacheHelper.getTimetable());
+    _timetableModel = (await ApiCacheHelper.getTimetable()).values.toList();
     alarms = (await NotificationService.getAlarms())!.cast<int>();
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }

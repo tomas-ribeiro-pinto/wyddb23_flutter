@@ -4,70 +4,66 @@
 
 import 'dart:convert';
 
-List<Accommodation> accommodationFromJson(String str) => List<Accommodation>.from(json.decode(str).map((x) => Accommodation.fromJson(x)));
+List<List<Accommodation>> accommodationFromJson(String str) => List<List<Accommodation>>.from(json.decode(str).map((x) => List<Accommodation>.from(x.map((x) => Accommodation.fromJson(x)))));
 
-String accommodationToJson(List<Accommodation> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String accommodationToJson(List<List<Accommodation>> data) => json.encode(List<dynamic>.from(data.map((x) => List<dynamic>.from(x.map((x) => x.toJson())))));
 
 class Accommodation {
-    int id;
     String name;
     String location;
     String addressLine1;
     String addressLine2;
     String contact;
-    dynamic descriptionEn;
-    dynamic descriptionPt;
-    dynamic descriptionEs;
-    dynamic descriptionIt;
     String picture;
-    DateTime createdAt;
+    String bodyPt;
+    String bodyEn;
+    String bodyEs;
+    String bodyIt;
+    dynamic createAt;
     DateTime updatedAt;
 
     Accommodation({
-        required this.id,
         required this.name,
         required this.location,
         required this.addressLine1,
         required this.addressLine2,
         required this.contact,
-        this.descriptionEn,
-        this.descriptionPt,
-        this.descriptionEs,
-        this.descriptionIt,
         required this.picture,
-        required this.createdAt,
+        required this.bodyPt,
+        required this.bodyEn,
+        required this.bodyEs,
+        required this.bodyIt,
+        this.createAt,
         required this.updatedAt,
     });
 
     factory Accommodation.fromJson(Map<String, dynamic> json) => Accommodation(
-        id: json["id"],
         name: json["name"],
         location: json["location"],
         addressLine1: json["address_line1"],
         addressLine2: json["address_line2"],
         contact: json["contact"],
-        descriptionEn: json["description_en"],
-        descriptionPt: json["description_pt"],
-        descriptionEs: json["description_es"],
-        descriptionIt: json["description_it"],
         picture: json["picture"],
-        createdAt: DateTime.parse(json["created_at"]),
+        bodyPt: json["body_pt"],
+        bodyEn: json["body_en"],
+        bodyEs: json["body_es"],
+        bodyIt: json["body_it"],
+        createAt: json["create_at"],
         updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
         "name": name,
         "location": location,
         "address_line1": addressLine1,
         "address_line2": addressLine2,
         "contact": contact,
-        "description_en": descriptionEn,
-        "description_pt": descriptionPt,
-        "description_es": descriptionEs,
-        "description_it": descriptionIt,
         "picture": picture,
-        "created_at": createdAt.toIso8601String(),
+        "body_pt": bodyPt,
+        "body_en": bodyEn,
+        "body_es": bodyEs,
+        "body_it": bodyIt,
+        "create_at": createAt,
         "updated_at": updatedAt.toIso8601String(),
     };
 
@@ -75,20 +71,20 @@ class Accommodation {
     {
       switch (locale) {
         case 'en':
-          descriptionEn ?? (descriptionEn = "");
-          return descriptionEn.toString();
+          bodyEn ?? (bodyEn = "");
+          return bodyEn.toString();
         case 'pt':
-          descriptionPt ?? (descriptionPt = "");
-          return descriptionPt.toString();
+          bodyPt ?? (bodyPt = "");
+          return bodyPt.toString();
         case 'es':
-          descriptionEs ?? (descriptionEs = "");
-          return descriptionEs.toString();
+          bodyEs ?? (bodyEs = "");
+          return bodyEs.toString();
         case 'it':
-          descriptionIt ?? (descriptionIt = "");
-          return descriptionIt.toString();
+          bodyIt ?? (bodyIt = "");
+          return bodyIt.toString();
       }
 
-      descriptionEn ?? (descriptionEn = "");
-      return descriptionEn.toString();
+      bodyEn ?? (bodyEn = "");
+      return bodyEn.toString();
     }
 }

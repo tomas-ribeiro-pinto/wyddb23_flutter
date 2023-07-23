@@ -163,4 +163,64 @@ class WydApiService {
       log(e.toString());
     }
   }
+
+  Future<String?> getEmergency() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.emergency);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getSymForum() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.symForum);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getLiveStreaming() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.liveStreaming);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getPrayer() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.prayer);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<String?> getCache() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.cache);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }

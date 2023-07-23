@@ -20,15 +20,10 @@ class PermissionRequest{
   static void requestPermission(BuildContext context, String asset, String title) async {
     if(await Permission.storage.request().isGranted)
     {
-/*       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PdfViewer(path: asset, title: title)),
-      ); */
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PdfViewer(path: asset ,title: title)),
       );
-      //await OpenFilex.open(asset);
     }
     else
     {

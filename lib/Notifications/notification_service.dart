@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive/hive.dart';
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 import 'package:timezone/timezone.dart';
+import 'package:wyddb23_flutter/Notifications/notification.dart' as noti;
+import 'package:wyddb23_flutter/language_constants.dart';
+import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
 
 import '../APIs/WydAPI/api_response_box.dart';
 
@@ -34,12 +38,16 @@ class NotificationService {
         android: AndroidNotificationDetails(
             color: WydColors.red,
             'channelId', 'channelName',
-            importance: Importance.max),
+            importance: Importance.max,
+            styleInformation: BigTextStyleInformation('')),
         iOS: const DarwinNotificationDetails());
   }
 
   Future showNotification(
       {int id = 0, String? title, String? body, String? payLoad}) async {
+    
+    noti.Notification.saveNotification(notification.Notification(title, body, null, DateTime.now()));
+
     return notificationsPlugin.show(
         id, title, body, await notificationDetails());
   }
@@ -97,4 +105,13 @@ class NotificationService {
 
     return alarms;
   }
+
+  static void setWelcome(BuildContext context) async { 
+    NotificationService().scheduleNotification(
+      title: translation(context).wNotificationTitle,
+      body: translation(context).wNotificationBody,
+      scheduleNotificationDateTime: DateTime.now().add(Duration(minutes: 5))
+    );
+  }
+
 }

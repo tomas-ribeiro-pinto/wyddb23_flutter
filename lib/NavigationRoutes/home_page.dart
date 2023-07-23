@@ -1,17 +1,23 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
+import 'package:wyddb23_flutter/Activities/Prayers/prayers_activity.dart';
 import 'package:wyddb23_flutter/Activities/Welcome/welcome_activity.dart';
 import 'package:wyddb23_flutter/Activities/contacts_activity.dart';
+import 'package:wyddb23_flutter/Components/notification_modal.dart';
 import 'package:wyddb23_flutter/Stories/story.dart';
 import 'package:wyddb23_flutter/Stories/video.dart';
 import 'package:wyddb23_flutter/main.dart';
 import 'package:wyddb23_flutter/APIs/WeatherAPI/weather_model.dart';
 import 'package:wyddb23_flutter/language_constants.dart';
+import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
 
 import '../APIs/WydAPI/api_cache_helper.dart';
 import '../Activities/Fatima/fatima_activity.dart';
@@ -31,6 +37,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late Weather? _weatherModel = null;
   late String? image = null;
+  late List<notification.Notification> notifications;
 
   @override
   void initState() {
@@ -46,6 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   void _getData() async {
     _weatherModel = await ApiCacheHelper.getWeather();
     image = (await ApiCacheHelper.getHomePic());
+    notifications = List.from((await notification.Notification.getNotifications()).reversed);
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
@@ -73,19 +81,39 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   padding: EdgeInsets.only(top: screenSize.height > 850 ? screenSize.height * 0.06 :  screenSize.height * 0.05,
                                           left: screenSize.width * 0.02),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Transform.scale(
-                        scale: 0.8,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 194, 194, 194),
-                                width: 1,
+                      Column(
+                        children: [
+                          Transform.scale(
+                            scale: 0.8,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(255, 194, 194, 194),
+                                    width: 1,
+                                  ),
+                                  color: Color.fromARGB(255, 35, 35, 35),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: getLanguagePopUp()
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () async => {
+                                NotificationModal().showModal(context, notifications)
+                            }, 
+                            icon: Container(
+                              padding: EdgeInsets.all(screenSize.width * 0.018),
+                              decoration: BoxDecoration(
+                                  color: WydColors.yellow,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: HeroIcon(
+                                HeroIcons.bellAlert,
+                                color: Colors.black,
                               ),
-                              color: Color.fromARGB(255, 35, 35, 35),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: getLanguagePopUp()
-                        ),
+                            )
+                          )
+                        ],
                       ),
                       const StoryBar()
                     ],
@@ -154,7 +182,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             MyText(
-                                              "@leilacatarina",
+                                              "@wyddonbosco23",
                                               style: TextStyle(
                                                 fontFamily: "Barlow",
                                                 fontWeight: FontWeight.w400,
@@ -357,6 +385,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 children: [
                   IconButton(
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PrayersActivity()),
+                      );
                     },
                     enableFeedback: false,
                     icon: Image.asset(

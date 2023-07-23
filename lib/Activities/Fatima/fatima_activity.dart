@@ -78,7 +78,7 @@ class _FatimaActivityState extends State<FatimaActivity> {
             padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07, vertical:  screenSize.width * 0.05),
             alignment: Alignment.topLeft,
             child: MyText(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudaute.",
+              translation(context).fatimaParagraph,
               style: TextStyle(
                 fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02,  screenSize.height * 0.02),
                 fontWeight: FontWeight.w400,

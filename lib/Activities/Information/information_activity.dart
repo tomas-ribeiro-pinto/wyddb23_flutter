@@ -133,7 +133,7 @@ class _InformationActivityState extends State<InformationActivity> {
     return GestureDetector(
             child: roundedCard(
               imageUrl: information.imageUrl,
-              title: translation(context).transport,
+              title: information.getTranslatedTitleAttribute(currentLanguageCode),
             ),
             onTap: () => {
               Navigator.push(

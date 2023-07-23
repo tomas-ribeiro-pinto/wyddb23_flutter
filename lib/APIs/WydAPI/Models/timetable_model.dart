@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<Timetable> timetableFromJson(String str) => List<Timetable>.from(json.decode(str).map((x) => Timetable.fromJson(x)));
+Map<String, Timetable> timetableFromJson(String str) => Map.from(json.decode(str)).map((k, v) => MapEntry<String, Timetable>(k, Timetable.fromJson(v)));
 
-String timetableToJson(List<Timetable> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String timetableToJson(Map<String, Timetable> data) => json.encode(Map.from(data).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())));
 
 class Timetable {
     int id;
@@ -19,8 +19,8 @@ class Timetable {
     String? descriptionEs;
     String? descriptionIt;
     String location;
-    DateTime? startTime;
-    DateTime? endTime;
+    DateTime startTime;
+    DateTime endTime;
     dynamic deletedAt;
     DateTime createdAt;
     DateTime updatedAt;
@@ -31,10 +31,10 @@ class Timetable {
         required this.titlePt,
         required this.titleEs,
         required this.titleIt,
-        required this.descriptionEn,
-        required this.descriptionPt,
-        required this.descriptionEs,
-        required this.descriptionIt,
+        this.descriptionEn,
+        this.descriptionPt,
+        this.descriptionEs,
+        this.descriptionIt,
         required this.location,
         required this.startTime,
         required this.endTime,
@@ -54,8 +54,8 @@ class Timetable {
         descriptionEs: json["description_es"],
         descriptionIt: json["description_it"],
         location: json["location"],
-        startTime: json["start_time"] != null ? DateTime.parse(json["start_time"]) : null,
-      endTime: json["end_time"] != null ? DateTime.parse(json["end_time"]) : null,
+        startTime: DateTime.parse(json["start_time"]),
+        endTime: DateTime.parse(json["end_time"]),
         deletedAt: json["deleted_at"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -72,14 +72,14 @@ class Timetable {
         "description_es": descriptionEs,
         "description_it": descriptionIt,
         "location": location,
-        "start_time": startTime?.toIso8601String(),
-        "end_time": endTime?.toIso8601String(),
+        "start_time": startTime.toIso8601String(),
+        "end_time": endTime.toIso8601String(),
         "deleted_at": deletedAt,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };
 
-    String getTranslatedTitleAttribute(String locale)
+        String getTranslatedTitleAttribute(String locale)
     {
       switch (locale) {
         case 'en':

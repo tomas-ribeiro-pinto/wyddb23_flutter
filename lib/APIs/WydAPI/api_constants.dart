@@ -21,6 +21,11 @@ class ApiConstants {
   static String timetable = 'timetable';
   static String fatimaGuide = 'fatima/guide';
   static String fatimaVisit = 'fatima/visit';
+  static String emergency = 'emergency';
+  static String symForum = 'sym-forum';
+  static String liveStreaming = 'live-streaming';
+  static String prayer = 'prayer';
+  static String cache = 'cache';
 
   static String getDevUrl()
   {

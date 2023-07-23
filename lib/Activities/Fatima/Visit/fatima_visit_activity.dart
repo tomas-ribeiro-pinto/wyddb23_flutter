@@ -50,7 +50,7 @@ class _FatimaVisitActivityState extends State<FatimaVisitActivity> {
         title: Transform(
         transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
           child: TextButton.icon(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
             translation(context).fatima.toUpperCase(),
             style: TextStyle(
@@ -79,7 +79,7 @@ class _FatimaVisitActivityState extends State<FatimaVisitActivity> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical:20),
               child: MyText(
-                translation(context).visitParagraph,
+                translation(context).fatimaVisitParagraph,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   color: Colors.black,

@@ -44,5 +44,12 @@
   "createAlert": "Criar Alerta",
   "alertTitle": "🔴 A acontecer agora...",
   "alertParagraph": "começa dentro de 5 minutos",
-  "alertCreated": "Alerta Agendado!"
+  "alertCreated": "Alerta Agendado!",
+  "nothingHere": "Ainda não há nada aqui... Volte mais tarde!",
+  "notificationCentre": "Central Notificações",
+  "openLink": "Abrir ligação",
+  "fatimaVisitParagraph": "Sugestão de locais a visitar em Fátima",
+  "fatimaParagraph": "Vais visitar Fátima com WYD Don Bosco 23? Aqui podes encontrar todos os materiais relacionados com a tua visita.",
+  "wNotificationTitle": "Bem-vindo à APP WYD Don Bosco 23!",
+  "wNotificationBody": "Explora a aplicação e não te esqueças de ler as nossas mensagens de boas-vindas!"
 }

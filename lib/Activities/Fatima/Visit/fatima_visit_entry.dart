@@ -34,7 +34,7 @@ class _FatimaVisitEntryState extends State<FatimaVisitEntry> {
         title: Transform(
         transform:  Matrix4.translationValues(-20.0, 0.0, 0.0),
           child: TextButton.icon(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           label: MyText(
             translation(context).visit.toUpperCase(),
             style: TextStyle(
@@ -53,7 +53,7 @@ class _FatimaVisitEntryState extends State<FatimaVisitEntry> {
       bottomNavigationBar: Components.NavigationBar(),
       body: Header(
         title: widget.visit.name,
-        titleColor: Colors.black,
+        titleColor: Colors.white,
         color: WydColors.green,
         content: getEntryContent(),
         hasBanner: false,

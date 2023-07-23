@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
@@ -237,18 +238,26 @@ class _AccommodationEntryState extends State<AccommodationEntry> {
                 ],
               ),
             ),
-            MyText(
-              widget.accommodation.getTranslatedDescriptionAttribute(currentLanguageCode) != null
-              ? widget.accommodation.getTranslatedDescriptionAttribute(currentLanguageCode)
-              : '',
-              style: TextStyle(
-                fontSize: screenSize.width * 0.04 
+            Column(
+              children: [
+                Html(
+                  data: addBreaks(widget.accommodation.getTranslatedDescriptionAttribute(currentLanguageCode)),
+                  style: WydResources.htmlStyle(context),
+                  onLinkTap:(url, attributes, element) {
+                    launchUrl(Uri.parse(url!), mode: LaunchMode.externalApplication);
+                  },
                 ),
-              ),
+              ],
+            ),
           ],
         ),
       ),
     );
+  }
+
+  String addBreaks(String html)
+  {
+    return html.replaceAll("</div>", "<div><br>");
   }
 
 }

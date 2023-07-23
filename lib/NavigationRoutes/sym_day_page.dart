@@ -3,8 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_cache_helper.dart';
+import 'package:wyddb23_flutter/Activities/emergency_activity.dart';
 import 'package:wyddb23_flutter/Activities/pdf_viewer.dart';
+import 'package:wyddb23_flutter/Components/streaming_pop_up.dart';
 import 'package:wyddb23_flutter/Pdf/permission_request.dart';
+import '../APIs/WydAPI/Models/emergency_model.dart';
 import '../APIs/WydAPI/Models/sym_map_model.dart';
 import '../Activities/Guide/guide_activity.dart';
 import '../Activities/Timetable/timetable_activity.dart';
@@ -21,13 +24,19 @@ class SymDayPage extends StatefulWidget {
 }
 
 class _SymDayPageState extends State<SymDayPage> {
-
+  
   String? symMap;
+  Emergency? emergency;
+  String? liveStreaming;
 
   @override
   void initState() {
     super.initState();
-    getMap();
+    Future.delayed(Duration.zero, () {
+      _getMap();
+      _getEmergency();
+      _getLiveStreaming();
+    });
   }
 
   @override
@@ -35,16 +44,27 @@ class _SymDayPageState extends State<SymDayPage> {
     super.dispose();
   }
 
-  void getMap() async
+  void _getMap() async
   {
-    symMap = await ApiCacheHelper.getMap();
-    setState(() {
-      
-    });
+    symMap = await ApiCacheHelper.getMap(Localizations.localeOf(context).languageCode);
+    setState(() {});
+  }
+
+  void _getEmergency() async
+  {
+    emergency = await ApiCacheHelper.getEmergency();
+
+    setState(() {});
+  }
+
+  void _getLiveStreaming() async
+  {
+    liveStreaming = await ApiCacheHelper.getLiveStreaming();
   }
 
   @override
   Widget build(BuildContext context) {
+    String currentLanguageCode = Localizations.localeOf(context).languageCode;
     Size screenSize = MediaQuery.of(context).size;
     
     return Container(
@@ -127,19 +147,25 @@ class _SymDayPageState extends State<SymDayPage> {
                         getButton(
                           screenSize, translation(context).symForum, context,
                           () => {
-                            
+                            StreamingPopUp().showStreamingDialog(context, liveStreaming)
                           }
                         ),
                         getButton(
                           screenSize, translation(context).liveStreaming, context,
                           () => {
-                            
+                            StreamingPopUp().showStreamingDialog(context, liveStreaming)
                           }
                         ),
                         getButton(
-                          screenSize, translation(context).liveStreaming, context,
+                          screenSize, translation(context).emergency, context,
                           () => {
-                            
+                            if(emergency != null)
+                            {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EmergencyActivity(title: emergency!.getTranslatedTitleAttribute(currentLanguageCode), body: emergency!.getTranslatedBodyAttribute(currentLanguageCode))),
+                              )
+                            }
                           }
                         ),
                       ],
@@ -234,7 +260,8 @@ class _SymDayPageState extends State<SymDayPage> {
               child: Container(
                 width: screenSize.width * 0.7,
                 alignment: Alignment.center,
-                child: (symMap != null || action != translation(context).map)
+                child: (symMap != null || emergency != null
+                || action != translation(context).map)
                 ?
                 MyText(
                 action.toUpperCase(),

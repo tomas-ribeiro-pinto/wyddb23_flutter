@@ -11,24 +11,33 @@ import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_service.dart';
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
+
+import 'dart:async';
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_video_player/cached_video_player.dart';
+import 'package:flutter/material.dart';
+import 'package:heroicons/heroicons.dart';
+import 'package:wyddb23_flutter/Stories/util/story_bars.dart';
+import 'package:wyddb23_flutter/Stories/video.dart';
+
 import '../APIs/WydAPI/Models/story_model.dart';
 import 'video.dart';
 
 
-void main() {}
-
-class UserModel {
-  UserModel(this.stories, this.userName, this.imageUrl);
+class TopicModel {
+  TopicModel(this.stories, this.topic, this.imageUrl);
 
   final List<StoryModel> stories;
-  final String userName;
+  final String topic;
   final String imageUrl;
 }
 
 class StoryModel {
-  StoryModel(this.imageUrl, this.isVideo);
+  StoryModel(this.assetUrl, this.isVideo);
 
-  final String imageUrl;
+  final String assetUrl;
   final int isVideo;
 }
 
@@ -41,7 +50,7 @@ class StoryBar extends StatefulWidget {
 
 class _StoryBarState extends State<StoryBar> {
   late List<Story>? _storyModel = null;
-  late List<UserModel>? stories = null;
+  late List<TopicModel> stories = [];
 
   @override
   void initState() {
@@ -85,7 +94,7 @@ class _StoryBarState extends State<StoryBar> {
     );
   }
 
-  Container getUserCircle(BuildContext context, UserModel user) {
+  Container getUserCircle(BuildContext context, TopicModel user) {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
@@ -111,7 +120,7 @@ class _StoryBarState extends State<StoryBar> {
           width: screenSize.width * 0.16,
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: user.userName == "SYM Day" ? Border.all(color: WydColors.yellow, width: 1.5) : null,
+            border: /* user.topic == "SYM Day" ? */ Border.all(color: WydColors.yellow, width: 1.5) /* : null */,
             borderRadius: BorderRadius.circular(screenSize.width * 0.2),
           ),
           child: Padding(
@@ -130,7 +139,7 @@ class _StoryBarState extends State<StoryBar> {
   }
   
   void getStoriesModel() {
-    List<UserModel> users = [];
+    List<TopicModel> users = [];
     for(Story topic in _storyModel!)
     {
       List<StoryModel> entries = [];
@@ -144,243 +153,500 @@ class _StoryBarState extends State<StoryBar> {
         ];
       }
 
-      users.add(UserModel(entries, topicName,topicImage));
+      users.add(TopicModel(entries, topicName,topicImage));
     }
     stories = users;
   }
 }
 
 class StoryPage extends StatefulWidget {
-  const StoryPage({Key? key, required this.startPage, required this.stories}) : super(key: key);
+  StoryPage({Key? key, required this.startPage, required this.stories}) : super(key: key);
 
-  final int startPage;
-  final stories;
+  int startPage = 0;
+  List<TopicModel> stories;
 
   @override
   _StoryPageState createState() => _StoryPageState();
 }
 
 class _StoryPageState extends State<StoryPage> {
-  late ValueNotifier<IndicatorAnimationCommand> indicatorAnimationController;
-  // Controller for the Video Story
-  CachedVideoPlayerController? controller = CachedVideoPlayerController.network("");
-  
+  int currentStoryIndex = 0;
+  late int currentPageIndex;
+  int storyDuration = 10;
+
+  List<Color> colors = [Colors.green, WydColors.red, WydColors.yellow];
+
+  List<Widget> myStories = [];
+
+  late List<TopicModel> stories;
+
+  List<double> percentWatched = [];
+  late Timer timer;
+  bool pause = false;
+  DateTime timestampDown = DateTime(0); 
+  DateTime timestampUp = DateTime(0); 
+
+  Offset delta = Offset.zero;
+
+  bool skipForward = false;
+  bool skipBackward = false;
+
+  //Video Controller
+  CachedVideoPlayerController controller = CachedVideoPlayerController.network("https://epinto.tech/storage/videos/sample.mp4"); // https://epinto.tech/storage/videos/lake.mp4
   double currentVolume = 1;
+
 
   @override
   void initState() {
     super.initState();
-    indicatorAnimationController = ValueNotifier<IndicatorAnimationCommand>(
-        IndicatorAnimationCommand(resume: true));
+    currentPageIndex = widget.startPage;
+    stories = widget.stories;
+
+    setStory();
   }
 
-  @override
-  void dispose() {
-    indicatorAnimationController.dispose();
-    super.dispose();
+  void setStory()
+  {
+    // Cleaer any leftover bars
+    percentWatched.clear();
+
+    // initially, all stories haven't been watched yet
+    for (int i = 0; i < stories[currentPageIndex].stories.length; i++) {
+      percentWatched.add(0);
+    }
+
+    startStory();
+  }
+
+  void setOldPage()
+  {
+    timer.cancel();
+    // Cleaer any leftover bars
+    percentWatched.clear();
+
+    // only amrk as unseen the last story
+    for (int i = 0; i < stories[currentPageIndex].stories.length; i++) {
+      if(i < stories[currentPageIndex].stories.length - 1)
+        percentWatched.add(1);
+      else
+        percentWatched.add(0);
+    }
+
+    startStory();
+  }
+
+  void startStory()
+  {
+    controller.pause();
+    if(stories[currentPageIndex].stories[currentStoryIndex].isVideo == 1)
+    {
+      var currentIndex = currentStoryIndex;
+      controller = CachedVideoPlayerController.network(stories[currentPageIndex].stories[currentStoryIndex].assetUrl);
+      controller.initialize().then((value) {
+        if(currentStoryIndex == currentIndex)
+        {
+          controller.play();
+          storyDuration = controller.value.duration.inSeconds;
+          controller.setVolume(currentVolume);
+          _startWatching(storyDuration);
+          setState(() {
+          });
+        }
+      });
+    }
+    else
+    {
+      controller.dispose();
+      controller = CachedVideoPlayerController.network("https://epinto.tech/storage/videos/sample.mp4");
+      storyDuration = 10;
+      _startWatching(storyDuration);
+    }
+  }
+
+  void _startWatching(int duration) {
+    timer = Timer.periodic(Duration(milliseconds: duration), (timer) {
+      setState(() {
+        // Pause Story
+        if(pause)
+        {
+          timer.cancel();
+        }
+        // only add 0.01 as long as it's below 1
+        else if (percentWatched[currentStoryIndex] + 0.001 < 1) {
+          percentWatched[currentStoryIndex] += 0.001;
+        }
+        // if adding 0.01 exceeds 1, set percentage to 1 and cancel timer
+        else {
+          percentWatched[currentStoryIndex] = 1;
+          timer.cancel();
+
+          // also go to next story as long as there are more stories to go through
+          if (currentStoryIndex < stories[currentPageIndex].stories.length - 1) {
+            currentStoryIndex++;
+
+            // restart story timer
+            startStory();
+          }
+          // Navigate to next Topic (Page)
+          else if(currentPageIndex < stories.length - 1)
+          {
+            currentPageIndex++;
+            currentStoryIndex = 0;
+            setState(() {
+              setStory();
+            });
+          }
+          // if we are finishing the last story then return to homepage
+          else {
+            Navigator.pushNamed(context, "/home");
+          }
+        }
+      });
+    });
+  }
+
+  void _onClick(TapUpDetails details) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double dx = details.globalPosition.dx;
+
+    // user taps on first half of screen
+    if (dx < screenWidth / 2) {
+      setState(() {
+        // as long as this isnt the first story
+        if (currentStoryIndex > 0) {
+          // set previous and curent story watched percentage back to 0
+          percentWatched[currentStoryIndex - 1] = 0;
+          percentWatched[currentStoryIndex] = 0;
+
+          timer.cancel();
+          // go to previous story
+          currentStoryIndex--;
+          startStory();
+        }
+        // Navigate to next Topic (Page)
+        else if(currentPageIndex > 0 && currentStoryIndex == 0)
+        {
+          currentPageIndex--;
+          currentStoryIndex = stories[currentPageIndex].stories.length - 1;
+          setState(() {
+            setOldPage();
+          });
+        }
+      });
+    }
+    // user taps on second half of screen
+    else {
+      setState(() {
+        // if there are more stories left
+        if (currentStoryIndex < stories[currentPageIndex].stories.length - 1) {
+          // finish current story
+          percentWatched[currentStoryIndex] = 1;
+          timer.cancel();
+          // move to next story
+          currentStoryIndex++;
+          startStory();
+        }
+        // Navigate to next Topic (Page)
+        else if(currentPageIndex < stories.length - 1)
+        {
+          currentPageIndex++;
+          currentStoryIndex = 0;
+          setState(() {
+            setStory();
+          });
+        }
+        // if user is on the last story, finish this story
+        else {
+          controller = CachedVideoPlayerController.network("https://epinto.tech/storage/videos/sample.mp4");
+          percentWatched[currentStoryIndex] = 1;
+        }
+      });
+    }
   }
 
   setStoryDuration(int seconds)
   {
-    indicatorAnimationController.value = IndicatorAnimationCommand(
-      duration: Duration(seconds: seconds)
-    );
+    setState(() {
+      storyDuration = seconds; 
+    });
   }
 
-  late int currentPage = widget.startPage;
+  Future<void> initialiseVideo(String url) async
+  {
+    if(!controller.value.isInitialized)
+    {
+      controller = CachedVideoPlayerController.network(url);
+      controller.initialize().then((value) {
+        setState(() {
+          controller.setVolume(currentVolume);
+          controller.play();
+          setStoryDuration(controller.value.duration.inSeconds);
+        });
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-
-    return Scaffold(
+    
+    return DismissiblePage(
       backgroundColor: WydColors.green,
-      body: DismissiblePage(
-        onDismissed: () {
-          controller!.pause();
-          controller!.dispose();
-          Navigator.of(context).pop();
-        },
-        direction: DismissiblePageDismissDirection.down,
-        child: Container(
-          margin: EdgeInsets.only(top: WydResources.getResponsiveSmValue(screenSize, screenSize.width * 0.02, screenSize.width * 0.03, screenSize.width * 0.05, screenSize.width * 0.05)),
-          child: StoryPageView(
-            initialPage: widget.startPage,
-            onPageForward: (newPageIndex) => {
-
-            },
-            onStoryIndexChanged: (int newStoryIndex, int newPage) async {
-              if(controller!.value.isInitialized) 
+      onDismissed: () {
+        controller.pause();
+        timer.cancel();
+        Navigator.of(context).pop();
+      },
+      direction: DismissiblePageDismissDirection.down,
+      isFullScreen: true,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Listener(
+          onPointerDown: (event) => {
+            setState(() => timestampDown = DateTime.now()),
+          },
+          onPointerUp: (event) => {
+            setState(() => timestampUp = DateTime.now()),
+          },
+          child: GestureDetector(
+            onTapUp: (details) => {
+              if(timestampUp.difference(timestampDown).inMilliseconds < 500)
               {
-                controller!.dispose();
-                controller = CachedVideoPlayerController.network("");
-              }
-              if(newPage != -1)
-                currentPage = newPage;
-                
-              if (widget.stories[currentPage].stories[newStoryIndex].isVideo == 1) {
-                controller = CachedVideoPlayerController.network("");
-                await initialiseVideo(widget.stories[currentPage].stories[newStoryIndex].imageUrl);
+                _onClick(details),
+              },
+              timestampDown = DateTime(0),
+              timestampUp = DateTime(0),
+            },
+            onLongPress: () => {
+              setState(() => {
+                pause = true,
+                if(controller.value.isPlaying)
+                  controller.pause()
+              }),
+            },
+            onLongPressUp: () => {
+              setState(() => {
+                pause = false,
+                if(controller.value.isInitialized)
+                  controller.play(),
+                _startWatching(storyDuration)
+              }),
+            },
+            onHorizontalDragUpdate: (details) {
+              delta = details.delta;
+            },
+            onHorizontalDragEnd:(details) => {
+              if((delta.direction < pi/2 && delta.direction > -pi/2))
+              {
+                if(currentPageIndex != 0)
+                {
+                  timer.cancel(),
+    
+                  // Dragging to the right
+                  currentPageIndex--,
+                  currentStoryIndex = stories[currentPageIndex].stories.length - 1,
+                  setState(() {
+                    setOldPage();
+                    skipBackward = true;
+                    Future.delayed(Duration(milliseconds: 500)).then((_) {
+                      setState(() {
+                        skipBackward = false;
+                      });
+                    });
+                  }),
+                }
               }
               else
               {
-                setStoryDuration(10);
-                controller = CachedVideoPlayerController.network("");
+                if(currentPageIndex < stories.length - 1)
+                {
+                  timer.cancel(),
+    
+                  // Dragging to the left
+                  currentPageIndex++,
+                  currentStoryIndex = 0,
+                  setState(() {
+                    setStory();
+                    skipForward = true;
+                    Future.delayed(Duration(milliseconds: 500)).then((_) {
+                      setState(() {
+                        skipForward = false;
+                      });
+                    });
+                  }),
+                }
+                else
+                {
+                  Navigator.pushNamed(context, "/home")
+                }
               }
             },
-            onStoryPaused: () => {
-              if(controller!.value.isInitialized)
-              {
-                controller!.pause()
-              }
-            },
-            onStoryUnpaused: () => {
-              if(controller!.value.isInitialized)
-              {
-                controller!.play()
-              }
-            },
-            itemBuilder: (context, pageIndex, storyIndex) {
-              final user = widget.stories[pageIndex];
-              final story = user.stories[storyIndex];
-              return Stack(
+          child: Stack(
+            children: [
+            // story
+            Container(
+              child: stories[currentPageIndex].stories[currentStoryIndex].isVideo == 0
+              ?
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Positioned.fill(
-                    child: Container(
-                      color: Colors.black
-                    ),
-                  ),
-                  story.isVideo == 0
-                  ?
-                  Positioned.fill(
-                    child: Center(
-                      child: CachedNetworkImage(
-                        imageUrl: story.imageUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                  :
-                  VideoPage(controller: controller!),
-                  Positioned(
-                    child: Container(
-                      height: 90,
-                      decoration: BoxDecoration(
-                        color: Colors.black
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 44, left: 8),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 32,
-                          width: 32,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(user.imageUrl),
-                              fit: BoxFit.cover,
-                            ),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          user.userName,
-                          style: const TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                  Center(
+                    child: CachedNetworkImage(
+                      imageUrl: stories[currentPageIndex].stories[currentStoryIndex].assetUrl,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ],
-              );
-            },
-            gestureItemBuilder: (context, pageIndex, storyIndex) {
-              return Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 32),
-                      child: Padding(
-                            padding: EdgeInsets.zero,
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              color: Colors.white,
-                              icon: const Icon(Icons.close),
-                              onPressed: () {
-                                controller!.dispose();
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ),
+              )
+              :
+              VideoPage(controller: controller)),
+              Container(
+                color: Colors.black,
+                height: screenSize.width * 0.35,
+                child: Column(
+                  children: [
+                    // progress bar
+                    Padding(
+                      padding: EdgeInsets.only(top: screenSize.width * 0.15, left: 8, right: 8),
+                      child: MyStoryBars(
+                        percentWatched: percentWatched,
+                        topicLength: stories[currentPageIndex].stories.length,
+                        color: colors[currentPageIndex %3],
+                      ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 32),
-                      child: Container(
-                            margin: EdgeInsets.only(right:40),
-                            child: IconButton(
-                              padding: EdgeInsets.only(right: 0),
-                              color: Colors.white,
-                              icon: currentVolume == 0
-                                ? const HeroIcon(HeroIcons.speakerXMark)
-                                : const HeroIcon(HeroIcons.speakerWave),
-                              onPressed: () {
-                                setState(() {
-                                  currentVolume == 1
-                                    ? controller!.setVolume(0)
-                                    : controller!.setVolume(1);
-                                  currentVolume == 1 
-                                    ? currentVolume = 0 
-                                    : currentVolume = 1;
-                                });
-                              },
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: screenSize.width * 0.03, left: 8, right: 8),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 32,
+                                width: 32,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(stories[currentPageIndex].imageUrl),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                stories[currentPageIndex].topic,
+                                style: const TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
+                        ),
+                          Padding(
+                            padding: EdgeInsets.only(top: screenSize.width * 0.025, right: 5),
+                            child: Row(
+                                children: [
+                                                                IconButton(
+                                  padding: EdgeInsets.only(right: 0),
+                                  color: Colors.white,
+                                  icon: currentVolume == 0
+                                    ? const HeroIcon(HeroIcons.speakerXMark)
+                                    : const HeroIcon(HeroIcons.speakerWave),
+                                  onPressed: () {
+                                    setState(() {
+                                      currentVolume == 1
+                                        ? controller.setVolume(0)
+                                        : controller.setVolume(1);
+                                      currentVolume == 1 
+                                        ? currentVolume = 0 
+                                        : currentVolume = 1;
+                                    });
+                                  },
+                                ),
+                                  Padding(
+                                    padding: EdgeInsets.zero,
+                                    child: IconButton(
+                                      padding: EdgeInsets.zero,
+                                      color: Colors.white,
+                                      icon: const Icon(Icons.close),
+                                      onPressed: () {
+                                        timer.cancel();
+                                        controller.dispose();
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                          )
+                      ],
                     ),
-                  ),
-              ]);
-            },
-            indicatorAnimationController: indicatorAnimationController,
-            indicatorDuration: Duration(seconds: 10),
-            pageLength: widget.stories.length,
-            storyLength: (int pageIndex) {
-              return widget.stories[pageIndex].stories.length;
-            },
-            onPageLimitReached: () => {
-              controller!.dispose(),
-              Navigator.pop(context)
-            },
+                  ],
+                ),
+              ),
+              
+              showSkipForward(screenSize),
+              showSkipBackward(screenSize),
+            ],
+          ),
+        ),
+        ),
+      ),
+    );
+  }
+
+  Center showSkipForward(Size screenSize)
+  {
+    return Center(
+      child: AnimatedOpacity(
+        opacity: skipForward ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 200),
+        // The green box must be a child of the AnimatedOpacity widget.
+        child: Container(
+          height: screenSize.width * 0.2,
+          width: screenSize.width * 0.2,
+          decoration: BoxDecoration(
+            color: WydColors.green,
+            borderRadius: BorderRadius.circular(screenSize.width * 0.2)
+          ),
+          child: HeroIcon(
+            HeroIcons.forward,
+            style: HeroIconStyle.solid,
+            color: Colors.white,
+            size: screenSize.width * 0.07,
           ),
         ),
       ),
     );
   }
 
-  Future<int> initialiseVideo(String url) async
+  Center showSkipBackward(Size screenSize)
   {
-    if(!controller!.value.isInitialized)
-    {
-      controller = CachedVideoPlayerController.network(url);
-      await controller!.initialize().then((value) {
-        setState(() {
-          controller!.setVolume(currentVolume);
-          controller!.play();
-        });
-        setStoryDuration(controller!.value.duration.inSeconds);
-      });
-    }
-
-      return controller!.value.duration.inSeconds;
+    return Center(
+      child: AnimatedOpacity(
+        opacity: skipBackward ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 200),
+        // The green box must be a child of the AnimatedOpacity widget.
+        child: Container(
+          height: screenSize.width * 0.2,
+          width: screenSize.width * 0.2,
+          decoration: BoxDecoration(
+            color: WydColors.green,
+            borderRadius: BorderRadius.circular(screenSize.width * 0.2)
+          ),
+          child: HeroIcon(
+            HeroIcons.backward,
+            style: HeroIconStyle.solid,
+            color: Colors.white,
+            size: screenSize.width * 0.07,
+          ),
+        ),
+      ),
+    );
   }
 }
+

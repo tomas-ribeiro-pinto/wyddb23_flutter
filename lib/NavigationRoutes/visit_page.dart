@@ -8,6 +8,7 @@ import '../Activities/visit_entry.dart';
 import '../Components/my_text.dart';
 import '../Components/wyd_resources.dart';
 import '../language_constants.dart';
+import 'package:autoscale_tabbarview/autoscale_tabbarview.dart';
 
 class VisitPage extends StatefulWidget {
   const VisitPage({Key? key}) : super(key: key);
@@ -16,9 +17,11 @@ class VisitPage extends StatefulWidget {
   State<VisitPage> createState() => _VisitPageState();
 }
 
-class _VisitPageState extends State<VisitPage> {
-
+class _VisitPageState extends State<VisitPage> with TickerProviderStateMixin {
   late List<Visit>? _visitModel = null;
+  late List<Visit>? lisboaList = null;
+  late List<Visit>? cascaisList = null;
+  late List<Visit>? setubalList = null;
 
   @override
   void initState() {
@@ -33,11 +36,16 @@ class _VisitPageState extends State<VisitPage> {
 
   void _getVisit() async {
     _visitModel = (await ApiCacheHelper.getVisits());
-    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
+      lisboaList = _visitModel?.where((i) => i.city == 'lisboa').toList();
+      cascaisList = _visitModel?.where((i) => i.city == 'cascais').toList();
+      setubalList = _visitModel?.where((i) => i.city == 'setúbal').toList();
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
@@ -85,31 +93,122 @@ class _VisitPageState extends State<VisitPage> {
                         ),
                       ),
                     ),
-                    Wrap(
-                      direction: Axis.horizontal,
-                      alignment: WrapAlignment.start,
-                      spacing: 25.0,
-                      children: [
-                        if(_visitModel != null)...
-                        {
-                          for(Visit visit in _visitModel!)...
-                          {
-                            getVisitButton(screenSize, visit),
-                          }
-                        }
-                      ],
-                    ),
-                    Container(
-                      height: screenSize.height * 0.17,
-                    )
-                  ],
+                    _visitModel != null
+                    ? getVisitsTab(_tabController)
+                    : Center(
+                      child: Container(
+                        margin: EdgeInsets.only(top: screenSize.width * 0.05),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            MyText(
+                              translation(context).loading + '...',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: WydColors.green,
+                                fontSize: 20
                               ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 20),
+                              child: CircularProgressIndicator( //Adds a Loading Indicator
+                                color: WydColors.yellow,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                  ),
                 ),
               ),
             ],
           )
         ),
       ),
+    );
+  }
+
+  Column getVisitsTab(TabController _tabController) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: screenSize.width * 0.03),
+          child: TabBar(
+            labelColor: WydColors.green,
+            indicatorColor: WydColors.yellow,
+            dividerColor: Colors.grey[200],
+            unselectedLabelColor: Colors.black,
+            controller: _tabController,
+            tabs: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: MyText(
+                  "Lisboa", 
+                  style: TextStyle(
+                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: MyText(
+                  "Cascais", 
+                  style: TextStyle(
+                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: MyText(
+                  "Setúbal", 
+                  style: TextStyle(
+                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        AutoScaleTabBarView(
+          controller: _tabController,
+          children: [
+            getVisitsByLocation(lisboaList),
+            getVisitsByLocation(cascaisList),
+            getVisitsByLocation(setubalList),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Column getVisitsByLocation(List<Visit>? list) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Column(
+      children: [
+        Wrap(
+          direction: Axis.horizontal,
+          alignment: WrapAlignment.start,
+          spacing: 25.0,
+          children: [
+            if(_visitModel != null)...
+            {
+              for(Visit visit in list!)...
+              {
+                getVisitButton(screenSize, visit),
+              }
+            }
+          ],
+        ),
+        Container(
+          height: screenSize.height * 0.17,
+        )
+      ],
     );
   }
 

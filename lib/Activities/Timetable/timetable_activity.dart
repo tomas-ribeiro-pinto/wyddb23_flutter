@@ -99,7 +99,10 @@ class _TimetableActivityState extends State<TimetableActivity> {
                 ),
               ),
             ),
-            getEntryContent()
+            getEntryContent(),
+            Container(
+              height: screenSize.height * 0.17,
+            )
           ],
         ),
       )

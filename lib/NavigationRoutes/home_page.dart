@@ -231,29 +231,44 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             MyText(
-                                              "@wyddonbosco23",
-                                              style: TextStyle(
-                                                fontFamily: "Barlow",
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                                fontSize: screenSize.height * 0.019,
-                                                backgroundColor: Colors.black.withOpacity(0.7),
-                                                letterSpacing: -1,
-                                              ),
-                                            ),
-                                            MyText(
                                               "#WYDDONBOSCO23",
                                               style: TextStyle(
                                                 fontFamily: "Barlow",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
-                                                fontSize: screenSize.height * 0.019,
+                                                fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.024, screenSize.height * 0.02, screenSize.height * 0.019),
                                                 backgroundColor: Colors.black.withOpacity(0.7),
                                                 letterSpacing: -1,
                                               ),
                                             ),
                                           ],
                                         ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: screenSize.width * 0.7,
+                                      height: screenSize.width * 0.46,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Container(
+                                            height: screenSize.width * 0.15,
+                                            decoration: BoxDecoration(
+                                               boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black.withOpacity(0.1),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 10
+                                                )
+                                              ] 
+                                            ),
+                                            child: Image(
+                                              filterQuality: FilterQuality.medium,
+                                              image: AssetImage("assets/images/jmj.png"),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

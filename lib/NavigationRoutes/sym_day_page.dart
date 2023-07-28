@@ -8,6 +8,7 @@ import 'package:wyddb23_flutter/Activities/pdf_viewer.dart';
 import 'package:wyddb23_flutter/Components/streaming_pop_up.dart';
 import 'package:wyddb23_flutter/Pdf/permission_request.dart';
 import '../APIs/WydAPI/Models/emergency_model.dart';
+import '../APIs/WydAPI/Models/forum_model.dart';
 import '../APIs/WydAPI/Models/sym_map_model.dart';
 import '../Activities/Guide/guide_activity.dart';
 import '../Activities/Timetable/timetable_activity.dart';
@@ -27,6 +28,7 @@ class _SymDayPageState extends State<SymDayPage> {
   
   String? symMap;
   Emergency? emergency;
+  Forum? forum;
   String? liveStreaming;
 
   @override
@@ -36,6 +38,7 @@ class _SymDayPageState extends State<SymDayPage> {
       _getMap();
       _getEmergency();
       _getLiveStreaming();
+      _getForum();
     });
   }
 
@@ -53,6 +56,13 @@ class _SymDayPageState extends State<SymDayPage> {
   void _getEmergency() async
   {
     emergency = await ApiCacheHelper.getEmergency();
+
+    setState(() {});
+  }
+
+  void _getForum() async
+  {
+    forum = await ApiCacheHelper.getSymForum();
 
     setState(() {});
   }
@@ -147,7 +157,13 @@ class _SymDayPageState extends State<SymDayPage> {
                         getButton(
                           screenSize, translation(context).symForum, context,
                           () => {
-                            StreamingPopUp().showStreamingDialog(context, liveStreaming)
+                            if(forum != null)
+                            {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EmergencyActivity(title: forum!.getTranslatedTitleAttribute(currentLanguageCode), body: forum!.getTranslatedBodyAttribute(currentLanguageCode))),
+                              )
+                            }
                           }
                         ),
                         getButton(

@@ -10,6 +10,7 @@ String visitToJson(List<Visit> data) => json.encode(List<dynamic>.from(data.map(
 
 class Visit {
     int id;
+    String? city;
     String name;
     String addressLine1;
     String addressLine2;
@@ -24,6 +25,7 @@ class Visit {
 
     Visit({
         required this.id,
+        required this.city,
         required this.name,
         required this.addressLine1,
         required this.addressLine2,
@@ -39,6 +41,7 @@ class Visit {
 
     factory Visit.fromJson(Map<String, dynamic> json) => Visit(
         id: json["id"],
+        city: json["city"],
         name: json["name"],
         addressLine1: json["address_line1"],
         addressLine2: json["address_line2"],
@@ -54,6 +57,7 @@ class Visit {
 
     Map<String, dynamic> toJson() => {
         "id": id,
+        "city": city,
         "name": name,
         "address_line1": addressLine1,
         "address_line2": addressLine2,

@@ -20,6 +20,7 @@ import 'package:wyddb23_flutter/APIs/WydAPI/Models/image_model.dart';
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 
 import '../WeatherAPI/api_service.dart';
+import 'Models/forum_model.dart';
 import 'Models/guide_model.dart';
 import 'Models/information_model.dart';
 import 'Models/visit_model.dart';
@@ -392,7 +393,7 @@ class ApiCacheHelper {
     var box = await Hive.openBox<ApiResponseBox>('apiResponses');
     final cachedResponse = box.get('emergency');
 
-/*     if (cachedResponse != null) {
+    if (cachedResponse != null) {
       // Expires after 6 hours
       if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 3 || connectivityResult == ConnectivityResult.none)
         // Return cached response if it's not expired yet
@@ -401,7 +402,7 @@ class ApiCacheHelper {
       {
         box.delete(cachedResponse.key);
       }
-    } */
+    }
  
     // Fetch new response if cache is expired or not available
     final response = await WydApiService().getEmergency();
@@ -414,6 +415,35 @@ class ApiCacheHelper {
     await box.put('emergency', newResponse);
  
     return emergencyFromJson(response as String)[0][0];
+  }
+
+  static Future<Forum?> getSymForum() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('forum');
+
+    if (cachedResponse != null) {
+      // Expires after 6 hours
+      if(DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < _cacheTimeout * 3 || connectivityResult == ConnectivityResult.none)
+        // Return cached response if it's not expired yet
+        return forumFromJson(json.decode(cachedResponse.response))[0][0];
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getSymForum();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint =  'forum'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('forum', newResponse);
+ 
+    return forumFromJson(response as String)[0][0];
   }
 
   static Future<Weather> getWeather() async {

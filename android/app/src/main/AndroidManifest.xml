@@ -4,6 +4,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE" />
+    <supports-screens
+        android:anyDensity="true"
+        android:xlargeScreens="false"
+        android:largeScreens="false"
+        android:normalScreens="true"
+        android:smallScreens="true" />
     <application
         android:networkSecurityConfig="@xml/network_security_config"
         android:label="WYD Don Bosco 23"

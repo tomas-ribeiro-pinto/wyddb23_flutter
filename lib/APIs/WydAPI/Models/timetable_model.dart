@@ -20,7 +20,7 @@ class Timetable {
     String? descriptionIt;
     String location;
     DateTime startTime;
-    DateTime endTime;
+    DateTime? endTime;
     dynamic deletedAt;
     DateTime createdAt;
     DateTime updatedAt;
@@ -55,7 +55,7 @@ class Timetable {
         descriptionIt: json["description_it"],
         location: json["location"],
         startTime: DateTime.parse(json["start_time"]),
-        endTime: DateTime.parse(json["end_time"]),
+        endTime: json["end_time"] != null ? DateTime.parse(json["end_time"]) : null,
         deletedAt: json["deleted_at"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -73,7 +73,7 @@ class Timetable {
         "description_it": descriptionIt,
         "location": location,
         "start_time": startTime.toIso8601String(),
-        "end_time": endTime.toIso8601String(),
+        "end_time": endTime?.toIso8601String(),
         "deleted_at": deletedAt,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),

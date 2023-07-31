@@ -26,6 +26,7 @@ class ApiConstants {
   static String liveStreaming = 'live-streaming';
   static String prayer = 'prayer';
   static String cache = 'cache';
+  static String notification = 'notification';
 
   static String getDevUrl()
   {

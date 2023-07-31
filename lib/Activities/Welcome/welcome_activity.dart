@@ -156,15 +156,15 @@ class _WelcomeActivityState extends State<WelcomeActivity> {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
                 ),
               ),
             ),
           ],
         ),
-        ),
-      );
+      ),
+    );
   }
 
 }

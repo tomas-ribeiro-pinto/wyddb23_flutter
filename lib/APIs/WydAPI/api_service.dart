@@ -223,4 +223,16 @@ class WydApiService {
       log(e.toString());
     }
   }
+
+  Future<String?> getNotification() async {
+    try {
+      var url = Uri.parse(ApiConstants.apiUrl + ApiConstants.notification);
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }

@@ -217,14 +217,16 @@ class _FatimaGuideActivityState extends State<FatimaGuideActivity> {
                   color: Colors.grey[800],
                 )
               ),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: MyText(
-                  guide!.getTranslatedTitleAttribute(currentLanguageCode),
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                    fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.03, screenSize.height * 0.025, screenSize.height * 0.025),
+              Flexible(
+                child: Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: MyText(
+                    guide!.getTranslatedTitleAttribute(currentLanguageCode),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.03, screenSize.height * 0.025, screenSize.height * 0.025),
+                    ),
                   ),
                 ),
               ),

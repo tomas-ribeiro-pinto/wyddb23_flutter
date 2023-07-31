@@ -75,4 +75,21 @@ class Notification{
     var box = await Hive.openBox<NotificationResponseBox>('Notifications');
     box.delete('notifications');
   }
+
+  static Future<bool> hasNotification(String title, String body) async
+  {
+    var box = await Hive.openBox<NotificationResponseBox>('Notifications');
+    final cachedResponse = box.get('notifications');
+
+    List<noti.Notification> notifications = [];
+
+    if(cachedResponse != null)
+    {
+      notifications = notificationsFromJson(cachedResponse.notifications);
+    }
+
+    var notif = notifications.where(((element) => (element.title == title && element.body == body))).firstOrNull;
+
+    return notif != null ? true : false;
+  }
 }

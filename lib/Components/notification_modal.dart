@@ -5,6 +5,7 @@ import 'package:heroicons/heroicons.dart';
 import 'package:http/http.dart';
 import 'package:lit_relative_date_time/controller/relative_date_format.dart';
 import 'package:lit_relative_date_time/model/relative_date_time.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/notification_model.dart';
 import 'package:wyddb23_flutter/Components/my_text.dart';
 import 'package:wyddb23_flutter/Components/wyd_resources.dart';
 import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
@@ -13,7 +14,8 @@ import 'package:wyddb23_flutter/language_constants.dart';
 import 'notification_pop_up.dart';
 
 class NotificationModal{
-  void showModal(BuildContext context, List<notification.Notification> notifications) async
+  //void showModal(BuildContext context, List<notification.Notification> notifications) async
+  void showModal(BuildContext context, List<SentNotification> notifications) async
   {
     Size screenSize = MediaQuery.of(context).size;
 
@@ -58,7 +60,7 @@ class NotificationModal{
                   scrollDirection: Axis.vertical,
                   child: Wrap(
                     children: [
-                      for(notification.Notification entry in notifications)...
+                      for(SentNotification entry in notifications)...
                       {
                         getNotificationCard(context, screenSize, entry),
                       },
@@ -87,13 +89,14 @@ class NotificationModal{
     );
   }
 
-  Container getNotificationCard(BuildContext context, Size screenSize, notification.Notification entry) {
+  Container getNotificationCard(BuildContext context, Size screenSize, SentNotification entry) {
+    String currentLanguageCode = Localizations.localeOf(context).languageCode;
 
     RelativeDateFormat relativeDateFormatter = RelativeDateFormat(
         Localizations.localeOf(context),
     );
     RelativeDateTime relativeDateTime =
-      RelativeDateTime(dateTime: DateTime.now(), other: entry.receivedAt as DateTime);
+      RelativeDateTime(dateTime: DateTime.now(), other: entry.createdAt as DateTime);
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -122,11 +125,13 @@ class NotificationModal{
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 10),
+                    width: screenSize.width * 0.47,
                     child: MyText(
-                      entry.title.toString(),
+                      entry.getTranslatedTitleAttribute(currentLanguageCode).toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
+                        overflow: TextOverflow.ellipsis,
                         fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02),
                       ),
                     ),
@@ -135,7 +140,7 @@ class NotificationModal{
                     margin: EdgeInsets.only(left: 10),
                     width: screenSize.width * 0.5,
                     child: MyText(
-                      entry.body.toString(),
+                      entry.getTranslatedBodyAttribute(currentLanguageCode).toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         color: Colors.grey,

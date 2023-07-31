@@ -1,3 +1,6 @@
+import 'dart:isolate';
+import 'dart:ui';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +12,7 @@ import 'package:wyddb23_flutter/NavigationRoutes/sym_day_page.dart';
 import 'package:wyddb23_flutter/NavigationRoutes/agenda_page.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
+import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
 
 import '../Components/wyd_resources.dart';
 

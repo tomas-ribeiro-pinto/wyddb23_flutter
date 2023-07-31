@@ -1,11 +1,17 @@
 import 'dart:convert';
+import 'dart:isolate';
+import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_video_player/cached_video_player.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:vector_math/vector_math.dart' as math;
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/notification_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/api_constants.dart';
 import 'package:wyddb23_flutter/Activities/Information/information_activity.dart';
 import 'package:wyddb23_flutter/Activities/Prayers/prayers_activity.dart';
@@ -21,7 +27,9 @@ import 'package:wyddb23_flutter/Notifications/notification.dart' as notification
 
 import '../APIs/WydAPI/Models/story_model.dart';
 import '../APIs/WydAPI/api_cache_helper.dart';
+import '../APIs/WydAPI/api_response_box.dart';
 import '../APIs/WydAPI/api_service.dart';
+import '../APIs/WydAPI/notification_response_box.dart';
 import '../Activities/Fatima/fatima_activity.dart';
 import '../Activities/faq_activity.dart';
 import '../Components/follow_us_pop_up.dart';
@@ -40,7 +48,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   late Weather? _weatherModel = null;
   late List<Story>? _storyModel = null;
   late String? image = null;
-  late List<notification.Notification> notifications;
+  late List<SentNotification> notifications;
 
   @override
   void initState() {
@@ -57,7 +65,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     _weatherModel = await ApiCacheHelper.getWeather();
     _storyModel = (await WydApiService().getStories());
     image = (await ApiCacheHelper.getHomePic());
-    notifications = List.from((await notification.Notification.getNotifications()).reversed);
+    notifications = await ApiCacheHelper.getNotifications();
     Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {
       if(_storyModel != null)
       {

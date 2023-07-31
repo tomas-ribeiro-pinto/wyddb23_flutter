@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/emergency_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/new_guide_model.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/notification_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/prayer_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/streaming_link_model.dart';
 import 'package:wyddb23_flutter/APIs/WydAPI/Models/sym_map_model.dart';
@@ -89,6 +90,34 @@ class ApiCacheHelper {
     return prayerFromJson(response as String);
   }
 
+  static Future<List<SentNotification>> getNotifications() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    var box = await Hive.openBox<ApiResponseBox>('apiResponses');
+    final cachedResponse = box.get('sent-notifications');
+
+    if (cachedResponse != null) {
+
+      if(connectivityResult == ConnectivityResult.none)
+        // Return cached response if ther's no connectivity
+        return List.from((sentNotificationFromJson(json.decode(cachedResponse.response))).reversed);
+      else
+      {
+        box.delete(cachedResponse.key);
+      }
+    }
+ 
+    // Fetch new response if cache is expired or not available
+    final response = await WydApiService().getNotification();
+
+    // Save new response to cache
+    final newResponse = ApiResponseBox()
+      ..endpoint = 'sent-notifications'
+      ..response = json.encode(response)
+      ..timestamp = DateTime.now().millisecondsSinceEpoch;
+    await box.put('sent-notifications', newResponse);
+ 
+    return List.from((sentNotificationFromJson(response as String)).reversed);
+  }
 
   static Future<List<Visit>> getVisits() async {
     final connectivityResult = await (Connectivity().checkConnectivity());

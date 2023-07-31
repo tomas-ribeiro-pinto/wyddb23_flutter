@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -41,14 +42,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
    print('Message notification: ${message.notification?.title}');
    print('Message notification: ${message.notification?.body}');
  }
-
-  // Set up Hive NoSQL
-  final appDocumentDirectory = await getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDirectory.path);
-  Hive.registerAdapter(ApiResponseBoxAdapter());
-  Hive.registerAdapter(NotificationResponseBoxAdapter());
-
-  noti.Notification.saveNotification(notification.Notification(message.notification!.title, message.notification?.body, message.data, DateTime.now()));
 }
 
 Future<void> main() async {
@@ -113,8 +106,6 @@ Future<void> main() async {
     }
 
    _messageStreamController.sink.add(message);
-
-   noti.Notification.saveNotification(notification.Notification(message.notification?.title, message.notification?.body, message.data, DateTime.now()));
  });
 
   // TODO: Set up background message handler

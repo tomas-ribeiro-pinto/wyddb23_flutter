@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wyddb23_flutter/APIs/WydAPI/Models/notification_model.dart';
 import 'package:wyddb23_flutter/Components/header.dart';
 import 'package:wyddb23_flutter/Components/navigation_bar.dart' as Components;
 import 'package:wyddb23_flutter/Notifications/notification.dart' as notification;
@@ -18,9 +21,12 @@ import 'accordion_page.dart';
 
 class NotificationPopUp {
 
-  Future<void> showNotificationDialog(BuildContext context, notification.Notification notification) async {
+  Future<void> showNotificationDialog(BuildContext context, SentNotification notification) async {
     Size screenSize = MediaQuery.of(context).size;
-    print(notification.payLoad);
+    String currentLanguageCode = Localizations.localeOf(context).languageCode;
+
+    var data;
+    notification.data != '[]' ? data = json.decode(notification.data) : data = null;
 
     return showDialog<void>(
       context: context,
@@ -35,7 +41,7 @@ class NotificationPopUp {
                   children: [
                     Expanded(
                       flex: 5,
-                      child: Text(notification.title.toString(), 
+                      child: Text(notification.getTranslatedTitleAttribute(currentLanguageCode).toString(), 
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.03, screenSize.height * 0.025, screenSize.height * 0.025)),),
                     ),
                     Container(
@@ -77,16 +83,16 @@ class NotificationPopUp {
                               child: Padding(
                                 padding: EdgeInsets.only(bottom: 20),
                                 child: MyText(
-                                  notification.body.toString(),
+                                  notification.getTranslatedBodyAttribute(currentLanguageCode).toString(),
                                   style: TextStyle(
                                     fontSize: WydResources.getResponsiveValue(screenSize, screenSize.height * 0.025, screenSize.height * 0.02, screenSize.height * 0.02)
                                   ),
                                 ),
                               ),
                             ),
-                          if(notification.payLoad != null)...
+                          if(data != null)...
                             {
-                              if(notification.payLoad!.containsKey('url'))...
+                              if(data!.containsKey('url'))...
                               {
                                 Align(
                                   alignment: Alignment.centerRight,
@@ -100,7 +106,7 @@ class NotificationPopUp {
                                       child: Text(translation(context).openLink, style: TextStyle(color: Colors.white),)
                                     ),
                                     onPressed: () {
-                                      launchUrl(Uri.parse(notification.payLoad!['url']), mode: LaunchMode.externalApplication);
+                                      launchUrl(Uri.parse(data!['url']), mode: LaunchMode.externalApplication);
                                     }
                                   ),
                                 ),

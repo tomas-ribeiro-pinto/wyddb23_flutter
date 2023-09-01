@@ -4,7 +4,7 @@ WYD Don Bosco 2023 APP
 
 ## Description
 
-WYDDB23 APP is a mobile app created for World Youth Day 23 in Lisbon for the SYM (Salesian Youth Movement) using [Flutter](https://flutter.dev), Google's open source framework for building multi-platform applications from a single code base written in Dart. The app includes push notifications using Firebase SDK API an retrieving media from an Instagram account using Meta's API through a backend that contains an API that communicates with this app using Laravel's PHP framework. This backend’s source code is available at: .
+WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon for the SYM (Salesian Youth Movement) using [Flutter](https://flutter.dev), Google's open source framework for building multi-platform applications from a single code base written in Dart. The app includes push notifications using Firebase SDK API, retrieves media from an Instagram account using Meta's API and other media through a backend that contains an API that communicates with the WYDDB23 app using Laravel's PHP framework. This backend’s source code is available at: .
 
 ### APP Store Screenshots:
 ![Screenshot](https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/1.jpg)

@@ -7,13 +7,15 @@ WYD Don Bosco 2023 APP
 WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon for the SYM (Salesian Youth Movement) using [Flutter](https://flutter.dev), Google's open source framework for building multi-platform applications from a single code base written in Dart. The app includes push notifications using Firebase SDK API, retrieves media from an Instagram account using Meta's API and other media through a back office that contains an API that communicates with the WYDDB23 app using Laravel's PHP framework. The back office source code is available at: https://github.com/tomas-ribeiro-pinto/wyddb23_API
 
 ### APP Store Screenshots:
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/1.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/2.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/3.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/4.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/5.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/6.jpg" alt="screenshot" width="200"/>
-<img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/7.jpg" alt="screenshot" width="200"/>
+<p float="left">
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/1.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/2.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/3.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/4.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/5.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/6.jpg" alt="screenshot" width="200"/>
+  <img src="https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/7.jpg" alt="screenshot" width="200"/>
+</p>
 
 ## Getting Started
 

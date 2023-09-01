@@ -4,7 +4,7 @@ WYD Don Bosco 2023 APP
 
 ## Description
 
-WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon for the SYM (Salesian Youth Movement) using [Flutter](https://flutter.dev), Google's open source framework for building multi-platform applications from a single code base written in Dart. The app includes push notifications using Firebase SDK API, retrieves media from an Instagram account using Meta's API and other media through a backend that contains an API that communicates with the WYDDB23 app using Laravel's PHP framework. This backend’s source code is available at: .
+WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon for the SYM (Salesian Youth Movement) using [Flutter](https://flutter.dev), Google's open source framework for building multi-platform applications from a single code base written in Dart. The app includes push notifications using Firebase SDK API, retrieves media from an Instagram account using Meta's API and other media through a back office that contains an API that communicates with the WYDDB23 app using Laravel's PHP framework. The back office source code is available at: https://github.com/tomas-ribeiro-pinto/wyddb23_API
 
 ### APP Store Screenshots:
 ![Screenshot](https://github.com/tomas-ribeiro-pinto/wyddb23_flutter/blob/main/screenshots/1.jpg)
@@ -21,7 +21,7 @@ WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon fo
 
 * Visual Studio Code or any other IDE with Flutter installed: https://docs.flutter.dev/get-started/install
 * Flutter SDK '>=3.0.3 <4.0.0'
-* Backend Office deployed and running WYDDB23 API (source code: )
+* Backend Office deployed and running WYDDB23 API (source code: https://github.com/tomas-ribeiro-pinto/wyddb23_API)
 
 ### Executing program
 
@@ -29,7 +29,7 @@ WYD Don Bosco 23 APP is a mobile app created for World Youth Day 23 in Lisbon fo
 * Add your Weather API Key and Backend API base url to the “.env” file.
 * Run the solution by executing the following command:
 ```
-> flutter run
+flutter run
 ```
 
 ## Authors

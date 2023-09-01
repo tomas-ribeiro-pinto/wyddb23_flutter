@@ -1,6 +1,4 @@
-# Project Title
-
-WYD Don Bosco 2023 APP
+# WYD Don Bosco 2023 APP
 
 ## Description
 

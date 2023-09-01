@@ -1,10 +1,12 @@
 import 'package:device_info/device_info.dart';
 import 'dart:io';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class ApiConstants {
 
-  static String baseUrl = "https://epinto.tech";
-  static String storage = "https://epinto.tech/storage/";
+  static String baseUrl = dotenv.env['BACKEND_BASE_URL']!;
+  static String storage = baseUrl + "/storage/";
   static String apiUrl = baseUrl + "/api/";
   static String dev = getDevUrl() + "/api/";
   static String devStorage = getDevUrl() + "/storage/";

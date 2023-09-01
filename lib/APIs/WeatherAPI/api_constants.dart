@@ -1,4 +1,6 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class ApiConstants {
   static String baseUrl = 'https://api.weatherapi.com/v1/';
-  static String currentWeather = 'current.json?key=353cd3f4fd0c4bd097d34458230203&q=Lisboa&aqi=no';
+  static String currentWeather = 'current.json?key=${dotenv.env['WEATHER_API_KEY']}&q=Lisboa&aqi=no';
 }

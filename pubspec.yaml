@@ -72,6 +72,7 @@ dependencies:
   percent_indicator: ^3.4.0
   lit_relative_date_time: ^1.2.0
   autoscale_tabbarview: ^1.0.2
+  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -100,6 +101,7 @@ flutter:
   generate: true
   
   assets:
+    - assets/.env # path to .env file
     - assets/images/wyd-home-green.jpg
     - assets/images/wyd-logo-cor.png
     - assets/images/home-pic.png

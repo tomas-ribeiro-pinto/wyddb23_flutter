@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -59,6 +60,9 @@ Future<void> main() async {
 
   // Set up preferred orientation,
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  // Set ENV File
+  await dotenv.load(fileName: "assets/.env");
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
